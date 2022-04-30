@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 type CheckBoxProps = {
@@ -6,12 +7,21 @@ type CheckBoxProps = {
 };
 
 const CheckBox: React.FC<CheckBoxProps> = ({ id, text }) => {
+  const [first, setfirst] = useState(false)
+  useEffect(() => {
+setfirst(!first)
+  }, [])
+  
   return (
-    <label htmlFor={"customCHeckBox-" + id} className={styles.customcheckbox}>
-      <input type="checkbox" name={text} id={"customCHeckBox-" + id}/>
-      <span className={styles.checkmark}></span>
-      <span className={styles.label}>{text}</span>
-    </label>
+    <>
+  {
+    first?  <label htmlFor={"customCHeckBox-" + id} className={styles.customcheckbox}>
+    <input type="checkbox" name={text} id={"customCHeckBox-" + id}/>
+    <span className={styles.checkmark}></span>
+    <span className={styles.label}>{text}</span>
+  </label>: 'loading'
+  }
+    </>
   );
 };
 
