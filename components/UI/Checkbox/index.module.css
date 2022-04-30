@@ -21,7 +21,8 @@
     border: 1px solid #9999;
     border-radius: 6px;
     display: inline-block;
-    background: #00C1DD url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png) center/1250% no-repeat;
+    background:  url('../../../public/uploads/checkbox.png') center/1250% no-repeat;
+    background-repeat: no-repeat;
     transition: background-size 0.2s ease;
   }
   .customcheckbox input:checked ~.label{
@@ -29,7 +30,7 @@
   }
   .customcheckbox input:checked + .checkmark {
     background-size: 60%;
-    transition: background-size 0.25s red;
+    transition: background-size 0.25s ease;
   }
   
   .customcheckbox input {
