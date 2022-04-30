@@ -1,0 +1,76 @@
+.footer > div {
+  height: 320px;
+  background-color: white;
+  padding: 70px 0;
+}
+.footer > div > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.firstLI {
+  width: 23%;
+}
+.content {
+  margin-top: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #474747;
+}
+
+.info > h4 {
+  margin: 0;
+  padding: 0;
+  color: #00c1dd;
+  font-size: 18px;
+}
+.info > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.info > ul > li {
+  font-weight: 400;
+  font-size: 14px;
+  color: #333333;
+  opacity: 0.6;
+  margin-top: 15px;
+}
+.footer_content {
+  width: 29%;
+}
+.footer_content > h4 {
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+.subscripe {
+  margin-top: 33px;
+  position: relative;
+  display: flex;
+}
+.subscripe > input {
+  width: 211px;
+  height: 44px;
+  background: #f6f6f6;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  outline: none;
+  padding-left: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #C2C2C2;
+  
+}
+.subscripe>input::placeholder{
+  font-weight: 400;
+  font-size: 14px;
+  color: #C2C2C2;
+}
+.subscripe >div{
+  transform: translateX(-10px);
+}

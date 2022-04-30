@@ -1,0 +1,17 @@
+.inputui {
+  margin-top: 17px;
+}
+.inputui > label {
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  color: #c2c2c2;
+}
+.inputui > input {
+  height: 56px;
+  background: #f6f6f6;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}

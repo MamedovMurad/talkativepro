@@ -1,0 +1,9 @@
+.rightNav{
+    display: flex;
+}
+.rightNav>a{
+    display: block;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}

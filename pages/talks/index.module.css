@@ -1,0 +1,6 @@
+.talks{
+    padding: 130px 0;
+}
+.talks>div>div:first-child{
+    display: flex;
+}

@@ -1,0 +1,21 @@
+.asideCotainer{
+    max-height: 35px;
+    overflow: hidden;
+    transition: all .4s;
+}
+.asideCotainer>div:first-child{
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.asideCotainer>div:first-child>span{
+    margin-left: 14px;
+    display: inline-block;
+}
+.asideCotainer>p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #474747;
+    cursor: pointer;
+}

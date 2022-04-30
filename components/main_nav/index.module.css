@@ -1,0 +1,13 @@
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+    width: 70%;
+
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #999999;
+}

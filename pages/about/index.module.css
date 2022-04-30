@@ -1,0 +1,66 @@
+.about {
+  margin-top: 120px;
+}
+.about > div > .header > div.content > h2 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  color: #474747;
+}
+
+.about > div > .header {
+  display: flex;
+  justify-content: space-between;
+}
+.about > div > .center {
+ margin: 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.about > div > .center > div {
+  width: 48%;
+  height: 264px;
+  padding: 32px;
+  background: linear-gradient(
+    89.98deg,
+    rgba(0, 217, 217, 0.1) 0.01%,
+    rgba(47, 90, 230, 0.1) 99.98%
+  );
+  border-radius: 20px;
+}
+.about > div > .center > div > h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #474747;
+}
+.about > div > .center > div > p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170%;
+  color: #707070;
+}
+.about > div > .header > div {
+  width: 47%;
+}
+.about > div > .header > div.areaBG{
+  width: 50%;
+} 
+.about > div > .header > div.content > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170%;
+  color: #c2c2c2;
+}
+
+.about > div > .footer{
+    margin-top: 15px;
+}
+.about > div > .footer > p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170%;
+  color: #999999;
+}

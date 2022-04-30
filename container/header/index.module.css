@@ -1,0 +1,13 @@
+.header{
+    top: 19px;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

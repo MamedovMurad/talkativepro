@@ -1,0 +1,22 @@
+.faq {
+  height: 750px;
+  background: rgba(0, 193, 221, 0.1);
+  padding:30px 0;
+}
+.faq > div > h2 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  color: #474747;
+  text-align: center;
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+.faqWrapper{
+  padding:0 10%
+}
+.button{
+  justify-content: center;
+  display: flex;
+  margin-top: 40px;
+}

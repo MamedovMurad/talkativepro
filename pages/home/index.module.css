@@ -1,0 +1,292 @@
+.homepage {
+  height: 766px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%),
+    linear-gradient(106.93deg, #edf1ff 4.88%, #e4ffff 91.51%);
+}
+.homepage > div {
+  padding-top: 90px;
+}
+.main {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mainBgSLider {
+  height: 500px;
+  background: url("../../public/uploads/background.svg");
+  width: 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+section.connection {
+  margin: 60px 0;
+}
+section.connection > div > h4 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #474747;
+}
+.slogan > h1 {
+  font-weight: 300;
+  font-size: 56px;
+  color: #474747;
+  margin: 3px 0;
+}
+.slogan > h1 > span {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  background: linear-gradient(89.98deg, #00d9d9 0.01%, #2f5ae6 99.98%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.slogan > p {
+  font-weight: 400;
+  font-size: 20px;
+  margin: 17px 0;
+  color: #999999;
+  margin-bottom: 35px;
+}
+.customFlexSvg {
+  height: 8%;
+  position: absolute;
+  top: -10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.customFlexSvg > div > img {
+  border-radius: 10px;
+}
+.laptop {
+  transform: translateY(-25px);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.laptop > div {
+  width: 63%;
+  background: url("../../public/uploads/laptop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  position: relative;
+  padding: 4px 29px 3px 36px;
+  overflow: hidden;
+}
+section.teachersection {
+  margin-top: 110px;
+}
+.chooseTeacher {
+  height: 464px;
+  width: 100%;
+}
+.chooseTeacher > .top {
+  transform: translateY(19px);
+  display: flex;
+  justify-content: space-between;
+  height: 336px;
+
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 30px;
+  background: url("../../public/uploads/BG.svg"), #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.chooseTeacher > .top > .teacherContent {
+  padding-top: 38px;
+  text-align: right;
+}
+.chooseTeacher > .top > .teacherContent > div {
+  width: 77%;
+}
+.chooseTeacher > .top > .teacherContent > div > p {
+  margin: 10px 0 0px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #999999;
+}
+.chooseTeacher > .top > .teacherContent > div > p:first-child {
+  margin: 0px 0 10px 0;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 48px;
+  color: #333333;
+}
+.chooseTeacher > .top > .teacherContent > div > h3 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 48px;
+  color: #333333;
+  margin: 0;
+}
+.chooseTeacher > .top > .teachersBg {
+  padding-left: 30px;
+}
+.chooseTeacher > .top > .teachersBg > img {
+  transform: translateY(-30px);
+}
+.chooseTeacher > .footer {
+  display: flex;
+  max-width: 77%;
+  margin: 0 auto;
+  background: linear-gradient(89.98deg, #00d9d91c 0.01%, #2f5ae61a 99.98%);
+  height: 126px;
+  border-radius: 0px 0px 30px 30px;
+}
+.chooseTeacher > .footer > div {
+  width: 50%;
+  border: 1px solid #fff;
+}
+.chooseTeacher > .footer > div > p {
+  margin: 22px 0 5px 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #333333;
+}
+.chooseTeacher > .footer > div > h4 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 36px;
+  text-align: center;
+  color: #333333;
+}
+.tarif {
+}
+.tarif > div > h3 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  text-align: center;
+  color: #474747;
+}
+.tarif > div > ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 56px 0;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #f6f6f6;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 16px 0;
+  height: 284px;
+}
+.tarif > div > ul > li > div {
+  display: flex;
+  justify-content: space-between;
+}
+.tarif > div > ul > li > div > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 104px;
+  height: 40px;
+  margin-right: 15px;
+}
+.tarif > div > ul > li > div > p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #999999;
+}
+.tarif > div > ul > li > h4 {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 72px;
+  margin: 0;
+  padding: 0;
+}
+.tarif > div > ul > li > h4 > span {
+  font-size: 32px;
+}
+.tarif > div > ul > li {
+  padding: 25px 0 0 24px;
+  height: 252px;
+  width: 22%;
+  transition: all 0.3s;
+
+  border-radius: 20px;
+}
+.tarif > div > ul > li:hover {
+  background: #f6f6f6;
+}
+.tarif > div > ul > li:hover > button {
+  background: #00c1dd;
+  color: white;
+}
+.tarif > div > ul > li > button {
+  cursor: pointer;
+  transition: all 0.3s;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 106px;
+  height: 44px;
+  padding: 16px 0;
+  border: 2px solid #f6f6f6;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #fff;
+  color: #999999;
+}
+.register > div {
+  display: flex;
+  background: url("../../public/uploads/bg2.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  height: 400px;
+}
+.register {
+  margin: 56px 0;
+}
+.register > div .registerImage {
+  background: url("../../public/uploads/group.png");
+  width: 45%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 68%;
+}
+.register > div > .content {
+  width: 55%;
+}
+.register > div > .content > .buttonArea {
+  margin-top: 30px;
+}
+.register > div > .content > h3 {
+  font-weight: 600;
+  font-size: 48px;
+  color: #333333;
+  margin: 0 0 14px 0;
+}
+.register > div > .content {
+  padding: 70px 0 0 70px;
+}
+.register > div > .content > p {
+  margin: 0;
+  color: #474747;
+  font-size: 26px;
+  font-weight: 400;
+}

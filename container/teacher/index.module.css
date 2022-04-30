@@ -1,0 +1,11 @@
+.teacherContainer{
+    min-height: 50vh;
+    max-height: 82.5vh;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    overflow-y: scroll;
+}
+.teacherContainer>div{
+    margin: 0 0 2.99% 2.99% ;
+}

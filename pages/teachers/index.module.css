@@ -1,0 +1,8 @@
+.teacher{
+    background: #E9E9E9;
+    padding: 120px 0;
+}
+.teacher>div>div{
+    display: flex;
+   
+}
