@@ -2,8 +2,11 @@ import Link from "next/link";
 import { useEffect } from "react";
 import SliderItem from "../../components/slider_item";
 import ButtonUI from "../../components/UI/Button";
+import DatePicker from "../../components/UI/datepicker";
+import SelectUI from "../../components/UI/Select";
 import SliderItemUI from "../../components/UI/Slider";
 import Faq from "../../container/faq";
+import SearchTop from "../../container/searchTop";
 import SliderUI from "../../container/slider";
 import BodyCrousel from "../../container/slider/bodyCarousel";
 import CustomSlider from "../../hooks/CustomSlider";
@@ -40,8 +43,7 @@ const HomePage: React.FC<HomeProps> = () => {
                 </div>
                 <div className={styles.laptop}>
                   <div>
-                    {" "}
-                    <SliderItemUI />{" "}
+                    <SliderItemUI />
                   </div>
                 </div>
                 <div>
@@ -53,6 +55,7 @@ const HomePage: React.FC<HomeProps> = () => {
               </div>
             </div>
           </div>
+          <SearchTop margin="66px 0 0 0 "/>
         </div>
       </div>
       <SliderUI />

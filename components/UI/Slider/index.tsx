@@ -6,7 +6,6 @@ type SliderUIProps = {}
 const SliderItemUI:React.FC<SliderUIProps> = () => {
     const aalll = CustomSlider(['prtiret.png','portiret.png']);
     useEffect(() => {
-    console.log(aalll);
     
     }, [aalll])
   

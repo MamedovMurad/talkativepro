@@ -131,10 +131,10 @@
   background: #ffffff;
   border-radius: 10px;
   outline: none;
-  border: 1px solid #2f5ae6;
+  border: 1px solid #00C1DD;
   transition: all .3s;
 }
 .bodySliderItem > footer.footer > .buttonArea > button:hover{
-  background-color: #2f5ae6;
+  background: #00C1DD;
   color: white;
 }
