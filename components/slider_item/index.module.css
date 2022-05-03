@@ -5,6 +5,7 @@
   width: 264px;
   height: 180px;
   margin: 10px;
+  cursor: pointer;
 }
 .imgArea {
   padding-top: 24px;

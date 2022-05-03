@@ -23,7 +23,7 @@ const SelectUI: React.FC<SelectUIProps> = ({ value, children, size }) => {
       <ul onClick={handleCLick} className={toggle?styles.activeU_L:styles.ordinary}>
         { (
           <li className={styles.main}>
-            <label htmlFor="dropdown-0">{value} <ArrowSvg/></label>
+            <label htmlFor="dropdown-0">{value} <ArrowSvg color="#C2C2C2"/></label>
           </li>
         )}
 

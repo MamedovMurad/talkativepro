@@ -1,0 +1,45 @@
+.SingleTeacherDetail {
+  padding: 130px 0;
+  background-color: #e9e9e9;
+}
+.topLInk {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.topLInk > li {
+  font-size: 16px;
+  line-height: 24px;
+  width: 112px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c2c2c2;
+}
+.topLInk > .topLinkActive {
+  color: #00c1dd;
+  background: #f2fcfd;
+  border: 1px solid #00c1dd;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.SingleTeacherBody {
+  display: flex;
+}
+.SingleTeacherBody > .mainContenArea {
+  margin-left: 16px;
+  width: 62%;
+}
+.videoLinkArea > iframe {
+  height: 272px;
+  width: 100%;
+  border-radius: 20px;
+}
+.thisTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+margin: 10px 0;
+  color: #707070;
+}

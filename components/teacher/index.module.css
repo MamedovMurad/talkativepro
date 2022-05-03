@@ -1,0 +1,118 @@
+.TeacherCartItem {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 310px;
+  padding: 16px;
+  margin-right: 20px;
+}
+.TeacherCartItem > h4,
+.TeacherCartItem > h5,
+.TeacherCartItem > p {
+  margin: 0;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.TeacherCartItem > h4 {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #707070;
+}
+.TeacherCartItem > h5 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #474747;
+}
+
+.TeacherCartItem > p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #c2c2c2;
+}
+
+/* aside section */
+.teacherasidecomp {
+  width: 100%;
+  padding: 20px;
+
+  /* black&white/white */
+
+  background: #ffffff;
+  border-radius: 20px;
+}
+.teacherasidecomp > div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+.teacherasidecomp > div > img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.teacherasidecomp > div > .contentArea {
+  width: 52%;
+}
+.teacherasidecomp > div > .contentArea > p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #00c1dd;
+}
+.teacherasidecomp > div > .contentArea > h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0;
+  color: #333333;
+}
+.teacherasidecomp > div > .contentArea > div > span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c2c2c2;
+}
+.teacherasidecomp > .buttons > button {
+  outline: none;
+  border: none;
+  width: 105px;
+  height: 40px;
+  background: #f2fcfd;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #00c1dd;
+  cursor: pointer;
+  margin: 17px 0;
+  margin-right: 16px;
+}
+.teacherasidecomp > button {
+  outline: none;
+  border: none;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  justify-content: center;
+  border: 1px solid #00c1dd;
+  box-sizing: border-box;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 24px;
+
+  color: #00c1dd;
+}
+.mainCOntent {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170%;
+
+  color: #b1b1b1;
+}
