@@ -29,8 +29,8 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = () => {
         experiences. My hobbies include going abroad, cooking, and also reading
         various types of books. I also really enjoy speaking with people from
         all over the world, including my students, but also other fantastic
-        people that I 've met. My goal is to help you speak English fluently.
-        Now you know a little bit about me, I can't wait to learn more about
+        people that I have met. My goal is to help you speak English fluently.
+        Now you know a little bit about me, I can not wait to learn more about
         you.
       </p>
     </div>
