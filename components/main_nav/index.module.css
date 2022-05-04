@@ -8,10 +8,15 @@
 
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    color: #999999;
+    
+    
 }
 .activeNav{
-    color: #474747;
+    color: #474747 !important;
+    font-size: 15px;
+}
+.nafv{
+    font-size: 14.9px;
+    color: #999999;
 }
 
