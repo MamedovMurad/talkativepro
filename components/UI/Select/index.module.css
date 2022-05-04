@@ -1,4 +1,7 @@
 .selectUI > ul {
+  
+  transform: translateY(2px);
+
   background: transparent;
   position: absolute;
   top: 0;
