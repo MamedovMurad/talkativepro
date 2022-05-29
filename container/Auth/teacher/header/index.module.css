@@ -1,0 +1,36 @@
+.topHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+}
+.headerTeacher {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+}
+.balance {
+  box-sizing: border-box;
+  padding: 4px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #00c1dd;
+  width: 110px;
+  height: 80px;
+  border-radius: 7px;
+  border: 1px solid #00c1dd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.balance > p {
+  margin: 0;
+}
+.balance > span {
+  align-self: flex-start;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #999999;
+}

@@ -3,7 +3,6 @@
     max-height: 82.5vh;
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
     overflow-y: scroll;
 }
 .TalksContainer>div{

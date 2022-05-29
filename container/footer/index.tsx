@@ -1,18 +1,19 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import ButtonUI from "../../components/UI/Button";
 import Links from "../../components/UI/links";
 import { nav } from "../../Model/utils/nav";
 import { LogoSvg } from "../../svg/Logo";
-import { LogoFaceSvg } from "../../svg/logoFace";
-import { LogoInstaSvg } from "../../svg/logoInsta";
-import { LogoYoutubeSvg } from "../../svg/logoYoutube";
+
 import styles from "./index.module.css";
 type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
+  const route = useRouter();
+  function CanditionHeader() {if (route.pathname.search("dashboard") !== -1) { return'warpperAUth'} else {return  'wrapper' }}
   return (
     <div className={styles.footer}>
-      <div className="wrapper">
+      <div className={CanditionHeader()}>
         <ul>
           <li className={styles.firstLI}>
             <LogoSvg />

@@ -1,0 +1,114 @@
+.WrapperArea {
+  max-width: 1306px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.days {
+  list-style: none;
+  margin: 0;
+  gap: 0 3px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+.changeHistory {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.changeHistory > button {
+  display: flex;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  align-items: center;
+  color: #707070;
+}
+.changeHistory > button > span {
+  cursor: pointer;
+}
+.changeHistory > button > span:first-child {
+  margin: 0 9px;
+}
+.changeHistory > button > span:first-child svg {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+.changeHistory > button > span:last-child svg {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+.days > li {
+  box-sizing: border-box;
+  width: 184px;
+  height: 70px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 7px;
+}
+.days > li > span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #c2c2c2;
+}
+.days > li > p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: #707070;
+}
+.calendarBodyParent {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 3px;
+}
+.calendarBody {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  gap: 3px 0;
+  display: flex;
+  flex-direction: column;
+}
+.calendarBody > li {
+  position: relative;
+}
+.calendarBody > li > span {
+  display: none;
+}
+.calendarBodyParent > .calendarBody:first-child > li > span {
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  left: -80px;
+}
+
+.calendarBody > li {
+  box-sizing: border-box;
+  width: 184px;
+  height: 100px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 7px;
+}
+
+/* loader area */
+
+.loadingSpinner {
+  min-width: 90%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

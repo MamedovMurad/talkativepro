@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 import { GenericDTO, IFaq, ImeModel, ITariff, ITeacherRegister } from "../Model/DTO";
 import { getCookie } from 'react-use-cookie';
+import { ICalendar } from "../Model/calendar";
 
 export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
 
@@ -105,9 +106,9 @@ const Auth = {
     checkActivetion:(body:{code:string,token:string})=>requests.post<GenericDTO<string>>('/auth/registration/code',body),
     registerTeacherTwo:(body:ITeacherRegister)=>requests.patch<string>('/teachers/me/initialDetails', body),
 }
-/* const teacher= {
-    calendarList:()=>requests.get<>
-} */
+const teacher= {
+    calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar')
+}
 const tariff = {
     list:()=>requests.get<GenericDTO<ITariff[]>>('/public/tariffs')
 
@@ -127,7 +128,8 @@ const agent = {
     faq,
     about,
     fileUpload_v,
-    Common
+    Common,
+    teacher
 }
 
 export default agent;

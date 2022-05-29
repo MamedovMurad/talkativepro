@@ -12,6 +12,7 @@ import { LogoSvg } from "../../../../svg/Logo";
 import styles from "./index.module.css";
 const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
   const [data, dispatch] = useContext(UserContext)
+  const user  =  data.users.user_info
   const router = useRouter()
   const extDashboard = ()=>{
     setCookie('agent', '', { days: 0 })
@@ -34,14 +35,16 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
 
           <SelectUI
             arrow={false}
-            width="208px"
+            width="230px"
             custom_element={
               <div className={styles.header_user}>
                 <img src="./uploads/teahcer.png" alt="" />
                 <div>
-                  <p>
-                    Aysel Malikova <ArrowSvg />
-                  </p>
+                 {
+                   user? <p>
+                   {user.firstName + ' '+ user.lastName} <ArrowSvg />
+                 </p> : <p>yüklənir</p>
+                 }
                   <p>İntermediate</p>
                 </div>
               </div>
