@@ -28,10 +28,10 @@ const Contact:React.FC<ContactProps> = () => {
                 </div>
                 <div className={styles.form}>
                     <form action="">
-                        <InputUI id={1} label="Ad/ Soyad"/>
-                        <InputUI id={2} label="Email"/>
-                        <InputUI id={3} label="Mövzu"/>
-                        <InputUI id={4} label="Mesajınız" height="112px"/>
+                        <InputUI id={1} label="Ad/ Soyad" name="fsd"/>
+                        <InputUI id={2} label="Email" name="fsd"/>
+                        <InputUI id={3} label="Mövzu" name="fsd"/>
+                        <InputUI id={4} label="Mesajınız" height="112px" name="fsd"/>
                         <div className={styles.buttonArea}><ButtonUI text="Göndər" height="44px"/></div>
                     </form>
                 </div>
