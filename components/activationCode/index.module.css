@@ -1,0 +1,30 @@
+.activationcode > h5 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: #333333;
+  margin: 0;
+}
+.activationcode > p {
+  margin: 5px 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #999999;
+}
+.activationcode > form {
+  margin-top: 25px;
+}
+.againsend {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #999999;
+  margin: 10px;
+}
+.againsend > label > span:last-child {
+  color: red;
+}

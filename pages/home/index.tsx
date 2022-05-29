@@ -1,29 +1,47 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import agent from "../../Api/agent";
+import LoginPage from "../../components/googleAccount/login";
 import SliderItem from "../../components/slider_item";
 import ButtonUI from "../../components/UI/Button";
 import DatePicker from "../../components/UI/datepicker";
 import SelectUI from "../../components/UI/Select";
 import SliderItemUI from "../../components/UI/Slider";
+import SweetAlertSuccess from "../../components/UI/sweetAlert";
 import Faq from "../../container/faq";
 import SearchTop from "../../container/searchTop";
 import SliderUI from "../../container/slider";
 import BodyCrousel from "../../container/slider/bodyCarousel";
 import CustomSlider from "../../hooks/CustomSlider";
+import { ArrowSvg } from "../../svg/ArrowSVG";
 import { MainBgSvg } from "../../svg/MainBg";
 import styles from "./index.module.css";
 type HomeProps = {};
-const tarifs = [
-  { id: 1, date: "1 saat", price: 5 },
-  { id: 2, date: "1 ay", price: 59, label: "Populyar" },
-  { id: 3, date: "3 ay", price: 168 },
-  { id: 4, date: "5 ay", price: 265 },
-];
 const HomePage: React.FC<HomeProps> = () => {
+  const [tarifs, settarifs] = useState<{id:number, date:number; price:number; label:string}[]|null>(null)
+ 
+  async function fetchTariffs() {
+    const data = await agent.tariff.list();
+   const tarif = data?.data?.map((item) => {
+      return {
+        id: item.id,
+        date: item.hoursCount,
+        price: item.price,
+        label: item.name,
+      };
+    });
+    tarif&&  settarifs(tarif)
+  }
+
+  useEffect(() => {
+    fetchTariffs();
+  }, []);
+
   return (
     <>
       <div className={styles.homepage}>
         <div className="wrapper">
+          {/* <LoginPage/> */}
           <div className={styles.main}>
             <div className={styles.slogan}>
               <h1>
@@ -55,10 +73,11 @@ const HomePage: React.FC<HomeProps> = () => {
               </div>
             </div>
           </div>
-          <SearchTop margin="66px 0 0 0 "/>
+          <SearchTop margin="66px 0 0 0 " />
         </div>
       </div>
       <SliderUI />
+      <div className="wrapper"><div className={styles.sliderBootm}> <Link href='/teachers'><a ><p>Bütün müəllimlər</p> <span><ArrowSvg/></span></a></Link></div></div>
       <section className={styles.teachersection}>
         <div className="wrapper">
           <div className={styles.chooseTeacher}>
@@ -78,19 +97,22 @@ const HomePage: React.FC<HomeProps> = () => {
               </div>
             </div>
             <div className={styles.footer}>
-              <div><p>Hər səviyyəyə uyğun</p> <h4>qramatika</h4></div>
-              <div><p>Hər gün</p>  <h4>yeni sözlər</h4></div>
+              <div>
+                <p>Hər səviyyəyə uyğun</p> <h4>qramatika</h4>
+              </div>
+              <div>
+                <p>Hər gün</p> <h4>yeni sözlər</h4>
+              </div>
             </div>
           </div>
         </div>
       </section>
-        <section className={styles.connection}>
-          <div className="wrapper">
+      <section className={styles.connection}>
+        <div className="wrapper">
           <h4>Yaxın zamanda olacaq söhbətlər</h4>
-          <BodyCrousel/>
-          </div>
-          
-        </section>
+          <BodyCrousel />
+        </div>
+      </section>
       <div className={styles.register}>
         <div className="wrapper">
           <div className={styles.content}>
@@ -112,10 +134,10 @@ const HomePage: React.FC<HomeProps> = () => {
         <div className="wrapper">
           <h3>Tariflərimizlə tanış olun</h3>
           <ul>
-            {tarifs.map((item) => (
+            {tarifs?.map((item) => (
               <li key={item.id}>
                 <div>
-                  <p>{item.date}</p>
+                  <p>{item.date} saat</p>
                   {item.label && <button>{item.label}</button>}
                 </div>
 
@@ -125,6 +147,7 @@ const HomePage: React.FC<HomeProps> = () => {
                 <button>Əldə et</button>
               </li>
             ))}
+           
           </ul>
         </div>
       </div>

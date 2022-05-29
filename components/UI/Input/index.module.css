@@ -1,14 +1,18 @@
 .inputui {
   margin-top: 17px;
+  display: flex;
+  flex-direction: column;
 }
 .inputui > label {
-  display: block;
+  display: inline-block;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
   color: #c2c2c2;
+  margin-bottom: 5px;
 }
 .inputui > input {
+  padding-left: 10px;
   height: 56px;
   background: #f6f6f6;
   border-radius: 10px;

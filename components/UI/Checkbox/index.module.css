@@ -6,15 +6,17 @@
     align-items: center;
     margin: 10px 0;
   }
-  
+  .customcheckboxReverse{
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
   .customcheckbox .label {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px; 
     color: #999999;
-    margin-left: 10px;
+    margin:0 10px;
   }
-  
   .customcheckbox .checkmark {
     width: 21px;
     height: 21px;

@@ -1,11 +1,16 @@
 import styles from "./index.module.css";
-import { useRouter } from 'next/router'
+import { UserContext } from "../../pages/_app";
+import { useContext } from "react";
+import UserModalBody from "../modal/usermodal_body";
+import { StarSVG } from "../../svg/starSVG";
 type SliderItemProps = { index: number };
 
 const SliderItem: React.FC<SliderItemProps> = ({ index }) => {
-  const router = useRouter()
+  const [data, dispatch] = useContext(UserContext);
+ /*  const router = useRouter() */
   const handleClick = () => {
-    router.push('teacher/turalaliyev-12334')
+    dispatch({type:'setModalActive', payload:<UserModalBody/>})
+    /* router.push('teacher/turalaliyev-12334') */
   }
   return (
     <div className={styles.SliderItem} onClick={handleClick}>
@@ -16,8 +21,9 @@ const SliderItem: React.FC<SliderItemProps> = ({ index }) => {
         <h5>Tural Əliyev</h5>
         <p>İngilis dili</p>
       </div>
-      <div>
-        <span></span>
+      <div className={styles.review}>
+        <span>5</span>
+        <span><StarSVG/></span>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@
 }
 .about > div > .center > div {
   width: 48%;
-  height: 264px;
+  height: initial;
   padding: 32px;
   background: linear-gradient(
     89.98deg,

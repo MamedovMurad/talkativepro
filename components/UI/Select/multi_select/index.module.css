@@ -1,0 +1,31 @@
+.multiSelect {
+  position: relative;
+  margin: 16px 0;
+}
+.mainView {
+  background: #f2fcfd;
+  height: 56px;
+  border: 1px solid #00c1dd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #707070;
+  padding: 0 16px ;
+}
+.list {
+  list-style: none;
+  width: 360px;
+  height: 196px;
+  padding: 20px;
+  overflow: hidden;
+transition: height .2s;
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+}

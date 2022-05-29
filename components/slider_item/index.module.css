@@ -6,6 +6,22 @@
   height: 180px;
   margin: 10px;
   cursor: pointer;
+  position: relative;
+}
+.review {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+}
+.review > span:first-child {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #333333;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-right: 4px;
 }
 .imgArea {
   padding-top: 24px;
@@ -37,11 +53,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 .bodySliderItem > header.header {
   display: flex;
-
 }
 .bodySliderItem > header.header > .imageArea {
   width: 66px;
@@ -100,13 +114,13 @@
   line-height: 24px;
   color: #999999;
 }
-.bodySliderItem > main.main > div>div{
+.bodySliderItem > main.main > div > div {
   width: 130px;
 }
-.bodySliderItem > main.main > div>div>img{
+.bodySliderItem > main.main > div > div > img {
   display: inline-block;
 }
-.bodySliderItem > main.main > div>div>span{
+.bodySliderItem > main.main > div > div > span {
   display: inline-block;
   transform: translateY(-4px);
 }
@@ -132,10 +146,10 @@
   background: #ffffff;
   border-radius: 10px;
   outline: none;
-  border: 1px solid #00C1DD;
-  transition: all .3s;
+  border: 1px solid #00c1dd;
+  transition: all 0.3s;
 }
-.bodySliderItem > footer.footer > .buttonArea > button:hover{
-  background: #00C1DD;
+.bodySliderItem > footer.footer > .buttonArea > button:hover {
+  background: #00c1dd;
   color: white;
 }

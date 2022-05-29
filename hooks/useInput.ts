@@ -1,14 +1,7 @@
-import React, {useState} from "react";
-
-
-export const useInput = (initialValue:any) => {
-    const [value, setValue] = useState(initialValue)
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    return {
-        value, onChange
-    }
-}
+function useForInputLabel() {
+    return (str:string)=>    str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+  }
+  
+  export default useForInputLabel;

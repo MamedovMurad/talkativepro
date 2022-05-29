@@ -1,0 +1,20 @@
+.zvanoq {
+  position: relative;
+}
+.zvanoq > span {
+  border-radius: 50%;
+  position: absolute;
+  background: #e15252;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  top: -14px;
+  right: -10px;
+}

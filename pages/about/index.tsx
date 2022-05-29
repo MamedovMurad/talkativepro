@@ -1,49 +1,62 @@
+import { useEffect, useState } from "react";
+import agent from "../../Api/agent";
 import MapUI from "../../components/UI/map";
 import styles from "./index.module.css";
 type AboutProps = {};
 
 const About: React.FC<AboutProps> = () => {
+  const [data, setdata] = useState<{
+    teacherText: string;
+    aboutBottom: string;
+    studentText: string;
+    aboutTop: string;
+  } | null>(null);
+  const fetchApi = async () => {
+    const data = await agent.about();
+    setdata(data.data);
+  };
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
   return (
     <div className={styles.about}>
       <div className="wrapper">
         <div className={styles.header}>
           <div className={styles.content}>
             <h2> Haqqımızda</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Vestibulum vitae placerat leo. Integer sed volutpat risus. Aenean
-              pulvinar neque feugiat ante pellentesque, at ullamcorper sem
-              luctus. Nullam scelerisque, nisi in tempor ultrices, turpis nulla
-              rhoncus quam, sit amet aliquet tellus diam non ligula. Proin
-              scelerisque arcu nec orci bibendum, at placerat libero semper. Sed
-              elementum tincidunt auctor. Sed nulla enim, dictum at nibh et,
-              vehicula finibus purus. In id justo egestas, varius magna in,
-              aliquet odio. In hac habitasse platea dictumst.
-            </p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: data?.aboutTop ? data?.aboutTop : "",
+              }}
+            ></p>
           </div>
-            <MapUI/>
+          <MapUI />
         </div>
         <div className={styles.center}>
-            <div>
-                <h3>Müəllim</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Vestibulum vitae placerat leo. Integer sed volutpat risus. Aenean pulvinar neque feugiat ante pellentesque, at ullamcorper sem luctus.</p>
-            </div>
-            <div>
-                <h3>Tələbə</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Vestibulum vitae placerat leo. Integer sed volutpat risus. Aenean pulvinar neque feugiat ante pellentesque, at ullamcorper sem luctus.</p>
-            </div>
+          <div>
+            <h3>Müəllim</h3>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: data?.teacherText ? data?.teacherText : "",
+              }}
+            ></p>
+          </div>
+          <div>
+            <h3>Tələbə</h3>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: data?.studentText ? data?.studentText : "",
+              }}
+            ></p>
+          </div>
         </div>
-        <div className={styles.footer}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae placerat leo. Integer sed volutpat risus. 
-                Aenean pulvinar neque feugiat ante pellentesque, at ullamcorper sem luctus. Nullam scelerisque, nisi in tempor ultrices,
-                 turpis nulla rhoncus quam, sit amet aliquet tellus diam non ligula. Proin scelerisque arcu nec orci bibendum, at placerat libero semper.
-                  Sed elementum tincidunt auctor. Sed nulla enim, dictum at nibh et, vehicula finibus purus. In id justo egestas, varius magna in, aliquet odio. 
-                  In hac habitasse platea dictumst. 
-                Vestibulum vel sapien vitae magna gravida ultrices. Integer tincidunt turpis ac enim viverra hendrerit. Donec ut dolor a massa euismod dignissim.
-                 Mauris a ex odio.</p>
-        </div>
+        <div
+          className={styles.footer}
+          dangerouslySetInnerHTML={{
+            __html: data?.aboutBottom ? data?.aboutBottom : "",
+          }}
+        ></div>
       </div>
     </div>
   );

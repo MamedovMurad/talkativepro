@@ -1,0 +1,77 @@
+.modulebody {
+  padding: 18px;
+  box-sizing: border-box;
+}
+.modulebody > footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0 19px;
+}
+.modulebody > footer > p {
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  color: #00c1dd;
+}
+.modulebody > header > div > img {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.modulebody > header > div.buttonArea {
+  margin: 10px 0;
+}
+.modulebody > header > div.buttonArea > button {
+  cursor: pointer;
+  width: 88px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  background: #f2fcfd;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin-right: 15px;
+
+  font-size: 16px;
+  color: #00c1dd;
+}
+.modulebody > header > div.header {
+  display: flex;
+  gap: 22px;
+}
+.modulebody > header > div.header > div > p > span {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.modulebody > header > div.header > div{
+  width: 48%;
+}
+.modulebody > header > div.header > div > p > span>svg{
+  transform: translate(-7px,4px);
+}
+.modulebody > header > div.header > div > p > span.users {
+  color: #00c1dd;
+}
+.modulebody > header > div.header > div > p > span.location {
+  color: #c2c2c2;
+}
+.modulebody > header > div.header > div > p:last-child{
+  display: flex;
+  justify-content: space-between;
+}
+.modulebody > header > div.header > div > p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: #474747;
+}
+.videoLinkArea > iframe {
+  margin-top: 10px;
+  border-radius: 15px;
+}
