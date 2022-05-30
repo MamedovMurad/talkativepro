@@ -1,0 +1,7 @@
+.talkhistoryContainer {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-left: 19px;
+  margin-top: 38px;
+}

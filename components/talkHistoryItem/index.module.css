@@ -1,0 +1,99 @@
+.talkhistoryItem {
+  background-color: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.talkhistoryItem > main.main > div > h5 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+  margin: 0px 0 15px 0;
+}
+.talkhistoryItem > main.main > div.headerarea {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.talkhistoryItem > main.main > div {
+  display: flex;
+  justify-content: space-between;
+}
+.talkhistoryItem > main.main > div > div {
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #999999;
+}
+.talkhistoryItem > main.main > div > div > div {
+  width: 130px;
+}
+.talkhistoryItem > main.main > div > div > div > img {
+  display: inline-block;
+}
+.talkhistoryItem > main.main > div > div > span {
+  display: inline-block;
+  transform: translateY(-4px);
+}
+.talkhistoryItem > main.main > div > div.review {
+  width: unset;
+}
+.review > span:first-child {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #333333;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-right: 4px;
+}
+
+.talkhistoryItem > footer.footer {
+  display: flex;
+  justify-content: space-between;
+}
+.talkhistoryItem > footer.footer > .imgs {
+  display: flex;
+}
+.talkhistoryItem > footer.footer > .imgs > div {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.talkhistoryItem > footer.footer > .imgs > div:not(:first-child):nth-child(4) {
+  margin-left: -12px;
+}
+.talkhistoryItem > footer.footer > .imgs > div:not(:first-child):nth-child(3) {
+  margin-left: -13px;
+}
+.talkhistoryItem > footer.footer > .imgs > div:not(:first-child):nth-child(2) {
+  margin-left: -12px;
+}
+.talkhistoryItem > footer.footer > .imgs > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.talkhistoryItem > footer.footer > .buttonArea > button {
+  width: 135px;
+  height: 40px;
+  left: 177px;
+  top: 14px;
+  background: #ffffff;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #00c1dd;
+  transition: all 0.3s;
+}
+.talkhistoryItem > footer.footer > .buttonArea > button:hover {
+  background: #00c1dd;
+  color: white;
+}
