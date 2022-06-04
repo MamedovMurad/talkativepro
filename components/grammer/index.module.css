@@ -1,0 +1,17 @@
+.grammeritem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 72px;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #bbbcbd;
+  border-radius: 10px;
+  transition: border .4s ease-in;
+  cursor: pointer;
+}
+
+.grammeritem:hover{
+
+    border-color: #00C1DD;
+}

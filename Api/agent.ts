@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
-import { GenericDTO, IFaq, ImeModel, ITariff, ITeacherRegister } from "../Model/DTO";
+import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, ITariff, ITeacherRegister } from "../Model/DTO";
 import { getCookie } from 'react-use-cookie';
 import { ICalendar } from "../Model/calendar";
 import { toast, TypeOptions } from "react-toastify";
@@ -132,6 +132,9 @@ const teacher= {
     calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar'),
     addConvation:(body:any)=>requests.post('/conversations',body)
 }
+const Student = {
+    grammerOrLecture:(offset=0)=>requests.get<GenericDTO<GenericListDto<IDocument[]>>>('/public/documentations?limit=10&offset='+offset)
+}
 const tariff = {
     list:()=>requests.get<GenericDTO<ITariff[]>>('/public/tariffs')
 
@@ -152,7 +155,8 @@ const agent = {
     about,
     fileUpload_v,
     Common,
-    teacher
+    teacher,
+    Student
 }
 
 export default agent;

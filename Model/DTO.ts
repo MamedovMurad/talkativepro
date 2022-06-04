@@ -7,6 +7,10 @@ export interface GenericDTO<T> {
     data: T | null
 }
 
+export interface GenericListDto<T>{
+    entities:T,
+    totalCount:number
+}
 export interface ImeModel {
     uuid: string;
     firstName: string;
@@ -40,4 +44,10 @@ export interface ICategory {
 export interface ITeacherRegister{
     languageIds:number[],
     cvFile:string
+}
+export interface IDocument{
+    id: number,
+    fileName: string,
+    title: string,
+    type: string
 }
