@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast, TypeOptions } from "react-toastify";
 import agent from "../../Api/agent";
 import TeacherSecondForm from "../teactherSecondForm";
 import ButtonUI from "../UI/Button";
 import InputUI from "../UI/Input";
 import styles from "./index.module.css";
 import Router from 'next/router'
+import toast from 'react-hot-toast'
 import { UserContext } from "../../pages/_app";
 import SweetAlertBody from "../UI/sweetAlert/body";
 type ActivationCodeProps = {
@@ -35,7 +35,8 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
         return  dispatch({type:'setModalActive', payload:<SweetAlertBody/>})
       }
     } catch (error) {
-      return  toast("kod yanlışdır", { type: "error" as TypeOptions });
+      return  toast.error('kod yanlışdır')
+       
     }
   
   

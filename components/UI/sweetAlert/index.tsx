@@ -4,13 +4,15 @@ import styles from "./index.module.css";
 type SweetAlertSuccessProps = {
   item:{
     body:any,
-    show:boolean
+    show:boolean;
+    width?:string
   },
   cb:any
 };
 
 const SweetAlertSuccess: React.FC<SweetAlertSuccessProps> = ({item,cb}) => {  
  const active = item.show
+ const width = item.width
   useEffect(() => {
     document.body.style.overflow = active ? "hidden" : "unset";
   }, [active]);
@@ -23,6 +25,7 @@ const SweetAlertSuccess: React.FC<SweetAlertSuccessProps> = ({item,cb}) => {
           onClick={() => cb({ type: "setModalpassive"})}
         >
           <div
+            style={{width}}
             onClick={(e: React.FormEvent<EventTarget>) => e.stopPropagation()}
           >
             {item.body}

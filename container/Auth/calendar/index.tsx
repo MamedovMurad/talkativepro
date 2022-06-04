@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import agent from "../../../Api/agent";
 import SpinnerLOader from "../../../components/UI/spinner";
 import { ICalendar } from "../../../Model/calendar";
+import { UserContext } from "../../../pages/_app";
 import { ArrowSvg } from "../../../svg/ArrowSVG";
 import styles from "./index.module.css";
 type CustomCalendarProps = {};
 
 const CustomCalendar: React.FC<CustomCalendarProps> = () => {
+  const [data, dispatch] = useContext(UserContext);
   const [calendar, setcalendar] = useState<ICalendar[] | null>(null);
   const [limitStep, setlimitStep] = useState(false);
   const weekDays = [
@@ -52,7 +54,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
   };
   useEffect(() => {
     fetchCalendarServer();
-  }, []);
+  }, [data]);
 
   return (
     <div>
@@ -96,12 +98,12 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
             liimitDataCLient(index) && (
               <ul key={index} className={styles.calendarBody}>
                 {item.hours?.map((item, index) => (
-                  <>
+          
                     <li key={index}>
-                      {" "}
-                      <span>{item.time}</span> {item.time}
+                  
+                      <span>{item.time}</span> {item.conversation?.title}
                     </li>
-                  </>
+                  
                 ))}
               </ul>
             )

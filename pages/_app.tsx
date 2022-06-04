@@ -3,6 +3,7 @@ import React, { FC, useContext, useReducer, useState } from "react";
 import { AppProps } from "next/app";
 import Layout from "../layout";
 import SweetAlertBody from "../components/UI/sweetAlert/body";
+import { Toaster } from "react-hot-toast";
 export const UserContext = React.createContext<any>(null);
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
@@ -21,6 +22,7 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
     modal: {
       body: any;
       show: boolean;
+      width?:string
     };
   }
   const data = {
@@ -45,6 +47,10 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
     </UserContext.Provider>
   );
 };

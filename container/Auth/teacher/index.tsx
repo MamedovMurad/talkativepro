@@ -12,14 +12,17 @@ const AuthTeacher: React.FC<AuthTeacherProps> = ({children}) => {
       <div className="warpperAUth">
         <TeacherAuthHeader />
         <ul className={styles.topHeaderButtons}>
-          <li className={router.pathname==='/dashboard'?styles.active:''} onClick={()=>router.push('/dashboard')}>Söhbətlər</li> <li /* className={router.pathname==='/dashboard/talk-history'?styles.active:''} */ /* onClick={()=>router.push('/dashboard/talk-history')} */ >Haqqımda</li>
+          <li className={router.pathname==='/dashboard'?styles.active:''} onClick={()=>router.push('/dashboard')}>Söhbətlər</li> <li  className={router.pathname==='/dashboard/info-of-teacher'?styles.active:''}  onClick={()=>router.push('/dashboard/info-of-teacher')}  >Haqqımda</li>
         </ul>
 
 <div className={styles.areaCalendar}>
-  <ul className={styles.linkarea}>
+  {
+    router.pathname!=='/dashboard/info-of-teacher'&&  <ul className={styles.linkarea}>
     <li className={router.pathname==='/dashboard'?styles.active:''} onClick={()=>router.push('/dashboard')}>Kalendar</li>
     <li className={router.pathname==='/dashboard/talk-history'?styles.active:''} onClick={()=>router.push('/dashboard/talk-history')}>Söhbət tarixçəsi</li>
   </ul>
+  }
+
 {children}
 </div>
        

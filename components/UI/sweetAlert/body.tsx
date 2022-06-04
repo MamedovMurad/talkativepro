@@ -1,15 +1,18 @@
 import styles from "./index.module.css";
-type SweetAlertBodyProps = {}
+type SweetAlertBodyProps = {
+    title?:string;
+    text?:string
+}
  
-const SweetAlertBody:React.FC<SweetAlertBodyProps> = () => {
+const SweetAlertBody:React.FC<SweetAlertBodyProps> = ({title="Qeydiyyatınız tamamlandı", text="Sizə uyğun söhbətlərə qoşularaq yeni dillər öyrənin"}) => {
     return (
         <div className={styles.successModalCOntent}>
         <div className={styles.iconArea}>
             <div></div>
         </div>
         <div className={styles.successModalArticel}>
-            <h5>Qeydiyyatınız tamamlandı</h5>
-            <p>Sizə uyğun söhbətlərə qoşularaq yeni dillər öyrənin</p>
+            <h5>{title}</h5>
+            <p>{text}</p>
         </div>
     </div>
     );

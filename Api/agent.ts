@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 import { GenericDTO, IFaq, ImeModel, ITariff, ITeacherRegister } from "../Model/DTO";
 import { getCookie } from 'react-use-cookie';
 import { ICalendar } from "../Model/calendar";
+import { toast, TypeOptions } from "react-toastify";
 
 export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
 
@@ -15,11 +16,32 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
 
 
 axios.interceptors.response.use(
-    async (response: AxiosResponse) => response,
+    async (response: AxiosResponse) => {
+      
+            return response
+    },
+    
     (error: AxiosError) => {
         const { data, status, statusText } = error.response!;
+                 
+        toast.error(`${error.response?.data?.message}`, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            }); 
+        
+      
+        
         switch (status) {
+            
             case 400:
+      
+                console.log('fsadfsdafsadfsdafasdfasd');
+       
                 console.log(data);
                 if (typeof data === "string") {
                     console.log(statusText);
@@ -36,7 +58,7 @@ axios.interceptors.response.use(
                 break;
 
             case 404:
-                console.log(data);
+     
 
                 break;
             case 409:
@@ -107,7 +129,8 @@ const Auth = {
     registerTeacherTwo:(body:ITeacherRegister)=>requests.patch<string>('/teachers/me/initialDetails', body),
 }
 const teacher= {
-    calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar')
+    calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar'),
+    addConvation:(body:any)=>requests.post('/conversations',body)
 }
 const tariff = {
     list:()=>requests.get<GenericDTO<ITariff[]>>('/public/tariffs')

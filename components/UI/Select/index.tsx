@@ -21,7 +21,7 @@ const SelectUI: React.FC<SelectUIProps> = ({ value, children, size, custom_eleme
     
   };
   return (
-    <div ref={first} className={`${styles.selectUI}`}  style={{width}}>
+    <div ref={first} className={`${styles.selectUI}`}  style={{width}} >
       {custom_element}
       <ul onClick={handleCLick} className={toggle?styles.activeU_L:styles.ordinary}>
         { (

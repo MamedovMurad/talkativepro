@@ -5,7 +5,7 @@ import ButtonUI from "../UI/Button";
 import FileUpload from "../UI/fileUpload";
 import MultiSelect from "../UI/Select/multi_select";
 import Router from 'next/router'
-import { toast, TypeOptions } from "react-toastify";
+import toast from 'react-hot-toast'
 import SweetAlertBody from '../UI/sweetAlert/body'
 import { UserContext } from "../../pages/_app";
 
@@ -30,7 +30,7 @@ const TeacherSecondForm: React.FC<TeacherSecondFormProps> = () => {
 
   const handleOnsubmit = async (data: any) => {
     if (!data||!file) {
-     return toast("Məlumatlar daxil edilməyib!", { type: "error" as TypeOptions });
+     return toast.error("Məlumatlar daxil edilməyib!");
     }
     const res = file&& await agent.Auth.registerTeacherTwo({languageIds:data.checkbox.map(Number), cvFile:file})
     if (res) {

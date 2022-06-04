@@ -6,8 +6,7 @@ import InputUI from "../../components/UI/Input";
 import MapUI from "../../components/UI/map";
 import styles from "./../login/index.module.css";
 import { useForm } from "react-hook-form";
-import {  toast, TypeOptions } from "react-toastify";
-import "react-toastify/ReactToastify.min.css";
+import toast from 'react-hot-toast'
 import ActivationCode from "../../components/activationCode";
 type RegisterProps = {};
 
@@ -29,7 +28,7 @@ const Register: React.FC<RegisterProps> = () => {
       data.surname = await data.name?.split(" ")[1];
       data.name = await data.name?.split(" ")[0];
       if (!data.surname) {
-        return toast("Soyadı daxil edin!", { type: "error" as TypeOptions });
+        return toast.error("Soyadı daxil edin!");
       }
       const stud = await agent.Auth.register({ ...data, teacher: false });
       stud&&SetGetToken(stud.data)

@@ -1,0 +1,39 @@
+.DropDownMenu{
+    background: #DDDDDD;
+    
+}
+.container{
+    font-size: 2rem;
+    border-radius: 20px 20px 20px 20px;
+    margin: 0 auto;
+    width: 400px;
+    transition: .2s all;
+    height: min-content;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+}
+.DropDownMenu:hover {
+    background-color: darkgrey;
+  }
+  .DropDownItem{
+    flex: 1;
+    color: black;
+    background-color: lightgrey;
+    border-bottom: 1px solid grey;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    transition: 0.2s all;
+    
+    
+  }
+  .DropDownItem:hover {
+    background-color: orange;
+    color: white;
+  }
+  .DropDownItem:last-child {
+    border-radius: 0px 0px 20px 20px;
+  }

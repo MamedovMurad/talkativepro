@@ -7,15 +7,20 @@ type InputUIProps = {
     label:string;
     type?:string;
     height?:string;
-    register?:any
+    register?:any,
+    value?:string,
+    errors?:any
 }
  
-const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="text",register, name}) => {
+const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="text",register, name, value, errors}) => {
+    console.log(errors);
+    
    const handleName = useForInputLabel()
     return (
         <div className={styles.inputui}>
             <label htmlFor={`inputUI${id}`}>{label}</label>
-            <input type={type} id={`inputUI${id}`} style={{width, height}} {...register&& register(handleName(name))}/>
+            <input type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:'true'})}  className={(errors&&errors[handleName(name)])?styles.error:''}/>
+        
         </div>
     );
 }

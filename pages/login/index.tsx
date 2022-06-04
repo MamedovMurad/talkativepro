@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 import { useForm } from "react-hook-form";
 import { setItem } from "../../hooks/useCookie";
 import agent from "../../Api/agent";
-import {  toast, TypeOptions } from "react-toastify";
+import toast from 'react-hot-toast'
 import "react-toastify/ReactToastify.min.css";
 import { UserContext } from "../_app";
 import { getCookie, setCookie } from "react-use-cookie";
@@ -55,12 +55,12 @@ const Login: React.FC<LoginProps> = () => {
     try {
       const token: any = await agent.Auth.login(data);
       if (token) {
-        toast("You are welcome!", { type: "success" as TypeOptions });
+        toast.success("Dashboard!");
         saveLocale(token);
         getCookie("agent") && fetchApi();
       }
     } catch (error) {
-      toast("İstifadəçi tapılmadı !", { type: "error" as TypeOptions });
+      toast.error("İstifadəçi tapılmadı !");
     }
     setLoading(false);
   };

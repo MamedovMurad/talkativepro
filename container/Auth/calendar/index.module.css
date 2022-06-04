@@ -74,6 +74,7 @@
   gap: 0 3px;
 }
 .calendarBody {
+
   padding: 0;
   list-style: none;
   margin: 0;
@@ -81,7 +82,12 @@
   display: flex;
   flex-direction: column;
 }
+.calendarBody>li:hover{
+  background-color: rgba(170, 77, 77, 0.734);
+}
 .calendarBody > li {
+  transition: all .3s ease-in-out;
+  cursor: pointer;
   position: relative;
 }
 .calendarBody > li > span {

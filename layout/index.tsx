@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
       <main>{children}</main>
       <Footer />
       <SweetAlertSuccess item={data.modal} cb={dispatch} />
-      <ToastContainer position="bottom-right" newestOnTop />
+   
     </>
   );
 }
