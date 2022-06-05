@@ -22,8 +22,10 @@ const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="t
     return (
         <div className={styles.inputui}>
             <label htmlFor={`inputUI${id}`}>{label}</label>
-            <input max={max} min={min} type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:'true'})}  className={(errors&&errors[handleName(name)])?styles.error:''}/>
-        
+           {
+               type=='textarea'?    <textarea  max={max} min={min} type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:'true'})}  className={(errors&&errors[handleName(name)])?styles.error:''}></textarea> 
+               : <input max={max} min={min} type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:'true'})}  className={(errors&&errors[handleName(name)])?styles.error:''}/>
+           }
         </div>
     );
 }

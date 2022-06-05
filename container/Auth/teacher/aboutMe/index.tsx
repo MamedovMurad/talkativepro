@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { setCookie } from "react-use-cookie";
 import DropDownUI from "../../../../components/UI/dropDown";
 import { SettingsSVG } from "../../../../svg/settings";
@@ -8,11 +9,12 @@ type AboutTeacherAuthProps = {}
 const AboutTeacherAuth:React.FC<AboutTeacherAuthProps> = () => {
     function cb(){
         setCookie('agent', '', { days: 0 })
+        Router.push('/login')
     }
     return (
         <div>
-             <AsideTeacher />
-             <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/info-of-teacher'},{title:'Bizimlə əlaqə',link:'/ddsafads'},{title:'Çıxış',cb:cb}]}/>
+             <AsideTeacher detail={  <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/edit-private-info'},{title:'Bizimlə əlaqə',link:'/ddsafads'},{title:'Çıxış',cb:cb}]}/>}/>
+             
         </div>
     );
 }

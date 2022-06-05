@@ -3,7 +3,7 @@ import React from 'react'
  import styles from './index.module.css'
  class DropDownUI extends React.Component<any> {
      
-    state = { dropDownOpen: true };
+    state = { dropDownOpen: false };
   
     toggleDropDown = () =>
       this.setState({ dropDownOpen: !this.state.dropDownOpen });
@@ -13,7 +13,7 @@ import React from 'react'
    
       
         const {title, dropDownArr}= this.props
-        console.log(dropDownArr,'faskhfdjsdahfjsas');
+ 
 /*       const title = 'Click Me';
       const dropDownArr = ['item1', 'item2', 'item3']; */
       return (
@@ -26,6 +26,7 @@ import React from 'react'
           >
             <div>{title}</div>
           </div>
+          <div className={`${styles.SumofItems} ${this.state.dropDownOpen&&styles.activeSumItems}`}>
           {this.state.dropDownOpen
             ? dropDownArr.map((item:{title:string,link?:string, cb:any},i:number) => {
               return (
@@ -36,6 +37,8 @@ import React from 'react'
               );
             })
             : null}
+          </div>
+       
         </div>
       );
     }

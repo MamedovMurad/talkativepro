@@ -1,11 +1,13 @@
 import TeacherAsideComponent from "../../components/teacher/teacherAside";
 
-type AsideTeacherProps = {}
+type AsideTeacherProps = {
+    detail?:any
+}
  
-const AsideTeacher:React.FC<AsideTeacherProps> = () => {
+const AsideTeacher:React.FC<AsideTeacherProps> = ({detail}) => {
     return (
         <div style={{width:'33%'}}>
-            <TeacherAsideComponent/>
+            <TeacherAsideComponent detail={detail}/>
         </div>
     );
 }
