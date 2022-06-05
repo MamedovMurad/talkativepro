@@ -93,6 +93,7 @@ const Login: React.FC<LoginProps> = () => {
                 name="userName"
               />
               <InputUI
+              type="password"
                 label="Şifrə"
                 id={134342932432432}
                 register={register}

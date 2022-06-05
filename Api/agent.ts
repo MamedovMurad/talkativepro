@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
-import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, ITariff, ITeacherRegister } from "../Model/DTO";
+import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, IOldDoc, ITariff, ITeacherRegister } from "../Model/DTO";
 import { getCookie } from 'react-use-cookie';
 import { ICalendar } from "../Model/calendar";
 import { toast, TypeOptions } from "react-toastify";
@@ -132,7 +132,8 @@ const Auth = {
 }
 const teacher= {
     calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar'),
-    addConvation:(body:any)=>requests.post('/conversations',body)
+    addConvation:(body:any)=>requests.post('/conversations',body),
+    oldConversations:(limit=10, offset=0,)=>requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>('/teachers/oldConversations?=limit'+limit+'&offset='+offset)
 }
 const Student = {
     grammerOrLecture:(offset=0)=>requests.get<GenericDTO<GenericListDto<IDocument[]>>>('/public/documentations?limit=10&offset='+offset)

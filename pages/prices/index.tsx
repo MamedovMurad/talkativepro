@@ -1,8 +1,19 @@
+
+import { useEffect, useState } from "react";
+import agent from "../../Api/agent";
 import ButtonUI from "../../components/UI/Button";
+import { GenericDTO, ITariff } from "../../Model/DTO";
 import styles from "./index.module.css";
 type PricesProps = {};
 
 const Prices: React.FC<PricesProps> = () => {
+  const [priceses, setpriceses] = useState<ITariff[] | null>(null)
+  async function fetchApi(){
+    const res = await agent.tariff.list()
+    res&& setpriceses(res.data)
+  }
+  useEffect(() => {fetchApi()}, [])
+  
   return (
     <section className={styles.Prices}>
       <div className="wrapper">
@@ -15,51 +26,23 @@ const Prices: React.FC<PricesProps> = () => {
                 <p>Sizin tələblərinizə ən uyğun olan tarifi seçin</p>
               </header>
               <ul>
-                <li>
-                  <label htmlFor="time-0">
-                    <div>
-                      <input type="radio" name="time" id="time-0" />
-                      <article> 1 saat</article>
-                    </div>
-                    <div>
-                      <label htmlFor="">5 ₼</label>
-                    </div>
-                  </label>
-                </li>
+                {
+                  priceses?.map(item=>(
+                    <li key={item.id}>
+                    <label htmlFor={item.id+'test'}>
+                      <div>
+                        <input type="radio" name="time" id={item.id+'test'} onChange={()=>console.log('test')}/>
+                        <article> {item.hoursCount} saat</article>
+                      </div>
+                      <div>
+                        <label htmlFor="">{item.price} ₼</label>
+                      </div>
+                    </label>
+                  </li>
+                  ))
+                }
+               
 
-                <li>
-                  <label htmlFor="time-1">
-                    <div>
-                      <input type="radio" name="time" id="time-1" />
-                      <article> 1 saat</article>
-                    </div>
-                    <div>
-                      <label htmlFor="">5 ₼</label>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="time-2">
-                    <div>
-                      <input type="radio" name="time" id="time-2" />
-                      <article> 1 saat</article>
-                    </div>
-                    <div>
-                      <label htmlFor="">5 ₼</label>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="time-3">
-                    <div>
-                      <input type="radio" name="time" id="time-3" />
-                      <article> 1 saat</article>
-                    </div>
-                    <div>
-                      <label htmlFor="">5 ₼</label>
-                    </div>
-                  </label>
-                </li>
                 
               </ul>
             </div>
