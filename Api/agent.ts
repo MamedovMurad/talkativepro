@@ -8,6 +8,8 @@ export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
 
 axios.defaults.baseURL = "http://3.66.158.165:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
+    console.log('test');
+    
     const token = getCookie('agent'); 
     if (token) config.headers = { ...config.headers, Authorization: "Bearer "+token };
     return config;
