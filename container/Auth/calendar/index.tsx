@@ -20,6 +20,10 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
     "Şənbə",
     "Bazar",
   ];
+  const weekColor = [{bg:'#E6F9FC', color:'#00C1DD'}, {bg:'#E8FFF1', color:'#60B37E'},
+  {bg:'#FFFBEC', color:'#D9BA2C'},{bg:'#FFF0F0', color:'#E15252'},
+  {bg:'#ECF0FF', color:'#2F5AE5'}, {bg:'#FAEDFF', color:'#953DBF'}, {bg:'#FDEDDB', color:'#ED9B3A'}]
+  const months = 'Yanvar, Fevral, Mart, Aprel, May, İyun, İyul, Avgust, Sentyabr, Oktyabr, Noyabr, Dekabr'
   function checkWeekDay(id: number) {
     if (id < 7) {
       return weekDays[id];
@@ -63,7 +67,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
 
         <div className={styles.changeHistory}>
         <button>
-          Aprel, 2022
+          {months.split(',')[new Date().getMonth()] +' '+ new Date().getFullYear()}
           <span onClick={() => setlimitStep(false)}>
             <ArrowSvg
               width="20"
@@ -94,12 +98,12 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
 
       <div className={styles.calendarBodyParent}>
         {calendar?.map(
-          (item, index) =>
-            liimitDataCLient(index) && (
-              <ul key={index} className={styles.calendarBody}>
+          (item, indexes) =>
+            liimitDataCLient(indexes) && (
+              <ul key={indexes} className={styles.calendarBody}>
                 {item.hours?.map((item, index) => (
           
-                    <li key={index}>
+                    <li key={index} style={item?.conversation?{background:weekColor[indexes>6?indexes-7:indexes].bg, borderLeft:'2px solid'+weekColor[indexes>6?indexes-7:indexes].color}:{}}>
                   
                       <span>{item.time}</span> {item.conversation?.title}
                     </li>

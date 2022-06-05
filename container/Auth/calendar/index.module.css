@@ -83,7 +83,7 @@
   flex-direction: column;
 }
 .calendarBody>li:hover{
-  background-color: rgba(170, 77, 77, 0.734);
+  background-color: rgba(230, 228, 228, 0.734);
 }
 .calendarBody > li {
   transition: all .3s ease-in-out;
