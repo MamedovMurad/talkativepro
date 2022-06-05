@@ -44,9 +44,9 @@ const Login: React.FC<LoginProps> = () => {
       (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
     setCookie("agent", locale.data.token, {
       days: minute__second,
-      domain: "localhost",
+      domain: "/",
       SameSite: "Lax",
-      Secure: false,
+      Secure: true,
     });
   };
   const onSubmit = async (data: any) => {
