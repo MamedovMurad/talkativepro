@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast'
 import agent from '../../../Api/agent';
+import { CurrentDate } from '../../../hooks/twoWeek';
 import { LevelLang } from '../../../Model/utils/levelLang';
 import { UserContext } from '../../../pages/_app';
 import { ArrowSvg } from '../../../svg/ArrowSVG';
@@ -86,7 +87,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
                 <form action="" onSubmit={handleSubmit(handleOnSubmit)}>
                     <div className={styles.historyform}>
                         <div>
-                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}/>
+                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}  min={CurrentDate(0)} max={CurrentDate(14)} />
                         </div>
                         <div className={styles.historyFOrmTIme}>
                             <SelectUI

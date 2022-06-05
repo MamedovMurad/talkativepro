@@ -1,0 +1,1 @@
+export const CurrentDate = (number:number)=>new Date(new Date().getTime()+(number*24*60*60*1000)).toISOString().split("T")[0]
