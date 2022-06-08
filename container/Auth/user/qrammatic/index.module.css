@@ -1,0 +1,7 @@
+.grammerContainer{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap:  0.93rem;
+}

@@ -1,39 +1,72 @@
+.DropDownMenu >div {
+  background: transparent;
+  display: inline-block;
+  border-radius: 50%;
+  width: 40px;
+  text-align: center;
+}
+.container {
+  position: relative;
+  font-size: 2rem;
+  border-radius: 20px 20px 20px 20px;
+  float: right;
+  width: 210px;
+  transition: 0.2s all;
+  height: min-content;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
 .DropDownMenu{
-    background: #DDDDDD;
-    
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+
 }
-.container{
-    font-size: 2rem;
-    border-radius: 20px 20px 20px 20px;
-    margin: 0 auto;
-    width: 400px;
-    transition: .2s all;
-    height: min-content;
-    background-color: lightgrey;
-    display: flex;
-    flex-direction: column;
+/* .DropDownMenu:hover div{
+  background-color: rgb(216, 212, 212);
+} */
+.DropDownItem {
+  min-height: 56px;
+  flex: 1;
+  color: #999;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  transition: 0.2s all;
+
+  background: #FFFFFF;
+
 }
-.DropDownMenu:hover {
-    background-color: darkgrey;
-  }
-  .DropDownItem{
-    flex: 1;
-    color: black;
-    background-color: lightgrey;
-    border-bottom: 1px solid grey;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    transition: 0.2s all;
-    
-    
-  }
-  .DropDownItem:hover {
-    background-color: orange;
-    color: white;
-  }
-  .DropDownItem:last-child {
-    border-radius: 0px 0px 20px 20px;
-  }
+.DropDownItem > a {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #999;
+}
+.DropDownItem:hover{
+  
+  background: #E6F9FC;
+}
+.DropDownItem:hover a{
+
+  color: #474747;
+}
+.DropDownItem:last-child {
+  border-radius: 0px 0px 20px 20px;
+}
+.DropDownItem:first-child{
+  border-radius: 20px 20px  0px 0px;
+}
+.SumofItems{
+  width: 211px;
+  bottom: -168px;
+  position: absolute;
+  border-radius: 20px;
+  z-index: 55;
+}
+.activeSumItems{
+  border: 1px solid rgba(223, 223, 223, 0.664);
+}

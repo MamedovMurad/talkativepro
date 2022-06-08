@@ -1,9 +1,18 @@
+import { setCookie } from "react-use-cookie";
+import { SettingsSVG } from "../../svg/settings";
+import DropDownUI from "../UI/dropDown";
 import styles from "./index.module.css";
-type TeacherAsideComponentProps = {};
+type TeacherAsideComponentProps = {
+  detail?:any
+};
 
-const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = () => {
+const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail}) => {
+
   return (
     <div className={styles.teacherasidecomp}>
+    {
+        detail
+    }
       <div>
         <img src="/uploads/teahcer.png" alt="" />
         <div className={styles.contentArea}>
@@ -18,7 +27,10 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = () => {
         <button>İngilis dili</button>
         <button>Rus dili</button>
       </div>
-      <button>İzlənir</button>
+      {
+        !detail&&<button>İzlənir</button>
+      }
+      
 
       <p className={styles.mainCOntent}>
         Hi. My name is Mansura. I am here to help you to improve your English. I

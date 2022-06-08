@@ -1,11 +1,14 @@
+import { IOldDoc } from "../../Model/DTO";
 import { StarSVG } from "../../svg/starSVG";
 import styles from "./index.module.css";
 type TalkHistoryItemProps = {
   width?: string;
+  item?:IOldDoc
 };
 
 const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
   width = "430px",
+  item
 }) => {
   return (
     <div className={styles.talkhistoryItem} style={{ width }}>
@@ -14,10 +17,10 @@ const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
 
           <div>
           <div>
-            <img src="/uploads/shape.svg" alt="" /> <span> 26 fev, 2022</span>
+            <img src="/uploads/shape.svg" alt="" /> <span> {item?.startDate?.split(' ')[0]}</span>
           </div>
           <div>
-            <img src="/uploads/shape.svg" alt="" /> <span>15:00</span>
+            <img src="/uploads/shape.svg" alt="" /> <span>{item?.startDate?.split(' ')[1]}</span>
           </div>
         </div>
         <div className={styles.review}>
@@ -30,7 +33,7 @@ const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
    
 
         <div className={styles.headerarea}>
-          <h5>Həyat tərzi və əyləncə</h5>
+          <h5>{item?.title}</h5>
     
         </div>
 

@@ -7,6 +7,10 @@ export interface GenericDTO<T> {
     data: T | null
 }
 
+export interface GenericListDto<T>{
+    entities:T,
+    totalCount:number
+}
 export interface ImeModel {
     uuid: string;
     firstName: string;
@@ -41,3 +45,73 @@ export interface ITeacherRegister{
     languageIds:number[],
     cvFile:string
 }
+export interface IDocument{
+    id: number,
+    fileName: string,
+    title: string,
+    type: string
+}
+
+
+interface ILevel{
+    id:number;
+    name:string;
+    label:string
+}
+interface Iparticipants{
+    id:number;
+    status:string;
+    participatedDurationInMinutes:number;
+    assestmentValue:number;
+    user:ImeModel;
+    dateJoined:string
+    dateCreated:string
+}
+export interface IOldDoc{
+    id:number,
+    title:string;
+    plannedStartDate:string;
+    startDate:string
+    endDate:string
+    levelStr:string
+    infoVideoLink:string
+    leftSeconds:number;
+    cancelled:boolean
+    level:ILevel
+    language:ILanguage
+    teacher:ITeacher
+    participants:Iparticipants[]
+}
+interface IEducation{
+    id:number;
+    university:String;
+    speciality:string
+}
+interface ITeacherSertification{
+    id:number;
+    fileName:string;
+}
+interface ILanguage{
+    id:number;
+    name:string;
+    code:string
+}
+// teacher dto
+export interface ITeacher{
+    uuid:string
+    firstName:string
+    lastName:string
+    email:string
+    avatar:string
+    phoneNumber:string
+    languageLevel:string
+    loggedAsTeacher:boolean
+    rating:number
+    isApproved:boolean
+    active:boolean
+    teacher:boolean
+    educations:IEducation[],
+    certifications:ITeacherSertification[];
+    languages:ILanguage[]
+}
+

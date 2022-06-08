@@ -16,6 +16,8 @@ import Router from "next/router";
 type LoginProps = {};
 const buttons = ["Müəllim", "Tələbə"];
 const Login: React.FC<LoginProps> = () => {
+
+
   const [data, dispatch] = useContext(UserContext);
   const {
     register,
@@ -39,15 +41,20 @@ const Login: React.FC<LoginProps> = () => {
     dispatch({ type: "setUser", payload: data.data });
   };
   const saveLocale = (locale: any) => {
-    console.log(locale);
-    const minute__second =
-      (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
-    setCookie("agent", locale.data.token, {
-      days: minute__second,
-      domain: "localhost",
-      SameSite: "Lax",
-      Secure: false,
-    });
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      console.log(locale);
+      const minute__second =
+        (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
+      setCookie("agent", locale.data.token, {
+        days: minute__second,
+        domain:hostname,
+        SameSite: "Lax",
+        Secure: true,
+      });
+      
+   }
+ 
   };
   const onSubmit = async (data: any) => {
     setLoading(true);
@@ -86,6 +93,7 @@ const Login: React.FC<LoginProps> = () => {
                 name="userName"
               />
               <InputUI
+              type="password"
                 label="Şifrə"
                 id={134342932432432}
                 register={register}

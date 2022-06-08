@@ -9,7 +9,11 @@ import React from 'react'
       this.setState({ dropDownOpen: !this.state.dropDownOpen });
   
     render() {
+
+   
+      
         const {title, dropDownArr}= this.props
+ 
 /*       const title = 'Click Me';
       const dropDownArr = ['item1', 'item2', 'item3']; */
       return (
@@ -22,16 +26,19 @@ import React from 'react'
           >
             <div>{title}</div>
           </div>
+          <div className={`${styles.SumofItems} ${this.state.dropDownOpen&&styles.activeSumItems}`}>
           {this.state.dropDownOpen
-            ? dropDownArr.map((item:any) => {
+            ? dropDownArr.map((item:{title:string,link?:string, cb:any},i:number) => {
               return (
-                <div className={styles.DropDownItem} key={item}
-                  onClick={() => alert('You Clicked an Item!')}> 
-                  <Link href="/dashboard/teacher-settings"><a>{item}</a></Link>
+                <div className={styles.DropDownItem} key={i}
+                  onClick={item?.cb}> 
+                  <Link href={item?.link?item.link:'#'} ><a>{item.title}</a></Link>
                 </div>
               );
             })
             : null}
+          </div>
+       
         </div>
       );
     }
