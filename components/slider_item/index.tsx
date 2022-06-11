@@ -3,9 +3,10 @@ import { UserContext } from "../../pages/_app";
 import { useContext } from "react";
 import UserModalBody from "../modal/usermodal_body";
 import { StarSVG } from "../../svg/starSVG";
-type SliderItemProps = { index: number };
+import { ITeacher } from "../../Model/DTO";
+type SliderItemProps = { index?: number , item?:ITeacher};
 
-const SliderItem: React.FC<SliderItemProps> = ({ index }) => {
+const SliderItem: React.FC<SliderItemProps> = ({ index , item}) => {
   const [data, dispatch] = useContext(UserContext);
  /*  const router = useRouter() */
   const handleClick = () => {
@@ -18,11 +19,14 @@ const SliderItem: React.FC<SliderItemProps> = ({ index }) => {
         <img src="/uploads/slideritem.png" alt="" />
       </div>
       <div className={styles.content}>
-        <h5>Tural Əliyev</h5>
-        <p>İngilis dili</p>
+        <h5>{item?.firstName+' '+ item?.lastName}</h5>
+        {item?.languages?.map(item=>(
+          <p key={item.id}>{item.name}</p>
+        ))}
+        
       </div>
       <div className={styles.review}>
-        <span>5</span>
+        <span>{item?.rating}</span>
         <span><StarSVG/></span>
       </div>
     </div>

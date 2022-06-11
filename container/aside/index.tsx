@@ -5,9 +5,10 @@ import styles from "./index.module.css";
 type AsideProps = {
   name: string;
   children: { name?: string; label: string }[];
+  setList?:any
 };
 
-const AsideContainer: React.FC<AsideProps> = ({ name, children }) => {
+const AsideContainer: React.FC<AsideProps> = ({ name, children,  setList }) => {
   const [active, setactive] = useState(true);
   return (
     <div onClick={() => setactive(!active)} className={styles.asideCotainer} style={active ? { maxHeight:'300px' } : {}}>
@@ -19,7 +20,7 @@ const AsideContainer: React.FC<AsideProps> = ({ name, children }) => {
       </div>
 
       {children.map((item, i) => (
-        <CheckBox key={i} text={item.label} id={item.label} />
+        <CheckBox key={i} text={item.label} id={item.label}  />
       ))}
     </div>
   );

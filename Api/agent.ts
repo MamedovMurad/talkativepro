@@ -1,12 +1,12 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
-import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, IOldDoc, ITariff, ITeacherRegister } from "../Model/DTO";
+import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, IOldDoc, ITariff, ITeacher, ITeacherRegister } from "../Model/DTO";
 import { getCookie } from 'react-use-cookie';
 import { ICalendar } from "../Model/calendar";
 import { toast, TypeOptions } from "react-toastify";
 
 export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
 
-axios.defaults.baseURL = "http://3.66.158.165:8090/api/v1";
+axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
  
     
@@ -131,6 +131,7 @@ const Auth = {
     registerTeacherTwo:(body:ITeacherRegister)=>requests.patch<string>('/teachers/me/initialDetails', body),
 }
 const teacher= {
+    list:(limit=10, offset=0,keyword='',languageId:number|string='')=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(`/public/teachers?limit=${limit}&offset=${offset}`),
     calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar'),
     addConvation:(body:any)=>requests.post('/conversations',body),
     oldConversations:(limit=10, offset=0,)=>requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>('/teachers/oldConversations?=limit'+limit+'&offset='+offset)
