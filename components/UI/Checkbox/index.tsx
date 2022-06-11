@@ -26,7 +26,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ id, text, reverse, register }) => {
       >
        {
          register?<input type="checkbox"  value={id} id={"customCHeckBox-" + id}  {...register('checkbox')}/>:
-         <input type="checkbox"  value={id} id={"customCHeckBox-" + id}  />
+         <input type="checkbox"  value={id} id={"customCHeckBox-" + id}   onChange={e=>console.log(id,'sdafsadfas')}/>
        } 
         <span
           className={styles.checkmark}

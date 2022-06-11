@@ -4,6 +4,10 @@ import { AppProps } from "next/app";
 import Layout from "../layout";
 import SweetAlertBody from "../components/UI/sweetAlert/body";
 import { Toaster } from "react-hot-toast";
+import { Router } from "next/router";
+import NProgress from "nprogress";
+import Head from "next/head";
+import "nprogress/nprogress.css";
 export const UserContext = React.createContext<any>(null);
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
@@ -16,18 +20,18 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
         email: string;
         avatar: string | null;
         phoneNumber: null | string;
-        teacher:null|boolean
+        teacher: null | boolean;
       } | null;
-       };
+    };
     modal: {
       body: any;
       show: boolean;
-      width?:string
+      width?: string;
     };
   }
   const data = {
     users: { user_info: null, load: null },
-    modal: { body: <SweetAlertBody/>, show: false },
+    modal: { body: <SweetAlertBody />, show: false },
   };
   const reducer = (state: data = data, action: any) => {
     switch (action.type) {
@@ -41,17 +45,25 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
         return state;
     }
   };
+
+  Router.events.on("routeChangeStart", (url) => {
+    console.log(url);
+    
+    NProgress.start();
+  });
+  Router.events.on("routeChangeComplete", (url) => {
+    NProgress.done();
+  });
   const [contextData, dispatch] = useReducer(reducer, data);
   return (
-    <UserContext.Provider value={[contextData, dispatch]}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
-    </UserContext.Provider>
+    <>
+      <UserContext.Provider value={[contextData, dispatch]}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <Toaster position="top-right" reverseOrder={false} />
+      </UserContext.Provider>
+    </>
   );
 };
 

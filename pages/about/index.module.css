@@ -35,7 +35,7 @@
   line-height: 36px;
   color: #474747;
 }
-.about > div > .center > div > p {
+.about > div > .center > div > .center_paragraph {
   font-weight: 400;
   font-size: 16px;
   line-height: 170%;
@@ -47,7 +47,7 @@
 .about > div > .header > div.areaBG{
   width: 50%;
 } 
-.about > div > .header > div.content > p {
+.about > div > .header > div.content > .content_paragraph{
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -58,7 +58,7 @@
 .about > div > .footer{
     margin-top: 15px;
 }
-.about > div > .footer > p {
+.about > div > .footer > div {
   font-weight: 400;
   font-size: 16px;
   line-height: 170%;

@@ -1,65 +1,72 @@
 import { useEffect, useState } from "react";
 import agent from "../../Api/agent";
 import MapUI from "../../components/UI/map";
+import { GenericDTO } from "../../Model/DTO";
 import styles from "./index.module.css";
-type AboutProps = {};
-
-const About: React.FC<AboutProps> = () => {
-  const [data, setdata] = useState<{
+type AboutProps = {
+  data:GenericDTO<{
     teacherText: string;
     aboutBottom: string;
     studentText: string;
     aboutTop: string;
-  } | null>(null);
-  const fetchApi = async () => {
-    const data = await agent.about();
-    setdata(data.data);
-  };
-  useEffect(() => {
-    fetchApi();
-  }, []);
+  }|undefined>
+};
 
+const About: React.FC<AboutProps> = ({data}) => {
+  console.log(data,'fasdfdsa');
+  
   return (
     <div className={styles.about}>
       <div className="wrapper">
         <div className={styles.header}>
           <div className={styles.content}>
             <h2> Haqqımızda</h2>
-            <p
+            <div className={styles.content_paragraph}
               dangerouslySetInnerHTML={{
-                __html: data?.aboutTop ? data?.aboutTop : "",
+                __html: data?.data?.aboutTop ? data?.data?.aboutTop : "",
               }}
-            ></p>
+            ></div>
           </div>
           <MapUI />
         </div>
         <div className={styles.center}>
           <div>
             <h3>Müəllim</h3>
-            <p
+            <div
+              className={styles.center_paragraph}
               dangerouslySetInnerHTML={{
-                __html: data?.teacherText ? data?.teacherText : "",
+                __html: data?.data?.teacherText ? data?.data?.teacherText : "",
               }}
-            ></p>
+            ></div>
           </div>
           <div>
             <h3>Tələbə</h3>
-            <p
+            <div
+            className={styles.center_paragraph}
               dangerouslySetInnerHTML={{
-                __html: data?.studentText ? data?.studentText : "",
+                __html: data?.data?.studentText ? data?.data?.studentText : "",
               }}
-            ></p>
+            ></div>
           </div>
         </div>
-        <div
+        <section
           className={styles.footer}
           dangerouslySetInnerHTML={{
-            __html: data?.aboutBottom ? data?.aboutBottom : "",
+            __html: data?.data?.aboutBottom ? data?.data?.aboutBottom : '<p>yuklenir</p>',
           }}
-        ></div>
+        ></section>
       </div>
     </div>
   );
 };
 
+
+export async function getServerSideProps(context:any){
+  const data = await agent.about();
+  return {
+      props: {
+          data:data
+      },
+  };
+}
 export default About;

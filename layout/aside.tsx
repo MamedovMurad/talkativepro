@@ -14,7 +14,7 @@ const Aside:React.FC<AsideProps> = ({width="29%", setList}) => {
             
             {
                 AsideUtils.map((item,index)=>(
-                    <AsideContainer key={index} {...item} setList={setList}/>
+                  index!==2&&  <AsideContainer key={index} {...item} setList={setList}/>
                 ))
             }
         </aside>
