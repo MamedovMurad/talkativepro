@@ -8,6 +8,7 @@ type AsideProps = {
  
 const Aside:React.FC<AsideProps> = ({width="29%", setList}) => {
 
+
     return (
         <aside className={styles.aside} style={{width}}>
             

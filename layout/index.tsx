@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
       fetchApi();
     }
   }, []);
-
+  console.log(process.env.NODE_ENV === 'production'?`http://194.147.58.56`:'localhost',);
   return (
     <>
       <CanditionHeader />
