@@ -48,7 +48,7 @@ const Login: React.FC<LoginProps> = () => {
         (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
       setCookie("agent", locale.data.token, {
         days: minute__second,
-        domain:process.env.NODE_ENV === 'production'?`http://194.147.58.5`:'localhost',
+        domain:process.env.NODE_ENV === 'production'?`http://194.147.58.56`:'localhost',
         SameSite: "Lax",
         Secure: true,
       });
