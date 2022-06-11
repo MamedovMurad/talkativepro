@@ -4,17 +4,19 @@ import styles from './index.module.css'
 type AsideProps = {
     width?: string,
     setList?:any
+    list:any
 }
  
-const Aside:React.FC<AsideProps> = ({width="29%", setList}) => {
+const Aside:React.FC<AsideProps> = ({width="29%", setList, list}) => {
 
-
+    console.log({list});
+    
     return (
         <aside className={styles.aside} style={{width}}>
             
             {
-                AsideUtils.map((item,index)=>(
-                  index!==2&&  <AsideContainer key={index} {...item} setList={setList}/>
+                list?.map((item:any,index:number)=>(
+                  <AsideContainer key={index} {...item} setList={setList}/>
                 ))
             }
         </aside>

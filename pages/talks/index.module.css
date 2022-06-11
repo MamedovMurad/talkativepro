@@ -1,6 +1,24 @@
-.talks{
-    padding: 130px 0;
+.talks {
+  padding: 130px 0;
 }
-.talks>div>div:first-child{
-    display: flex;
+.talks > div > div:first-child {
+  display: flex;
+}
+.datePickerfortop {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 12%;
+  margin: 10px 0;
+}
+.datePickerfortop > input {
+  width: 276px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  outline: none;
+  padding: 0 10px;
+}
+.datePickerfortop > input:focus{
+    border: 1px solid #00C1DD;
 }

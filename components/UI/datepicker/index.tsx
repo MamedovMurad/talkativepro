@@ -1,10 +1,12 @@
 import styles from "./index.module.css";
-type DatePickerProps = {}
+type DatePickerProps = {
+    onchange :any
+}
  
-const DatePicker:React.FC<DatePickerProps> = () => {
+const DatePicker:React.FC<DatePickerProps> = ({onchange}) => {
     return (
         <>
-           <input type="date"  id="date" className={styles.datePicker}/>
+           <input type="text" onChange={onchange} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e) => (e.target.type = "date")}/>
         </>
     );
 }

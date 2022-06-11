@@ -1,6 +1,16 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
-import { GenericDTO, GenericListDto, IDocument, IFaq, ImeModel, IOldDoc, ITariff, ITeacher, ITeacherRegister } from "../Model/DTO";
-import { getCookie } from 'react-use-cookie';
+import {
+    GenericDTO,
+    GenericListDto,
+    IDocument,
+    IFaq,
+    ImeModel,
+    IOldDoc,
+    ITariff,
+    ITeacher,
+    ITeacherRegister,
+} from "../Model/DTO";
+import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
 import { toast, TypeOptions } from "react-toastify";
 
@@ -8,24 +18,20 @@ export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
 
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
- 
-    
-    const token = getCookie('agent'); 
-    if (token) config.headers = { ...config.headers, Authorization: "Bearer "+token };
+    const token = getCookie("agent");
+    if (token)
+        config.headers = { ...config.headers, Authorization: "Bearer " + token };
     return config;
 });
 
-
-
 axios.interceptors.response.use(
     async (response: AxiosResponse) => {
-      
-            return response
+        return response;
     },
-    
+
     (error: AxiosError) => {
         const { data, status, statusText } = error.response!;
-                 
+
         toast.error(`${error.response?.data?.message}`, {
             position: "top-center",
             autoClose: false,
@@ -34,16 +40,12 @@ axios.interceptors.response.use(
             pauseOnHover: true,
             draggable: true,
             progress: 0,
-            }); 
-        
-      
-        
+        });
+
         switch (status) {
-            
             case 400:
-      
-                console.log('fsadfsdafsadfsdafasdfasd');
-       
+                console.log("fsadfsdafsadfsdafasdfasd");
+
                 console.log(data);
                 if (typeof data === "string") {
                     console.log(statusText);
@@ -60,11 +62,8 @@ axios.interceptors.response.use(
                 break;
 
             case 404:
-     
-
                 break;
             case 409:
-
                 break;
             case 500:
                 console.log(data);
@@ -81,19 +80,18 @@ const requests = {
     post: <T>(url: string, body: {}) =>
         axios.post<T>(url, body).then(responseBody),
     put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
-    patch: <T>(url: string, body: {}) => axios.patch<T>(url, body).then(responseBody),
+    patch: <T>(url: string, body: {}) =>
+        axios.patch<T>(url, body).then(responseBody),
     del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
 
-
 const Products = {
-    list: () => ''
+    list: () => "",
 };
 
 const fileUpload = {
-    insert: (file: FormData) => requests.post<string>('/files', file),
-
-}
+    insert: (file: FormData) => requests.post<string>("/files", file),
+};
 /*     const Positions = {
       list: (limit=10, offset=0)=> requests.get<GenericDTO<IPostions>>(`/positions?limit=${limit}&offset=${offset}`),
       single:(id:number)=> requests.get<GenericDTO<IPositions>>(`/positions/${id}`),
@@ -119,39 +117,88 @@ const fileUpload = {
     } */
 
 const Auth = {
-    login: (body: {
-        username: string,
-        password: string,
-        teacher: boolean
-    }) =>
+    login: (body: { username: string; password: string; teacher: boolean }) =>
         requests.post<GenericDTO<string>>("/auth/login", body),
-    getMe: () => requests.get<GenericDTO<ImeModel>>('/users/me'),
-    register:(body:{name:string,surname:string,email:string, password:string, teacher:boolean})=>requests.post<GenericDTO<string>>('/auth/registration',body),
-    checkActivetion:(body:{code:string,token:string})=>requests.post<GenericDTO<string>>('/auth/registration/code',body),
-    registerTeacherTwo:(body:ITeacherRegister)=>requests.patch<string>('/teachers/me/initialDetails', body),
-}
-const teacher= {
-    list:(limit=10, offset=0,keyword='',languageId:number|string='')=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(`/public/teachers?limit=${limit}&offset=${offset}`),
-    calendarList:()=>requests.get<GenericDTO<ICalendar[]>>('/teachers/myCalendar'),
-    addConvation:(body:any)=>requests.post('/conversations',body),
-    oldConversations:(limit=10, offset=0,)=>requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>('/teachers/oldConversations?=limit'+limit+'&offset='+offset)
+    getMe: () => requests.get<GenericDTO<ImeModel>>("/users/me"),
+    register: (body: {
+        name: string;
+        surname: string;
+        email: string;
+        password: string;
+        teacher: boolean;
+    }) => requests.post<GenericDTO<string>>("/auth/registration", body),
+    checkActivetion: (body: { code: string; token: string }) =>
+        requests.post<GenericDTO<string>>("/auth/registration/code", body),
+    registerTeacherTwo: (body: ITeacherRegister) =>
+        requests.patch<string>("/teachers/me/initialDetails", body),
+};
+const teacher = {
+    list: (
+        languageIds: number[] = [],
+        keyword: string = "",
+        nationalityIds: number[] = [],
+        limit = 10,
+        offset = 0
+    ) =>
+        requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(
+            `/public/teachers?limit=${limit}&keyword=${keyword}&offset=${offset}&${languageIds.map((n, index) =>`languageIds[${index}]=${n}`)
+                .join("&")}&${nationalityIds.map((n, index) =>`nationalityIds[${index}]=${n}`).join("&")}`
+        ),
+    calendarList: () =>
+        requests.get<GenericDTO<ICalendar[]>>("/teachers/myCalendar"),
+    addConvation: (body: any) => requests.post("/conversations", body),
+    oldConversations: (limit = 10, offset = 0) =>
+        requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>(
+            "/teachers/oldConversations?=limit" + limit + "&offset=" + offset
+        ),
+};
+const talk = {
+    list:(
+        languageIds:number[]=[],
+        teacherNationalityIds:number[]=[],
+        levels:string[]=[],
+        date:string='',
+        limit = 10,
+        offset = 0,
+    )=> requests.get<GenericDTO<any>>(
+        `/public/teachers?limit=${limit}&offset=${offset}&date=${date}&${languageIds.map((n, index) =>`languageIds[${index}]=${n}`)
+            .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds[${index}]=${n}`)
+            .join("&")}&${levels.map((n, index) =>`levels[${index}]=${n}`).join("&")}`
+    ),
 }
 const Student = {
-    grammerOrLecture:(offset=0)=>requests.get<GenericDTO<GenericListDto<IDocument[]>>>('/public/documentations?limit=10&offset='+offset)
-}
+    grammerOrLecture: (offset = 0) =>
+        requests.get<GenericDTO<GenericListDto<IDocument[]>>>(
+            "/public/documentations?limit=10&offset=" + offset
+        ),
+};
 const tariff = {
-    list:()=>requests.get<GenericDTO<ITariff[]>>('/public/tariffs')
-
-}
+    list: () => requests.get<GenericDTO<ITariff[]>>("/public/tariffs"),
+};
 const faq = {
-    list:()=>requests.get<GenericDTO<IFaq[]>>('/public/faq/questions')
-}
+    list: () => requests.get<GenericDTO<IFaq[]>>("/public/faq/questions"),
+};
 const Common = {
-    langList:()=>requests.get<GenericDTO<{id:number,name:string, code:string}[]>>('/public/common/languages')
-}
-const fileUpload_v = (body:any)=> requests.post('/files', body);
+    langList: () =>
+        requests.get<GenericDTO<{ id: number; name: string; code: string }[]>>(
+            "/public/common/languages"
+        ),
+    notianal: () =>
+        requests.get<GenericDTO<{ id: number; name: string }[]>>(
+            "/public/common/nationalities"
+        ),
+};
+const fileUpload_v = (body: any) => requests.post("/files", body);
 
-const about = ()=>requests.get<GenericDTO<{teacherText:string,aboutBottom:string,studentText:string,aboutTop:string}>>('/public/common/about')
+const about = () =>
+    requests.get<
+        GenericDTO<{
+            teacherText: string;
+            aboutBottom: string;
+            studentText: string;
+            aboutTop: string;
+        }>
+    >("/public/common/about");
 const agent = {
     Auth,
     tariff,
@@ -160,7 +207,8 @@ const agent = {
     fileUpload_v,
     Common,
     teacher,
-    Student
-}
+    Student,
+    talk
+};
 
 export default agent;

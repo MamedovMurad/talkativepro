@@ -2,9 +2,10 @@ import ButtonUI from '../UI/Button';
 import styles from './index.module.css'
 type BodySliderItemProps = {
     width:string;
+    item?:any
 }
  
-const BodySliderItem:React.FC<BodySliderItemProps> = ({width}) => {
+const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
     return (
         <div className={styles.bodySliderItem} style={{width}}>
            <header className={styles.header}>
@@ -12,7 +13,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width}) => {
                    <img src="/uploads/prtiret.png" alt="" />
                </div>
                <div className={styles.content}>
-                   <p>Cavidan Məmmədəliyev</p>
+                   <p>{item?.firstName + ' '+ item?.lastName}</p>
                    <div className={styles.label}><span></span> <span>İngilis dili</span></div>
                </div>
            </header>

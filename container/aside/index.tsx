@@ -4,7 +4,7 @@ import { ArrowSvg } from "../../svg/ArrowSVG";
 import styles from "./index.module.css";
 type AsideProps = {
   name: string;
-  children: { name?: string; label: string }[];
+  children: { name: string; code?: string , id:number, selected?:any}[];
   setList?:any
 };
 
@@ -19,8 +19,8 @@ const AsideContainer: React.FC<AsideProps> = ({ name, children,  setList }) => {
         </span>
       </div>
 
-      {children.map((item, i) => (
-        <CheckBox key={i} text={item.label} id={item.label}  />
+      {children?.map((item, i) => (
+        <CheckBox key={i} text={item.name} id={item.id} group={name} setList={setList} selected={item.selected}/>
       ))}
     </div>
   );

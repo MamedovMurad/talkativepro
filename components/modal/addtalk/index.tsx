@@ -87,7 +87,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
                 <form action="" onSubmit={handleSubmit(handleOnSubmit)}>
                     <div className={styles.historyform}>
                         <div>
-                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}  min={CurrentDate(0)} max={CurrentDate(14)} />
+                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}   min={CurrentDate(0)} max={CurrentDate(13)} />
                         </div>
                         <div className={styles.historyFOrmTIme}>
                             <SelectUI
