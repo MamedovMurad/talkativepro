@@ -7,7 +7,7 @@ type CheckBoxProps = {
   id: number|string;
   reverse?: boolean;
   register?:any
-  setList:any
+  setList?:any
   selected?:any
 };
 const delay = 1;

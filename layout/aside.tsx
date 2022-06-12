@@ -4,7 +4,7 @@ import styles from './index.module.css'
 type AsideProps = {
     width?: string,
     setList?:any
-    list:any
+    list?:any
 }
  
 const Aside:React.FC<AsideProps> = ({width="29%", setList, list}) => {
