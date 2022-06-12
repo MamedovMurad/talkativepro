@@ -13,8 +13,6 @@ type AboutProps = {
 };
 
 const About: React.FC<AboutProps> = ({data}) => {
-  console.log(data,'fasdfdsa');
-  
   return (
     <div className={styles.about}>
       <div className="wrapper">

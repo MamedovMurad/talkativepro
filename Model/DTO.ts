@@ -81,6 +81,7 @@ export interface IOldDoc{
     language:ILanguage
     teacher:ITeacher
     participants:Iparticipants[]
+    rating:number
 }
 interface IEducation{
     id:number;
@@ -115,3 +116,11 @@ export interface ITeacher{
     languages:ILanguage[]
 }
 
+export interface IContact{
+    fbLink:string|null;
+    instagramLink:string|null;
+    youtubeLink:string|null,
+    phoneNumber:string|null,
+    email:string|null
+
+}

@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 import {
     GenericDTO,
     GenericListDto,
+    IContact,
     IDocument,
     IFaq,
     ImeModel,
@@ -198,6 +199,11 @@ const about = () =>
             aboutTop: string;
         }>
     >("/public/common/about");
+
+    const contact = {
+        single:()=>requests.get<GenericDTO<IContact>>('public/setting'),
+        post:(body:{fullName:string, email:string, subject:string,body:string})=>requests.post<GenericDTO<boolean>>('public/common/messagesToUs', body)
+    }
 const agent = {
     Auth,
     tariff,
@@ -207,7 +213,8 @@ const agent = {
     Common,
     teacher,
     Student,
-    talk
+    talk,
+    contact
 };
 
 export default agent;

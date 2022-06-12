@@ -74,7 +74,8 @@ const [forFilter, setforFilter] = useState({
       </div>
       <div className={styles.selectLang}>
       <Select
-          options={defData.lang?.map((item:any)=>({label:item.name, value:item.id}))}
+      id="34567890-"
+          options={defData?.lang?.map((item:any)=>({label:item.name, value:item.id}))}
           styles={customStyles}
           placeholder="Söhbət səviyyəsi"
           onChange={(val:any)=>setforFilter({...forFilter, lang:val.value})}
@@ -82,6 +83,7 @@ const [forFilter, setforFilter] = useState({
       </div>
       <div className={styles.selectLevel}>
         <Select
+         id="vv33-"
           options={defData?.level}
           styles={customStyles}
           placeholder="Söhbət səviyyəsi"

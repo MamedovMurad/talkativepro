@@ -24,7 +24,7 @@ const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
           </div>
         </div>
         <div className={styles.review}>
-            <span>5</span>
+            <span>{item?.rating}</span>
             <span>
               <StarSVG />
             </span>
