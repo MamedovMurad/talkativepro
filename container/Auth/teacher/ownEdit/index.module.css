@@ -4,22 +4,73 @@
 .aside {
   width: 25%;
 }
-.aside>ul{
-    cursor: pointer;
-    height: 13rem;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.aside > ul {
+  cursor: pointer;
+  height: 13rem;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .activeli {
-    cursor:default;
+  cursor: default;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: #00c1dd;
 }
-.maincontent{
-    margin-bottom: 50px;
+.maincontent {
+  margin-bottom: 50px;
+}
+.react_select {
+  margin: 35px 0;
+}
+.photoedit {
+  background: #e6f9fc;
+  border: 0.8px solid #00c1dd;
+  border-radius: 40px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  cursor: pointer;
+}
+.photoedit::after {
+  content: "+";
+  display: inline-block;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: #00c1dd;
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.forgetPass {
+  display: flex;
+  justify-content: flex-end;
+}
+.forgetPass > span {
+  color: #00c1dd;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.deleteAccountParagraph {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c2c2c2;
+}
+.titleDeleteAccount {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  color: #333333;
 }
