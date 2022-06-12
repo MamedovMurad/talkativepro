@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import agent from "../../Api/agent";
 import ButtonUI from "../../components/UI/Button";
 import Links from "../../components/UI/links";
+import { IContact } from "../../Model/DTO";
 import { nav } from "../../Model/utils/nav";
 import { LogoSvg } from "../../svg/Logo";
 
@@ -9,6 +12,13 @@ import styles from "./index.module.css";
 type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
+  const [data, setdata] = useState<IContact>({instagramLink:null, fbLink:null, youtubeLink:null,phoneNumber:null, email:null})
+  async function fetchApi() {
+    const res = await agent.contact.single()
+    res.data&& setdata(res.data)
+  }
+  useEffect(() => {fetchApi() }, [])
+  
   const route = useRouter();
   function CanditionHeader() {if (route.pathname.search("dashboard") !== -1) { return'warpperAUth'} else {return  'wrapper' }}
   return (
@@ -17,11 +27,11 @@ const Footer: React.FC<FooterProps> = () => {
         <ul>
           <li className={styles.firstLI}>
             <LogoSvg />
-            <div className={styles.content}>
+            <div className={styles.content} >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donecgra
               metus diam
             </div>
-            <Links/>
+            <Links insta={data.instagramLink} fb={data.fbLink} youtube={data.youtubeLink}/>
           </li>
           <li className={styles.info}>
           <h4>Məlumat</h4>
