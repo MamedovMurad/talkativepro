@@ -3,9 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BodySliderItem from "../../components/slider_item/bodySLiderItem";
-type BodyCrouselProps = {}
+type BodyCrouselProps = {
+    talks?:any
+}
  
-const BodyCrousel:React.FC<BodyCrouselProps> = () => {
+const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
+    console.log({talks});
+    
     var settings = {
         dots: false,
         infinite: true,
@@ -18,8 +22,8 @@ const BodyCrousel:React.FC<BodyCrouselProps> = () => {
        
             <Slider {...settings}>
                     {
-                        [1,2,3,4,5].map(index=>(
-                         <BodySliderItem key={index} width={"364px"}/>
+                        talks?.map((item:any)=>(
+                         <BodySliderItem key={item?.id} width={"364px"} item={item}/>
                         ))
                     }
               </Slider> 

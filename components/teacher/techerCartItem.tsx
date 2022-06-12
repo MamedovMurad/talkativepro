@@ -1,17 +1,15 @@
+import { IEducation } from '../../Model/DTO';
 import styles from './index.module.css'
 type TeacherCartItemProps = {
-    id:number,
-    UCdegree?:string,
-    title:string,
-    desc:string
+ item:IEducation
 }
  
-const TeacherCartItem:React.FC<TeacherCartItemProps> = ({id,UCdegree,desc, title}) => {
+const TeacherCartItem:React.FC<TeacherCartItemProps> = ({item}) => {
     return (
         <div className={styles.TeacherCartItem}>
-           <h5>{UCdegree}</h5>
-           <h4>{title}</h4>
-           <p>{desc}</p>
+           <h5>{item.speciality}</h5>
+           <h4>{item.university}</h4>
+          
         </div>
     );
 }

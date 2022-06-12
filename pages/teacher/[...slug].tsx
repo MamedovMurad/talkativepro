@@ -1,7 +1,12 @@
+import { useRouter } from "next/router";
+import agent from "../../Api/agent";
 import AsideTeacher from "../../container/aside/asideTeacher";
 import TeacherCardContainer from "../../container/teacher/teacherCard";
+import { ITeacher } from "../../Model/DTO";
 import styles from "./index.module.css";
-type SingleTeacherProps = {};
+type SingleTeacherProps = {
+  teacher?:ITeacher
+};
 const data = [
   {
     id: 1,
@@ -30,7 +35,7 @@ const data = [
   
 ];
 
-const SingleTeacher: React.FC<SingleTeacherProps> = () => {
+const SingleTeacher: React.FC<SingleTeacherProps> = ({teacher}) => {
   return (
     <div className={styles.SingleTeacherDetail}>
       <div className="wrapper">
@@ -39,7 +44,7 @@ const SingleTeacher: React.FC<SingleTeacherProps> = () => {
           <li className={styles.topLinkActive}>Haqqında</li>
         </ul>
         <main className={styles.SingleTeacherBody}>
-          <AsideTeacher />
+          <AsideTeacher item={teacher}/>
           <div className={styles.mainContenArea}>
             <div className={styles.videoLinkArea}>
               <iframe
@@ -52,9 +57,9 @@ const SingleTeacher: React.FC<SingleTeacherProps> = () => {
               ></iframe>
             </div>
             <h6 className={styles.thisTitle}>Təhsil</h6>
-            <TeacherCardContainer data={data.slice(1,3)} />
+            <TeacherCardContainer data={teacher?.educations}/>
             <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
-            <TeacherCardContainer data={data.slice(2)} />
+           {/*  <TeacherCardContainer data={teacher?.} /> */}
           </div>
         </main>
       </div>
@@ -62,4 +67,15 @@ const SingleTeacher: React.FC<SingleTeacherProps> = () => {
   );
 };
 
+
+export async function getServerSideProps({params:{slug}}:any){
+ 
+ 
+  const data = await agent.teacher.single(slug);
+  return {
+      props: {
+          teacher:data.data
+      },
+  };
+}
 export default SingleTeacher;

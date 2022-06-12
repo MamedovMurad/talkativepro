@@ -3,14 +3,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderItem from "../../components/slider_item";
-type SliderProps = {};
+import { ITeacher } from "../../Model/DTO";
+type SliderProps = {
+  data?:ITeacher[]|null
+};
 
-const SliderUI: React.FC<SliderProps> = () => {
+const SliderUI: React.FC<SliderProps> = ({data}) => {
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 1,
     slidesToScroll: 2,
   };
   return (
@@ -18,8 +21,8 @@ const SliderUI: React.FC<SliderProps> = () => {
       <div className="wrapper">
         <div className={styles.slideritem_Area}>
           <Slider {...settings}>
-            {[1, 2, 3, 4, 6, 7].map((item) => (
-              <SliderItem key={item} index={item} />
+            {data?.map((item) => (
+              <SliderItem key={item.uuid}  item={item} />
             ))}
           </Slider>
         </div>

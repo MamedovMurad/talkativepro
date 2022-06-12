@@ -1,12 +1,14 @@
 import { setCookie } from "react-use-cookie";
+import { ITeacher } from "../../Model/DTO";
 import { SettingsSVG } from "../../svg/settings";
 import DropDownUI from "../UI/dropDown";
 import styles from "./index.module.css";
 type TeacherAsideComponentProps = {
   detail?:any
+  item?:ITeacher,
 };
 
-const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail}) => {
+const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, item}) => {
 
   return (
     <div className={styles.teacherasidecomp}>
@@ -17,22 +19,26 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail}) =
         <img src="/uploads/teahcer.png" alt="" />
         <div className={styles.contentArea}>
           <p>25 izləyici</p>
-          <h4>Aysel Malikova</h4>
+          <h4>{item?.firstName+ ' ' + item?.lastName}</h4>
           <div>
             <span>Azərbaycan</span>
           </div>
         </div>
       </div>
       <div className={styles.buttons}>
-        <button>İngilis dili</button>
-        <button>Rus dili</button>
+        {
+          item?.languages?.map(t=>(
+            <button key={t.id}>{t.name}</button>
+          ))
+        }
       </div>
       {
-        !detail&&<button>İzlənir</button>
+        !detail&&<button style={{marginTop:'5px'}}>İzlənir</button>
       }
       
 
       <p className={styles.mainCOntent}>
+      
         Hi. My name is Mansura. I am here to help you to improve your English. I
         have been teaching English to a wide range of students, including
         children, teenagers, and adults. I believe that the best way of learning

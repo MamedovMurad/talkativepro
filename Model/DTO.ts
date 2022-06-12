@@ -83,7 +83,7 @@ export interface IOldDoc{
     participants:Iparticipants[]
     rating:number
 }
-interface IEducation{
+export interface IEducation{
     id:number;
     university:String;
     speciality:string

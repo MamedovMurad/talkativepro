@@ -13,13 +13,15 @@ import SearchTop from "../../container/searchTop";
 import SliderUI from "../../container/slider";
 import BodyCrousel from "../../container/slider/bodyCarousel";
 import CustomSlider from "../../hooks/CustomSlider";
+import { ITeacher } from "../../Model/DTO";
 import { ArrowSvg } from "../../svg/ArrowSVG";
 import { MainBgSvg } from "../../svg/MainBg";
 import styles from "./index.module.css";
 type HomeProps = {};
 const HomePage: React.FC<HomeProps> = () => {
   const [tarifs, settarifs] = useState<{id:number, date:number; price:number; label:string}[]|null>(null)
- 
+  const [teachers, setteachers] = useState<ITeacher[]|null>(null)
+  const [talks, settalks] = useState<any>()
   async function fetchTariffs() {
     const data = await agent.tariff.list();
    const tarif = data?.data?.map((item) => {
@@ -32,8 +34,17 @@ const HomePage: React.FC<HomeProps> = () => {
     });
     tarif&&  settarifs(tarif)
   }
-
+async function fetchTeachers(){
+  const res =  await agent.teacher.list()
+  res.data&& setteachers(res.data?.entities)
+}
+async function fetchTalks() {
+  const res =  await agent.talk.list()
+  res.data&& settalks(res.data?.entities)
+}
   useEffect(() => {
+    fetchTalks()
+    fetchTeachers()
     fetchTariffs();
   }, []);
 
@@ -76,7 +87,7 @@ const HomePage: React.FC<HomeProps> = () => {
           <SearchTop margin="66px 0 0 0 " />
         </div>
       </div>
-      <SliderUI />
+      <SliderUI data={teachers}/>
       <div className="wrapper"><div className={styles.sliderBootm}> <Link href='/teachers'><a ><p>Bütün müəllimlər</p> <span><ArrowSvg/></span></a></Link></div></div>
       <section className={styles.teachersection}>
         <div className="wrapper">
@@ -110,7 +121,7 @@ const HomePage: React.FC<HomeProps> = () => {
       <section className={styles.connection}>
         <div className="wrapper">
           <h4>Yaxın zamanda olacaq söhbətlər</h4>
-          <BodyCrousel />
+          <BodyCrousel talks={talks}/>
         </div>
       </section>
       <div className={styles.register}>

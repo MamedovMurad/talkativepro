@@ -151,6 +151,7 @@ const teacher = {
         requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>(
             "/teachers/oldConversations?=limit" + limit + "&offset=" + offset
         ),
+        single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`)
 };
 const talk = {
     list:(
