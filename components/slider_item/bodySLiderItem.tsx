@@ -13,15 +13,15 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
                    <img src="/uploads/prtiret.png" alt="" />
                </div>
                <div className={styles.content}>
-                   <p>{item?.firstName + ' '+ item?.lastName}</p>
-                   <div className={styles.label}><span></span> <span>İngilis dili</span></div>
+                   <p>{item?.teacher?.firstName + ' '+ item?.teacher?.lastName}</p>
+                   <div className={styles.label}><span></span> <span>{item?.language?.name}</span></div>
                </div>
            </header>
            <main className={styles.main}>
-               <h5>Həyat tərzi və əyləncə</h5>
+               <h5>{item?.title}</h5>
                <div>
-                   <div><img src="/uploads/shape.svg" alt="" /> <span>  26 fev, 2022</span></div>
-                   <div><img src="/uploads/shape.svg" alt="" />   <span>15:00</span></div>
+                   <div><img src="/uploads/shape.svg" alt="" /> <span>  {item?.startDate?.split(' ')[0]}</span></div>
+                   <div><img src="/uploads/shape.svg" alt="" />   <span>{item?.startDate?.split(' ')[1]}</span></div>
                </div>
              
            </main>

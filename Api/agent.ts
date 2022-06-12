@@ -141,8 +141,7 @@ const teacher = {
         offset = 0
     ) =>
         requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(
-            `/public/teachers?limit=${limit}&keyword=${keyword}&offset=${offset}&${languageIds.map((n, index) =>`languageIds[${index}]=${n}`)
-                .join("&")}&${nationalityIds.map((n, index) =>`nationalityIds[${index}]=${n}`).join("&")}`
+            `/public/teachers?limit=${limit}&keyword=${keyword}&offset=${offset}&${languageIds.map((n) =>`languageIds=${n}`).join("&")}&${nationalityIds.map((n) =>`nationalityIds=${n}`).join("&")}`
         ),
     calendarList: () =>
         requests.get<GenericDTO<ICalendar[]>>("/teachers/myCalendar"),
@@ -161,9 +160,9 @@ const talk = {
         limit = 10,
         offset = 0,
     )=> requests.get<GenericDTO<any>>(
-        `/public/teachers?limit=${limit}&offset=${offset}&date=${date}&${languageIds.map((n, index) =>`languageIds[${index}]=${n}`)
-            .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds[${index}]=${n}`)
-            .join("&")}&${levels.map((n, index) =>`levels[${index}]=${n}`).join("&")}`
+        `/public/conversations?limit=${limit}&offset=${offset}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
+            .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds=${n}`)
+            .join("&")}&${levels.map((n, index) =>`levels=${n}`).join("&")}`
     ),
 }
 const Student = {

@@ -11,14 +11,52 @@ import InputUI from '../../UI/Input';
 import SelectUI from '../../UI/Select';
 import SweetAlertBody from '../../UI/sweetAlert/body';
 import styles from './index.module.css'
-type TalkAddModalProps = {}
+import Select from 'react-select'
+type TalkAddModalProps = {
+    max?:any
+}
 type forsate = {
-    id: number;
-    name: string;
+    id?: number;
+    value?:string|number,
+    name?: string;
+    label?:string
     code: string;
 }
 
-const TalkAddModal: React.FC<TalkAddModalProps> = () => {
+
+const customStyles = {
+    menuList: (styles:any) => ({
+      ...styles,
+      background: '#fff'
+  }),
+  option: (styles:any , {isFocused, isSelected}:any):any => ({
+      ...styles,
+      background: isFocused
+          ? '#E6F9FC'
+          : isSelected
+              ? '#00C1DD'
+              : undefined,
+      zIndex: 1
+  }),
+ 
+
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      border: "none",
+      display: "flex",
+      width: 170,
+     
+    }),
+
+    singleValue: (provided: any, state: any) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = "opacity 300ms";
+
+      return { ...provided, opacity, transition };
+    },
+  };
+
+const TalkAddModal: React.FC<TalkAddModalProps> = ({max}) => {
     const [data, dispatch] = useContext(UserContext);
     const [language, setlanguage] = useState<forsate[] | null>(null)
     const [activeLang, setactiveLang] = useState<forsate | null>(null)
@@ -39,7 +77,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
         if(!CheckActiveTime){
             return toast.error("Saat seçilməyib!");
         }
-        if (!activeLang?.id||! activeLang) {
+        if (!activeLang?.value||! activeLang) {
          
             
             return toast.error("Dil seçin!");
@@ -50,7 +88,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
         var year = date.getUTCFullYear();
 
         data.startDate = (day < 10 ? '0' + day : day) + "-" + (month < 10 ? '0' + month : month) + "-" + year + ' ' + data.time + ":00";
-        data.languageId = activeLang?.id
+        data.languageId = activeLang?.value
         console.log(data);
         const res = await agent.teacher.addConvation(data)
         res&&   dispatch({type:'setModalActive', payload:<SweetAlertBody title="Söhbətiniz yaradıldı" text="Dərsə zamanı şəxsi kabinetdən söhbəti başlada bilərsiniz"/>})
@@ -59,6 +97,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
     }
     useEffect(() => { fetchApiLang() }, [])
 
+    
     return (
         <section className={styles.modulebody}>
             <header>
@@ -67,27 +106,20 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
                     <p >Məlumatları qeyd edərək söhbət yaradın</p>
                 </div>
 
-                <SelectUI
-                    arrow={false}
-                    width="150px"
-                    custom_element={
-                        <p className={styles.paragraph}>{activeLang ? activeLang.name : 'Dil seçin'} <ArrowSvg color="#00C1DD" /></p>
-                    }
-                >
-                    <div style={{ position:'absolute', zIndex:'99',top:'-27px' }}>
-                        {
-                            language?.map(item => (
-                                <li key={item.id} onClick={() => setactiveLang(item)}>{item.name}</li>
-                            ))
-                        }
-                    </div>
-                </SelectUI>
+            <div style={{marginRight:'20px'}}>
+            <Select
+          options={language?.map((item:any)=>({label:item.name, value:item.id}))}
+          styles={customStyles}
+          placeholder={<p className={styles.paragraph}>Dil seçimi </p>}
+          onChange={(val:any)=>setactiveLang(val)}
+        />
+            </div>
             </header>
             <main>
                 <form action="" onSubmit={handleSubmit(handleOnSubmit)}>
                     <div className={styles.historyform}>
                         <div>
-                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}   min={CurrentDate(0)} max={CurrentDate(13)} />
+                            <InputUI type={'date'} label="Tarix" id={32423432} name="startDate" width="236px" register={register} errors={errors}   min={CurrentDate(1)} max={CurrentDate(14 - Number(new Date().getDay()==0?7:new Date().getDay()))} />
                         </div>
                         <div className={styles.historyFOrmTIme}>
                             <SelectUI
@@ -147,7 +179,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = () => {
 
 
                     <InputUI label="Mövzu" id={76767574654} name="title" width="100%" register={register} errors={errors} />
-                    <InputUI label="Müzakirə üçün material (link)" id={764654} name="infoVideoLink" width="100%" register={register} errors={errors} />
+                    <InputUI label="Müzakirə üçün material (link)" id={764654} name="infoVideoLink" width="100%" register={register} errors={errors}  required={false}/>
                     <div className={styles.submitform}> <ButtonUI text="Təsdiqlə" width="100%" height="56px" /></div>
                 </form>
             </main>

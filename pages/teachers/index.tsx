@@ -6,6 +6,9 @@ import { GenericDTO, GenericListDto, ITeacher } from "../../Model/DTO";
 import styles from "./index.module.css";
 type TeacherProps = {};
 
+
+let arr: any = [];
+  let arrNation: any = [];
 const Teacher: React.FC<TeacherProps> = () => {
   const [teachers, setteachers] = useState<GenericListDto<ITeacher[]> | null>(
     null
@@ -25,8 +28,7 @@ const Teacher: React.FC<TeacherProps> = () => {
       nation &&
       setotherData({ ...otherData, lang: lang.data, nation: nation.data });
   }
-  let arr: any = [];
-  let arrNation: any = [];
+  
   async function filterTeacher(param: { group: string; id: number }) {
     if (param.group === "Dillər") {
       if (arr.includes(param.id)) {
@@ -41,6 +43,8 @@ const Teacher: React.FC<TeacherProps> = () => {
         arrNation.push(param.id);
       }
     }
+    
+    
     const res = await agent.teacher.list(
       arr,
       inputSearch.current.value,
