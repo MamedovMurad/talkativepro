@@ -10,7 +10,7 @@ const TalkHistory:React.FC<TalkHistoryProps> = ({list}) => {
         <div className={styles.talkhistoryContainer}>
             {
                 list?.map(item=>(
-                    <TalkHistoryItem key={item.id} width={'500px'} item={item}/>
+                    <TalkHistoryItem key={item.id} width={'31%'} item={item}/>
                 ))
             }
            
