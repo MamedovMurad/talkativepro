@@ -45,6 +45,16 @@
 .labelForCheckbox > span {
   color: #00c1dd;
 }
+.accessInvalid{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #c2c2c2;
+}
+.accessInvalid > span {
+  color: red;
+}
 .StudentTeacher {
   width: 60%;
   display: flex;

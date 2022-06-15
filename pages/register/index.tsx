@@ -74,10 +74,10 @@ const Register: React.FC<RegisterProps> = () => {
                 />
 
                 <div className={styles.accesArea}>
-                  <input type="checkbox" id="chekcboxeslogin" />
+                  <input type="checkbox" id="chekcboxeslogin" {...register('access',{required:true})}/>
                   <label
                     htmlFor="chekcboxeslogin"
-                    className={styles.labelForCheckbox}
+                    className={errors.access?styles.accessInvalid : styles.labelForCheckbox}
                   >
                     <span>Məxfilik Siyasəti </span> və
                     <span>İstifadə Şərtləri</span> ilə razılaşıram
