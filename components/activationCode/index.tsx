@@ -45,19 +45,16 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
 
   const onSubmit = async (data: any) => {
   
-    try {
+ 
       const res = await agent.Auth.checkActivetion({ ...data, token });
       if (res && teacher) {
         setsetcrossSecondFormfirst(true);
-        saveLocale(res.data)
+        saveLocale(res)
       } else if(res&&!teacher){
         Router.push('/login')
         return  dispatch({type:'setModalActive', payload:<SweetAlertBody/>})
       }
-    } catch (error) {
-      return  toast.error('kod yanlışdır')
-       
-    }
+ 
   
   
   };
