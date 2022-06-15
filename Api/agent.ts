@@ -13,7 +13,7 @@ import {
 } from "../Model/DTO";
 import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
-import { toast, TypeOptions } from "react-toastify";
+import toast from 'react-hot-toast'
 
 export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`;
 
@@ -31,17 +31,11 @@ axios.interceptors.response.use(
     },
 
     (error: AxiosError) => {
+        toast.error(error.response?.data?.message);
+        
         const { data, status, statusText } = error.response!;
 
-        toast.error(`${error.response?.data?.message}`, {
-            position: "top-center",
-            autoClose: false,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: 0,
-        });
+  
 
         switch (status) {
             case 400:

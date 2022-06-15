@@ -18,7 +18,8 @@ export interface ImeModel {
     email: string;
     avatar: string | null;
     phoneNumber: null | string;
-    teacher:boolean
+    teacher:boolean,
+    loggedAsTeacher?:boolean
 }
 export interface ITariff{
 

@@ -17,11 +17,11 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
     const res = await agent.talk.list()
     res.data&& settalks(res.data)
   }
-  useEffect(() => {!data.teacher&& fetchTalks()}, [])
+  useEffect(() => {!data.loggedAsTeacher&& fetchTalks()}, [])
   
   return (
     <>
-      {data.teacher ? (
+      {data.loggedAsTeacher ? (
         <AuthTeacher>
           <CustomCalendar />
         </AuthTeacher>

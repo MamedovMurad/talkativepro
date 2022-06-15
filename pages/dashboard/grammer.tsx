@@ -10,7 +10,7 @@ import Login from "../login";
 const GrammerPage: React.FC = ({ data }: any) => {
   const [docs, setdocs] = useState<GenericListDto<IDocument[]>|null>(null)
   async function fetchApi(){
-    if (data.teacher) {
+    if (data.loggedAsTeacher) {
       return 
     }
       const res = await agent.Student.grammerOrLecture(0)
@@ -20,7 +20,7 @@ const GrammerPage: React.FC = ({ data }: any) => {
   
   return (
     <>
-      {!data.teacher ? (
+      {!data.loggedAsTeacher ? (
         <AuthUser >
         <QrammaticOrLecture data={docs} />
        </AuthUser>

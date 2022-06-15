@@ -9,7 +9,7 @@ const InfoOfTeacherPage: React.FC = ({ data }: any) => {
   const [item, dispatch] = useContext(UserContext);
   return (
     <>
-      {data.teacher ? (
+      {data.loggedAsTeacher ? (
         <AuthTeacher>
           <AboutTeacherAuth data={item.users?.user_info}/>
         </AuthTeacher>

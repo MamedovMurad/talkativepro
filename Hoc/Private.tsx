@@ -11,7 +11,7 @@ const withAuth = (Component:React.FC) => {
           if (!data) {
             Router.replace("/login");
           } else{
-              return {teacher:data.data?.teacher}
+              return {loggedAsTeacher:data.data?.loggedAsTeacher}
           }
         } catch (error) {  Router.replace("/login")
              return false}

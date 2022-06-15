@@ -59,16 +59,16 @@ const Login: React.FC<LoginProps> = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     data.teacher = Student === "Müəllim";
-    try {
+    
       const token: any = await agent.Auth.login(data);
       if (token) {
         toast.success("Dashboard!");
         saveLocale(token);
         getCookie("agent") && fetchApi();
       }
-    } catch (error) {
+     /* catch (error) {
       toast.error("İstifadəçi tapılmadı !");
-    }
+    } */
     setLoading(false);
   };
   return (

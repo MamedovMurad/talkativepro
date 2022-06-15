@@ -12,7 +12,7 @@ type TalkHIstoryProps = {};
 const TalkHIstory: React.FC<TalkHIstoryProps> = ({ data }: any) => {
   const [oldConversations, setoldConversations] = useState<GenericListDto<IOldDoc[]>|null>(null)
   async function fetchApiCall(){
-    if (data.teacher) {
+    if (data.loggedAsTeacher) {
       try {
         const res = await agent.teacher.oldConversations()
         res&& setoldConversations(res.data)
@@ -27,7 +27,7 @@ const TalkHIstory: React.FC<TalkHIstoryProps> = ({ data }: any) => {
   
   return (
     <>
-      {data.teacher ? (
+      {data.loggedAsTeacher ? (
         <>
           <AuthTeacher>
             <TalkHistory list={oldConversations?.entities}/>
