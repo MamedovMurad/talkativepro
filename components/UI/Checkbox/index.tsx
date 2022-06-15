@@ -28,7 +28,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ id, text, reverse, register, group 
         className={`${styles.customcheckbox} ${reverse&& styles.customcheckboxReverse}`}
       >
        {
-         register?<input type="checkbox"  value={id} id={"customCHeckBox-" + id}  {...register('checkbox')}/>:
+         register?<input type="checkbox"  value={id} id={"customCHeckBox-" +group+ id}  {...register('checkbox')}/>:
          <input type="checkbox"  value={id} id={"customCHeckBox-" + group+  id}   onChange={e=>setList({group,id})} checked={selected}/>
        } 
         <span

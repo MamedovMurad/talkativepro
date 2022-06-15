@@ -45,16 +45,16 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
         return state;
     }
   };
-
+  const [contextData, dispatch] = useReducer(reducer, data);
   Router.events.on("routeChangeStart", (url) => {
-    console.log(url);
     
+    dispatch({type:'setModalpassive'})
     NProgress.start();
   });
   Router.events.on("routeChangeComplete", (url) => {
     NProgress.done();
   });
-  const [contextData, dispatch] = useReducer(reducer, data);
+ 
   return (
     <>
       <UserContext.Provider value={[contextData, dispatch]}>

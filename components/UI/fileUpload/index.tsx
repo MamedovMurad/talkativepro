@@ -11,7 +11,7 @@ const FileUpload: React.FC<FileUploadProps> = ({file}) => {
   const fileUpload = async(param:any)=>{
     const filepath = param.value;
     const m = filepath.match(/([^\/\\]+)$/);
-    const filename = m[1];
+    const filename = m[1]||null;
     const formData = new FormData();
     formData.append("file",param.files[0]);
     const {data}:any = await agent.fileUpload_v(formData)

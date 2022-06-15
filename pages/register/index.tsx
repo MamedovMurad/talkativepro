@@ -30,7 +30,7 @@ const Register: React.FC<RegisterProps> = () => {
       if (!data.surname) {
         return toast.error("Soyadı daxil edin!");
       }
-      const stud = await agent.Auth.register({ ...data, teacher: false });
+      const stud = await agent.Auth.register({ ...data, teacher: Student==='Müəllim' });
       stud&&SetGetToken(stud.data)
     
   };

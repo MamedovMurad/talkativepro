@@ -129,7 +129,7 @@ const Auth = {
         teacher: boolean;
     }) => requests.post<GenericDTO<string>>("/auth/registration", body),
     checkActivetion: (body: { code: string; token: string }) =>
-        requests.post<GenericDTO<string>>("/auth/registration/code", body),
+        requests.post<GenericDTO<{token:string, tokenDurationInSeconds:number}>>("/auth/registration/code", body),
     registerTeacherTwo: (body: ITeacherRegister) =>
         requests.patch<string>("/teachers/me/initialDetails", body),
 };
