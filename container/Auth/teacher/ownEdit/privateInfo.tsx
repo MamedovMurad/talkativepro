@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import agent from "../../../../Api/agent";
+import agent, { baseImageUrl } from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import InputUI from "../../../../components/UI/Input";
 import styles from './index.module.css'
@@ -43,6 +43,7 @@ const customStyles = {
   },
 };
 const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
+  const [imgageUrl, setimgageUrl] = useState<string|null>(null)
     const [otherPai, setotherPai] = useState<any>(null)
     async function fetchLangapi() {
         const res = await agent.Common.langList()
@@ -53,6 +54,7 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
       var formData = new FormData();
       formData.append("file", data.files[0]);
       const item  = await agent.fileUpload_v(formData)
+     item&& setimgageUrl(baseImageUrl+item.data)
     }
 
     
@@ -63,8 +65,14 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   return (
     <div>
       <form action="">
-          <div><label htmlFor="changableformimage"><div className={styles.photoedit}>
-            <input onChange={(e)=>fileUpadfunction(e.target)} type="file" style={{display:'none'}}  name="" id="changableformimage" /></div></label>   </div>
+          <div>
+            {
+              imgageUrl? <div onClick={()=>setimgageUrl(null)} className={styles.imageUrl}><img src={imgageUrl} alt="" /> </div>: <label htmlFor="changableformimage">
+              <div className={styles.photoedit}>
+              <input onChange={(e)=>fileUpadfunction(e.target)} type="file" style={{display:'none'}}  name="" id="changableformimage" /></div>
+              </label> 
+            }
+             </div>
         <InputUI name="test" label={"Ad/ Soyad"} id={43234567} />
         <InputUI name="test" label={"Məkan"} id={63234567} />
         <InputUI name="test" type={"textarea"} label={"Mesajınız"} id={40123} />

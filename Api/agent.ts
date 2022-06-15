@@ -15,7 +15,7 @@ import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
 import { toast, TypeOptions } from "react-toastify";
 
-export const baseImageUrl = `http://3.66.158.165:8080/api/v1/filesDownload`;
+export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`;
 
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
@@ -65,6 +65,8 @@ axios.interceptors.response.use(
             case 404:
                 break;
             case 409:
+                console.log('409 error');
+                
                 break;
             case 500:
                 console.log(data);
@@ -189,7 +191,7 @@ const Common = {
             "/public/common/nationalities"
         ),
 };
-const fileUpload_v = (body: any) => requests.post("/files", body);
+const fileUpload_v = (body: any) => requests.post<GenericDTO<string>>("/files", body);
 
 const about = () =>
     requests.get<
