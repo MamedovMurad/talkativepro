@@ -4,16 +4,18 @@ import DropDownUI from "../../../../components/UI/dropDown";
 import { SettingsSVG } from "../../../../svg/settings";
 import AsideTeacher from "../../../aside/asideTeacher";
 
-type AboutTeacherAuthProps = {}
+type AboutTeacherAuthProps = {
+    data?:any
+}
  
-const AboutTeacherAuth:React.FC<AboutTeacherAuthProps> = () => {
+const AboutTeacherAuth:React.FC<AboutTeacherAuthProps> = ({data}) => {
     function cb(){
         setCookie('agent', '', { days: 0 })
         Router.push('/login')
     }
     return (
         <div>
-             <AsideTeacher detail={  <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/edit-private-info'},{title:'Bizimlə əlaqə',link:'/ddsafads'},{title:'Çıxış',cb:cb}]}/>}/>
+             <AsideTeacher item={data} detail={  <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/edit-private-info'},{title:'Bizimlə əlaqə',link:'/ddsafads'},{title:'Çıxış',cb:cb}]}/>}/>
              
         </div>
     );
