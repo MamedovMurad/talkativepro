@@ -54,6 +54,17 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.profileCaptalize{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #00C1DD;
+  font-size: 2.3rem;
+}
 .teacherasidecomp > div > .contentArea {
   width: 52%;
 }

@@ -15,7 +15,7 @@ const AboutTeacherAuth:React.FC<AboutTeacherAuthProps> = ({data}) => {
     }
     return (
         <div>
-             <AsideTeacher item={data} detail={  <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/edit-private-info'},{title:'Bizimlə əlaqə',link:'/ddsafads'},{title:'Çıxış',cb:cb}]}/>}/>
+             <AsideTeacher item={data} detail={  <DropDownUI title={<SettingsSVG/>} dropDownArr={[{title:'Redaktə et',link:'/dashboard/edit-private-info'},{title:'Bizimlə əlaqə',link:'/contact'},{title:'Çıxış',cb:cb}]}/>}/>
              
         </div>
     );

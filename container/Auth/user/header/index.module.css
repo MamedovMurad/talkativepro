@@ -18,6 +18,18 @@
   height: 60px;
   border-radius: 50%;
 }
+.avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #00C1DD;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .header_user > div > p {
     cursor: pointer;
   margin: 0;

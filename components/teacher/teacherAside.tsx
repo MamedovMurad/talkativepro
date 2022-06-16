@@ -15,8 +15,9 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, it
     {
         detail
     }
-      <div>
-        <img src="/uploads/teahcer.png" alt="" />
+      <div>{
+        item?.avatar? <img src="/uploads/teahcer.png" alt="" />: <div className={styles.profileCaptalize}>{item?.firstName[0]+' '+item?.lastName[0]}</div>}
+       
         <div className={styles.contentArea}>
           <p>25 izləyici</p>
           <h4>{item?.firstName+ ' ' + item?.lastName}</h4>

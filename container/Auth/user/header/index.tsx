@@ -37,8 +37,10 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
             arrow={false}
             width="230px"
             custom_element={
-              <div className={styles.header_user}>
-                <img src="./uploads/teahcer.png" alt="" />
+              <div className={styles.header_user}>{
+              user?.avatar?  <img src="./uploads/teahcer.png" alt="" />: <div className={styles.avatar}> {user?.firstName[0] + ' '+ user?.lastName[0]}</div>
+              }
+              
                 <div>
                  {
                    user? <p>
