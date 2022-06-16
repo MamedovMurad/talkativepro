@@ -20,8 +20,11 @@ export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`;
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getCookie("agent");
-    if (token)
-        config.headers = { ...config.headers, Authorization: "Bearer " + token };
+    const lang = localStorage.getItem('lang')
+    if (token){
+        config.headers = { ...config.headers, Authorization: "Bearer " + token, ['Accept-Language']:lang+''||'' };
+    }
+        config.headers = { ...config.headers, ['Accept-Language']:lang+''||'' };    
     return config;
 });
 
@@ -39,7 +42,7 @@ axios.interceptors.response.use(
 
         switch (status) {
             case 400:
-                console.log("fsadfsdafsadfsdafasdfasd");
+            
 
                 console.log(data);
                 if (typeof data === "string") {
@@ -201,6 +204,9 @@ const about = () =>
         single:()=>requests.get<GenericDTO<IContact>>('public/setting'),
         post:(body:{fullName:string, email:string, subject:string,body:string})=>requests.post<GenericDTO<boolean>>('public/common/messagesToUs', body)
     }
+    const notification = {
+        getCount:()=>requests.get<GenericDTO<number>>('notifications/newCount')
+    }
 const agent = {
     Auth,
     tariff,
@@ -211,7 +217,8 @@ const agent = {
     teacher,
     Student,
     talk,
-    contact
+    contact,
+    notification
 };
 
 export default agent;

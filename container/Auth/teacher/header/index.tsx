@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import agent from "../../../../Api/agent";
 import TalkAddModal from "../../../../components/modal/addtalk";
 import ButtonUI from "../../../../components/UI/Button";
 import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
@@ -9,6 +10,13 @@ import styles from './index.module.css'
 type TeacherAuthHeaderProps = {}
  
 const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
+  const [count, setCount] = useState<number>(0)
+  async function fetchCount() {
+    const res = await agent.notification.getCount()
+    res?.data&& setCount(res.data)
+  }
+  useEffect(() => {fetchCount() }, [])
+  
   const [data, dispatch] = useContext(UserContext);
     return (
         <div>
@@ -21,7 +29,7 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
           </Link>
         </div>
         <div className={styles.headerTeacher}>
-          <ZvanoqUI count={6} />
+          <ZvanoqUI count={count+''} />
           <div className={styles.balance}>
               <span>Balans</span>
               <p>156 azn</p>

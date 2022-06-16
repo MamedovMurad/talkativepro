@@ -1,7 +1,7 @@
 import { ZvanoqSVG } from "../../../svg/zvanoq";
 import styles from './index.module.css'
 type ZvanoqUIProps = {
-    count?:number
+    count?:number|string
 }
  
 const ZvanoqUI:React.FC<ZvanoqUIProps> = ({count}) => {

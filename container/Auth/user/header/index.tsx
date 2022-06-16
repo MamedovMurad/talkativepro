@@ -1,8 +1,9 @@
 type HeaderAuthProps = {};
 import Link from "next/link";
 import { useRouter } from 'next/router'
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { setCookie } from "react-use-cookie";
+import agent from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import SelectUI from "../../../../components/UI/Select";
 import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
@@ -14,6 +15,13 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
   const [data, dispatch] = useContext(UserContext)
   const user  =  data.users.user_info
   const router = useRouter()
+  const [count, setCount] = useState<number>(0)
+  async function fetchCount() {
+    const res = await agent.notification.getCount()
+    res?.data&& setCount(res.data)
+  }
+  useEffect(() => {fetchCount() }, [])
+
   const extDashboard = ()=>{
     setCookie('agent', '', { days: 0 })
     router.push('/login')
@@ -30,7 +38,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
           </Link>
         </div>
         <div className={styles.headerUser}>
-          <ZvanoqUI count={6} />
+          <ZvanoqUI count={count+''} />
           <ButtonUI text="Abunə ol" width="136px" height="56px" />
 
           <SelectUI
