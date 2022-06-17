@@ -1,4 +1,5 @@
 import { setCookie } from "react-use-cookie";
+import { baseImageUrl } from "../../Api/agent";
 import { ITeacher } from "../../Model/DTO";
 import { SettingsSVG } from "../../svg/settings";
 import DropDownUI from "../UI/dropDown";
@@ -16,7 +17,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, it
         detail
     }
       <div>{
-        item?.avatar? <img src="/uploads/teahcer.png" alt="" />: <div className={styles.profileCaptalize}>{item?.firstName[0]+' '+item?.lastName[0]}</div>}
+     item?.firstName && ( item?.avatar? <img src={baseImageUrl+item?.avatar} alt="" />: <div className={styles.profileCaptalize}>{item?.firstName[0]+' '+item?.lastName[0]}</div>)}
        
         <div className={styles.contentArea}>
           <p>25 izləyici</p>
@@ -40,6 +41,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, it
 
       <p className={styles.mainCOntent}>
       
+   
         Hi. My name is Mansura. I am here to help you to improve your English. I
         have been teaching English to a wide range of students, including
         children, teenagers, and adults. I believe that the best way of learning

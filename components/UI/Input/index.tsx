@@ -12,10 +12,11 @@ type InputUIProps = {
     errors?:any,
     max?:any,
     min?:any,
-    required?:boolean
+    required?:boolean,
+    maxlength?:string|number,
 }
  
-const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="text",register, name, value, errors, max, min, required=true}) => {
+const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="text",register, name, value, errors, max, min, required=true,maxlength}) => {
     console.log(errors);
     console.log(max,'fasdfasf');
     
@@ -25,7 +26,7 @@ const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="t
             <label htmlFor={`inputUI${id}`}>{label}</label>
            {
                type=='textarea'?    <textarea  max={max} min={min} type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:required})}  className={(errors&&errors[handleName(name)])?styles.error:''}></textarea> 
-               : <input max={max} min={min} type={type} id={`inputUI${id}`}  style={{width, height}} value={value} {...register&& register(handleName(name),{required:required})}  className={(errors&&errors[handleName(name)])?styles.error:'tttt'}/>
+               : <input max={max} min={min} type={type} id={`inputUI${id}`}  style={{width, height}} value={value} {...register&& register(handleName(name),{required:required})} maxLength={maxlength} className={(errors&&errors[handleName(name)])?styles.error:'tttt'}/>
            }
         </div>
     );

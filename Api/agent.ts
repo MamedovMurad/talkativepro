@@ -150,7 +150,8 @@ const teacher = {
         requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>(
             "/teachers/oldConversations?=limit" + limit + "&offset=" + offset
         ),
-        single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`)
+        single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`),
+        postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body)
 };
 const talk = {
     list:(

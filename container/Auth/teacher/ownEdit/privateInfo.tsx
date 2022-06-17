@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
+import toast from "react-hot-toast";
 import Select from "react-select";
 import agent, { baseImageUrl } from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import InputUI from "../../../../components/UI/Input";
+import { UserContext } from "../../../../pages/_app";
 import styles from './index.module.css'
 type PrivateInfoEditProps = {};
 
@@ -47,15 +49,17 @@ const customStyles = {
 const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   const [imgageUrl, setimgageUrl] = useState<string | null>(null)
   const [otherPai, setotherPai] = useState<any>(null)
+  const [user, dispatch] = useContext(UserContext);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
     control,
-    setValue
+    setValue,
+    reset,
   } = useForm();
-  const firstName = useWatch({
+  const desc = useWatch({
     control,
     name: "lang",
   });
@@ -68,18 +72,42 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
     var formData = new FormData();
     formData.append("file", data.files[0]);
     const item = await agent.fileUpload_v(formData)
-    item && setimgageUrl(baseImageUrl + item.data)
+    item && setimgageUrl(item.data)
   }
 
-  function handleSubmitData(data: any) {
-    data.lang=[...data.lang]?.map(item=>{
-      return {...item, desc :data['desc'+item.value]}
+  async function handleSubmitData(data: any) {
+    console.log(data.fullName.split(' '),'daat');
+    
+    if (data.fullName?.split(' ').length<=1) {
+      return toast.error('Soyad əlavə edilməyib')
+  
+    }
+    else if(imgageUrl==null){
+      return toast.error('Avatar yükləyin')
+    }
+    else{
+      data.firstName= data.fullName.split(' ')[0]
+      data.lastName= data.fullName.split(' ')[1]
+    }
+    data.teacherLanguages=[...data.lang]?.map(item=>{
+      const language = {id:item.value}
+      return {language, introduction :data['desc'+item.value]}
     })
-    console.log(data.lang, 'data');
-
+    const cleanData ={
+      teacherLanguages:data.teacherLanguages,
+      avatar:imgageUrl,
+      firstName:data.fullName.split(' ')[0],
+      lastName:data.fullName.split(' ')[1],
+      address:data.address
+    }
+    
+const res = await agent.teacher.postPrivateForm(cleanData)
+res.data&& toast.success('Profiliniz yeniləndi')
   }
-  useEffect(() => { fetchLangapi() }, [])
-
+  useEffect(() => { fetchLangapi();
+    setimgageUrl(user.users.user_info?.avatar)
+     reset({fullName:user.users.user_info?.firstName+ ' '+user.users.user_info?.lastName, address:user.users.user_info?.address})}, [user])
+ 
 
 
 
@@ -90,14 +118,14 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
       <form action="" onSubmit={handleSubmit(handleSubmitData)}>
         <div>
           {
-            imgageUrl ? <div onClick={() => setimgageUrl(null)} className={styles.imageUrl}><img src={imgageUrl} alt="" /> </div> : <label htmlFor="changableformimage">
+            imgageUrl ? <div onClick={() => setimgageUrl(null)} className={styles.imageUrl}><img src={baseImageUrl+imgageUrl} alt="" /> </div> : <label htmlFor="changableformimage">
               <div className={styles.photoedit}>
                 <input onChange={(e) => fileUpadfunction(e.target)} type="file" style={{ display: 'none' }} name="" id="changableformimage" /></div>
             </label>
           }
         </div>
-        <InputUI name="test" label={"Ad/ Soyad"} id={43234567} />
-        <InputUI name="test" label={"Məkan"} id={63234567} />
+        <InputUI name="fullName" label={"Ad/ Soyad"} id={43234567} register={register} required={true}/>
+        <InputUI name="address" label={"Məkan"} id={63234567} maxlength={310} register={register}  required={true}/>
         <div className={styles.react_select}>
 {/* 
           <input type="text" {...register("lang")} /> */}
@@ -129,7 +157,7 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
           />
         </div>
               {
-                firstName?.map((item:any,index:number)=>(
+                desc?.map((item:any,index:number)=>(
                   <InputUI key={index} name={`desc${item.value}`} type={"textarea"} label={`Mesajınız(${item.code})`} id={40123+index} register={register} required={true} errors={errors}/>
                 ))
               }
