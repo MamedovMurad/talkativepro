@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import { useContext } from 'react';
+import { baseImageUrl } from '../../../Api/agent';
 import { ITeacher } from '../../../Model/DTO';
 import { UserContext } from '../../../pages/_app';
 import { LocationSVG } from '../../../svg/locationSVG';
@@ -16,7 +17,8 @@ const UserModalBody:React.FC<UserModalBodyProps> = ({item}) => {
         <section className={styles.modulebody}>
             <header>
                <div className={styles.header}>
-               <img src="/uploads/prtiret.png" alt="" />
+                   {item?.avatar? <img src={baseImageUrl+item.avatar} alt="" />: <label className="avatar">{item?.firstName[0]+' '+ item?.lastName[0]}</label>}
+              
                 <div>
                     <p>{item?.firstName+' '+ item?.lastName} <span>{item?.rating}</span> <StarSVG/></p>
                     <p><span className={styles.users}><UsersSVG/>25 izləyici</span>

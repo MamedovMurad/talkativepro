@@ -4,6 +4,7 @@ import { useContext } from "react";
 import UserModalBody from "../modal/usermodal_body";
 import { StarSVG } from "../../svg/starSVG";
 import { ITeacher } from "../../Model/DTO";
+import { baseImageUrl } from "../../Api/agent";
 type SliderItemProps = { index?: number , item?:ITeacher};
 
 const SliderItem: React.FC<SliderItemProps> = ({ index , item}) => {
@@ -16,7 +17,9 @@ const SliderItem: React.FC<SliderItemProps> = ({ index , item}) => {
   return (
     <div className={styles.SliderItem} onClick={handleClick}>
       <div className={styles.imgArea}>
-        <img src="/uploads/slideritem.png" alt="" />
+      {
+        item?.avatar?<img src={baseImageUrl+item?.avatar} alt="" /> : <div className='avatar'>{item?.firstName[0]+' '+ item?.lastName[0]}</div>
+      }  
       </div>
       <div className={styles.content}>
         <h5>{item?.firstName+' '+ item?.lastName}</h5>

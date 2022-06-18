@@ -28,6 +28,12 @@
   display: flex;
   justify-content: center;
 }
+.imgArea >img{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
 .content {
   text-align: center;
 }

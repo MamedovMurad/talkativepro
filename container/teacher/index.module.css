@@ -1,6 +1,7 @@
 .teacherContainer{
     min-height: 50vh;
     max-height: 82.5vh;
+    height: min-content;
     display: flex;
     flex-wrap: wrap;
     width: 70%;
