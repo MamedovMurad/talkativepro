@@ -1,0 +1,47 @@
+.following {
+  width: 100%;
+}
+.following > ul {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+.following > ul > li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+ margin-bottom: 25px;
+}
+.cardItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.content > h5 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #333333;
+}
+.group>span:last-child {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  margin-left: 10px;
+  color: #999999;
+  display: inline-block;
+}
+.group > .number {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  /* identical to box height, or 133% */
+
+  /* natural/2 */
+
+  color: #474747;
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from "react";
 import { setCookie } from "react-use-cookie";
-import agent from "../../../../Api/agent";
+import agent, { baseImageUrl } from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import SelectUI from "../../../../components/UI/Select";
 import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
@@ -46,7 +46,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
             width="230px"
             custom_element={
               <div className={styles.header_user}>{
-              user?.avatar?  <img src="./uploads/teahcer.png" alt="" />: <div className={styles.avatar}> {user?.firstName[0] + ' '+ user?.lastName[0]}</div>
+              user?.avatar?  <img src={baseImageUrl+user.avatar} alt="" />: <div style={{background:user?.bgColor}} className={styles.avatar}> {user?.firstName[0] + ' '+ user?.lastName[0]}</div>
               }
               
                 <div>

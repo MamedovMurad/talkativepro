@@ -151,8 +151,10 @@ const teacher = {
             "/teachers/oldConversations?=limit" + limit + "&offset=" + offset
         ),
         single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`),
-        postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body)
-};
+        postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body),
+
+topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`)
+    };
 const talk = {
     list:(
         languageIds:number[]=[],

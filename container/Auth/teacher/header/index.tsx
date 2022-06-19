@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import agent from "../../../../Api/agent";
 import TalkAddModal from "../../../../components/modal/addtalk";
 import ButtonUI from "../../../../components/UI/Button";
@@ -18,6 +19,17 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
   useEffect(() => {fetchCount() }, [])
   
   const [data, dispatch] = useContext(UserContext);
+
+  function handleModal(){
+   /*  console.log(data?.users); */
+    
+    if (data?.users?.user_info.isApproved) {
+      dispatch({type:'setModalActive', payload:<TalkAddModal/>})
+    }else{
+      return toast.error('Hesab aktiv deyil')
+    }
+   
+  }
     return (
         <div>
            <div className={styles.topHeader}>
@@ -34,7 +46,7 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
               <span>Balans</span>
               <p>156 azn</p>
           </div>
-          <ButtonUI text="Söhbət yarat" width="169px" height="56px" onclick={()=>dispatch({type:'setModalActive', payload:<TalkAddModal/>})}/>
+          <ButtonUI text="Söhbət yarat" width="169px" height="56px" onclick={handleModal}/>
 
         </div>
       </div>

@@ -21,5 +21,5 @@ export default function CustomSlider(param:string[]) {
     return () => clearInterval(autoInterval);
   });
 
-  return param[first];
+  return param?.length>0?param[first]:[];
 }
