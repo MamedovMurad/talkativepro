@@ -85,14 +85,17 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
     else if(imgageUrl==null){
       return toast.error('Avatar yükləyin')
     }
+    else if(!data.lang){
+      return toast.error('Dil əlavə edin')
+    }
     else{
       data.firstName= data.fullName.split(' ')[0]
       data.lastName= data.fullName.split(' ')[1]
     }
-    data.teacherLanguages=[...data.lang]?.map(item=>{
+    data.teacherLanguages=   [...data.lang]?.map(item=>{
       const language = {id:item.value}
       return {language, introduction :data['desc'+item.value]}
-    })
+    })||null
     const cleanData ={
       teacherLanguages:data.teacherLanguages,
       avatar:imgageUrl,
