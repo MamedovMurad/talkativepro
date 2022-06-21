@@ -1,3 +1,5 @@
+import axios from "axios";
+import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import agent from "../../Api/agent";
 import MapUI from "../../components/UI/map";
@@ -59,8 +61,13 @@ const About: React.FC<AboutProps> = ({data}) => {
 };
 
 
-export async function getServerSideProps(context:any){
-  const data = await agent.about();
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const data = await (fetch('http://194.147.58.56:8090/api/v1/public/common/about')
+  .then(response => response.json()))
+  
+console.log(data,'data');
+
+
   return {
       props: {
           data:data

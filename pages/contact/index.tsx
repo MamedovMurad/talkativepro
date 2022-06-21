@@ -67,12 +67,19 @@ const Contact:React.FC<ContactProps> = ({data}) => {
 }
  
 export async function getServerSideProps(context:any){
-    const data = await agent.contact.single();
+    /* const data = await agent.contact.single(); */
+    const data = await (fetch('http://194.147.58.56:8090/api/v1/public/setting')
+    .then(response => response.json()))
+    
+  console.log(data,'data');
+  
+  
     return {
         props: {
-            data:data.data
+            data:data
         },
     };
+  
   }
  
 export default Contact;

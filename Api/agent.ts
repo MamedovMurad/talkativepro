@@ -13,9 +13,9 @@ import {
 } from "../Model/DTO";
 import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
-import toast from 'react-hot-toast'
+/* import toast from 'react-hot-toast' */
 
-export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`;
+
 
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
@@ -34,7 +34,7 @@ axios.interceptors.response.use(
     },
 
     (error: AxiosError) => {
-        toast.error(error.response?.data?.message);
+      /*   toast.error(error.response?.data?.message); */
         
         const { data, status, statusText } = error.response!;
 
@@ -70,7 +70,7 @@ axios.interceptors.response.use(
 
                 break;
         }
-        return Promise.reject(error);
+        return Promise.reject(error?.response);
     }
 );
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
@@ -225,3 +225,4 @@ const agent = {
 };
 
 export default agent;
+export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`;

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import agent from "../../Api/agent";
 import AsideTeacher from "../../container/aside/asideTeacher";
 import TeacherCardContainer from "../../container/teacher/teacherCard";
@@ -36,6 +37,8 @@ const data = [
 ];
 
 const SingleTeacher: React.FC<SingleTeacherProps> = ({teacher}) => {
+
+  
   return (
     <div className={styles.SingleTeacherDetail}>
       <div className="wrapper">
@@ -70,12 +73,29 @@ const SingleTeacher: React.FC<SingleTeacherProps> = ({teacher}) => {
 
 export async function getServerSideProps({params:{slug}}:any){
  
+  if (!(slug[0])) {
+    return {
+      props: { hasError: true },
+      notFound: true,
+      redirect: {
+        destination: "/error",
+      },
+    };
+  } 
+
+  
+ const res  = slug?.length>0?slug[0]:''
  
-  const data = await agent.teacher.single(slug);
+ console.log(res,'res');
+ const data = await (fetch(`http://194.147.58.56:8090/api/v1/public/teachers/${res}/profile`).then(response => response.json()))
+/*   const data = await agent.teacher.list(); */
   return {
       props: {
           teacher:data.data
       },
   };
 }
+
+
+
 export default SingleTeacher;
