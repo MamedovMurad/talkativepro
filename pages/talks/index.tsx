@@ -5,13 +5,16 @@ import TalksContainer from "../../container/talks";
 import Aside from "../../layout/aside";
 import { GenericListDto } from "../../Model/DTO";
 import styles from "./index.module.css";
-type TalksProps = {};
+type TalksProps = {
+
+};
 
 let arr: any = [];
 let arrNation: any = [];
 let arrLevel: any = [];
 let date__:any = null
 const Talks: React.FC<TalksProps> = () => {
+
     const router = useRouter()
   const [talks, settalks] = useState<GenericListDto<any> | null>(null);
   const [otherData, setotherData] = useState<{
@@ -20,46 +23,7 @@ const Talks: React.FC<TalksProps> = () => {
     level: { name: string; id: string , selected?:any}[] | null|any;
   }>({ lang: null, nation: null, level: null });
   /*   const inputSearch = useRef<any>(null); */
-  async function fetchTalks() {
-    router.query.lang&&arr.push(router.query.lang);
-    router.query.level&&arrLevel.push(router.query.level)
-    router.query.date? date__= router.query.date:null
-    
-    const res = await agent.talk.list(arr, [], arrLevel,date__?.split('-').reverse().join('-'));
-    res && res.data && settalks(res.data.entities);
-    const lang = await agent.Common.langList();
-    const nation = await agent.Common.notianal();
-
-    lang &&
-      nation &&
-      setotherData({
-        ...otherData,
-        lang: lang?.data?.map(item=>{
-            if (router.query.lang===item.id+'') {
-                return {...item, selected:true}
-            }else{
-             return  item
-            }
-        }),
-        nation: nation.data,
-        level: [
-          { name: "A1", id: "A1" },
-          { name: "A2", id: "A2" },
-          { name: "B1", id: "B1" },
-          { name: "B2", id: "B2" },
-          { name: "C1", id: "C1" },
-          { name: "C2", id: "C2" },
-        ]?.map(item=>{
-            if (router.query.level===item.name) {
-                return {...item, selected:true}
-            }else{
-             return  item
-            }
-        }),
-      });
-
-
-  }
+  
 
   async function filterTeacher(param: { group: string; id: number }) {
     settalks(null)
@@ -98,6 +62,46 @@ const Talks: React.FC<TalksProps> = () => {
   const res = await agent.talk.list(arr, arrNation, arrLevel, changeddate);
   res && res.data && settalks(res.data.entities);
  }
+ async function fetchTalks() {
+  router.query.lang&&arr.push(router.query.lang);
+  router.query.level&&arrLevel.push(router.query.level)
+  router.query.date? date__= router.query.date:null
+  
+  const res = await agent.talk.list(arr, [], arrLevel,date__?.split('-').reverse().join('-'));
+  res && res.data && settalks(res.data.entities);
+  const lang = await agent.Common.langList();
+  const nation = await agent.Common.notianal();
+
+  lang &&
+    nation &&
+    setotherData({
+      ...otherData,
+      lang: lang?.data?.map(item=>{
+          if (router.query.lang===item.id+'') {
+              return {...item, selected:true}
+          }else{
+           return  item
+          }
+      }),
+      nation: nation.data,
+      level: [
+        { name: "A1", id: "A1" },
+        { name: "A2", id: "A2" },
+        { name: "B1", id: "B1" },
+        { name: "B2", id: "B2" },
+        { name: "C1", id: "C1" },
+        { name: "C2", id: "C2" },
+      ]?.map(item=>{
+          if (router.query.level===item.name) {
+              return {...item, selected:true}
+          }else{
+           return  item
+          }
+      }),
+    });
+
+
+}
   useEffect(() => {
     fetchTalks();
    
@@ -114,6 +118,7 @@ const Talks: React.FC<TalksProps> = () => {
     
         <div>
           <Aside
+         
             setList={filterTeacher}
             list={[
               { name: "Dillər", children: otherData.lang },
@@ -122,7 +127,7 @@ const Talks: React.FC<TalksProps> = () => {
             ]}
           />
 
-          <TalksContainer  list={talks}/>
+          <TalksContainer list={talks}/>
         </div>
       </div>
     </div>

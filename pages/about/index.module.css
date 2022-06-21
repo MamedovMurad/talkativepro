@@ -58,7 +58,7 @@
 .about > div > .footer{
     margin-top: 15px;
 }
-.about > div > .footer > div {
+.about > div > .footer > div , .about > div > .footer > p{
   font-weight: 400;
   font-size: 16px;
   line-height: 170%;
