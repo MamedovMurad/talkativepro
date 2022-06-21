@@ -174,6 +174,7 @@ const Student = {
         requests.get<GenericDTO<GenericListDto<IDocument[]>>>(
             "/public/documentations?limit=10&offset=" + offset
         ),
+    followingTeacher:(limit=10, offset=10)=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>('/students/followings')
 };
 const tariff = {
     list: () => requests.get<GenericDTO<ITariff[]>>("/public/tariffs"),

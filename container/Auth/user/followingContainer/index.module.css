@@ -27,7 +27,10 @@
 
   color: #333333;
 }
-.group>span:last-child {
+.group>.groupClass{
+  display: flex;
+}
+.group>.groupClass>span {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
