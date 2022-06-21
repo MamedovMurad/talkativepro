@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+import { baseImageUrl } from '../../Api/agent';
+import { UserContext } from '../../pages/_app';
+import TalkVIewModalBody from '../modal/talkView';
 import ButtonUI from '../UI/Button';
 import styles from './index.module.css'
 type BodySliderItemProps = {
@@ -6,11 +10,14 @@ type BodySliderItemProps = {
 }
  
 const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
+    const [data, dispatch] = useContext(UserContext);
     return (
-        <div className={styles.bodySliderItem} style={{width}}>
+        <div className={styles.bodySliderItem} style={{width}} onClick={()=>  dispatch({type:'setModalActive', payload:<TalkVIewModalBody item={item}/>})}>
            <header className={styles.header}>
                <div className={styles.imageArea}>
-                   <img src="/uploads/prtiret.png" alt="" />
+               {
+            item?.teacher?.avatar? <img src={baseImageUrl+item.teacher.avatar} alt="" />:   <div style={{background:item?.teacher?.bgColor}} className="avatar">{item?.teacher?.firstName[0] +' '+ item?.teacher?.lastName[0]}</div>
+          }
                </div>
                <div className={styles.content}>
                    <p>{item?.teacher?.firstName + ' '+ item?.teacher?.lastName}</p>

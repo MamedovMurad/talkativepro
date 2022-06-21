@@ -7,6 +7,8 @@ import { UserContext } from "../pages/_app";
 import { getCookie } from "react-use-cookie";
 import { ToastContainer } from "react-toastify";
 import { useRouter } from "next/router";
+import TalkVIewModalBody from "../components/modal/talkView";
+import FaqItem from "../components/faq_item";
 export default function Layout({ children }: { children: JSX.Element }) {
   const [data, dispatch] = useContext(UserContext);
   const route = useRouter();
