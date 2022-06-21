@@ -10,7 +10,7 @@ const QrammaticOrLecture:React.FC<QrammaticOrLectureProps> = ({width="79%", data
     return (
         <ul className={styles.grammerContainer}>
             {data?.entities.map((item,i)=>(
-                <GrammerItem key={i} title={item.title} width="520px"/>
+                <GrammerItem key={i} item={item} width="520px"/>
             ))}
         </ul>
     );
