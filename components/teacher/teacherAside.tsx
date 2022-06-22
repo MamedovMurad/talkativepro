@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { setCookie } from "react-use-cookie";
-import { baseImageUrl } from "../../Api/agent";
+import agent, { baseImageUrl } from "../../Api/agent";
 import { ITeacher } from "../../Model/DTO";
+import { UserContext } from "../../pages/_app";
 import { SettingsSVG } from "../../svg/settings";
 import DropDownUI from "../UI/dropDown";
 import styles from "./index.module.css";
@@ -10,7 +12,16 @@ type TeacherAsideComponentProps = {
 };
 
 const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, item}) => {
+  const [data, dispatch] = useContext(UserContext);
+const folloToggle = async (uuid?:string) => {
+  if (data.users.user_info.uuid) {
+    const res =uuid&& await agent.Student.followTeacherToggle({url:uuid, isFolledByCurrentUser:true})
 
+    console.log(res,'res');
+  }
+ 
+    
+}
   return (
     <div className={styles.teacherasidecomp}>
     {
@@ -35,7 +46,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, it
         }
       </div>
       {
-        !detail&&<button style={{marginTop:'5px'}}>İzlənir</button>
+        !detail&&<button style={{marginTop:'5px'}} onClick={()=>folloToggle(item?.uuid)}>İzlənir</button>
       }
       
 

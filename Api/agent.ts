@@ -24,7 +24,7 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
     if (token){
         config.headers = { ...config.headers, Authorization: "Bearer " + token, ['Accept-Language']:lang+''||'' };
     }
-        config.headers = { ...config.headers, ['Accept-Language']:lang+''||'' };    
+        config.headers = { ...config.headers, ['Accept-Language']:lang+''||'', ['Content-Type']: 'application/json' };    
     return config;
 });
 
@@ -174,7 +174,8 @@ const Student = {
         requests.get<GenericDTO<GenericListDto<IDocument[]>>>(
             "/public/documentations?limit=10&offset=" + offset
         ),
-    followingTeacher:(limit=10, offset=10)=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>('/students/followings')
+    followingTeacher:(limit=10, offset=10)=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(`/students/followings?limit=${limit}&&offset=${offset}`),
+    followTeacherToggle:(body:{isFolledByCurrentUser:boolean, url:string})=>requests.post(`/teachers/${body.url}/followers`, true)
 };
 const tariff = {
     list: () => requests.get<GenericDTO<ITariff[]>>("/public/tariffs"),

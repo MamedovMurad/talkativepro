@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import agent from "../../Api/agent";
 import TeacherSecondForm from "../teactherSecondForm";
@@ -18,6 +18,7 @@ type ActivationCodeProps = {
 const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
   const [crossSecondForm, setsetcrossSecondFormfirst] = useState(false);
   const [data, dispatch] = useContext(UserContext);
+  const [isblock, setisblock] = useState(120)
   const {
     register,
     handleSubmit,
@@ -54,10 +55,29 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
         Router.push('/login')
         return  dispatch({type:'setModalActive', payload:<SweetAlertBody/>})
       }
- 
-  
-  
-  };
+   };
+   useEffect(() => {
+    let id = setInterval(() => {
+      isblock>0&&  setisblock(isblock -1);
+    }, 1000);
+    return () => clearInterval(id);
+  });
+
+
+
+
+  function convertHMS(value:any) {
+    const sec = parseInt(value, 10); // convert value to number if it's string
+    let hours:number|string  = Math.floor(sec / 3600); // get hours
+    let minutes:number|string = Math.floor((sec - (hours * 3600)) / 60); // get minutes
+    let seconds:string|number = sec - (hours * 3600) - (minutes * 60); //  get seconds
+    // add 0 if value < 10; Example: 2 => 02
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
+}
+
   return (
     <>
       {crossSecondForm ? (
@@ -77,7 +97,7 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
 
             <div className={styles.againsend}>
               <label>
-                <span>Kodu əldə etmədiniz? </span> <span>Yenidən göndər</span>
+                <span>Kodu əldə etmədiniz? </span>   <span>{isblock===0?'Yenidən göndər':convertHMS(isblock)}</span>  
               </label>
             </div>
             <ButtonUI text={"Təsdiqlə"} width="360px" height="56px" />
