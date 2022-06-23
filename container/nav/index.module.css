@@ -5,3 +5,10 @@
     padding: 0;
     width: 70%;
 }
+
+@media only screen and (max-width: 800px) {
+
+.nav{
+    order: 1;
+}
+    }

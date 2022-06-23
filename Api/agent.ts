@@ -13,6 +13,7 @@ import {
 } from "../Model/DTO";
 import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
+import toast from "react-hot-toast";
 /* import toast from 'react-hot-toast' */
 
 
@@ -34,7 +35,9 @@ axios.interceptors.response.use(
     },
 
     (error: AxiosError) => {
-      /*   toast.error(error.response?.data?.message); */
+        console.log(error?.response?.data?.message,'iii');
+        
+        toast.error(error.response?.data?.message);
         
         const { data, status, statusText } = error.response!;
 
@@ -92,34 +95,12 @@ const Products = {
 const fileUpload = {
     insert: (file: FormData) => requests.post<string>("/files", file),
 };
-/*     const Positions = {
-      list: (limit=10, offset=0)=> requests.get<GenericDTO<IPostions>>(`/positions?limit=${limit}&offset=${offset}`),
-      single:(id:number)=> requests.get<GenericDTO<IPositions>>(`/positions/${id}`),
-      insert:(body:{name:string, salary:number})=>requests.post<GenericDTO<IPostions>>('/positions',body),
-      delete:(id:number)=>requests.del<{data:boolean, message:null|string}>(`/positions/${id}`)
-    }
-    const Categories={
-      list:(limit=10, offset=0)=> requests.get<GenericDTO<ICategory[]>>(`/categories?limit=${limit}&offset=${offset}`)
-    }
-    const Companies={
-      list:(limit=10, offset=0)=> requests.get<GenericDTO<GenericContent<ICompany[]>>>(`/companies?limit=${limit}&offset=${offset}`),
-      insert:(body:{name:string, email:string, phoneNumber:string; address:string,logo:string})=>requests.post<GenericDTO<{data:string}>>('/companies',body)
-    }
-    const Sections={
-      list:(limit=10, offset=0)=> requests.get<GenericDTO<GenericContent<ISection[]>>>(`/sections?limit=${limit}&offset=${offset}`)
-    }
-    const Roles={
-      list:(limit=10, offset=0)=> requests.get<GenericDTO<GenericContent<IRole[]>>>(`/roles?limit=${limit}&offset=${offset}`)
-    }
-    interface Login {
-      username: string;
-      password: string;
-    } */
 
 const Auth = {
     login: (body: { username: string; password: string; teacher: boolean }) =>
         requests.post<GenericDTO<string>>("/auth/login", body),
     getMe: () => requests.get<GenericDTO<ImeModel>>("/users/me"),
+    teacherMe:()=>requests.get<GenericDTO<ITeacher>>('/teachers/me'),
     register: (body: {
         name: string;
         surname: string;
@@ -212,6 +193,9 @@ const about = () =>
     const notification = {
         getCount:()=>requests.get<GenericDTO<number>>('notifications/newCount')
     }
+    const password = {
+        update :(body:{password:string, passwordAgain:string})=>requests.post<GenericDTO<boolean>>('/users/password', body)
+    }
 const agent = {
     Auth,
     tariff,
@@ -223,7 +207,8 @@ const agent = {
     Student,
     talk,
     contact,
-    notification
+    notification,
+    password
 };
 
 export default agent;

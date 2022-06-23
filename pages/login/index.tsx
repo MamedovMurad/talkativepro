@@ -33,12 +33,20 @@ const Login: React.FC<LoginProps> = () => {
 
   const fetchApi = async () => {
     dispatch({ type: "setloader" });
-    const data = await agent.Auth.getMe();
-    if (data.data) {
-      Router.push('/dashboard')
+    if (localStorage.getItem('teacher')) {
+      const data = await agent.Auth.teacherMe()
+      
+      if (data.data) {
+        Router.push('/dashboard')
+      }
+    return  dispatch({ type: "setUser", payload: data.data });
+    }else{
+      const  data = await agent.Auth.getMe();
+      if (data.data) {
+        Router.push('/dashboard')
+      }
+      return  dispatch({ type: "setUser", payload: data.data });
     }
-    
-    dispatch({ type: "setUser", payload: data.data });
   };
   const saveLocale = (locale: any) => {
     if (typeof window !== 'undefined') {
@@ -59,17 +67,30 @@ const Login: React.FC<LoginProps> = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     data.teacher = Student === "Müəllim";
-    
+    Student === "Müəllim" ? localStorage.setItem('teacher','true') : localStorage.removeItem('teacher')
+    try {
       const token: any = await agent.Auth.login(data);
       if (token) {
         toast.success("Dashboard!");
         saveLocale(token);
         getCookie("agent") && fetchApi();
       }
+    } catch (error) {
+      
+    }
+    
+    
      /* catch (error) {
       toast.error("İstifadəçi tapılmadı !");
     } */
-    setLoading(false);
+ 
+      console.log('lllllllllllll');
+      setLoading(false);
+    
+   
+
+    
+
   };
   return (
     <div className="wrapper">

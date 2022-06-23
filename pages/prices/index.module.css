@@ -135,3 +135,36 @@
   line-height: 24px;
   color: #c2c2c2;
 }
+
+@media screen and (min-width: 800px) and (max-width: 1000px) { 
+  .Prices > div > div {
+    max-width: 95%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+  }
+  .body > div:first-child {
+    width: 96%;
+  }
+  .body > div:last-child{
+    margin-top: 20px;
+    width:90%;
+    height: min-content;
+  }
+
+  .Prices > div > div > h3 {
+    font-size: 22px;
+  }
+  .body > div:first-child > ul > li >label> div:first-child{
+    width: 70%;
+  }
+  .body > div:first-child > ul > li >label{
+    padding: 0 0.1rem;
+  }
+  }

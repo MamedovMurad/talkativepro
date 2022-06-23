@@ -68,3 +68,15 @@ color: #C2C2C2 !important;
 ::-webkit-scrollbar-thumb:hover {
   background: #00C1DD; 
 }
+
+@media screen and (min-width: 800px) and (max-width: 1000px) { 
+  .wrapper{
+    max-width: 90%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  }

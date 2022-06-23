@@ -9,11 +9,13 @@ type SliderProps = {
 };
 
 const SliderUI: React.FC<SliderProps> = ({data}) => {
+  console.log(data,'data');
+  
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 2,
   };
   return (

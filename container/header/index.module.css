@@ -11,3 +11,22 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+@media only screen and (max-width: 920px) {
+
+/* .header{
+    display: none;
+} */
+.wrapper>a{
+    order: 2;
+}
+.BGSearch{
+    background: url('../../public/uploads/lupaRes.svg');
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    order: 3;
+}
+}

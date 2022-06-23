@@ -20,8 +20,16 @@ export default function Layout({ children }: { children: JSX.Element }) {
     }
   }
   const fetchApi = async () => {
-      const data = await agent.Auth.getMe();
-    dispatch({ type: "setUser", payload: data.data });
+     
+      if (localStorage.getItem('teacher')) {
+        const data = await agent.Auth.teacherMe()
+      return  dispatch({ type: "setUser", payload: data.data });
+      }else{
+        const  data = await agent.Auth.getMe();
+
+        return  dispatch({ type: "setUser", payload: data.data });
+      }
+  
   };
   useEffect(() => {
     if (getCookie("agent") && !data.users.user_info) {

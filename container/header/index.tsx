@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import useResponsivenenessAdjuster from '../../hooks/useResponsivenenessAdjuster';
 import { LogoSvg } from '../../svg/Logo';
 import Nav from '../nav';
 import styles from './index.module.css'
@@ -11,7 +12,10 @@ const Header:React.FC<HeaderProps> = () => {
                <Link href="/">
                    <a ><LogoSvg/></a>
                </Link>
-               <Nav/>
+              <Nav/>
+               {
+                     useResponsivenenessAdjuster(920)&& <div className={styles.BGSearch}></div>
+               }
             </div>
         </div>
     );
