@@ -20,11 +20,33 @@
   padding: 0 5px;
 }
 .topHeaderButtons > li.active {
-    text-align: center;
+  text-align: center;
   background: #f2fcfd;
   height: 40px;
   border: 1px solid #00c1dd;
   border-radius: 10px;
   line-height: 40px;
   color: #00c1dd;
+}
+
+.dashTabs {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0 20px;
+}
+.dashTabs > li {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #c2c2c2;
+  cursor: pointer;
+}
+.dashTabs > li.itemActive {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #00c1dd;
+  border-bottom: 2px solid #00c1dd;
 }

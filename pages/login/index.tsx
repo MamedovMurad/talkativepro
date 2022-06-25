@@ -119,7 +119,7 @@ const Login: React.FC<LoginProps> = () => {
               </div>
               <ButtonUI
                 text={loader ? "Yüklənir..." : "Giriş"}
-                width="360px"
+                width="90%"
                 height="56px"
               />
             </form>

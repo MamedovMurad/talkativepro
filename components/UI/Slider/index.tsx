@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import agent, { baseImageUrl } from "../../../Api/agent";
 import CustomSlider from "../../../hooks/CustomSlider";
@@ -9,15 +10,12 @@ const SliderItemUI:React.FC<SliderUIProps> = () => {
     const aalll = CustomSlider(teacherImage);
     async function fetchTopTeacher() {
         const res = await agent.teacher.topList()
-        console.log(res,'ppp');
-        console.log(res.data,'ooooooooooo');
         res.data&& setteacherImage(res.data?.filter(item=>{
             if (item.avatar) {
                 return item
             }
         })?.map(item=>item.avatar)
         )}
-        console.log(baseImageUrl+aalll,'jj');
         
     useEffect(() => {
         fetchTopTeacher()
@@ -27,7 +25,8 @@ const SliderItemUI:React.FC<SliderUIProps> = () => {
 
     return (
         <div className={styles.sliderCustom}>
-            <img src={baseImageUrl+aalll} alt="" />
+            <Image src={baseImageUrl+aalll} alt="slider-image" height="100%" width="100%" style={{objectFit:'cover'}}/>
+          {/*   <img src={baseImageUrl+aalll} alt="" /> */}
         </div>
     );
 }

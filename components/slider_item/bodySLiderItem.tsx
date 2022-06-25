@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { baseImageUrl } from '../../Api/agent';
+import toast from 'react-hot-toast';
+import agent, { baseImageUrl } from '../../Api/agent';
 import { UserContext } from '../../pages/_app';
 import TalkVIewModalBody from '../modal/talkView';
 import ButtonUI from '../UI/Button';
@@ -11,6 +12,23 @@ type BodySliderItemProps = {
  
 const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
     const [data, dispatch] = useContext(UserContext);
+    const connecttoConversation= async (uuid:string) => {
+        if (data.users.user_info&&!data.users.user_info?.loggedAsTeacher) {
+            try {
+                const res = await agent.talk.connect(uuid)
+                toast.success('Söhbətə qoşuldunuz')
+            } catch (error) {
+                
+            }
+            
+        }else if(data.users.user_info?.loggedAsTeacher){
+            toast.error('Tələbə kimi daxil olun')
+        }else{
+            toast.error('Giriş edin')
+        }
+        
+    }
+    
     return (
         <div className={styles.bodySliderItem} style={{width}} onClick={()=>  dispatch({type:'setModalActive', payload:<TalkVIewModalBody item={item}/>})}>
            <header className={styles.header}>
@@ -40,7 +58,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
                    <div><img src="/uploads/portiret.png" alt="" /></div>
                </div>
                <div className={styles.buttonArea}>
-                  <button>Sən də qoşul</button>
+                  <button onClick={(e:any)=>{connecttoConversation(item?.id); e.stopPropagation()}}>Sən də qoşul</button>
                </div>
            </footer>
         </div>

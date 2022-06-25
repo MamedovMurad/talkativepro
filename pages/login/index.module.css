@@ -79,8 +79,9 @@
   color: #00c1dd;
 }
 .passwordForget {
+  width: 90%;
   margin: 0 0 10px 0;
-  text-align: center;
+  text-align: right;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;

@@ -18,13 +18,13 @@ let arrLevel: any = [];
 let date__:any = null
 const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
   const [talks, settalks] = useState<GenericListDto<any> | null>(null);
-
+  const [tab, settab] = useState(0)
   async function fetchTalks() {
    /*  const res = await agent.talk.list() */
   /*   res.data&& settalks(res.data) */
 
 
-    const res = await agent.talk.list(arr, [], arrLevel,date__?.split('-').reverse().join('-'));
+    const res = await agent.talk.list(arr, [], arrLevel,date__?.split('-').reverse().join('-'), tab==1?'RESERVED':tab==2?'OLD':'ALL');
     res && res.data && settalks(res.data.entities);
     const lang = await agent.Common.langList();
     const nation = await agent.Common.notianal();
@@ -51,7 +51,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
     nation: { id: number; name: string; code?: string , selected?:any}[] | null;
     level: { name: string; id: string , selected?:any}[] | null|any;
   }>({ lang: null, nation: null, level: null });
-  /*   const inputSearch = useRef<any>(null); */
+
   
 
   async function filterTeacher(param: { group: string; id: number }) {
@@ -92,7 +92,17 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
   res && res.data && settalks(res.data.entities);
  }
 
-  useEffect(() => {!data.loggedAsTeacher&& fetchTalks()}, [])
+  useEffect(() => {
+    if (!data.loggedAsTeacher ) {
+     if (tab!=0) {
+      arr=[]
+      arrNation=[]
+      arrLevel=[]
+      date__=null
+     }
+      fetchTalks()
+    }
+    }, [tab])
   
   return (
     <>
@@ -101,10 +111,13 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
           <CustomCalendar />
         </AuthTeacher>
       ) : (
-        <AuthUser >
+        <AuthUser  tab={tab} setTab={settab}>
           <>
-    {/*       <Talks widthF="20%" widthS="79%"/> */}
-          <Aside width="20%" 
+    {/*<Talks widthF="20%" widthS="79%"/> */}
+
+
+        {
+         tab==0&& <Aside width="20%" 
            setList={filterTeacher}
             list={[
               { name: "Dillər", children: otherData.lang },
@@ -112,7 +125,8 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
               { name: "Danışıq səviyyəsi", children: otherData.level },
             ]}
           />
-           <TalksContainer width="79%" list={talks}/>
+        }  
+           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth="345px" list={talks}/>
            </>
           </AuthUser>
       )}

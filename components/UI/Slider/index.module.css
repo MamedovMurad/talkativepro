@@ -1,7 +1,7 @@
-.sliderCustom>img{
-    object-fit: cover;
-    width: 98%;
-    height: 94%;
+.sliderCustom>span{
+    object-fit: cover !important;
+    width: 98% !important;
+    height: 94% !important;
   }
   .sliderCustom{
       height: 100%;

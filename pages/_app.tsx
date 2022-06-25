@@ -45,6 +45,8 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
         return state;
     }
   };
+
+  
   const [contextData, dispatch] = useReducer(reducer, data);
   Router.events.on("routeChangeStart", (url) => {
     
