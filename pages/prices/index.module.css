@@ -165,6 +165,9 @@
     width: 70%;
   }
   .body > div:first-child > ul > li >label{
-    padding: 0 0.1rem;
+    padding: 0 0.6rem;
   }
+
+  .Prices > div > div {
+    max-width: 95%;}
   }

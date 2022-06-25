@@ -94,4 +94,12 @@
 .content > .form >form>.buttonArea{
   justify-content: center;
 }
+
+.content > .form >form{
+  max-width: 80%;
+
+}
+.content > .info > div {
+  max-width: 59%;
+}
 }
