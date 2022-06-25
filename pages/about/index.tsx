@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import agent from "../../Api/agent";
 import MapUI from "../../components/UI/map";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import { GenericDTO } from "../../Model/DTO";
 import styles from "./index.module.css";
 type AboutProps = {
@@ -27,7 +28,7 @@ const About: React.FC<AboutProps> = ({data}) => {
               }}
             ></div>
           </div>
-          <MapUI />
+          { !useResponsivenenessAdjuster(920)&& <MapUI />}
         </div>
         <div className={styles.center}>
           <div>

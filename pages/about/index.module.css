@@ -64,3 +64,29 @@
   line-height: 170%;
   color: #999999;
 }
+
+@media screen and (min-width: 680px) and (max-width: 932px) { 
+  .about > div > .header > div {
+    width: 100%;
+  }
+  .about {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .about > div > .header > div {
+    width: 100%;
+  }
+  .about > div > .center {
+  display: block;
+   }
+   .about > div > .center>div{
+     width: 100%;
+     margin-top: 10px;
+   }
+
+   .about {
+    margin-top: 60px;
+  }
+  }
