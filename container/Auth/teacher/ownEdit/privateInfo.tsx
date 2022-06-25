@@ -1,3 +1,4 @@
+import  Router  from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -50,6 +51,7 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   const [imgageUrl, setimgageUrl] = useState<string | null>(null)
   const [otherPai, setotherPai] = useState<any>(null)
   const [user, dispatch] = useContext(UserContext);
+  const [blocksetvalue, setblocksetvalue] = useState(false)
   const {
     register,
     handleSubmit,
@@ -63,6 +65,8 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
     control,
     name: "lang",
   });
+  console.log(desc,'desc');
+  
   async function fetchLangapi() {
     const res = await agent.Common.langList()
     res && setotherPai(res.data)
@@ -76,8 +80,8 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   }
 
   async function handleSubmitData(data: any) {
-    console.log(data.fullName.split(' '),'daat');
-    
+    console.log(data,'daat');
+    setblocksetvalue(true)
     if (data.fullName?.split(' ').length<=1) {
       return toast.error('Soyad əlavə edilməyib')
   
@@ -109,11 +113,22 @@ res.data&& toast.success('Profiliniz yeniləndi')
   }
   useEffect(() => { fetchLangapi();
     setimgageUrl(user.users.user_info?.avatar)
-     reset({fullName:user.users.user_info?.firstName+ ' '+user.users.user_info?.lastName, address:user.users.user_info?.address})}, [user])
+     reset({fullName:user.users.user_info?.firstName+ ' '+user.users.user_info?.lastName,
+      address:user.users.user_info?.address, lang:user.users.user_info?.teacherLanguages?.map((item:any)=>{
+        item.language.value=item?.language?.id
+        item.language.label = item?.language?.name
+
+        return item?.language
+      }),})
+    
+
+    }, [user])
  
 
-
-
+desc&&!blocksetvalue&& desc?.map((item:any,index:number)=>{
+  
+  setValue('desc'+item.value, user.users.user_info?.teacherLanguages?.find((i:any,indexx:number)=>indexx==index)?.introduction)
+})
   
 
   return (
@@ -140,6 +155,7 @@ res.data&& toast.success('Profiliniz yeniləndi')
              
                 isMulti={true}
                 id="34567890-"
+                value={value}
                 options={otherPai?.map((item: any) => ({
                   label: item.name,
                   value: item.id,

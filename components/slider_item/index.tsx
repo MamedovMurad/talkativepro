@@ -11,7 +11,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ index , item}) => {
   const [data, dispatch] = useContext(UserContext);
  /*  const router = useRouter() */
   const handleClick = () => {
-    dispatch({type:'setModalActive', payload:<UserModalBody item={item}/>})
+    dispatch({type:'setModalActive', payload:<UserModalBody uuid={item?.uuid}/>})
     /* router.push('teacher/turalaliyev-12334') */
   }
   return (

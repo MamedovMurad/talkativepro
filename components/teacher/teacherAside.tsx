@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import  Router  from "next/router";
+import { useContext, useState , useEffect} from "react";
 import { setCookie } from "react-use-cookie";
 import agent, { baseImageUrl } from "../../Api/agent";
 import { ITeacher } from "../../Model/DTO";
@@ -13,15 +14,21 @@ type TeacherAsideComponentProps = {
 
 const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({detail, item}) => {
   const [data, dispatch] = useContext(UserContext);
-const folloToggle = async (uuid?:string) => {
-  if (data.users.user_info.uuid) {
-    const res =uuid&& await agent.Student.followTeacherToggle({url:uuid, isFolledByCurrentUser:true})
+  const [paragraph, setparagraph] = useState<string|null>(null)
+const folloToggle = async (uuid?:string, ) => {
+  if (item?.isFollowedByCurrentUser!==null) {
+  
+    const res =uuid&& await agent.Student.followTeacherToggle({url:uuid, isFolledByCurrentUser:!item?.isFollowedByCurrentUser})
 
-    console.log(res,'res');
-  }
- 
-    
+    Router.push('/teacher/'+uuid)
+  }  
 }
+
+function defSetParagraph(){
+setparagraph(item?.teacherLanguages?.find((item,i)=>i==0)?.introduction||null)
+}
+useEffect(() => {defSetParagraph()}, [item])
+
   return (
     <div className={styles.teacherasidecomp}>
     {
@@ -31,39 +38,34 @@ const folloToggle = async (uuid?:string) => {
      item?.firstName && ( item?.avatar? <img src={baseImageUrl+item?.avatar} alt="" />: <div className={styles.profileCaptalize}>{item?.firstName[0]+' '+item?.lastName[0]}</div>)}
        
         <div className={styles.contentArea}>
-          <p>25 izləyici</p>
+          <p>{item?.followerCount} izləyici</p>
           <h4>{item?.firstName+ ' ' + item?.lastName}</h4>
           <div>
             <span>Azərbaycan</span>
           </div>
         </div>
       </div>
+     
+
+
+
       <div className={styles.buttons}>
         {
-          item?.languages?.map(t=>(
-            <button key={t.id}>{t.name}</button>
+          item?.teacherLanguages?.map(t=>(
+            <button key={t.language.id} onClick={()=>setparagraph(t.introduction)} className={t.introduction==paragraph?styles.activeButton:styles.buttonitem}>{t.language.name}</button>
           ))
         }
       </div>
+    
       {
-        !detail&&<button style={{marginTop:'5px'}} onClick={()=>folloToggle(item?.uuid)}>İzlənir</button>
+        !detail&&<button style={{marginTop:'5px'}} onClick={()=>folloToggle(item?.uuid)} 
+        className={item?.isFollowedByCurrentUser?styles.active:styles.passiveButton}> {item?.isFollowedByCurrentUser? 'İzlənir':'Müəllimi izlə'}</button>
       }
-      
 
       <p className={styles.mainCOntent}>
       
    
-        Hi. My name is Mansura. I am here to help you to improve your English. I
-        have been teaching English to a wide range of students, including
-        children, teenagers, and adults. I believe that the best way of learning
-        English is to have the students speak as much as possible, so that they
-        feel more comfortable using it in different types of contexts and
-        experiences. My hobbies include going abroad, cooking, and also reading
-        various types of books. I also really enjoy speaking with people from
-        all over the world, including my students, but also other fantastic
-        people that I have met. My goal is to help you speak English fluently.
-        Now you know a little bit about me, I can not wait to learn more about
-        you.
+    {paragraph}
       </p>
     </div>
   );

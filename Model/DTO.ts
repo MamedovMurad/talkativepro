@@ -115,6 +115,9 @@ export interface ITeacher{
     educations:IEducation[],
     certifications:ITeacherSertification[];
     languages:ILanguage[]
+    teacherLanguages:{introduction:string, language:ILanguage}[]
+    followerCount:number,
+    isFollowedByCurrentUser:null|boolean
 }
 
 export interface IContact{

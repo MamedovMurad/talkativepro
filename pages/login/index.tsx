@@ -10,8 +10,9 @@ import agent from "../../Api/agent";
 import toast from 'react-hot-toast'
 import "react-toastify/ReactToastify.min.css";
 import { UserContext } from "../_app";
-import { getCookie, setCookie } from "react-use-cookie";
+import { getCookie } from "react-use-cookie";
 import Router from "next/router";
+import { setCookies } from 'cookies-next';
 
 type LoginProps = {};
 const buttons = ["Müəllim", "Tələbə"];
@@ -54,12 +55,7 @@ const Login: React.FC<LoginProps> = () => {
       console.log(locale);
       const minute__second =
         (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
-      setCookie("agent", locale.data.token, {
-        days: minute__second,
-        domain:process.env.NODE_ENV === 'production'?`http://194.147.58.56:3000`:'localhost',
-        SameSite: "Lax",
-        Secure: true,
-      });
+        setCookies("agent", locale.data.token);
       
    }
  
@@ -79,16 +75,12 @@ const Login: React.FC<LoginProps> = () => {
       
     }
     
-    
-     /* catch (error) {
-      toast.error("İstifadəçi tapılmadı !");
-    } */
- 
-      console.log('lllllllllllll');
+
       setLoading(false);
     
    
 
+    console.log('15:51');
     
 
   };

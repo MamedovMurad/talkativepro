@@ -1,6 +1,7 @@
 import Router from 'next/router';
-import { useContext } from 'react';
-import { baseImageUrl } from '../../../Api/agent';
+import { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import agent, { baseImageUrl } from '../../../Api/agent';
 import { ITeacher } from '../../../Model/DTO';
 import { UserContext } from '../../../pages/_app';
 import { LocationSVG } from '../../../svg/locationSVG';
@@ -8,11 +9,26 @@ import { StarSVG } from '../../../svg/starSVG';
 import { UsersSVG } from '../../../svg/usersSVG';
 import styles from './index.module.css'
 type UserModalBodyProps = {
-    item?:ITeacher
+    uuid?:string
 }
  
-const UserModalBody:React.FC<UserModalBodyProps> = ({item}) => {
-    const [data, dispatch] = useContext(UserContext);
+const UserModalBody:React.FC<UserModalBodyProps> = ({uuid}) => {
+    console.log(uuid,'log');
+    
+const [item, setitem] = useState<ITeacher|null>(null)
+const [data, dispatch] = useContext(UserContext);
+async function fetchTeacher(uuid:string) {
+   
+    try {
+        const res = await agent.teacher.single(uuid)
+        setitem(res.data)
+    } catch (error) {
+        toast.error('Xəta baş verdi')
+    }
+}
+ 
+useEffect(() => {uuid&&fetchTeacher(uuid)}, [uuid])
+
     return (
         <section className={styles.modulebody}>
             <header>
