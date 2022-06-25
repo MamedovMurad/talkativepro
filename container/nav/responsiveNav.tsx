@@ -1,9 +1,11 @@
+import { BurgerSVG } from "../../svg/burgerSVG";
+
 type ResponsiveNavProps = {}
  
 const ResponsiveNav:React.FC<ResponsiveNavProps> = () => {
     return (
         <div>
-            re
+           {<BurgerSVG/>}
         </div>
     );
 }

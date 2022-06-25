@@ -76,7 +76,7 @@ color: #C2C2C2 !important;
 }
 @media only screen and (max-width: 800px) {
   .wrapper{
-    max-width: 600px;
+    max-width: 90%;
     margin: 0 auto;
   }
   }

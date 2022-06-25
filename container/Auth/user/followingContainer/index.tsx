@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { baseImageUrl } from "../../../../Api/agent";
 import GrammerItem from "../../../../components/grammer";
 import ButtonUI from "../../../../components/UI/Button";
 import { GenericListDto, IDocument } from "../../../../Model/DTO";
@@ -19,15 +21,26 @@ const FollowingContainer: React.FC<FollowingContainer> = ({
   width = "79%",
   list,
 }) => {
+  console.log(list,'list');
+  
   return (
     <div className={styles.following}>
       <ul>
         {list?.map((item, i) => (
           <li key={i}>
             <div className={styles.cardItem}>
-              <label htmlFor="" className="avatar">
-                {item.shortname}
-              </label>
+              {
+                item.avatar?   <Image 
+                alt="Next.js logo"
+                src={baseImageUrl+item.avatar}
+                width={60}
+                height={60}
+                style={{borderRadius:'50%'}}
+              /> :  <label htmlFor="" className="avatar">
+              {item.shortname}
+            </label>
+              }
+             
               <div className={styles.content}>
                 <h5>{item.fullname}</h5>
                 <div className={styles.group}>

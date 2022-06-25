@@ -3,18 +3,20 @@ import RightNav from "../../components/right_nav";
 import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import useWindowDimensions from "../../hooks/windowDimensions";
 import { nav } from "../../Model/utils/nav";
-import styles from './index.module.css'
-import ResponsiveNav from "./responsiveNav";
+import { BurgerSVG } from "../../svg/burgerSVG";
+import Link from "next/link";
 
-type NavProps = {}
+type NavProps = {
+    settoggle?:any
+}
  
-const Nav:React.FC<NavProps> = () => {
+const Nav:React.FC<NavProps> = ({settoggle}) => {
   
     return (
         !useResponsivenenessAdjuster(920)?  <>
         <MainNav/>
         <RightNav/>
-        </> : <ResponsiveNav/>
+        </> :/*  <ResponsiveNav /> */ <div onClick={()=>settoggle((item:boolean)=>!item)}>{<BurgerSVG/>}</div>
     );
 }
  

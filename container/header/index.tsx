@@ -1,21 +1,38 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import useResponsivenenessAdjuster from '../../hooks/useResponsivenenessAdjuster';
 import { LogoSvg } from '../../svg/Logo';
 import Nav from '../nav';
 import styles from './index.module.css'
+import { nav } from "../../Model/utils/nav";
 type HeaderProps = {}
  
 const Header:React.FC<HeaderProps> = () => {
+    const [toggle, settoggle] = useState(false)
     return (
         <div className={styles.header}>
             <div className={`wrapper ${styles.wrapper}`}>
                <Link href="/">
                    <a ><LogoSvg/></a>
                </Link>
-              <Nav/>
+              <Nav settoggle={settoggle}/>
                {
                      useResponsivenenessAdjuster(920)&& <div className={styles.BGSearch}></div>
                }
+            </div>
+
+            <div className={`${styles.responsiveMenu}  ${toggle?styles.responsiceActive: styles.responsiveDeActive}`}>
+                <ul>
+                    {
+                        nav.map(item=>(
+                            <li key={item.id}><Link href={item.path}>
+                            <a> {item["title_AZ"]}</a>
+                          </Link></li>
+                        ))
+                    }
+                   
+           
+                </ul>
             </div>
         </div>
     );
