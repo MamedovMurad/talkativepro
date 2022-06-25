@@ -16,7 +16,7 @@ type InputUIProps = {
     maxlength?:string|number,
 }
  
-const InputUI:React.FC<InputUIProps> = ({id, width='360px', label,height,type="text",register, name, value, errors, max, min, required=true,maxlength}) => {
+const InputUI:React.FC<InputUIProps> = ({id, width='92%', label,height,type="text",register, name, value, errors, max, min, required=true,maxlength}) => {
     console.log(errors);
     console.log(max,'fasdfasf');
     

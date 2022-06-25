@@ -21,6 +21,7 @@
     display: none;
 } */
 .header{
+    padding-top: 10px;
     position: fixed;
     z-index: 99;
     top: 0px;
