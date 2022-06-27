@@ -37,11 +37,16 @@ const Teacher: React.FC<TeacherProps> = () => {
         arr.push(param.id);
       }
     } else if (param.group === "Milliyət") {
+      
       if (arrNation.includes(param.id)) {
-        arrNation.splice(arr.indexOf(param.id), 1);
+        
+        
+        arrNation.splice(arrNation.indexOf(param.id), 1);
       } else {
         arrNation.push(param.id);
       }
+
+      console.log(arrNation,'log arr');
     }
     
     
