@@ -1,0 +1,30 @@
+.videparent{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 0 3%;
+}
+.item{
+    width: 45%;
+
+}
+.item>div{
+    height: 86vh;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.videbuttons{
+    display: flex;
+    justify-content: center;
+    gap: 0 10px;
+}
+.videbuttons>button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #FF6868;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}

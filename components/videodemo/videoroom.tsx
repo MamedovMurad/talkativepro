@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { VideoPlayer } from './videoplayer';
+import styles from './index.module.css'
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = 'fecd6f1f6e4a46df8d942e6a3a8291ba';
 const TOKEN =
-  '006fecd6f1f6e4a46df8d942e6a3a8291baIACE2t2cHYzZ/VbJTH6SsydkPpiXvcisyxtWFgfT+U2OX4u0DVwAAAAAEACJVdSDNZe5YgEAAQA1l7li';
-const CHANNEL = 'talk_ma_channel_3';
+  '006fecd6f1f6e4a46df8d942e6a3a8291baIABuaZuaUQa9Cq/iV3XIV/9d4MRDOqCcOZ9BQFkzB1CkUIf9154AAAAAEACJVdSD03e7YgEAAQDRd7ti';
+const CHANNEL = 'talk_channel_5';
 
 const client = AgoraRTC.createClient({
   mode: 'rtc',
@@ -84,20 +85,14 @@ const client = AgoraRTC.createClient({
     };
   
   return (
-    <div
-      style={{ display: 'flex', justifyContent: 'center' }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 200px)',
-        }}
-      >
-          <div onClick={ext}> cixis</div>
+    <div className={styles.body}>
+      <div className={styles.videparent}>
         {users.map((user:any) => (
           <VideoPlayer key={user.uid} user={user} />
         ))}
       </div>
+
+      <div className={styles.videbuttons}> <button onClick={ext}>cxis</button></div>
     </div>
   );
 };
