@@ -15,8 +15,8 @@ const SliderUI: React.FC<SliderProps> = ({data}) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
+    slidesToShow: (data?.length!==undefined&&data.length>3)?4:data?.length,
+    slidesToScroll: (data?.length!==undefined&&data.length>3)?4:data?.length,
   };
   return (
     <div className={styles.slider}>
@@ -24,6 +24,7 @@ const SliderUI: React.FC<SliderProps> = ({data}) => {
         <div className={styles.slideritem_Area}>
           <Slider {...settings}>
             {data?.map((item) => (
+      
               <SliderItem key={item.uuid}  item={item} />
             ))}
           </Slider>
