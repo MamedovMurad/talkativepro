@@ -1,3 +1,5 @@
+import React from "react";
+
 export const ArrowSvg = ({  height = "6",
 width = "11",
 color = "#333333",
