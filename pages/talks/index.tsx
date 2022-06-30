@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import agent from "../../Api/agent";
+import ButtonUI from "../../components/UI/Button";
 import TalksContainer from "../../container/talks";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import Aside from "../../layout/aside";
 import { GenericListDto } from "../../Model/DTO";
 import styles from "./index.module.css";
@@ -23,7 +25,7 @@ const Talks: React.FC<TalksProps> = () => {
     level: { name: string; id: string , selected?:any}[] | null|any;
   }>({ lang: null, nation: null, level: null });
   /*   const inputSearch = useRef<any>(null); */
-  
+  const responsive = useResponsivenenessAdjuster(920)
 
   async function filterTeacher(param: { group: string; id: number }) {
     settalks(null)
@@ -113,6 +115,7 @@ const Talks: React.FC<TalksProps> = () => {
             <div className={styles.datePickerfortop}>
           <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/>
           </div>
+          {responsive&& <ButtonUI text="Filterləri göstər" width="100%"/>}
         </div>
       <div className="wrapper">
     

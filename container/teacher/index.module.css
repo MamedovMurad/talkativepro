@@ -15,3 +15,17 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+@media only screen and (max-width: 810px) {
+    .teacherContainer{
+ 
+    justify-content: center;
+    overflow: unset;
+    width: 100%;
+    }
+
+    .teacherContainer>div{
+        margin: 24px 0;
+    }
+
+}
