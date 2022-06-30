@@ -150,7 +150,9 @@ const talk = {
             .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds=${n}`)
             .join("&")}&${levels.map((n, index) =>`levels=${n}`).join("&")}`
     ),
-    connect:(body:string)=>requests.post(`conversations/${body}/participants`,'')
+    connect:(body:string)=>requests.post<GenericDTO<{token:string, channelId:string, continueWithCall:true}>>(`conversations/${body}/join`,''),
+
+    startConversation:(body:number)=> requests.post<GenericDTO<{token:string,channelId:string}>>(`conversations/${body}/join`, '')
 }
 const Student = {
     grammerOrLecture: (offset = 0) =>

@@ -1,3 +1,4 @@
+import Router  from 'next/router';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import agent, { baseImageUrl } from '../../Api/agent';
@@ -16,7 +17,12 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
         if (data.users.user_info&&!data.users.user_info?.loggedAsTeacher) {
             try {
                 const res = await agent.talk.connect(uuid)
-                toast.success('Söhbətə qoşuldunuz')
+                if (res?.data?.continueWithCall) {
+                    Router.push('/video-call?token='+res.data?.token+'&chanal='+res.data.channelId)
+                }else{
+                    toast.success('Söhbətə qoşuldunuz')
+                }
+               
             } catch (error) {
                 
             }

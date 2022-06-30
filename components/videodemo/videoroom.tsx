@@ -18,7 +18,9 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
-const VideoRoom = ({ setjoined , user}: any) => {
+const VideoRoom = ({ setjoined , user, token, chanal}: any) => {
+  console.log(user,'user');
+  
   const user_info = user.firstName+ ' '+ user.lastName
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
@@ -49,7 +51,7 @@ console.log(user.agoraUid,'uid');
     client.on("user-left", handleUserLeft);
 
     client
-      .join(APP_ID, CHANNEL, TOKEN || null, user.agoraUid)
+      .join(APP_ID, chanal, token || null, user.agoraUid)
       .then((uid) =>
         Promise.all([AgoraRTC.createMicrophoneAndCameraTracks(), Number(uid)])
       )

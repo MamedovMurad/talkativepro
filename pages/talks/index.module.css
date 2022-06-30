@@ -22,3 +22,22 @@
 .datePickerfortop > input:focus{
     border: 1px solid #00C1DD;
 }
+
+
+
+@media only screen and (max-width: 810px) {
+
+  .datePickerfortop{
+    display: block;
+    width: 95,3%;
+    padding: 0;
+  }
+  .talks > div > div:first-child {
+    display: flex;
+    justify-content: center;
+  }
+  .datePickerfortop > input {
+width: 100%;
+
+  }
+}

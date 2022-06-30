@@ -8,3 +8,27 @@
 .TalksContainer>div{
     margin: 0 0 2.99% 2.99% ;
 }
+@media only screen and (max-width: 928px) {
+
+.TalksContainer{
+    overflow: unset;
+    justify-content: center;
+    gap: 0 8px;
+}
+.TalksContainer>div{
+    margin: 24px 15px;
+}
+}
+
+@media only screen and (max-width: 810px) {
+    .TalksContainer{
+ 
+    justify-content: center;
+    overflow: unset;
+    }
+
+    .TalksContainer>div{
+        margin: 24px 0;
+    }
+
+}

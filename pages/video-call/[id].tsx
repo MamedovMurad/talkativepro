@@ -3,15 +3,12 @@ import { useContext, useState } from 'react';
 import { VideoCall } from 'react-agora';
 import { UserContext } from '../_app';
 import styles from './index.module.css'
-import { useRouter } from 'next/router'
+
 
 
 type VideoPageProps = {}
  
 const VideoPage:React.FC<VideoPageProps> = () => {
-    const router = useRouter()
-    console.log(router.query,'logg');
-    
     const [inCall, setInCall] = useState(false);
   const [channelName, setChannelName] = useState("talk_ma_channel_5");
   const [joined, setjoined] = useState(false)
@@ -26,7 +23,7 @@ const VideoPage:React.FC<VideoPageProps> = () => {
                !joined&&(<button onClick={()=>setjoined(true)}>qosul</button>)
            }
             {
-               joined&&(<VideoRoom setjoined={setjoined} user={data.users.user_info} token={router.query?.token} chanal={router.query?.chanal}/>)
+               joined&&(<VideoRoom setjoined={setjoined} user={data.users.user_info}/>)
            }
         </div>
     );

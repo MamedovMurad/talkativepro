@@ -1,5 +1,7 @@
+import  Router  from "next/router";
 import { useContext, useEffect, useState } from "react";
 import agent from "../../../Api/agent";
+import ButtonUI from "../../../components/UI/Button";
 import SpinnerLOader from "../../../components/UI/spinner";
 import { ICalendar } from "../../../Model/calendar";
 import { UserContext } from "../../../pages/_app";
@@ -56,6 +58,16 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
       console.log(calendar);
     } catch (error) {}
   };
+
+  async function startTalk(id?:number) {
+    if (id) {
+      const res = await agent.talk.startConversation(id)
+      Router.push('/video-call?token='+res?.data?.token+'&chanal='+res.data?.channelId)
+      console.log(res);
+    }
+  
+    
+  }
   useEffect(() => {
     fetchCalendarServer();
   }, [data]);
@@ -103,9 +115,16 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
               <ul key={indexes} className={styles.calendarBody}>
                 {item.hours?.map((item, index) => (
           
-                    <li key={index} style={item?.conversation?{background:weekColor[indexes>6?indexes-7:indexes].bg, borderLeft:'2px solid'+weekColor[indexes>6?indexes-7:indexes].color}:{}}>
+                    <li key={index}
+                    className={styles.start_item} style={item?.conversation?{background:weekColor[indexes>6?indexes-7:indexes].bg, borderLeft:'2px solid'+weekColor[indexes>6?indexes-7:indexes].color}:{}}>
                   
-                      <span>{item.time}</span> {item.conversation?.title}
+                      <span>{item.time}</span> 
+                      {/* {item.conversation?.title} */}
+                      {
+                        item.conversation&&  <ButtonUI onclick={()=>startTalk(item.conversation?.id)} text="Başlat"/>
+                      }
+                 
+                  
                     </li>
                   
                 ))}
