@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import agent, { baseImageUrl } from '../../../../Api/agent';
 import ButtonUI from '../../../../components/UI/Button';
 import InputUI from '../../../../components/UI/Input';
+import { UserContext } from '../../../../pages/_app';
 import styles from './index.module.css'
 type OwnEditTeacherProps = {}
 const UserInfoEdit:React.FC<OwnEditTeacherProps> = () => {
     const [imgageUrl, setimgageUrl] = useState<string | null>(null)
+    const [user, dispatch] = useContext(UserContext);
     const {
         register,
         handleSubmit,
@@ -25,11 +28,30 @@ const UserInfoEdit:React.FC<OwnEditTeacherProps> = () => {
         item && setimgageUrl(item.data)
       }
 
-      async function handleSubmitData(params:any) {
-        console.log(params);
+      async function handleSubmitData(data:any) {
+        if (data.fullName?.split(' ').length<=1) {
+          return toast.error('Soyad əlavə edilməyib')
+      
+        }
+        else if(imgageUrl==null){
+          return toast.error('Avatar yükləyin')
+        }
         
+        const cleanData ={
+          avatar:imgageUrl,
+          firstName:data.fullName.split(' ')[0],
+          lastName:data.fullName.split(' ')[1],
+        }
+        const res = await agent.Student.updateStudent(cleanData)
+        res.data&& toast.success('Profiliniz yeniləndi')
       }
 
+      useEffect(() => {
+        setimgageUrl(user.users.user_info?.avatar)
+
+        reset({fullName:user.users.user_info?.firstName+ ' '+user.users.user_info?.lastName})
+      }, [user]);
+      
 
     return (
         <div >

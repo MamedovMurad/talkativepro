@@ -19,6 +19,7 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
   const [crossSecondForm, setsetcrossSecondFormfirst] = useState(false);
   const [data, dispatch] = useContext(UserContext);
   const [isblock, setisblock] = useState(120)
+
   const {
     register,
     handleSubmit,
@@ -73,7 +74,13 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
 }
-
+async function handleSendAgain(){
+  if (isblock==0) {
+    setisblock(120)
+    const again = await agent.Auth.again({token:token})
+    again&& toast.success('Yenidən göndərildi')
+  }
+}
   return (
     <>
       {crossSecondForm ? (
@@ -93,7 +100,7 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
 
             <div className={styles.againsend}>
               <label>
-                <span>Kodu əldə etmədiniz? </span>   <span>{isblock===0?'Yenidən göndər':convertHMS(isblock)}</span>  
+                <span>Kodu əldə etmədiniz? </span>   <span onClick={handleSendAgain}>{isblock===0?'Yenidən göndər':convertHMS(isblock)}</span>  
               </label>
             </div>
             <ButtonUI text={"Təsdiqlə"} width="360px" height="56px" />

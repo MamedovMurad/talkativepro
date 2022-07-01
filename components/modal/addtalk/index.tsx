@@ -108,7 +108,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = ({max}) => {
 
             <div style={{marginRight:'20px'}}>
             <Select
-          options={language?.map((item:any)=>({label:item.name, value:item.id}))}
+          options={data?.users.user_info?.teacherLanguages?.map((item:any)=>({label:item.language.name, value:item.language.id}))}
           styles={customStyles}
           placeholder={<p className={styles.paragraph}>Dil seçimi </p>}
           onChange={(val:any)=>setactiveLang(val)}

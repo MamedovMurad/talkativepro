@@ -113,6 +113,8 @@ const Auth = {
         requests.post<GenericDTO<{token:string, tokenDurationInSeconds:number}>>("/auth/registration/code", body),
     registerTeacherTwo: (body: ITeacherRegister) =>
         requests.patch<string>("/teachers/me/initialDetails", body),
+
+        again:(body:{token:string})=>requests.post<GenericDTO<string>>('/auth/registration/again',body)
 };
 const teacher = {
     list: (
@@ -161,7 +163,8 @@ const Student = {
             "/public/documentations?limit=10&offset=" + offset
         ),
     followingTeacher:(limit=10, offset=0)=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(`/students/followings?limit=${limit}&&offset=${offset}`),
-    followTeacherToggle:(body:{isFolledByCurrentUser:boolean, url:string})=>requests.post(`/teachers/${body.url}/followers`, body.isFolledByCurrentUser)
+    followTeacherToggle:(body:{isFolledByCurrentUser:boolean, url:string})=>requests.post(`/teachers/${body.url}/followers`, body.isFolledByCurrentUser),
+    updateStudent:(body:{avatar:string, firstName:string, lastName:string})=>requests.post<GenericDTO<true>>('/users/me',body)
 };
 const tariff = {
     list: () => requests.get<GenericDTO<ITariff[]>>("/public/tariffs"),
