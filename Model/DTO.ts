@@ -44,7 +44,8 @@ export interface ICategory {
 
 export interface ITeacherRegister{
     languageIds:number[],
-    cvFile:string
+    cvFile:string,
+    nationalityId:number
 }
 export interface IDocument{
     id: number,

@@ -9,7 +9,7 @@ import Router from 'next/router'
 import toast from 'react-hot-toast'
 import { UserContext } from "../../pages/_app";
 import SweetAlertBody from "../UI/sweetAlert/body";
-import { setCookie } from "react-use-cookie";
+import { setCookies } from 'cookies-next';
 type ActivationCodeProps = {
   token: string;
   teacher: boolean;
@@ -33,12 +33,7 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
       console.log(locale);
       const minute__second =
         (0.000694444444 / 60) * locale.data.tokenDurationInSeconds;
-      setCookie("agent", locale.data.token, {
-        days: minute__second,
-        domain:process.env.NODE_ENV === 'production'?`http://194.147.58.56:3000`:'localhost',
-        SameSite: "Lax",
-        Secure: true,
-      });
+        setCookies("agent", locale.data.token);
       
    }
  
@@ -52,8 +47,9 @@ const ActivationCode: React.FC<ActivationCodeProps> = ({ token, teacher }) => {
         setsetcrossSecondFormfirst(true);
         saveLocale(res)
       } else if(res&&!teacher){
-        Router.push('/login')
-        return  dispatch({type:'setModalActive', payload:<SweetAlertBody/>})
+       await Router.push('/login')
+        dispatch({type:'setModalActive', payload:<SweetAlertBody/>})
+        return
       }
    };
    useEffect(() => {

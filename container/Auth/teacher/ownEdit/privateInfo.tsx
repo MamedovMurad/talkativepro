@@ -136,7 +136,7 @@ res.data&& toast.success('Profiliniz yeniləndi')
 
         return item?.language
       }),
-      
+      nationality:{label:user.users.user_info?.nationality?.name, value:user.users.user_info?.nationality?.id}
     })
     
 
