@@ -1,10 +1,15 @@
-type OwnEditTeacherProps = {}
+type OwnEditTeacherProps = {
+    isTeacher?:boolean
+}
 import { useState } from 'react';
 import DeleteAccount from './deleteAccount';
  import styles from './index.module.css'
 import PasswordEdit from './password';
 import PrivateInfoEdit from './privateInfo';
-const OwnEditTeacher:React.FC<OwnEditTeacherProps> = () => {
+import UserInfoEdit from './privateInfoUser';
+const OwnEditTeacher:React.FC<OwnEditTeacherProps> = ({isTeacher}) => {
+    console.log(isTeacher,'is');
+    
     const [tab, settab] = useState({
         info:true,
         password:false,
@@ -26,7 +31,7 @@ const OwnEditTeacher:React.FC<OwnEditTeacherProps> = () => {
              </div>
 
             <div className={styles.maincontent}>
-                {tab.info&&<PrivateInfoEdit/>}
+                {tab.info&&(isTeacher? <PrivateInfoEdit/>: <UserInfoEdit/>)}
                 {tab.password&&  <PasswordEdit/> }
                  {tab.delete&& <DeleteAccount/>}
             </div>

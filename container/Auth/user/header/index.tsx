@@ -1,6 +1,6 @@
 type HeaderAuthProps = {};
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import  Router, {useRouter } from 'next/router'
 import { useContext, useEffect, useState } from "react";
 import { setCookie } from "react-use-cookie";
 import agent, { baseImageUrl } from "../../../../Api/agent";
@@ -61,7 +61,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
             }
           >
             <div style={{ marginTop: "50px" }}>
-              <li>Redaktə et</li>
+              <li onClick={()=>Router.push('dashboard/edit-private-info')}>Redaktə et</li>
               <li>Səviyyə testi</li>
               <li>Bizimlə əlaqə</li>
               <li onClick={extDashboard}>Çıxış</li>

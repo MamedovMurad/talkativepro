@@ -52,6 +52,8 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   const [otherPai, setotherPai] = useState<any>(null)
   const [user, dispatch] = useContext(UserContext);
   const [blocksetvalue, setblocksetvalue] = useState(false)
+  const [natioans, setnatioans] = useState<any>(null);
+  
   const {
     register,
     handleSubmit,
@@ -70,6 +72,11 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   async function fetchLangapi() {
     const res = await agent.Common.langList()
     res && setotherPai(res.data)
+    const nation = await agent.Common.notianal()
+    nation&& setnatioans(nation?.data)
+
+    console.log(nation,'lll');
+    
   }
 
   const fileUpadfunction = async (data: any) => {
@@ -80,6 +87,8 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
   }
 
   async function handleSubmitData(data: any) {
+    console.log(data,'dd');
+    
     console.log(data,'daat');
     setblocksetvalue(true)
     if (data.fullName?.split(' ').length<=1) {
@@ -89,8 +98,11 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
     else if(imgageUrl==null){
       return toast.error('Avatar yükləyin')
     }
-    else if(!data.lang){
+    else if(!data.lang|| data.lang?.length<1){
       return toast.error('Dil əlavə edin')
+    }
+    else if(!data.nationality){
+      return toast.error('Milliyət əlavə edin')
     }
     else{
       data.firstName= data.fullName.split(' ')[0]
@@ -100,12 +112,14 @@ const PrivateInfoEdit: React.FC<PrivateInfoEditProps> = () => {
       const language = {id:item.value}
       return {language, introduction :data['desc'+item.value]}
     })||null
+
     const cleanData ={
       teacherLanguages:data.teacherLanguages,
       avatar:imgageUrl,
       firstName:data.fullName.split(' ')[0],
       lastName:data.fullName.split(' ')[1],
-      address:data.address
+      address:data.address,
+      nationalityId:data.nationality.value
     }
     
 const res = await agent.teacher.postPrivateForm(cleanData)
@@ -113,19 +127,25 @@ res.data&& toast.success('Profiliniz yeniləndi')
   }
   useEffect(() => { fetchLangapi();
     setimgageUrl(user.users.user_info?.avatar)
+    
      reset({fullName:user.users.user_info?.firstName+ ' '+user.users.user_info?.lastName,
-      address:user.users.user_info?.address, lang:user.users.user_info?.teacherLanguages?.map((item:any)=>{
+      address:user.users.user_info?.address, 
+      lang:user.users.user_info?.teacherLanguages?.map((item:any)=>{
         item.language.value=item?.language?.id
         item.language.label = item?.language?.name
 
         return item?.language
-      }),})
+      }),
+      
+    })
     
 
     }, [user])
  
+    console.log(Object.values(errors).every(x=>x==null||x==undefined||x==''),'erros');
+    
 
-desc&&!blocksetvalue&& desc?.map((item:any,index:number)=>{
+desc&&!blocksetvalue&&   Object.values(errors).every(x=>x==null||x==undefined||x=='') && desc?.map((item:any,index:number)=>{
   
   setValue('desc'+item.value, user.users.user_info?.teacherLanguages?.find((i:any,indexx:number)=>indexx==index)?.introduction)
 })
@@ -133,7 +153,7 @@ desc&&!blocksetvalue&& desc?.map((item:any,index:number)=>{
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit(handleSubmitData)}>
+      <form action="" onSubmit={handleSubmit(handleSubmitData)} >
         <div>
           {
             imgageUrl ? <div onClick={() => setimgageUrl(null)} className={styles.imageUrl}><img src={baseImageUrl+imgageUrl} alt="" /> </div> : <label htmlFor="changableformimage">
@@ -143,10 +163,42 @@ desc&&!blocksetvalue&& desc?.map((item:any,index:number)=>{
           }
         </div>
         <InputUI name="fullName" label={"Ad/ Soyad"} id={43234567} register={register} required={true}/>
-        <InputUI name="address" label={"Məkan"} id={63234567} maxlength={310} register={register}  required={true}/>
+        <InputUI name="address" label={"Məkan"} id={63234567} maxlength={310} register={register}  required={true} errors={errors}/>
         <div className={styles.react_select}>
 {/* 
           <input type="text" {...register("lang")} /> */}
+              <Controller
+            control={control}
+            name="nationality"
+            render={({field: { onChange, value }}) => (
+              <Select
+             
+                isMulti={false}
+                id="8945-"
+                value={value}
+                options={natioans?.map((item: any) => ({
+                  label: item.name,
+                  value: item.id,
+                  
+                   }))}
+                {...register("nationality")}
+                styles={customStyles}
+                placeholder="Milliyəti"
+                onChange={(val: any) =>{
+                  setValue('nationality', val); 
+                  onChange(val)
+                }
+                 
+
+                }
+              />
+            )}
+          />
+        </div>
+
+
+
+        <div className={styles.react_select}>
           <Controller
             control={control}
             name="lang"
