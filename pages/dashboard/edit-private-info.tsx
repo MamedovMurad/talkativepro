@@ -8,7 +8,7 @@ type EditPrivateInfoProps = {};
 const EditPrivateInfo: React.FC<EditPrivateInfoProps> = () => {
   return (
     <div>
-      <div className="wrapperAUth">
+      <div className="warpperAUth">
              <TeacherAuthHeader />
             <OwnEditTeacher/>
       </div>

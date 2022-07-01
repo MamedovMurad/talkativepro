@@ -14,7 +14,7 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3.0,
+        slidesToShow: talks?.length>3?3:talks?.length,
         slidesToScroll: 1,
       };
     return (

@@ -7,7 +7,7 @@ type AsideProps = {
     list?:any
 }
  
-const Aside:React.FC<AsideProps> = ({width="29%", setList, list}) => {
+const Aside:React.FC<AsideProps> = ({width="25%", setList, list}) => {
 
     console.log({list});
     
