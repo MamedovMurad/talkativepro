@@ -14,6 +14,7 @@ import {
 import { getCookie } from "react-use-cookie";
 import { ICalendar } from "../Model/calendar";
 import toast from "react-hot-toast";
+import {  removeCookies } from 'cookies-next';
 /* import toast from 'react-hot-toast' */
 
 
@@ -45,8 +46,6 @@ axios.interceptors.response.use(
 
         switch (status) {
             case 400:
-            
-
                 console.log(data);
                 if (typeof data === "string") {
                     console.log(statusText);
@@ -61,7 +60,9 @@ axios.interceptors.response.use(
                     throw modalStateErrors.flat();
                 }
                 break;
-
+                case 401:
+                    removeCookies('agent')
+                    break
             case 404:
                 break;
             case 409:
