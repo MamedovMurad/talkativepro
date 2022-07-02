@@ -13,9 +13,9 @@
   align-items: center;
 }
 .mainBgSLider {
-  height: 500px;
+ 
   background: url("../../public/uploads/background.svg");
-  width: 44%;
+  width: 40%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -55,24 +55,48 @@ section.connection > div > h4 {
   margin-bottom: 35px;
 }
 .customFlexSvg {
-  height: 8%;
-  position: absolute;
-  top: -10px;
+  position: relative;
+  height: 416px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+.customFlexSvg > div {
+  position: absolute;
+}
+.customFlexSvg > div:first-child{
+  top: -10px;
+  left: 0;
+}
+.customFlexSvg > div:last-child{
+  bottom: -10px;
+  right: 0;
+}
+.customFlexSvg > div:nth-child(2){
+  top: -10px;
+  right: 0;
+}
+.customFlexSvg > div:nth-child(3){
+ position: static;
+ transform: translate(-10px 0);
+
+}
+.customFlexSvg > div:nth-child(4){
+left: 0 ;
+bottom: -10px;
 }
 .customFlexSvg > div > img {
   border-radius: 10px;
 }
 .laptop {
-  transform: translateY(-25px);
+  transform: translate(-15px,-8px);
   display: flex;
   justify-content: center;
   width: 100%;
 }
 .laptop > div {
-  width: 58%;
+  width: 62%;
   background: url("../../public/uploads/laptop.png");
   background-repeat: no-repeat;
   background-size: cover;
