@@ -142,10 +142,10 @@ res.data&& toast.success('Profiliniz yeniləndi')
 
     }, [user])
  
-    console.log(Object.values(errors).every((x:any)=>x==null||x==undefined||x==''),'erros');
+
     
 
-desc&&!blocksetvalue&&   Object.values(errors).every((x:any)=>x==null||x==undefined||x=='') && desc?.map((item:any,index:number)=>{
+desc&&!blocksetvalue&&   Object.values(errors).every((x:any)=>x===null||x===undefined||x==='') && desc?.map((item:any,index:number)=>{
   
   setValue('desc'+item.value, user.users.user_info?.teacherLanguages?.find((i:any,indexx:number)=>indexx==index)?.introduction)
 })

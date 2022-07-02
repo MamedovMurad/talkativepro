@@ -114,7 +114,8 @@ const Auth = {
     registerTeacherTwo: (body: ITeacherRegister) =>
         requests.patch<string>("/teachers/me/initialDetails", body),
 
-        again:(body:{token:string})=>requests.post<GenericDTO<string>>('/auth/registration/again',body)
+        again:(body:{token:string})=>requests.post<GenericDTO<string>>('/auth/registration/again',body),
+        deleteMe:()=>requests.del<GenericDTO<string>>('/users/me')
 };
 const teacher = {
     list: (

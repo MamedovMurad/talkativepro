@@ -1,4 +1,6 @@
+import { removeCookies } from "cookies-next";
 import { useContext } from "react";
+import agent from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import { UserContext } from "../../../../pages/_app";
 import styles from "./index.module.css";
@@ -6,6 +8,11 @@ type DeleteAccountProps = {};
 
 const DeleteAccount: React.FC<DeleteAccountProps> = () => {
     const [data, dispatch] = useContext(UserContext);
+
+    async function deleteMe(){
+      const data = await agent.Auth.deleteMe()
+     data&& removeCookies('agent')
+    }
   return (
     <div>
       <form action="">
@@ -20,7 +27,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = () => {
         </p>
 
         <div style={{ marginTop: "25px" }}>
-          <ButtonUI text="Təsdiqlə" width="148px" height="44px" />
+          <ButtonUI text="Təsdiqlə" width="148px" height="44px"  onclick={deleteMe}/>
         </div>
       </form>
     </div>
