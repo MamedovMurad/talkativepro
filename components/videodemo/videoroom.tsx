@@ -49,7 +49,8 @@ console.log(user.agoraUid,'uid');
   useEffect(() => {
     client.on("user-published", handleUserJoined);
     client.on("user-left", handleUserLeft);
-
+      console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
+      
     client
       .join(APP_ID, chanal, token || null, user.agoraUid)
       .then((uid) =>

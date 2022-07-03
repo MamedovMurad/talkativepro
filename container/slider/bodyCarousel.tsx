@@ -15,7 +15,7 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
         infinite: true,
         speed: 500,
         slidesToShow: talks?.length>3?3:talks?.length,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
       };
     return (
         <div className={styles.bodyCarousel}>

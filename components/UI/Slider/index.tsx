@@ -1,12 +1,17 @@
+import { allowSelection } from "@fullcalendar/core";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import agent, { baseImageUrl } from "../../../Api/agent";
 import CustomSlider from "../../../hooks/CustomSlider";
+import { ITeacher } from "../../../Model/DTO";
+import { UserContext } from "../../../pages/_app";
+import UserModalBody from "../../modal/usermodal_body";
 import styles from './index.module.css'
 type SliderUIProps = {}
  
 const SliderItemUI:React.FC<SliderUIProps> = () => {
-    const [teacherImage, setteacherImage] = useState<any[]>([])
+    const [data, dispatch] = useContext(UserContext);
+    const [teacherImage, setteacherImage] = useState<ITeacher[]>([])
     const aalll = CustomSlider(teacherImage);
     async function fetchTopTeacher() {
         const res = await agent.teacher.topList()
@@ -14,9 +19,15 @@ const SliderItemUI:React.FC<SliderUIProps> = () => {
             if (item.avatar) {
                 return item
             }
-        })?.map(item=>item.avatar)
+        })
         )}
         
+  
+        /*  const router = useRouter() */
+         const handleClick = () => {
+           dispatch({type:'setModalActive', payload:<UserModalBody uuid={aalll?.uuid}/>})
+           /* router.push('teacher/turalaliyev-12334') */
+         }
     useEffect(() => {
         fetchTopTeacher()
     }, [])
@@ -24,8 +35,8 @@ const SliderItemUI:React.FC<SliderUIProps> = () => {
 
 
     return (
-        <div className={styles.sliderCustom}>
-            <Image src={baseImageUrl+aalll} alt="slider-image" height="100%" width="100%" style={{objectFit:'cover'}}/>
+        <div className={styles.sliderCustom} onClick={handleClick}>
+            <Image src={baseImageUrl+aalll?.avatar} alt="slider-image" height="100%" width="100%" style={{objectFit:'cover'}}/>
           {/*   <img src={baseImageUrl+aalll} alt="" /> */}
         </div>
     );

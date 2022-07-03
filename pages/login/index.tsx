@@ -13,6 +13,7 @@ import { UserContext } from "../_app";
 import { getCookie } from "react-use-cookie";
 import Router from "next/router";
 import { setCookies } from 'cookies-next';
+import ForgetPass from "../../container/forgetPass";
 
 type LoginProps = {};
 const buttons = ["Müəllim", "Tələbə"];
@@ -28,6 +29,8 @@ const Login: React.FC<LoginProps> = () => {
   } = useForm();
   const [Student, setStudent] = useState("Tələbə");
   const [loader, setLoading] = useState<null | boolean>(null);
+  const [forgetpass, setforgetpass] = useState(false);
+  
   const handleChangeStatus = (param: string) => {
     setStudent(param);
   };
@@ -89,7 +92,9 @@ const Login: React.FC<LoginProps> = () => {
       <div className={styles.login}>
         <MapUI />
           <div className={styles.formDiv}>
-            <div className={styles.links}>
+            {
+              forgetpass ? <ForgetPass/> :
+              <>  <div className={styles.links}>
               <Link href="/register">
                 <a>Qeydiyyat</a>
               </Link>
@@ -97,7 +102,6 @@ const Login: React.FC<LoginProps> = () => {
                 <a className={styles.active}>Giriş</a>
               </Link>
             </div>
-
             <form onSubmit={handleSubmit(onSubmit)}>
               <InputUI
                 label="Email"
@@ -113,7 +117,7 @@ const Login: React.FC<LoginProps> = () => {
                 name="password"
               />
               <div className={styles.passwordForget}>
-                <label className={styles.labelForCheckbox}>
+                <label className={styles.labelForCheckbox} onClick={()=>setforgetpass(true)}>
                   <span>Şifrənizi unutmusunuz? </span>
                 </label>
               </div>
@@ -122,7 +126,9 @@ const Login: React.FC<LoginProps> = () => {
                 width="90%"
                 height="56px"
               />
-            </form>
+            </form></>
+            }
+         
           </div>
      
       </div>

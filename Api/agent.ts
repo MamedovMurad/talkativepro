@@ -115,7 +115,9 @@ const Auth = {
         requests.patch<string>("/teachers/me/initialDetails", body),
 
         again:(body:{token:string})=>requests.post<GenericDTO<string>>('/auth/registration/again',body),
-        deleteMe:()=>requests.del<GenericDTO<string>>('/users/me')
+        deleteMe:()=>requests.del<GenericDTO<string>>('/users/me'),
+        passwordReset:(body:{email:string})=>requests.post<GenericDTO<string>>('/auth/password-reset',body),
+        newPass:(body:{password:string})=>requests.put<GenericDTO<boolean>>('/users/f/password',body)
 };
 const teacher = {
     list: (
@@ -133,7 +135,7 @@ const teacher = {
     addConvation: (body: any) => requests.post("/conversations", body),
     oldConversations: (limit = 10, offset = 0) =>
         requests.get<GenericDTO<GenericListDto<IOldDoc[]>>>(
-            "/teachers/oldConversations?=limit" + limit + "&offset=" + offset
+            "/teachers/oldConversations?limit=" + limit + "&offset=" + offset
         ),
         single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`),
         postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body),
@@ -216,7 +218,7 @@ const about = () =>
         getCount:()=>requests.get<GenericDTO<number>>('notifications/newCount')
     }
     const password = {
-        update :(body:{password:string, passwordAgain:string})=>requests.post<GenericDTO<boolean>>('/users/password', body)
+        update :(body:{password:string, passwordAgain:string})=>requests.put<GenericDTO<boolean>>('/users/password', body)
     }
 const agent = {
     Auth,

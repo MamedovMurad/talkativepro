@@ -10,7 +10,9 @@ type VideoPageProps = {}
  
 const VideoPage:React.FC<VideoPageProps> = () => {
     const router = useRouter()
-    console.log(router.query,'logg');
+    if (typeof window !=='undefined') {
+        console.log(sessionStorage.getItem('agora_token'),'logg');
+    } 
     
     const [inCall, setInCall] = useState(false);
   const [channelName, setChannelName] = useState("talk_ma_channel_5");
@@ -26,7 +28,7 @@ const VideoPage:React.FC<VideoPageProps> = () => {
                !joined&&(<button onClick={()=>setjoined(true)}>qosul</button>)
            }
             {
-               joined&&(<VideoRoom setjoined={setjoined} user={data.users.user_info} token={router.query?.token} chanal={router.query?.chanal}/>)
+               joined&&(<VideoRoom setjoined={setjoined} user={data.users.user_info} token={sessionStorage.getItem('agora_token')} chanal={router.query?.chanal}/>)
            }
         </div>
     );

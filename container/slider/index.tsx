@@ -16,7 +16,7 @@ const SliderUI: React.FC<SliderProps> = ({data}) => {
     infinite: true,
     speed: 500,
     slidesToShow: (data?.length!==undefined&&data.length>3)?4:data?.length,
-    slidesToScroll: (data?.length!==undefined&&data.length>3)?4:data?.length,
+    slidesToScroll: 2,
   };
   return (
     <div className={styles.slider}>

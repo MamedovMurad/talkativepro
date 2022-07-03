@@ -1,18 +1,14 @@
 import styles from "./index.module.css";
-import { UserContext } from "../../pages/_app";
-import { useContext } from "react";
-import UserModalBody from "../modal/usermodal_body";
 import { StarSVG } from "../../svg/starSVG";
 import { ITeacher } from "../../Model/DTO";
 import { baseImageUrl } from "../../Api/agent";
+import { useRouter } from "next/router";
 type SliderItemProps = { index?: number , item?:ITeacher};
 
 const SliderItem: React.FC<SliderItemProps> = ({ index , item}) => {
-  const [data, dispatch] = useContext(UserContext);
- /*  const router = useRouter() */
+   const router = useRouter() 
   const handleClick = () => {
-    dispatch({type:'setModalActive', payload:<UserModalBody uuid={item?.uuid}/>})
-    /* router.push('teacher/turalaliyev-12334') */
+    router.push('teacher/'+item?.uuid) 
   }
   return (
     <div className={styles.SliderItem} onClick={handleClick}>
