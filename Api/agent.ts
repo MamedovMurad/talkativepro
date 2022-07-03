@@ -165,7 +165,20 @@ const Student = {
         ),
     followingTeacher:(limit=10, offset=0)=>requests.get<GenericDTO<GenericListDto<ITeacher[]>>>(`/students/followings?limit=${limit}&&offset=${offset}`),
     followTeacherToggle:(body:{isFolledByCurrentUser:boolean, url:string})=>requests.post(`/teachers/${body.url}/followers`, body.isFolledByCurrentUser),
-    updateStudent:(body:{avatar:string, firstName:string, lastName:string})=>requests.post<GenericDTO<true>>('/users/me',body)
+    updateStudent:(body:{avatar:string, firstName:string, lastName:string})=>requests.post<GenericDTO<true>>('/users/me',body),
+    listTalks:(
+        languageIds:number[]=[],
+        teacherNationalityIds:number[]=[],
+        levels:string[]=[],
+        date:string='',
+        type='ALL',
+        limit = 10,
+        offset = 0,
+    )=>requests.get<GenericDTO<any>>(
+        `/students/conversations?limit=${limit}&offset=${offset}&type=${type}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
+            .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds=${n}`)
+            .join("&")}&${levels.map((n, index) =>`levels=${n}`).join("&")}`
+    )
 };
 const tariff = {
     list: () => requests.get<GenericDTO<ITariff[]>>("/public/tariffs"),

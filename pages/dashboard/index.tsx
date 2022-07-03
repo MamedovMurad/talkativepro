@@ -75,7 +75,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
         arrLevel.push(param.id);
       }
     }
-    const res = await agent.talk.list(arr, arrNation, arrLevel);
+    const res = await agent.Student.listTalks(arr, arrNation, arrLevel);
     res && res.data && settalks(res.data.entities);
 
 
@@ -126,7 +126,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
             ]}
           />
         }  
-           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth="345px" list={talks}/>
+           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth="45%" list={talks}/>
            </>
           </AuthUser>
       )}
