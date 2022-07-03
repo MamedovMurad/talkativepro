@@ -89,7 +89,7 @@ bottom: -10px;
   border-radius: 10px;
 }
 .laptop {
-  transform: translate(-15px,-8px);
+  transform: translate(-15px,-5px);
   display: flex;
   justify-content: center;
   width: 100%;
