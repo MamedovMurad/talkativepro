@@ -10,9 +10,8 @@ type VideoPageProps = {}
  
 const VideoPage:React.FC<VideoPageProps> = () => {
     const router = useRouter()
-    if (typeof window !=='undefined') {
-        console.log(sessionStorage.getItem('agora_token'),'logg');
-    } 
+  
+  
     
     const [inCall, setInCall] = useState(false);
   const [channelName, setChannelName] = useState("talk_ma_channel_5");

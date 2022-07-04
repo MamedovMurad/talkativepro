@@ -79,7 +79,7 @@
   color: #00c1dd;
 }
 .passwordForget {
-  width: 90%;
+  width: 100%;
   margin: 0 0 10px 0;
   text-align: right;
   font-weight: 400;
@@ -87,3 +87,22 @@
   line-height: 21px;
   color: #00c1dd;
 }
+
+
+@media only screen and (max-width: 800px) {
+
+  .login  {
+
+    flex-direction: column;
+  }
+  .login > .formDiv {
+    width: 100%;
+  }
+  .StudentTeacher {
+    width: 100%;
+  }
+
+  .login > .formDiv > .links {
+margin-bottom: 33px;
+  }
+  }

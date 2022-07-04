@@ -108,8 +108,10 @@ const Login: React.FC<LoginProps> = () => {
                 id={323453453432432}
                 register={register}
                 name="userName"
+                width="100%"
               />
               <InputUI
+              width="100%"
               type="password"
                 label="Şifrə"
                 id={134342932432432}
@@ -123,7 +125,7 @@ const Login: React.FC<LoginProps> = () => {
               </div>
               <ButtonUI
                 text={loader ? "Yüklənir..." : "Giriş"}
-                width="90%"
+                width="100%"
                 height="56px"
               />
             </form></>
