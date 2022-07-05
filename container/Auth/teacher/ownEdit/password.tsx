@@ -19,7 +19,6 @@ const PasswordEdit: React.FC<PasswordEditProps> = () => {
       const res = await agent.password.update(params)
 toast.success('Şifrəniz yeniləndi')
     } catch (error) {
-      toast.error('Xəta baş verdi')
     }
    
   

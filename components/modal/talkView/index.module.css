@@ -26,6 +26,7 @@
 .connectionPersons > div {
   width: 40%;
 }
+
 .groupDiv {
   display: flex;
   align-items: center;

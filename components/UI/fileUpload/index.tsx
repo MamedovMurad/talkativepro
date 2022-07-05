@@ -3,11 +3,12 @@ import agent from "../../../Api/agent";
 import { DownloadSVG } from "../../../svg/downloadSvg";
 import styles from "./index.module.css";
 type FileUploadProps = {
-  file:any
+  file:any,
+  text?:string
 };
 
-const FileUpload: React.FC<FileUploadProps> = ({file}) => {
-  const [fileName, setfileName] = useState("Cv-nizi buraya yükləyin");
+const FileUpload: React.FC<FileUploadProps> = ({file, text="Cv-nizi buraya yükləyin"}) => {
+  const [fileName, setfileName] = useState(text);
   const fileUpload = async(param:any)=>{
     const filepath = param.value;
     const m = filepath.match(/([^\/\\]+)$/);
@@ -21,7 +22,7 @@ const FileUpload: React.FC<FileUploadProps> = ({file}) => {
   return (
     <div className={styles.fileUpload}>
       <label htmlFor="file-upload">
-      <span id="filename"><DownloadSVG/> {fileName}</span> <input accept="application/pdf" type="file" id="file-upload" onChange={(e)=>fileUpload(e.target)}/>
+      <span id="filename"><DownloadSVG/> {fileName}</span> <input  type="file" id="file-upload" onChange={(e)=>fileUpload(e.target)}/>
       </label>
     </div>
   );

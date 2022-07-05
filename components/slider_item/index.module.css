@@ -156,6 +156,10 @@
   border: 1px solid #00c1dd;
   transition: all 0.3s;
 }
+.bodySliderItem>footer.footer>.buttonArea>button.activeButton{
+  background-color: #00c1dd;
+  color: white;
+}
 .bodySliderItem > footer.footer > .buttonArea > button:hover {
   background: #00c1dd;
   color: white;

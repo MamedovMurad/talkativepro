@@ -23,9 +23,12 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
   function handleModal(){
    /*  console.log(data?.users); */
     
-    if (data?.users?.user_info.isApproved) {
-      dispatch({type:'setModalActive', payload:<TalkAddModal/>})
-    }else{
+    if (data?.users?.user_info.isApproved &&data?.users?.user_info?.teacherLanguages?.find((item:any)=>item.isApproved==true)) {
+      return dispatch({type:'setModalActive', payload:<TalkAddModal/>})
+    }else if (!data?.users?.user_info?.teacherLanguages?.find((item:any)=>item.isApproved==true)) {
+      return toast.error('Aktiv dil yoxdur')
+    }
+    else{
       return toast.error('Hesab aktiv deyil')
     }
    

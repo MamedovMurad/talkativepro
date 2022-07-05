@@ -22,7 +22,7 @@ import {  removeCookies } from 'cookies-next';
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getCookie("agent");
-    const lang = localStorage.getItem('lang')
+    const lang = localStorage.getItem('lang')||'az'
     if (token){
         config.headers = { ...config.headers, Authorization: "Bearer " + token, ['Accept-Language']:lang+''||'' };
     }
@@ -140,7 +140,8 @@ const teacher = {
         single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`),
         postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body),
 
-topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`)
+topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`),
+certifatePost:(body:{fileName:string})=>requests.post('/teachers/certificates',body)
     };
 const talk = {
     list:(

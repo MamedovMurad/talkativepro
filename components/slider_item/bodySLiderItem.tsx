@@ -30,7 +30,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
         }else if(data.users.user_info?.loggedAsTeacher){
             toast.error('Tələbə kimi daxil olun')
         }else{
-            toast.error('Giriş edin')
+            Router.push('/login')
         }
         
     }
@@ -58,14 +58,22 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
            </main>
            <footer className={styles.footer}>
                <div className={styles.imgs}>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
+                {
+                    item?.participants?.map((item:any,index:number)=>(
+                        <div key={index}>
+                            {!item.avatar? <label htmlFor="" className='avatar-sm' >{item.firstName[0]+' '+item.lastName[0]}</label>
+                           : <img src="/uploads/portiret.png" alt="" />}
+                        </div>
+                    ))
+                }
+
                </div>
-               <div className={styles.buttonArea}>
-                  <button onClick={(e:any)=>{connecttoConversation(item?.id); e.stopPropagation()}}>Sən də qoşul</button>
-               </div>
+               {
+                !data.users.user_info?.loggedAsTeacher&&  <div className={styles.buttonArea}>
+                 <button onClick={(e:any)=>{connecttoConversation(item?.id); e.stopPropagation()}} className={item?.currentUserJoined?styles.activeButton:''}> {item?.currentUserJoined?'Qoşulmusunuz':'Sən də qoşul'}</button>
+             </div>
+               }
+             
            </footer>
         </div>
     );
