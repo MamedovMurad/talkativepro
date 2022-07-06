@@ -18,12 +18,13 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
-const VideoRoom = ({ setjoined , user, token, chanal}: any) => {
+const VideoRoom = ({ setjoined , user, token, chanal,chanalId}: any) => {
   console.log(user,'user');
   
-  const user_info = user.firstName+ ' '+ user.lastName
+ 
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
+
 
 console.log(user.agoraUid,'uid');
 
@@ -95,8 +96,8 @@ console.log(user.agoraUid,'uid');
   return (
     <div className={styles.body}>
       <div className={styles.videparent}>
-        {users.map((user: any) => (
-          <VideoPlayer key={user.uid} user={user} userInfo={user_info}/>
+        {users.map((item: any) => (
+          <VideoPlayer key={item.uid} user={item} chanal_id={chanalId}/>
         ))}
       </div>
 

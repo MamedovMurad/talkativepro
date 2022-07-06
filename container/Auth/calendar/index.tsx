@@ -63,7 +63,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
     if (id) {
       const res = await agent.talk.startConversation(id)
      res?.data&& sessionStorage.setItem('agora_token',res?.data?.token)
-      Router.push('/video-call?token='+res?.data?.token+'&chanal='+res.data?.channelId)
+      Router.push('/video-call?token='+res?.data?.token+'&chanal='+res.data?.channelId+'&conversation_id='+id)
       console.log(res);
     }
   

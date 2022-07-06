@@ -20,6 +20,10 @@ export interface ImeModel {
     phoneNumber: null | string;
     teacher:boolean,
     loggedAsTeacher?:boolean
+    bgColor?:string,
+    hidden?:boolean,
+    
+
 }
 export interface ITariff{
 
