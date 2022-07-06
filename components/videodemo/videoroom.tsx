@@ -7,6 +7,7 @@ import { MicrophoneSVG } from "../../svg/microphone";
 import { VideoSVG } from "../../svg/vodeoSVG";
 import { CHatSVG } from "../../svg/chatSVG";
 import { UserContext } from "../../pages/_app";
+import { createMicrophoneAndCameraTracks } from "agora-rtc-react";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = "fecd6f1f6e4a46df8d942e6a3a8291ba";
@@ -19,7 +20,8 @@ const client = AgoraRTC.createClient({
 });
 
 const VideoRoom = ({ setjoined , user, token, chanal,chanalId}: any) => {
-  console.log(user,'user');
+  const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
+  const { ready, tracks } = useMicrophoneAndCameraTracks();
   
  
   const [users, setUsers] = useState<any>([]);
