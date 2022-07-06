@@ -20,7 +20,7 @@ const VideoPage:React.FC<VideoPageProps> = () => {
     const VideoCallComponent = dynamic(() => import('../../components/videocall'), { ssr: false });
     const VideoRoom = dynamic(()=>  import('../../components/videodemo/videoroom'), { ssr: false })
     useEffect(() => {
-   setjoined(true)
+   !joined&&setjoined(true)
     }, []);
     
     return (

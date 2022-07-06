@@ -8,6 +8,7 @@ import { VideoSVG } from "../../svg/vodeoSVG";
 import { CHatSVG } from "../../svg/chatSVG";
 import { UserContext } from "../../pages/_app";
 import { createMicrophoneAndCameraTracks } from "agora-rtc-react";
+import Router from "next/router";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = "fecd6f1f6e4a46df8d942e6a3a8291ba";
@@ -43,10 +44,11 @@ console.log(user.agoraUid,'uid');
     }
   };
 
-  const handleUserLeft = (user: any) => {
+  const handleUserLeft = async(user: any) => {
     setUsers((previousUsers: any) =>
       previousUsers.filter((u: any) => u.uid !== user.uid)
     );
+ 
   };
 
   useEffect(() => {
@@ -84,22 +86,24 @@ console.log(user.agoraUid,'uid');
     };
   }, []);
 
-  function ext() {
+  async function ext() {
     for (let localTrack of localTracks) {
       localTrack.stop();
       localTrack.close();
     }
     client.off("user-published", handleUserJoined);
-    client.off("user-left", handleUserLeft);
+    client.on("user-left", handleUserLeft);
     client.unpublish().then(() => client.leave());
     setjoined(false);
+    await Router.push('/')
+    location.reload()
   }
 
   return (
     <div className={styles.body}>
       <div className={styles.videparent}>
         {users.map((item: any) => (
-          <VideoPlayer key={item.uid} user={item} chanal_id={chanalId}/>
+          <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} />
         ))}
       </div>
 
