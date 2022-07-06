@@ -22,6 +22,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
                     Router.push('/video-call?token='+res?.data?.token+'&chanal='+res.data?.channelId+'&conversation_id='+item?.id)
                   
                 }else{
+                    Router.push('/')
                     toast.success('Söhbətə qoşuldunuz')
                 }
                
