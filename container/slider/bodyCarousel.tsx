@@ -16,6 +16,32 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
         speed: 500,
         slidesToShow: talks?.length>3?3:talks?.length,
         slidesToScroll: 2,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 850,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 680,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
       };
     return (
         <div className={styles.bodyCarousel}>
@@ -23,7 +49,7 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
             <Slider {...settings}>
                     {
                         talks?.map((item:any)=>(
-                         <BodySliderItem key={item?.id} width={"364px"} item={item}/>
+                         <BodySliderItem key={item?.id} width={"92%"} item={item}/>
                         ))
                     }
               </Slider> 

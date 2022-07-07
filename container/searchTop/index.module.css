@@ -11,7 +11,7 @@
  /*  padding: 0 5px 0 15px ; */
 }
 .SearchTop>div{
- width: 355px;
+ width: 24%;
 }
 .SearchTop>div:first-child{
   text-align: center;
@@ -39,3 +39,25 @@ transform: translateX(27px);
 /* .selectLang{
   width: 340px !important;
 } */
+
+@media only screen and (max-width: 800px) {
+.SearchTop{
+display: block;
+height: min-content;
+padding: 20px;
+}
+.SearchTop>div{
+  width: 100%;
+}
+.SearchTop>div input:first-child{
+  width: 100%;
+  padding:0 8px;
+}
+.SearchTop>.buttonParent {
+width: 100%;
+background-size: 30px;
+height: 47px;
+transform: unset;
+margin-top: 20px;
+}
+}

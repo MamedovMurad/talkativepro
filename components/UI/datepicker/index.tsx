@@ -6,7 +6,7 @@ type DatePickerProps = {
 const DatePicker:React.FC<DatePickerProps> = ({onchange}) => {
     return (
         <>
-           <input type="text" onChange={onchange} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e) => (e.target.type = "date")}/>
+           <input type="text" onChange={onchange} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e) => {(e.target.type = "date"); e.target.showPicker()}}/>
         </>
     );
 }
