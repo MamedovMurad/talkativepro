@@ -3,10 +3,18 @@
   border: 1px solid #dddddd;
   box-sizing: border-box;
   border-radius: 10px;
-  width: 310px;
+  width: 47%;
   padding: 16px;
-  margin-right: 20px;
+  position: relative;
+
 }
+.TeacherCartItem>span{
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+}
+
 .TeacherCartItem > h4,
 .TeacherCartItem > h5,
 .TeacherCartItem > p {
@@ -14,33 +22,31 @@
   font-weight: 500;
   margin-bottom: 12px;
 }
+
 .TeacherCartItem > h4 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+.TeacherCartItem > h5 {
   font-weight: 500;
   font-size: 15px;
   line-height: 24px;
   color: #707070;
 }
-.TeacherCartItem > h5 {
+
+.TeacherCartItem > p {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   color: #474747;
 }
 
-.TeacherCartItem > p {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  color: #c2c2c2;
-}
-
 /* aside section */
 .teacherasidecomp {
   width: 100%;
   padding: 20px;
-
-  /* black&white/white */
-
   background: #ffffff;
   border-radius: 20px;
 }

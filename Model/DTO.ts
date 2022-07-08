@@ -92,7 +92,8 @@ export interface IOldDoc{
 export interface IEducation{
     id:number;
     university:String;
-    speciality:string
+    speciality:string,
+    educationLevel:number
 }
 export interface ITeacherSertification{
     id:number;
@@ -123,6 +124,7 @@ export interface ITeacher{
     teacherLanguages:{introduction:string, language:ILanguage}[]
     followerCount:number,
     isFollowedByCurrentUser:null|boolean
+    introductionVideoLink:string|null
 }
 
 export interface IContact{

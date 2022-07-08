@@ -15,6 +15,7 @@ import agent from "../../../../Api/agent";
 import { useForm } from "react-hook-form";
 import { CerticateUi } from "../../../../components/certificatesUi";
 import { ITeacher, ITeacherSertification } from "../../../../Model/DTO";
+import { AddEduModal } from "../../../../components/modal/addEdu";
 type AboutTeacherAuthProps = {
   data?: any;
 };
@@ -67,29 +68,42 @@ fetchApi()
         }
       />
              <div className={styles.mainContenArea}>
+             
             <div className={styles.videoLinkArea}>
-              <iframe
+            {
+                dto?.introductionVideoLink?    <iframe
                 id="ytplayer"
                 className={styles.hello}
                 width="100%"
                 height="360"
                 src={"https://www.youtube.com/embed/tgbNymZ7vqY"}
                 frameBorder="0"
-              ></iframe>
+              ></iframe> :<div onClick={ ()=>dispatch({type:'setModalActive', payload:<FormDash ><FormCertificate callback={fetchApi}/> </FormDash>})}>
+<div>
+ <div>
+ <label className={styles.plusicon}>+</label>
+ </div>
+  <h5>Video əlavə et</h5>
+  <p>Xarici dildə danışdığın bir videonu əlavə edərək, tələbələrin səni tanımasına kömək et</p>
+</div>
+              </div>
+              }
+       
             </div>
             <div>
 
             <h6 className={styles.thisTitle}>Təhsil</h6>
-            <ButtonDash/>
-            <TeacherCardContainer data={data?.educations}/>
-           
+            <div className={styles.flexarea}>
+            <ButtonDash onClick={()=>dispatch({type:'setModalActive', payload:<AddEduModal  callback={fetchApi}/>})}/>
+            <TeacherCardContainer data={dto?.educations} isedit={true} callback={fetchApi}/>
+           </div>
             </div>
-          
+{/*           
           <div>
           <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
-            <ButtonDash/>
-           {/*  <TeacherCardContainer data={teacher?.} /> */}
-          </div>
+            <ButtonDash onClick={()=>dispatch({type:'setModalActive', payload:<AddEduModal/>})}/>
+         
+          </div> */}
           
 
         <div>

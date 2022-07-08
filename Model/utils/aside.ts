@@ -15,3 +15,10 @@ export const AsideUtils = [
     
   },
 ];
+
+
+
+export const EduTypeS = [
+  'bakalavr',
+  'magister'
+]

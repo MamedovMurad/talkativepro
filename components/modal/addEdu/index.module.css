@@ -1,0 +1,21 @@
+.addedu{
+    padding: 24px;
+}
+.addedu>header>div>h4{
+    font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+
+color: #999999;
+}
+.addedu>header>div>*{
+    width: 39%;
+}
+.addedu>header>div{
+    align-items: center;
+    display: flex;
+    gap: 0 10px;
+}
+.submitform{
+    margin-top: 20px;
+}

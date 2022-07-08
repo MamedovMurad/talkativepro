@@ -19,7 +19,7 @@ export function CerticateUi({edit=true,list=[{id:1,fileName:'lll'}],callback}:ce
         <div className={styles.cetificatui}>
             <ul>
 {
-    list?.map((item,index)=>(
+    list?.map((item:any,index:number)=>(
         <li key={item.id} >
             {
                 edit&& <span onClick={()=>removeCertificate(item.id)}><TrashSVG/></span>
