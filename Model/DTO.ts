@@ -94,7 +94,7 @@ export interface IEducation{
     university:String;
     speciality:string
 }
-interface ITeacherSertification{
+export interface ITeacherSertification{
     id:number;
     fileName:string;
 }

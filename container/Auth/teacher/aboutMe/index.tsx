@@ -6,20 +6,23 @@ import AsideTeacher from "../../../aside/asideTeacher";
 import TeacherCardContainer from "../../../teacher/teacherCard";
 import styles from '../../../../pages/teacher/index.module.css'
 import ButtonDash from "../../../../components/UI/Button/addDash";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../pages/_app";
-import FormDash from "../../../FormDash";
+import FormDash, { FormCertificate } from "../../../FormDash";
 import FileUpload from "../../../../components/UI/fileUpload";
 import toast from "react-hot-toast";
 import agent from "../../../../Api/agent";
 import { useForm } from "react-hook-form";
+import { CerticateUi } from "../../../../components/certificatesUi";
+import { ITeacher, ITeacherSertification } from "../../../../Model/DTO";
 type AboutTeacherAuthProps = {
   data?: any;
 };
 
 const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
   const [context, dispatch] = useContext(UserContext);
-    const [file, setfile] = useState<null|string>();
+   const [dto, setdto] = useState<ITeacher|null>(null);
+   
     const {
       register,
       handleSubmit,
@@ -30,18 +33,22 @@ const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
     setCookie("agent", "", { days: 0 });
     Router.push("/login");
   }
-  async function Addcertificate(){
-    if (file) {
+  const fetchApi = async () => {
+     
+    if (localStorage.getItem('teacher')) {
+      const data = await agent.Auth.teacherMe()
+      dispatch({type:'setModalpassive'})
+    return  setdto(data.data)
 
-      const res = await agent.teacher.certifatePost({fileName:file})
-      res && toast.success('Sertifikat əlavə edildi')
-      setfile(null)
-    }else{
-      toast.error('Fayl əlavə edin')
     }
-    
-  }
-  console.log(file,'file');
+
+};
+ 
+useEffect(() => {
+fetchApi()
+
+}, []);
+
   
   return (
     <div>
@@ -84,9 +91,15 @@ const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
            {/*  <TeacherCardContainer data={teacher?.} /> */}
           </div>
           
-          <h6 className={styles.thisTitle}>Sertifikatlarım</h6>
-            <ButtonDash onClick={ ()=>dispatch({type:'setModalActive', payload:<FormDash CB={handleSubmit(Addcertificate)} file={setfile}><FileUpload text='Sertifikatinizi bura yükləyin' file={setfile}/></FormDash>})}/>
-           {/*  <TeacherCardContainer data={teacher?.} /> */}
+
+        <div>
+        <h6 className={styles.thisTitle}>Sertifikatlarım</h6>
+          <div className={styles.flexarea}>
+          <ButtonDash onClick={ ()=>dispatch({type:'setModalActive', payload:<FormDash ><FormCertificate callback={fetchApi}/> </FormDash>})}/>
+            <CerticateUi  list={dto?.certifications} callback={fetchApi}/>
+          </div>
+        </div>
+            {/* <TeacherCardContainer data={context?.users.user_info?.certifications} />  */}
           </div>
           </main>
     </div>

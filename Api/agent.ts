@@ -101,7 +101,7 @@ const Auth = {
     login: (body: { username: string; password: string; teacher: boolean }) =>
         requests.post<GenericDTO<string>>("/auth/login", body),
     getMe: () => requests.get<GenericDTO<ImeModel>>("/users/me"),
-    teacherMe:()=>requests.get<GenericDTO<ITeacher>>('/teachers/me'),
+    teacherMe:()=>requests.get<GenericDTO<ITeacher>>('/teachers/me?detailed=true'),
     register: (body: {
         name: string;
         surname: string;
@@ -141,7 +141,8 @@ const teacher = {
         postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body),
 
 topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`),
-certifatePost:(body:{fileName:string})=>requests.post('/teachers/certificates',body)
+certifatePost:(body:{fileName:string})=>requests.post('/teachers/certificates',body),
+certificateRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/certificates/'+id)
     };
 const talk = {
     list:(
