@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import agent from "../../Api/agent";
 import ButtonUI from "../../components/UI/Button";
 import FileUpload from "../../components/UI/fileUpload";
+import InputUI from "../../components/UI/Input";
 import styles from './index.module.css'
 interface IformDash{
 
@@ -51,6 +52,38 @@ export function FormCertificate({callback}:any){
     
 <form action="" onSubmit={handleSubmit(Addcertificate)}>
 <FileUpload text={'Sertifikat əlavə edin'} file={setfile}/>
+<div className={styles.buttonarea}><ButtonUI text="Əlavə et" /></div>
+</form>
+ 
+  )
+}
+
+export function FormvideoLink({callback}:any){
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  // async function Addcertificate(){
+   
+
+  //     const res = await agent.teacher.certifatePost({fileName:file})
+  //     res && toast.success('Video əlavə edildi')
+      
+  //     callback()
+  //   }else{
+  //     toast.error('Fayl əlavə edin')
+  //   }
+    
+  // }
+
+  return (
+    
+    
+<form action="" >
+
 <div className={styles.buttonarea}><ButtonUI text="Əlavə et" /></div>
 </form>
  

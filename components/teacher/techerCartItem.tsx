@@ -7,7 +7,7 @@ import { TrashSVG } from '../../svg/trashSVG';
 import styles from './index.module.css'
 type TeacherCartItemProps = {
  item:IEducation,
- isedit:boolean,
+ isedit?:boolean,
  callback?:any
 }
  

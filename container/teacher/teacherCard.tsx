@@ -3,7 +3,7 @@ import { IEducation } from '../../Model/DTO';
 import styles from './index.module.css'
 type TeacherCardContainerProps = {
   data?:IEducation[],
-  isedit:boolean,
+  isedit?:boolean,
   callback?:any
 }
  
