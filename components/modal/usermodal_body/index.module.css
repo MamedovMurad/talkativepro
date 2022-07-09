@@ -75,3 +75,48 @@
   margin-top: 10px;
   border-radius: 15px;
 }
+
+
+@media screen  and (max-width: 932px) { 
+  .modulebody > header > div.header > div > p:last-child{
+    display: block;
+  }
+  .modulebody > header > div.header > div > p {
+    font-size: 15px;
+  }
+  .modulebody > header > div.header > div{
+    width: 54%;
+  }
+  .modulebody > header > div.header > div > p > span {
+
+    font-size: 14px;
+   
+  }
+  .modulebody > header > div.header > div > p:last-child span{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px 0;
+  }
+  .modulebody > header > div.header > div > p:last-child span >svg{
+    transform: unset;
+  }
+}
+
+/* @media only screen and (max-width: 680px) {
+  .about > div > .header > div {
+    width: 100%;
+  }
+  .about > div > .center {
+  display: block;
+   }
+   .about > div > .center>div{
+     width: 100%;
+     margin-top: 10px;
+   }
+
+   .about {
+    margin-top: 60px;
+  }
+  } */

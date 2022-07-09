@@ -65,3 +65,10 @@
   color: #c2c2c2;
   margin: 0;
 }
+
+
+@media screen  and (max-width: 932px) { 
+  .successAlertsSection > div {
+    width: 80%;
+  }
+}

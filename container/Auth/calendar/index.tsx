@@ -6,6 +6,7 @@ import SpinnerLOader from "../../../components/UI/spinner";
 import { ICalendar } from "../../../Model/calendar";
 import { UserContext } from "../../../pages/_app";
 import { ArrowSvg } from "../../../svg/ArrowSVG";
+import ContentAuthCalendar from "./content";
 import styles from "./index.module.css";
 type CustomCalendarProps = {};
 
@@ -70,7 +71,8 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
     
   }
   useEffect(() => {
-    fetchCalendarServer();
+
+    data.users.user_info?.uuid&&fetchCalendarServer();
   }, [data]);
 
   return (
@@ -117,13 +119,21 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
                 {item.hours?.map((item, index) => (
           
                     <li key={index}
-                    className={styles.start_item} style={item?.conversation?{background:weekColor[indexes>6?indexes-7:indexes].bg, borderLeft:'2px solid'+weekColor[indexes>6?indexes-7:indexes].color}:{}}>
+                    className={styles.start_item} 
+                    style={item?.conversation?{background:weekColor[indexes>6?indexes-7:indexes].bg, 
+                    borderLeft:'2px solid'+weekColor[indexes>6?indexes-7:indexes].color}:{}}>
                   
                       <span>{item.time}</span> 
-                      {/* {item.conversation?.title} */}
-                      {
-                        item.conversation&&  <ButtonUI onclick={()=>startTalk(item.conversation?.id)} text="Başlat"/>
-                      }
+                   
+                     
+                    
+                     
+                        <ContentAuthCalendar leftSeconds={item.conversation?.leftSeconds} callback={()=>startTalk(item.conversation?.id)} title={item?.conversation?.title}/>
+                        
+
+                      {/* {
+                        item.conversation&&  
+                      } */}
                  
                   
                     </li>
