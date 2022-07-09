@@ -21,8 +21,6 @@ const TalksContainer:React.FC<TalksContainerProps> = ({width="74%", list, itemWi
                          <BodySliderItem key={item.id} width={(responsive&& !tablet)? '94%':(!responsive&&tablet)?  '310px':itemWidth||'360px'} item={item} />
                     ))
            }
-
-<BodySliderItem width={responsive?'94%': itemWidth||'360px'} item={null} />
         </main>
     );
 }

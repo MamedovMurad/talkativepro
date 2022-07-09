@@ -6,6 +6,7 @@ import AuthTeacher from "../../container/Auth/teacher";
 import AuthUser from "../../container/Auth/user";
 import TalksContainer from "../../container/talks";
 import withAuth from "../../Hoc/Private";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import Aside from "../../layout/aside";
 import { GenericListDto } from "../../Model/DTO";
 
@@ -92,6 +93,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
   res && res.data && settalks(res.data.entities);
  }
 
+ const responsive = useResponsivenenessAdjuster(860)
   useEffect(() => {
     if (!data.loggedAsTeacher ) {
      if (tab!=0) {
@@ -126,7 +128,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
             ]}
           />
         }  
-           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth="45%" list={talks}/>
+           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth={responsive?'90%':'45%'} list={talks}/>
            </>
           </AuthUser>
       )}

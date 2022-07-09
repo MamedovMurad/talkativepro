@@ -138,3 +138,31 @@ justify-content: center;
   width: 100%;
   text-align: right;
 }
+
+@media only screen and (min-width: 860px) and (max-width: 1460px) {
+.days > li{
+  width: 169px;
+}
+.calendarBody > li {
+  width: 169px;
+}
+
+}
+
+@media only screen and (max-width:860px){
+  .WrapperArea{
+    overflow-x: scroll;
+  }
+  .days{
+    width: 1306px;
+    overflow-x: scroll;
+    justify-content: unset;
+  }
+
+  .days > li{
+    width: 109px;
+  }
+  .calendarBody > li {
+    width: 109px;
+  }
+}

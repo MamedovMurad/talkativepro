@@ -87,14 +87,20 @@ color: #C2C2C2 !important;
   background: #00C1DD; 
 }
 
-@media screen and (min-width: 800px) and (max-width: 1200px) { 
+@media screen and (min-width: 800px) and (max-width: 1450px) { 
   .wrapper{
     max-width: 90%;
+  }
+  .warpperAUth{
+    max-width: 85%;
   }
 }
 @media only screen and (max-width: 800px) {
   .wrapper{
     max-width: 90%;
     margin: 0 auto;
+  }
+  .warpperAUth{
+    max-width: 90%;
   }
   }

@@ -140,3 +140,26 @@
 
   color: #b1b1b1;
 }
+
+@media only screen and (max-width: 860px) {
+  .TeacherCartItem{
+    width: 48%;
+  }
+  .teacherasidecomp > div:first-child {
+   gap: 10px 19px;
+  }
+  .TeacherCartItem > h4 {
+    font-size: 14px;
+
+  }
+  .teacherasidecomp > div > .contentArea > h4 {
+font-size: 21px;
+  }
+  .TeacherCartItem > h5 {
+    font-size: 12px;
+  }
+  
+  .TeacherCartItem > p {
+    font-size: 10px;
+  }
+}

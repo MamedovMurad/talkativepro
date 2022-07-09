@@ -95,3 +95,15 @@ margin: 10px 0;
   gap:  0 10px;
 
 }
+@media only screen and (max-width: 860px) {
+  .SingleTeacherDetail {
+    padding-top: 70px;
+  }
+  .SingleTeacherBody {
+    display: block;
+  }
+  .SingleTeacherBody > .mainContenArea {
+    margin: 15px 0;
+    width: 100%;
+  }
+}
