@@ -39,6 +39,7 @@ color: #C2C2C2 !important;
 /* custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 .avatar{
   width: 65px;

@@ -151,6 +151,8 @@ justify-content: center;
 
 @media only screen and (max-width:860px){
   .WrapperArea{
+    min-height: 55vh;
+    height: 55vh;
     overflow-x: scroll;
   }
   .days{

@@ -1,8 +1,11 @@
 import  Router  from "next/router";
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import agent from "../../../Api/agent";
+import TalkAddModal from "../../../components/modal/addtalk";
 import ButtonUI from "../../../components/UI/Button";
 import SpinnerLOader from "../../../components/UI/spinner";
+import useResponsivenenessAdjuster from "../../../hooks/useResponsivenenessAdjuster";
 import { ICalendar } from "../../../Model/calendar";
 import { UserContext } from "../../../pages/_app";
 import { ArrowSvg } from "../../../svg/ArrowSVG";
@@ -14,6 +17,21 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
   const [data, dispatch] = useContext(UserContext);
   const [calendar, setcalendar] = useState<ICalendar[] | null>(null);
   const [limitStep, setlimitStep] = useState(false);
+  const responsive = useResponsivenenessAdjuster(850)
+
+  function handleModal(){
+   /*  console.log(data?.users); */
+    
+    if (data?.users?.user_info.isApproved &&data?.users?.user_info?.teacherLanguages?.find((item:any)=>item.isApproved==true)) {
+      return dispatch({type:'setModalActive', payload:<TalkAddModal/>})
+    }else if (!data?.users?.user_info?.teacherLanguages?.find((item:any)=>item.isApproved==true)) {
+      return toast.error('Aktiv dil yoxdur')
+    }
+    else{
+      return toast.error('Hesab aktiv deyil')
+    }
+   
+  }
   const weekDays = [
     "Bazar ertəsi",
     "Çərşənbə axşamı",
@@ -147,7 +165,12 @@ const CustomCalendar: React.FC<CustomCalendarProps> = () => {
     {/*   {
           calendar&& <div className={styles.loadingSpinner}> <SpinnerLOader/> </div>
       } */}
+      
         </div>
+
+        {
+            responsive&&<ButtonUI text="Söhbət yarat" width="100%" height="49px" onclick={handleModal}/>
+          }
 
     </div>
   );
