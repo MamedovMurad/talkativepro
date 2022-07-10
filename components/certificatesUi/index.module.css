@@ -27,3 +27,11 @@ width: 100%;
     object-fit: cover;
     height: 146px;
 }
+@media only screen and (max-width: 800px) {
+    .cetificatui>ul>li{
+width: 48%;
+    }
+    .cetificatui>ul{
+        gap: 8px 14px;
+    }
+    }

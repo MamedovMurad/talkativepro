@@ -5,6 +5,7 @@ import agent from "../../../../Api/agent";
 import TalkAddModal from "../../../../components/modal/addtalk";
 import ButtonUI from "../../../../components/UI/Button";
 import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
+import useResponsivenenessAdjuster from "../../../../hooks/useResponsivenenessAdjuster";
 import { UserContext } from "../../../../pages/_app";
 import { LogoSvg } from "../../../../svg/Logo";
 import styles from './index.module.css'
@@ -16,6 +17,7 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
     const res = await agent.notification.getCount()
     res?.data&& setCount(res.data)
   }
+  const responsive = useResponsivenenessAdjuster(850)
   useEffect(() => {fetchCount() }, [])
   
   const [data, dispatch] = useContext(UserContext);
@@ -49,7 +51,10 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
               <span>Balans</span>
               <p>156 azn</p>
           </div>
-          <ButtonUI text="Söhbət yarat" width="169px" height="56px" onclick={handleModal}/>
+          {
+            !responsive&&<ButtonUI text="Söhbət yarat" width="169px" height="56px" onclick={handleModal}/>
+          }
+          
 
         </div>
       </div>

@@ -144,7 +144,8 @@ topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teac
 certifatePost:(body:{fileName:string})=>requests.post('/teachers/certificates',body),
 certificateRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/certificates/'+id),
 educationPost:(body:{university:string, speciality:string,educationLevel:number})=>requests.post<GenericDTO<boolean>>('/teachers/educations',body),
-educationRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/educations/'+id)
+educationRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/educations/'+id),
+updateVideoLink:(body:{introductionVideoLink:string})=>requests.put<GenericDTO<boolean>>('/teachers/introductionVideo', body)
     };
 const talk = {
     list:(

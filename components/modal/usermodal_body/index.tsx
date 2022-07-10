@@ -51,14 +51,17 @@ useEffect(() => {uuid&&fetchTeacher(uuid)}, [uuid])
             </header>
             <main>
             <div className={styles.videoLinkArea}>
-              <iframe
-                id="ytplayerteacher"
-                className={styles.hello}
-                width="100%"
-                height="200"
-                src={"https://www.youtube.com/embed/tgbNymZ7vqY"}
-                frameBorder="0"
-              ></iframe>
+                {
+                    item?.introductionVideoLink?    <iframe
+                    id="ytplayerteacher"
+                    className={styles.hello}
+                    width="100%"
+                    height="200"
+                    src={item?.introductionVideoLink}
+                    frameBorder="0"
+                  ></iframe>: <div>video tapılmadı</div>
+                }
+          
             </div>
             </main>
             <footer onClick={()=>{Router.push('/teacher/'+item?.uuid); dispatch({type:'setModalpassive'})}}>

@@ -34,6 +34,7 @@ export function FormCertificate({callback}:any){
     formState: { errors },
   } = useForm();
   const [file, setfile] = useState<string>('');
+
   async function Addcertificate(){
     if (file) {
 
@@ -66,23 +67,21 @@ export function FormvideoLink({callback}:any){
     formState: { errors },
   } = useForm();
 
-  // async function Addcertificate(){
+  async function addLink(data:any){
    
 
-  //     const res = await agent.teacher.certifatePost({fileName:file})
-  //     res && toast.success('Video əlavə edildi')
-      
-  //     callback()
-  //   }else{
-  //     toast.error('Fayl əlavə edin')
-  //   }
+      const res = await agent.teacher.updateVideoLink(data)
+      res && toast.success('Video əlavə edildi')
+      callback()
+  
     
-  // }
+  }
 
   return (
     
     
-<form action="" >
+<form action="" onSubmit={handleSubmit(addLink)}>
+<InputUI label="Video Link " name="introductionVideoLink" errors={errors} required={true} register={register} id={90102030}/>
 
 <div className={styles.buttonarea}><ButtonUI text="Əlavə et" /></div>
 </form>

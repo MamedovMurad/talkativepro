@@ -53,14 +53,16 @@ console.log(teacher);
           <AsideTeacher item={teacher}/>
           <div className={styles.mainContenArea}>
             <div className={styles.videoLinkArea}>
-              <iframe
-                id="ytplayer"
-                className={styles.hello}
-                width="100%"
-                height="360"
-                src={"https://www.youtube.com/embed/tgbNymZ7vqY"}
-                frameBorder="0"
-              ></iframe>
+        {
+          teacher?.introductionVideoLink?      <iframe
+          id="ytplayer"
+          className={styles.hello}
+          width="100%"
+          height="360"
+          src={teacher?.introductionVideoLink}
+          frameBorder="0"
+        ></iframe>: <div>Video tapılmadı</div>
+        }
             </div>
             <h6 className={styles.thisTitle}>Təhsil</h6>
             <TeacherCardContainer data={teacher?.educations}/>

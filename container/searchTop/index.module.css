@@ -42,9 +42,12 @@ transform: translateX(27px);
 
 @media only screen and (max-width: 800px) {
 .SearchTop{
-display: block;
+display: flex;
 height: min-content;
 padding: 20px;
+justify-content: space-between;
+flex-direction: column;
+height: 301px;
 }
 .SearchTop>div{
   width: 100%;

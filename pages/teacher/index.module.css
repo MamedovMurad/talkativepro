@@ -95,6 +95,27 @@ margin: 10px 0;
   gap:  0 10px;
 
 }
+.removeButton{
+  display: flex;
+  justify-content: flex-end;
+  width: 99%;
+  margin-bottom: 12px;
+}
+.removeButton>label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #00c1dd;
+  font-size: 25px;
+  width: 33px;
+  height:33px;
+  color: #00c1dd;
+  
+}
+@media only screen and (max-width: 1440px) {
+
+}
 @media only screen and (max-width: 860px) {
   .SingleTeacherDetail {
     padding-top: 70px;
@@ -105,5 +126,17 @@ margin: 10px 0;
   .SingleTeacherBody > .mainContenArea {
     margin: 15px 0;
     width: 100%;
+  }
+  .flexarea{
+    display: block;
+    width: 100%;
+  
+  }
+  .videoLinkArea>div>div{
+    width: 100%;
+  }
+  .videoLinkArea>div{
+    height: min-content;
+    padding: 10px 0;
   }
 }
