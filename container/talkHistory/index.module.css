@@ -5,3 +5,12 @@
   padding-left: 19px;
   margin-top: 38px;
 }
+
+@media only screen and (max-width: 850px) {
+
+  .talkhistoryContainer {
+    display: block;
+    padding-left: 0px;
+    margin-top: 38px;
+  }
+}
