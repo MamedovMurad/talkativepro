@@ -382,8 +382,11 @@ section.teachersection {
 .slogan{
   margin-top: 24px;
 }
+.slogan > h1 {
+line-height: 30px;
+}
   .slogan>h1, .slogan>h1>span{
-    font-size: 48px;
+    font-size: 46px;
   }
   .slogan>p{
     font-size: 16px;
@@ -407,6 +410,12 @@ section.teachersection {
   }
 
   @media only screen and (max-width: 500px) {
+    .homepage > div {
+      padding-top: 67px;
+    }
+    .main{
+      padding-top: 0;
+    }
     .main>.mainBgSLider>.customFlexSvg>div>img{
       width: 74%;
       }
@@ -416,5 +425,9 @@ section.teachersection {
         padding: 6px 17px 2px 21px;
        
     
+      }
+
+      .customFlexSvg{
+        height: 40vh;
       }
   }
