@@ -9,6 +9,7 @@ import { CHatSVG } from "../../svg/chatSVG";
 import { UserContext } from "../../pages/_app";
 import { createMicrophoneAndCameraTracks } from "agora-rtc-react";
 import Router from "next/router";
+import agent from "../../Api/agent";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = "fecd6f1f6e4a46df8d942e6a3a8291ba";
@@ -20,7 +21,7 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
-const VideoRoom = ({ setjoined , user, token, chanal,chanalId}: any) => {
+const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
   const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   
@@ -29,14 +30,17 @@ const VideoRoom = ({ setjoined , user, token, chanal,chanalId}: any) => {
   const [localTracks, setLocalTracks] = useState<any>([]);
 
 
-console.log(user.agoraUid,'uid');
-
-
   const handleUserJoined = async (user: any, mediaType: any) => {
     await client.subscribe(user, mediaType);
 
+
     if (mediaType === "video") {
-      setUsers((previousUsers: any) => [...previousUsers, user]);
+      user.audio=true
+      setUsers((previousUsers: any) => [...previousUsers, user ]?.map(item=>{
+        item.audio = true
+        item.video=true
+        return item
+      }));
     }
 
     if (mediaType === "audio") {
@@ -58,10 +62,10 @@ console.log(user.agoraUid,'uid');
   useEffect(() => {
     client.on("user-published", handleUserJoined);
     client.on("user-left", handleUserLeft);
-      console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
+      // console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
       
     client
-      .join(APP_ID, chanal, token || null, user.agoraUid)
+      .join(APP_ID, chanal, token || null, context.agoraUid)
       .then((uid) =>
         Promise.all([AgoraRTC.createMicrophoneAndCameraTracks(), Number(uid)])
       )
@@ -99,8 +103,38 @@ console.log(user.agoraUid,'uid');
     client.on("user-left", handleUserLeft);
     client.unpublish().then(() => client.leave());
     setjoined(false);
+    
+    const res = await agent.talk.stopTalk({id:chanalId})
     await Router.push('/')
     location.reload()
+  }
+
+  const mute = async(type:string, id:number|string) => {
+    if (type === 'audio') {
+      setUsers((prevUsers:any) => {
+        return (prevUsers.map((user:any) => {
+         
+          
+          if (user.uid === id) {
+           user.audioTrack?.setEnabled(!user.audio)
+            console.log('usersss', user);
+            return { ...user, audio: !user.audio }
+          }
+          return user
+        }))
+      })
+    }
+    else if (type === 'video') {
+      setUsers((prevUsers:any) => {
+        return prevUsers.map((user:any) => {
+          if (user.uid === id) {
+            user.videoTrack?.setEnabled(!user.video)
+            return { ...user, video: !user.video }
+          }
+          return user
+        })
+      })
+    }
   }
 
   return (
@@ -112,11 +146,11 @@ console.log(user.agoraUid,'uid');
       </div>
 
       <div className={styles.videbuttons}>
-        <button><MicrophoneSVG/></button>
+        <button onClick={()=>mute('audio',context?.agoraUid)}><MicrophoneSVG/></button>
         <button onClick={ext} className={styles.extbutton}>
           <TelSVG />
         </button>
-        <button><VideoSVG/></button>
+        <button onClick={()=>mute('video',context?.agoraUid)}><VideoSVG/></button>
         <button><CHatSVG/></button>
       </div>
     </div>

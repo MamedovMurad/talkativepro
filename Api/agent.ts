@@ -163,7 +163,8 @@ const talk = {
     connect:(body:string)=>requests.post<GenericDTO<{token:string, channelId:string, continueWithCall:true}>>(`conversations/${body}/join`,''),
 
     startConversation:(body:number)=> requests.post<GenericDTO<{token:string,channelId:string}>>(`conversations/${body}/join`, ''),
-    checkuseronCoversation:({id,agoraUid}:{id:number, agoraUid:number})=>requests.get<GenericDTO<ImeModel>>(`/conversations/${id}/participants/${agoraUid}`)
+    checkuseronCoversation:({id,agoraUid}:{id:number, agoraUid:number})=>requests.get<GenericDTO<ImeModel>>(`/conversations/${id}/participants/${agoraUid}`),
+    stopTalk:(body:{id:number})=>requests.put(`/conversations/${body.id}/complete`,'')
 }
 const Student = {
     grammerOrLecture: (offset = 0) =>

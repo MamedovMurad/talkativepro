@@ -3,10 +3,9 @@ import agent from '../../Api/agent';
 import { ImeModel } from '../../Model/DTO';
 import styles from './index.module.css'
 export const VideoPlayer = ({ user ,chanal_id}:any) => {
-   console.log(user,'user');
    
    const [participant, setparticipant] = useState<ImeModel|null>(null);
-   console.log(user,'user');
+
    
   const ref = useRef(null);
 
@@ -15,7 +14,7 @@ export const VideoPlayer = ({ user ,chanal_id}:any) => {
    res&& setparticipant(res.data)
  }
   useEffect(() => {
-    user.videoTrack.play(ref.current);
+    user?.videoTrack?.play(ref.current);
     fetchParticpant()
   }, []);
 
@@ -25,22 +24,6 @@ export const VideoPlayer = ({ user ,chanal_id}:any) => {
        <div ref={ref} ></div>
        <p className={styles.user_info}>{participant?.firstName+' '+ participant?.lastName}</p>
     </div>
-{/*     <div className={styles.item}>
-       <div ref={ref} ></div>
-       <p className={styles.user_info}>{userInfo}</p>
-    </div>
-    <div className={styles.item}>
-       <div ref={ref} ></div>
-       <p className={styles.user_info}>{userInfo}</p>
-    </div>
-    <div className={styles.item}>
-       <div ref={ref} ></div>
-       <p className={styles.user_info}>{userInfo}</p>
-    </div>
-    <div className={styles.item}>
-       <div ref={ref} ></div>
-       <p className={styles.user_info}>{userInfo}</p>
-    </div> */}
     </>
   );
 };
