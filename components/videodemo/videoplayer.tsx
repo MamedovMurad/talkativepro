@@ -15,7 +15,6 @@ export const VideoPlayer = ({ user ,chanal_id}:any) => {
    res&& setparticipant(res.data)
  }
   useEffect(() => {
-   user.audioTrack.play(ref.current)
     user.videoTrack.play(ref.current);
     fetchParticpant()
   }, []);

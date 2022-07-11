@@ -40,9 +40,13 @@ console.log(user.agoraUid,'uid');
     }
 
     if (mediaType === "audio") {
-      // user.audioTrack.play()
+       user.audioTrack.play()
     }
   };
+
+
+
+
 
   const handleUserLeft = async(user: any) => {
     setUsers((previousUsers: any) =>
