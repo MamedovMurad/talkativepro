@@ -8,7 +8,7 @@ interface IContentAuthCalendar{
     title?:string
 }
 const ContentAuthCalendar = ({leftSeconds, callback, title}:IContentAuthCalendar) => {
-    const [second, setsecond] = useState(leftSeconds);
+    const [second, setsecond] = useState(0);
     
    useEffect(() => {
     let id = setInterval(() => {
@@ -17,7 +17,7 @@ const ContentAuthCalendar = ({leftSeconds, callback, title}:IContentAuthCalendar
     return () => clearInterval(id);
   });
 
-  if (second==0) {
+  if (second==0&& title) {
 
     return <ButtonUI onclick={callback} text="Başlat"/>
   }
