@@ -12,9 +12,6 @@ const Header:React.FC<HeaderProps> = () => {
     const [color, setcolor] = useState('');
     
     const changeBackground = () => {
-     
-        
-        console.log(window.scrollY)
         if (window.scrollY >= 26) {
             setcolor('active')
         } else {
