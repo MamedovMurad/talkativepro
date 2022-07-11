@@ -28,6 +28,9 @@ padding-bottom: 10px;
     top: 0px;
     left: 0;
     width: 100%;
+  background-color: transparent;
+}
+.headeractive{
     background: #ebf4fe;
     border-bottom: 1px solid #e9e9e9;
 }

@@ -426,8 +426,10 @@ line-height: 30px;
        
     
       }
-
+      .slogan > p {
+        margin-bottom: 10px;
+      }
       .customFlexSvg{
-        height: 43vh;
+        height: 49.6vh;
       }
   }
