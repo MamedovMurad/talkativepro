@@ -153,11 +153,10 @@ const talk = {
         teacherNationalityIds:number[]=[],
         levels:string[]=[],
         date:string='',
-        type='ALL',
         limit = 10,
         offset = 0,
     )=> requests.get<GenericDTO<any>>(
-        `/public/conversations?limit=${limit}&offset=${offset}&type=${type}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
+        `/public/conversations?limit=${limit}&offset=${offset}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
             .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds=${n}`)
             .join("&")}&${levels.map((n, index) =>`levels=${n}`).join("&")}`
     ),
