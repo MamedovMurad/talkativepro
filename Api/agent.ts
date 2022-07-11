@@ -22,7 +22,7 @@ import {  removeCookies } from 'cookies-next';
 axios.defaults.baseURL = "http://194.147.58.56:8090/api/v1";
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getCookie("agent");
-    const lang = localStorage.getItem('lang')
+    const lang = localStorage.getItem('lang')||'az'
     if (token){
         config.headers = { ...config.headers, Authorization: "Bearer " + token, ['Accept-Language']:lang+''||'' };
     }
@@ -101,7 +101,7 @@ const Auth = {
     login: (body: { username: string; password: string; teacher: boolean }) =>
         requests.post<GenericDTO<string>>("/auth/login", body),
     getMe: () => requests.get<GenericDTO<ImeModel>>("/users/me"),
-    teacherMe:()=>requests.get<GenericDTO<ITeacher>>('/teachers/me'),
+    teacherMe:()=>requests.get<GenericDTO<ITeacher>>('/teachers/me?detailed=true'),
     register: (body: {
         name: string;
         surname: string;
@@ -140,7 +140,12 @@ const teacher = {
         single:(uuid:string)=>requests.get<GenericDTO<ITeacher>>(`/public/teachers/${uuid}/profile`),
         postPrivateForm:(body:{firstName:string, lastName:string, address:string, teacherLanguages:{language:number|string, introduction:string}[], avatar?:string|null})=>requests.post<GenericDTO<boolean>>('/teachers/me', body),
 
-topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`)
+topList:(limit=10, offset=0)=>requests.get<GenericDTO<ITeacher[]>>(`/public/teachers/topList?limit=${limit}&offset=${offset}`),
+certifatePost:(body:{fileName:string})=>requests.post('/teachers/certificates',body),
+certificateRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/certificates/'+id),
+educationPost:(body:{university:string, speciality:string,educationLevel:number})=>requests.post<GenericDTO<boolean>>('/teachers/educations',body),
+educationRemove:(id:number)=>requests.del<GenericDTO<boolean>>('/teachers/educations/'+id),
+updateVideoLink:(body:{introductionVideoLink:string})=>requests.put<GenericDTO<boolean>>('/teachers/introductionVideo', body)
     };
 const talk = {
     list:(
@@ -148,17 +153,17 @@ const talk = {
         teacherNationalityIds:number[]=[],
         levels:string[]=[],
         date:string='',
-        type='ALL',
         limit = 10,
         offset = 0,
     )=> requests.get<GenericDTO<any>>(
-        `/public/conversations?limit=${limit}&offset=${offset}&type=${type}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
+        `/public/conversations?limit=${limit}&offset=${offset}&date=${date}&${languageIds.map((n, index) =>`languageIds=${n}`)
             .join("&")}&${teacherNationalityIds.map((n, index) =>`teacherNationalityIds=${n}`)
             .join("&")}&${levels.map((n, index) =>`levels=${n}`).join("&")}`
     ),
     connect:(body:string)=>requests.post<GenericDTO<{token:string, channelId:string, continueWithCall:true}>>(`conversations/${body}/join`,''),
 
-    startConversation:(body:number)=> requests.post<GenericDTO<{token:string,channelId:string}>>(`conversations/${body}/join`, '')
+    startConversation:(body:number)=> requests.post<GenericDTO<{token:string,channelId:string}>>(`conversations/${body}/join`, ''),
+    checkuseronCoversation:({id,agoraUid}:{id:number, agoraUid:number})=>requests.get<GenericDTO<ImeModel>>(`/conversations/${id}/participants/${agoraUid}`)
 }
 const Student = {
     grammerOrLecture: (offset = 0) =>

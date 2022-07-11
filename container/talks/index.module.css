@@ -35,5 +35,7 @@
     .TalksContainer>div{
         margin: 24px 0;
     }
-
+.TalksContainer{
+    max-height: unset;
+}
 }

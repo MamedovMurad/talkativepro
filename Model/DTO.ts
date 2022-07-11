@@ -20,6 +20,10 @@ export interface ImeModel {
     phoneNumber: null | string;
     teacher:boolean,
     loggedAsTeacher?:boolean
+    bgColor?:string,
+    hidden?:boolean,
+    
+
 }
 export interface ITariff{
 
@@ -88,9 +92,10 @@ export interface IOldDoc{
 export interface IEducation{
     id:number;
     university:String;
-    speciality:string
+    speciality:string,
+    educationLevel:number
 }
-interface ITeacherSertification{
+export interface ITeacherSertification{
     id:number;
     fileName:string;
 }
@@ -119,6 +124,7 @@ export interface ITeacher{
     teacherLanguages:{introduction:string, language:ILanguage}[]
     followerCount:number,
     isFollowedByCurrentUser:null|boolean
+    introductionVideoLink:string|null
 }
 
 export interface IContact{

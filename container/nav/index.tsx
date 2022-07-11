@@ -16,7 +16,7 @@ const Nav:React.FC<NavProps> = ({settoggle}) => {
         !useResponsivenenessAdjuster(920)?  <>
         <MainNav/>
         <RightNav/>
-        </> :/*  <ResponsiveNav /> */ <div onClick={()=>settoggle((item:boolean)=>!item)}>{<BurgerSVG/>}</div>
+        </> : <div onClick={()=>settoggle((item:boolean)=>!item)}>{<BurgerSVG/>}</div>
     );
 }
  

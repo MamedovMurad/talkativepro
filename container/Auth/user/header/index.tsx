@@ -7,6 +7,7 @@ import agent, { baseImageUrl } from "../../../../Api/agent";
 import ButtonUI from "../../../../components/UI/Button";
 import SelectUI from "../../../../components/UI/Select";
 import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
+import useResponsivenenessAdjuster from "../../../../hooks/useResponsivenenessAdjuster";
 import { UserContext } from "../../../../pages/_app";
 import { ArrowSvg } from "../../../../svg/ArrowSVG";
 import { LogoSvg } from "../../../../svg/Logo";
@@ -27,6 +28,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
     router.push('/login')
     dispatch({ type: "setUser", payload: null });
   }
+  const responsive =  useResponsivenenessAdjuster(860)
   return (
     <div>
       <div className={styles.topHeader}>
@@ -39,7 +41,10 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
         </div>
         <div className={styles.headerUser}>
           <ZvanoqUI count={count+''} />
-          <ButtonUI text="Abunə ol" width="136px" height="56px" />
+          {
+            !responsive&& <ButtonUI text="Abunə ol" width="136px" height="56px" />
+          }
+         
 
           <SelectUI
             arrow={false}

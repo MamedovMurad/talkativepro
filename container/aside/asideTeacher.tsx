@@ -1,4 +1,5 @@
 import TeacherAsideComponent from "../../components/teacher/teacherAside";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 
 type AsideTeacherProps = {
     detail?:any
@@ -7,10 +8,10 @@ type AsideTeacherProps = {
  
 const AsideTeacher:React.FC<AsideTeacherProps> = ({detail, item}) => {
 
-    console.log(item,'item');
+    const responsive =useResponsivenenessAdjuster(860)
     
     return (
-        <div style={{width:'33%'}}>
+        <div style={{width:responsive?'100%':'33%'}}>
             <TeacherAsideComponent detail={detail} item={item}/>
         </div>
     );

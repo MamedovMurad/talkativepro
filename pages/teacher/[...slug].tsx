@@ -6,6 +6,7 @@ import TeacherCardContainer from "../../container/teacher/teacherCard";
 import { ITeacher } from "../../Model/DTO";
 import styles from "./index.module.css";
 import { serialize } from 'cookie'
+import { CerticateUi } from "../../components/certificatesUi";
 type SingleTeacherProps = {
   teacher?:ITeacher
 };
@@ -52,18 +53,22 @@ console.log(teacher);
           <AsideTeacher item={teacher}/>
           <div className={styles.mainContenArea}>
             <div className={styles.videoLinkArea}>
-              <iframe
-                id="ytplayer"
-                className={styles.hello}
-                width="100%"
-                height="360"
-                src={"https://www.youtube.com/embed/tgbNymZ7vqY"}
-                frameBorder="0"
-              ></iframe>
+        {
+          teacher?.introductionVideoLink?      <iframe
+          id="ytplayer"
+          className={styles.hello}
+          width="100%"
+          height="360"
+          src={teacher?.introductionVideoLink}
+          frameBorder="0"
+        ></iframe>: <div>Video tapılmadı</div>
+        }
             </div>
             <h6 className={styles.thisTitle}>Təhsil</h6>
             <TeacherCardContainer data={teacher?.educations}/>
-            <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
+            {/* <h6 className={styles.thisTitle}>İş təcrübəsi</h6> */}
+            <h6 className={styles.thisTitle}>Sertifikatlarım</h6>
+            <CerticateUi  list={teacher?.certifications}  edit={false}/>
           {/*   <TeacherCardContainer data={teacher?.} /> */}
           </div>
         </main>

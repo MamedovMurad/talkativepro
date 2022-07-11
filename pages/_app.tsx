@@ -41,6 +41,8 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
         return { ...state, modal: { body: action.payload, show: true } };
       case "setModalpassive":
         return { ...state, modal: { body: <></>, show: false } };
+        case 'again':
+         return {...state}
       default:
         return state;
     }

@@ -3,10 +3,18 @@
   border: 1px solid #dddddd;
   box-sizing: border-box;
   border-radius: 10px;
-  width: 310px;
+  width: 47%;
   padding: 16px;
-  margin-right: 20px;
+  position: relative;
+
 }
+.TeacherCartItem>span{
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+}
+
 .TeacherCartItem > h4,
 .TeacherCartItem > h5,
 .TeacherCartItem > p {
@@ -14,39 +22,38 @@
   font-weight: 500;
   margin-bottom: 12px;
 }
+
 .TeacherCartItem > h4 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+.TeacherCartItem > h5 {
   font-weight: 500;
   font-size: 15px;
   line-height: 24px;
   color: #707070;
 }
-.TeacherCartItem > h5 {
+
+.TeacherCartItem > p {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   color: #474747;
 }
 
-.TeacherCartItem > p {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  color: #c2c2c2;
-}
-
 /* aside section */
 .teacherasidecomp {
   width: 100%;
   padding: 20px;
-
-  /* black&white/white */
-
   background: #ffffff;
   border-radius: 20px;
 }
-.teacherasidecomp > div:first-child {
+.teacherasidecomp > div.profilearea {
   display: flex;
   justify-content: space-between;
+  width: 85%;
 }
 .teacherasidecomp > div > img {
   width: 160px;
@@ -133,4 +140,32 @@
   line-height: 170%;
 
   color: #b1b1b1;
+}
+@media only screen and (max-width: 1440px) {
+  .teacherasidecomp > div.profilearea {
+
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .TeacherCartItem{
+    width: 48%;
+  }
+  .teacherasidecomp > div.profilearea {
+   gap: 10px 19px;
+  }
+  .TeacherCartItem > h4 {
+    font-size: 14px;
+
+  }
+  .teacherasidecomp > div > .contentArea > h4 {
+font-size: 21px;
+  }
+  .TeacherCartItem > h5 {
+    font-size: 12px;
+  }
+  
+  .TeacherCartItem > p {
+    font-size: 10px;
+  }
 }

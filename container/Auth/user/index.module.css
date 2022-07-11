@@ -50,3 +50,18 @@
   color: #00c1dd;
   border-bottom: 2px solid #00c1dd;
 }
+@media only screen and (max-width: 860px) {
+.dashTabs{
+  padding: 0;
+}
+.dashTabs>li{
+  font-size: 13px;
+
+}
+.dashTabs > li.itemActive{
+  font-size: 13px;
+}
+.asideMain {
+  padding-top: 0;
+}
+}

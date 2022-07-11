@@ -1,0 +1,8 @@
+.formdash{
+    padding: 60px 20px;
+}
+.buttonarea{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}

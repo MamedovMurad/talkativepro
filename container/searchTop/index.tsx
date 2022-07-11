@@ -2,9 +2,10 @@ import DatePicker from "../../components/UI/datepicker";
 import SelectUI from "../../components/UI/Select";
 import styles from "./index.module.css";
 import Select from "react-select";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useRef } from "react";
 import agent from "../../Api/agent";
 import Router from 'next/router'
+import { WithRef } from "../../hooks/findPosition";
 type SearchTopProps = {
   margin: string;
 };
@@ -34,7 +35,7 @@ const [forFilter, setforFilter] = useState({
       // none of react-select's styles are passed to <Control />
       border: "none",
       display: "flex",
-      width: 355,
+      width: '100%',
      
     }),
     singleValue: (provided: any, state: any) => {
@@ -45,7 +46,7 @@ const [forFilter, setforFilter] = useState({
     },
   };
 
-  console.log(forFilter,'filter');
+
   
   function routeWithParam(){
     Router.push({
@@ -65,6 +66,10 @@ const [forFilter, setforFilter] = useState({
       { label: "C2", value: "C2" },
     ]})
   }
+  const positionDrop = useRef<any>(null);
+  
+
+  
   useEffect(() => {fetchDefData()}, [])
   
   return (
@@ -72,8 +77,10 @@ const [forFilter, setforFilter] = useState({
       <div className={styles.datePicker}>
         <DatePicker onchange={(e:any)=>setforFilter({...forFilter, date:e.target.value})}/>
       </div>
-      <div className={styles.selectLang}>
+      <div className={styles.selectLang} ref={positionDrop}>
       <Select
+      
+        menuPlacement={WithRef(positionDrop)?'top':'bottom'}
       id="34567890-"
           options={defData?.lang?.map((item:any)=>({label:item.name, value:item.id}))}
           styles={customStyles}
@@ -83,6 +90,7 @@ const [forFilter, setforFilter] = useState({
       </div>
       <div className={styles.selectLevel}>
         <Select
+      menuPlacement={WithRef(positionDrop)?'top':'bottom'}
          id="vv33-"
           options={defData?.level}
           styles={customStyles}

@@ -27,45 +27,38 @@ const TalkVIewModalBody: React.FC<TalkVIewModalBodyProps> = ({ item }) => {
         </div>
         <div  className={styles.groupDIvCOntent}>
           <p>{item?.teacher?.firstName + ' '+ item?.teacher?.lastName}</p>
-          <span>5</span>
+          <span>{item?.teacher?.rating}</span>
           <span>
             <StarSVG />
           </span>
-          <span>İngilis dili</span>
+          {
+            item?.teachers?.teacherLanguages?.map((item:any,index:number)=>(
+              <span key={index}>{item?.language?.name}</span>
+            ))
+          }
+        
         </div>
       </main>
-
-      <p>4 nəfər</p>
-
+      <p>{item.participants?.length} nəfər</p>
       <main className={styles.connectionPersons}>
-        <div>
-          <div className="avatar">S S</div>
-          <div className={styles.PersonItem}>
-            <p>Tural Əliyev</p>
-            <span>intermediate</span>
+        {
+          item.participants?.map((item:any,index:number)=>(
+            <div key={index}>
+              {
+                item.avatar? <img src={baseImageUrl+item.avatar} alt=""  className="avatar-img"/>: <div className="avatar">{item.firstName[0]+' '+item.lastName[0]}</div>
+              }
+           
+            <div className={styles.PersonItem}>
+              <p>{item.firstName+' '+item.lastName}</p>
+              <span>intermediate</span>
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="avatar">S S</div>
-          <div className={styles.PersonItem}>
-            <p>Tural Əliyev</p>
-            <span>intermediate</span>
-          </div>
-        </div>
-        <div>
-          <div className="avatar">S S</div>
-          <div className={styles.PersonItem}>
-            <p>Tural Əliyev</p>
-            <span>intermediate</span>
-          </div>
-        </div>
-        <div>
-          <div className="avatar">S S</div>
-          <div className={styles.PersonItem}>
-            <p >Tural Əliyev</p>
-            <span>intermediate</span>
-          </div>
-        </div>
+          ))
+        }
+    
+
+
+
   
       </main>
           <footer>

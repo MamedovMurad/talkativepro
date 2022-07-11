@@ -5,7 +5,7 @@
   width: 100%;
   justify-content: center;
   gap: 33px 3%;
-  height: 83vh;
+  height: 88vh;
   overflow: hidden;
 }
 .item {
@@ -19,15 +19,15 @@
   border: 1px solid #ffffff;
   backdrop-filter: blur(100px);
   border-radius: 20px;
-  height: 60px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 15px;
-  width: 220px;
-  bottom: 10px;
+  width: 152px;
+  bottom: -32px;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 15px;
 }
 .item > div {
     height: 100%;

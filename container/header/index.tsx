@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useResponsivenenessAdjuster from '../../hooks/useResponsivenenessAdjuster';
 import { LogoSvg } from '../../svg/Logo';
 import Nav from '../nav';
@@ -9,8 +9,22 @@ type HeaderProps = {}
  
 const Header:React.FC<HeaderProps> = () => {
     const [toggle, settoggle] = useState(false)
+    const [color, setcolor] = useState('');
+    
+    const changeBackground = () => {
+        if (window.scrollY >= 26) {
+            setcolor('active')
+        } else {
+            setcolor('')
+        }
+      }
+console.log('fasdfsdfdsafsd');
+
+      useEffect(() => {
+        window.addEventListener("scroll", changeBackground)
+      })
     return (
-        <div className={styles.header}>
+        <div className={`${styles.header} ${styles['header'+color]}`}>
             <div className={`wrapper ${styles.wrapper}`}>
                <Link href="/">
                    <a ><LogoSvg/></a>

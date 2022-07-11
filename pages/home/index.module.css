@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 64vh;
 }
 .mainBgSLider {
  
@@ -95,12 +96,12 @@ bottom: -10px;
   width: 100%;
 }
 .laptop > div {
-  width: 63%;
+  width: 329px;
   background: url("../../public/uploads/laptop.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 183px;
   position: relative;
   padding: 4px 29px 3px 36px;
   overflow: hidden;
@@ -332,3 +333,103 @@ section.teachersection {
   margin-left: 16px;
   display: inline-block;
 }
+
+
+@media only screen    and (max-width: 800px) {
+  .main>.mainBgSLider>.customFlexSvg>div>img{
+    width: 90%;
+    }
+    .main>.mainBgSLider .laptop>div{
+      width: 264px;
+      height: 161px;
+      padding: 6px 17px 2px 21px;
+     
+  
+    }
+
+
+  .main{
+    height: unset;
+    flex-direction: column;
+  }
+  .main>.slogan{
+    order: 2;
+  }
+  .main>.mainBgSLider{
+    width: 100%;
+    order: 1;
+    background-size: contain;
+  }
+
+  .customFlexSvg > div:nth-child(2){
+    top: 10px;
+   display: flex;
+   justify-content: flex-end;
+  }
+  .customFlexSvg > div:first-child{
+    top: 10px;
+  }
+  .customFlexSvg > div:nth-child(4){
+    bottom: 10px;
+
+
+  }
+  .customFlexSvg > div:last-child{
+    bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+.slogan{
+  margin-top: 24px;
+}
+.slogan > h1 {
+line-height: 30px;
+}
+  .slogan>h1, .slogan>h1>span{
+    font-size: 46px;
+  }
+  .slogan>p{
+    font-size: 16px;
+  }
+ .teachersection{
+  display: none;
+ }
+ .tarif{
+  display: none;
+ }
+
+
+
+
+ .teachersection{
+  display: none;
+ }
+ .register{
+  display: none;
+ }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .homepage > div {
+      padding-top: 67px;
+    }
+    .main{
+      padding-top: 0;
+    }
+    .main>.mainBgSLider>.customFlexSvg>div>img{
+      width: 74%;
+      }
+      .main>.mainBgSLider .laptop>div{
+        width: 224px;
+        height: 130px;
+        padding: 6px 17px 2px 21px;
+       
+    
+      }
+      .slogan > p {
+        margin-bottom: 10px;
+      }
+      .customFlexSvg{
+        height: 49.6vh;
+      }
+  }

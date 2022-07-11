@@ -123,3 +123,53 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
+.coversation__content{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.coversation__content>label{
+  display: block;
+}
+.coversation__content>span{
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+@media only screen and (min-width: 860px) and (max-width: 1460px) {
+.days > li{
+  width: 169px;
+}
+.calendarBody > li {
+  width: 169px;
+}
+
+}
+
+@media only screen and (max-width:860px){
+  .WrapperArea{
+    min-height: 55vh;
+    height: 55vh;
+    overflow-x: scroll;
+  }
+  .days{
+    width: 836px;
+    padding-left: 54px;
+  }
+
+  .days > li{
+    width: 109px;
+  }
+  .calendarBody > li {
+    width: 109px;
+  }
+  .calendarBodyParent{
+    padding-left: 55px;
+  }
+  .calendarBodyParent > .calendarBody:first-child > li > span {
+    left: -50px;
+  }
+}

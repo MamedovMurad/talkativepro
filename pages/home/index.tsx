@@ -13,6 +13,7 @@ import SearchTop from "../../container/searchTop";
 import SliderUI from "../../container/slider";
 import BodyCrousel from "../../container/slider/bodyCarousel";
 import CustomSlider from "../../hooks/CustomSlider";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import { ITeacher } from "../../Model/DTO";
 import { ArrowSvg } from "../../svg/ArrowSVG";
 import { MainBgSvg } from "../../svg/MainBg";
@@ -60,7 +61,7 @@ async function fetchTalks() {
                 <span>danışaraq</span> öyrənin
               </h1>
               <p>Dil səviyyəni öyrənmək üçün pulsuz test et</p>
-              <ButtonUI text="Testə başla" width="157px" height="56px" />
+              <ButtonUI text="Testə başla" width={useResponsivenenessAdjuster(800)?'100%':'157px'} height="56px" />
             </div>
             <div className={styles.mainBgSLider}>
               <div className={styles.customFlexSvg}>
@@ -87,7 +88,7 @@ async function fetchTalks() {
           <SearchTop margin="66px 0 0 0 " />
         </div>
       </div>
-      <SliderUI data={teachers}/>
+      <div className={styles.sliderui}><SliderUI data={teachers}/></div>
       <div className="wrapper"><div className={styles.sliderBootm}> <Link href='/teachers'><a ><p>Bütün müəllimlər</p> <span><ArrowSvg/></span></a></Link></div></div>
       <section className={styles.teachersection}>
         <div className="wrapper">

@@ -20,3 +20,8 @@
     color: #999999;
 }
 
+@media only screen and (max-width: 800px) {
+    .nav{
+        display: none;
+    }
+    }

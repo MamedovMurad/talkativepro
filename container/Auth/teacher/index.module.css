@@ -52,4 +52,12 @@
   color: #00c1dd;
   border-bottom: 1px solid #00c1dd;
 }
+@media only screen and (max-width: 800px) {
 
+  .topHeaderButtons{
+ width: 100%;
+  }
+  .areaCalendar {
+    min-height: unset;
+  }
+  }

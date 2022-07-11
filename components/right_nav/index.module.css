@@ -10,3 +10,9 @@
 .langarea{
     margin-right: 1.1rem;
 }
+
+@media only screen and (max-width: 800px) {
+.rightNav{
+    display: none;
+}
+}

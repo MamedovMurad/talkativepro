@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { VideoCall } from 'react-agora';
 import { UserContext } from '../_app';
 import styles from './index.module.css'
@@ -15,6 +15,12 @@ const VideoPage:React.FC<VideoPageProps> = () => {
   const [data, dispatch] = useContext(UserContext);
     const VideoCallComponent = dynamic(() => import('../../components/videocall'), { ssr: false });
     const VideoRoom = dynamic(()=>  import('../../components/videodemo/videoroom'), { ssr: false })
+    useEffect(() => {
+  setjoined(true)
+    }, []);
+    
+    console.log(joined,'llll');
+    
     return (
         <div className={styles.body}>
            {/*  <VideoCallComponent setInCall={setInCall}  channelName={channelName}/> */}
