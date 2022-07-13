@@ -91,8 +91,8 @@ export const AddEduModal = ({callback}:any) => {
             </header>
             <div>
                 <form action="" onSubmit={handleSubmit(onSubmitHandle)}>
-                    <InputUI name='university' id={903245} label={'Universitetin adı'} register={register} errors={errors}/>
-                    <InputUI name='speciality' id={900245} label={'İxtisas' } register={register} errors={errors}/>
+                    <InputUI name='university' id={903245} label={'Universitetin adı'} register={register} errors={errors} maxlength="150"/>
+                    <InputUI name='speciality' id={900245} label={'İxtisas' } register={register} errors={errors} maxlength="200"/>
 
                     <div className={styles.submitform}> <ButtonUI text="Yadda saxla" width="100%" height="56px" /></div>
                 </form>

@@ -26,7 +26,7 @@ const FormDash = ({children }:IformDash) => {
 export default FormDash;
 
 
-export function FormCertificate({callback}:any){
+export function FormCertificate({callback,certificate}:any){
   const {
     register,
     handleSubmit,
@@ -36,6 +36,10 @@ export function FormCertificate({callback}:any){
   const [file, setfile] = useState<string>('');
 
   async function Addcertificate(){
+    if (certificate&& certificate/length>5) {
+      return toast.error('Sertifikat mask 6 ədəd olmalıdır')
+        
+    }
     if (file) {
 
       const res = await agent.teacher.certifatePost({fileName:file})

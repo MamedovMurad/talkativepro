@@ -28,6 +28,8 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
         }));
 
       Router.push("/teacher/" + uuid);
+    }else{
+      Router.push('/login')
     }
   };
 

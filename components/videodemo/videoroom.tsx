@@ -24,11 +24,10 @@ const client = AgoraRTC.createClient({
 const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
   const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
   const { ready, tracks } = useMicrophoneAndCameraTracks();
-  
- 
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
 
+console.log(context?.loggedAsTeacher,'context');
 
   const handleUserJoined = async (user: any, mediaType: any) => {
     await client.subscribe(user, mediaType);
@@ -65,7 +64,7 @@ const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
       // console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
       
     client
-      .join(APP_ID, chanal, token || null, context.agoraUid)
+      .join(APP_ID, chanal, token || null, context?.agoraUid)
       .then((uid) =>
         Promise.all([AgoraRTC.createMicrophoneAndCameraTracks(), Number(uid)])
       )
@@ -103,8 +102,10 @@ const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
     client.on("user-left", handleUserLeft);
     client.unpublish().then(() => client.leave());
     setjoined(false);
-    
-    const res = await agent.talk.stopTalk({id:chanalId})
+    if (context?.loggedAsTeacher) {
+      const res = await agent.talk.stopTalk({id:chanalId})
+    }
+ 
     await Router.push('/')
     location.reload()
   }
