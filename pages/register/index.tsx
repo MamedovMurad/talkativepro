@@ -71,6 +71,7 @@ const Register: React.FC<RegisterProps> = () => {
                   id={134342932432432}
                   name="password"
                   register={register}
+                  type="password"
                 />
 
                 <div className={styles.accesArea}>

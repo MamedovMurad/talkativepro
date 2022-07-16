@@ -121,7 +121,7 @@ export interface ITeacher{
     educations:IEducation[],
     certifications:ITeacherSertification[];
     languages:ILanguage[]
-    teacherLanguages:{introduction:string, language:ILanguage}[]
+    teacherLanguages:{introduction:string, language:ILanguage ,isApproved:null|boolean}[]
     followerCount:number,
     isFollowedByCurrentUser:null|boolean
     introductionVideoLink:string|null

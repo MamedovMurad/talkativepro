@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = () => {
               <ul>
                 {
                   nav.map(item=>(
-                <li key={item.id}><Link href="/"><a >{item['title_AZ']}</a></Link></li>
+                <li key={item.id}><Link href={item.path}><a >{item['title_AZ']}</a></Link></li>
                   ))
                 }
                
@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = () => {
               <ul>
                
                 <li>Yardım mərkəzi</li>
-                <li>Bizimlə əlaqə</li>
+                <li onClick={()=>route.push('/contact')}>Bizimlə əlaqə</li>
                 <li>İstifadə qaydaları</li>
                 <li>məxfilik razılaşması</li>
               </ul>
