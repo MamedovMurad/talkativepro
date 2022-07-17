@@ -219,7 +219,7 @@ section.teachersection {
   align-items: center;
   background: #ffffff;
   border-radius: 10px;
-  border: 1px solid #2f5ae6af;
+  border: 1px solid #e48402;
   width: 104px;
   height: 40px;
   margin-right: 15px;
@@ -253,7 +253,7 @@ section.teachersection {
   background: #f6f6f6;
 }
 .tarif > div > ul > li:hover > button {
-  background: #00c1dd;
+  background: #e48402;
   color: white;
 }
 .tarif > div > ul > li > button {

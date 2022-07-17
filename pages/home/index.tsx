@@ -61,7 +61,7 @@ async function fetchTalks() {
                 <span>danışaraq</span> öyrənin
               </h1>
               <p>Dil səviyyəni öyrənmək üçün pulsuz test et</p>
-              <ButtonUI text="Testə başla" width={useResponsivenenessAdjuster(800)?'100%':'157px'} height="56px" />
+              <ButtonUI text="Testə başla" width={useResponsivenenessAdjuster(800)?'100%':'157px'} height="56px" color="#e48402"/>
             </div>
             <div className={styles.mainBgSLider}>
               <div className={styles.customFlexSvg}>
