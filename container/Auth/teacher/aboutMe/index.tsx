@@ -138,7 +138,7 @@ const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
                     type: "setModalActive",
                     payload: (
                       <FormDash>
-                        <FormCertificate callback={fetchApi} />{" "}
+                        <FormCertificate callback={fetchApi} certificate = {dto?.certifications} />
                       </FormDash>
                     ),
                   })

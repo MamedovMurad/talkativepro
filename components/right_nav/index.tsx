@@ -14,6 +14,8 @@ type forsate = {
   label?: string;
   code: string;
 };
+
+
 const customStyles = {
   menuList: (styles: any) => ({
     ...styles,
@@ -58,7 +60,7 @@ const RightNav: React.FC<RightNavProps> = () => {
   const [data, dispatch] = useContext(UserContext);
 
   const check = () => !!getCookie("agent");
-  console.log({ check });
+
 
   const fetchApiLang = async () => {
     const res = await agent.Common.langList();
@@ -70,7 +72,6 @@ const RightNav: React.FC<RightNavProps> = () => {
     fetchApiLang();
   }, []);
 
-  console.log(activeLang,'dfsfdsf');
   
   const CheckLoad = () => {
     
@@ -112,7 +113,8 @@ const RightNav: React.FC<RightNavProps> = () => {
               label: item.code.toUpperCase(),
               value: item.code,
           
-            }))}
+            }))
+          }
             styles={customStyles}
             value={activeLang}
             onChange={(val:any)=>{setactiveLang(val); localStorage.setItem('lang',val.value)}}

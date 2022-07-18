@@ -28,6 +28,8 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
         }));
 
       Router.push("/teacher/" + uuid);
+    }else{
+      Router.push('/login')
     }
   };
 
@@ -67,6 +69,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
           <button
             key={t.language.id}
             onClick={() => setparagraph(t.introduction)}
+            style={!t.isApproved?{background:'#EDBB99', color:'#D35400', borderColor:'#D35400'}:{}}
             className={
               t.introduction == paragraph
                 ? styles.activeButton

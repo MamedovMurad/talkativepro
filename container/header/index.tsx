@@ -5,12 +5,21 @@ import { LogoSvg } from '../../svg/Logo';
 import Nav from '../nav';
 import styles from './index.module.css'
 import { nav } from "../../Model/utils/nav";
+import ReactSelect from '../../components/UI/Select/react-select';
+import agent from '../../Api/agent';
 type HeaderProps = {}
- 
+type forsate = {
+    id?: number;
+    value?: string | number;
+    name?: string;
+    label?: string;
+    code: string;
+  };
 const Header:React.FC<HeaderProps> = () => {
     const [toggle, settoggle] = useState(false)
     const [color, setcolor] = useState('');
-    
+    const [language, setlanguage] = useState<forsate[]| null>(null);
+    const [activeLang, setactiveLang] = useState({label:'AZ', value:'az'})
     const changeBackground = () => {
         if (window.scrollY >= 26) {
             setcolor('active')
@@ -18,7 +27,24 @@ const Header:React.FC<HeaderProps> = () => {
             setcolor('')
         }
       }
-console.log('fasdfsdfdsafsd');
+
+      const fetchApiLang = async () => {
+        const res = await agent.Common.langList();
+        res && setlanguage(res.data);
+      };
+    
+      function setActiveLangf(val:{label:string, value:string}){
+        console.log(val,'vall');
+        
+        localStorage.setItem('lang',val.value)
+        setactiveLang(val)
+      }
+      useEffect(() => {
+        setactiveLang(localStorage?.getItem('lang')=='en'? {label:'EN', value:'en'}  :{label:'AZ', value:'az'})
+        fetchApiLang();
+      }, []);
+
+
 
       useEffect(() => {
         window.addEventListener("scroll", changeBackground)
@@ -31,7 +57,15 @@ console.log('fasdfsdfdsafsd');
                </Link>
               <Nav settoggle={settoggle}/>
                {
-                     useResponsivenenessAdjuster(920)&& <div className={styles.BGSearch}></div>
+                     useResponsivenenessAdjuster(920)&& <div className={styles.BGSearch}>
+                        <ReactSelect activeEl={activeLang} setactiveEl={setActiveLangf}  options={
+                            language?.map((item: any) => ({
+                                label: item.code.toUpperCase(),
+                                value: item.code,
+                            
+                              }))
+                        }/>
+                     </div>
                }
             </div>
 
