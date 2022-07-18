@@ -26,7 +26,6 @@ const customStyles = {
       display: "flex",
       width: 100,
       border: "1px solid #f6f6f6",
-      height: "56px",
       aliginItems: "center",
     }),
     singleValue: (provided: any, state: any) => {

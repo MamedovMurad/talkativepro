@@ -12,6 +12,7 @@ import SelectUI from '../../UI/Select';
 import SweetAlertBody from '../../UI/sweetAlert/body';
 import styles from './index.module.css'
 import Select from 'react-select'
+import useResponsivenenessAdjuster from '../../../hooks/useResponsivenenessAdjuster';
 type TalkAddModalProps = {
     max?:any
 }
@@ -61,6 +62,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = ({max}) => {
     const [language, setlanguage] = useState<forsate[] | null>(null)
     const [activeLang, setactiveLang] = useState<forsate | null>(null)
     const [CheckActiveTime, setCheckActiveTime] = useState<null|string>(null)
+     const responsive =  useResponsivenenessAdjuster(900)
     const fetchApiLang = async () => {
         const res = await agent.Common.langList();
         res && setlanguage(res.data)
@@ -123,7 +125,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = ({max}) => {
                         </div>
                         <div className={styles.historyFOrmTIme}>
                             <SelectUI
-                            width="200px"
+                            width={responsive?'100%':"200px"}
                             
                                 arrow={false}
                                 custom_element={

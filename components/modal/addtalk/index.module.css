@@ -77,3 +77,18 @@
 .historyFOrmTIme {
   width: 42%;
 }
+
+@media screen  and (max-width: 932px) { 
+  .modulebody > header{
+    display: block;
+  }
+  .historyform{
+    display: block;
+  }
+  .historyFOrmTIme {
+    width: 100%;
+  }
+.activeParagraph{
+  width: 100%;
+}
+}
