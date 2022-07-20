@@ -4,4 +4,5 @@
     flex-wrap: wrap;
     list-style: none;
     gap:  0.93rem;
+    width: 100%;
 }

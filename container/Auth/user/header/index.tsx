@@ -41,10 +41,10 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
         </div>
         <div className={styles.headerUser}>
           <ZvanoqUI count={count+''} />
+
           {
-            !responsive&& <ButtonUI text="Abunə ol" width="136px" height="56px" />
-          }
-         
+            !responsive&& <>
+            <ButtonUI text="Abunə ol" width="136px" height="56px" />
 
           <SelectUI
             arrow={false}
@@ -72,6 +72,10 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
               <li onClick={extDashboard}>Çıxış</li>
             </div>
           </SelectUI>
+            </>
+          }
+         
+
         </div>
       </div>
     </div>

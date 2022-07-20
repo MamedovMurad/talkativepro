@@ -70,5 +70,7 @@
 @media screen  and (max-width: 932px) { 
   .successAlertsSection > div {
     width: 80%;
+    transform: translate(-50%, -56%);
   }
+
 }

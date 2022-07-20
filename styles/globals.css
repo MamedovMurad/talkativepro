@@ -19,7 +19,11 @@ a {
   margin: 0 auto;
 }
 .warpperAUth{
+<<<<<<< HEAD
   max-width: 1480px;
+=======
+  max-width: 1470px;
+>>>>>>> 1f9230e59b659d20995fb35b9606cbe73aa16b12
   margin: 0 auto;
 }
 .slick-dots{
