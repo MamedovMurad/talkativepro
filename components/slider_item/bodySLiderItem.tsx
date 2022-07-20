@@ -18,14 +18,11 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
             try {
                 const res = await agent.talk.connect(uuid)
                 if (res?.data?.continueWithCall) {
-<<<<<<< HEAD
-                    sessionStorage.setItem('agora_token',res.data.token)
-                    Router.push('/video-call?token='+res.data.token+'&chanal='+res.data.channelId)
-=======
+
                     res?.data&& sessionStorage.setItem('agora_token',res?.data?.token)
                     Router.push('/video-call?token='+res?.data?.token+'&chanal='+res.data?.channelId+'&conversation_id='+item?.id)
                   
->>>>>>> a260e99fdd06186fdc97df873adbf35b3ae02977
+
                 }else{
                     Router.push('/')
                     toast.success('Söhbətə qoşuldunuz')

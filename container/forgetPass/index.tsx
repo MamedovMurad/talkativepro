@@ -57,7 +57,7 @@ async function onSubmitHandle(data:any){
       {numberOfForm==3&&
     <InputUI label="Yeni şifrə" id={7893221} name="password" register={register} errors={errors} required={true} type="password"/>
     }
- <div style={{marginTop:'24px'}}>   <ButtonUI text={numberOfForm==1?"Göndər":'Təsdiqlə'} width="92%" height="56px"/></div>
+ <div style={{marginTop:'24px'}}>   <ButtonUI text={numberOfForm==1?"Göndər":'Təsdiqlə'} width="100%" height="56px"/></div>
 </form>
   </div>;
 };
