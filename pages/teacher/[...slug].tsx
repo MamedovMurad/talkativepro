@@ -65,14 +65,9 @@ console.log(teacher);
         }
             </div>
             <h6 className={styles.thisTitle}>Təhsil</h6>
-<<<<<<< HEAD
             <TeacherCardContainer data={teacher?.educations?.map(item=>({id:item.id, title:item.university, uptitle:item.educationLevel, desc:item.speciality}))}/>
             <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
             <TeacherCardContainer data={teacher?.workExperiences?.map(item=>({id:item.id, title:item.workPlace,  desc:item.profession}))}/>
-=======
-            { /*<TeacherCardContainer data={teacher?.educations}/>
-              <h6 className={styles.thisTitle}>İş təcrübəsi</h6> */}
->>>>>>> 46c8ca86e4d74172c0dfc5a8c07e6efe77f46d08
             <h6 className={styles.thisTitle}>Sertifikatlarım</h6>
             <CerticateUi  list={teacher?.certifications}  edit={false}/>
           {/*   <TeacherCardContainer data={teacher?.} /> */}
