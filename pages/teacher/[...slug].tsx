@@ -65,8 +65,8 @@ console.log(teacher);
         }
             </div>
             <h6 className={styles.thisTitle}>Təhsil</h6>
-            <TeacherCardContainer data={teacher?.educations}/>
-            {/* <h6 className={styles.thisTitle}>İş təcrübəsi</h6> */}
+            { /*<TeacherCardContainer data={teacher?.educations}/>
+              <h6 className={styles.thisTitle}>İş təcrübəsi</h6> */}
             <h6 className={styles.thisTitle}>Sertifikatlarım</h6>
             <CerticateUi  list={teacher?.certifications}  edit={false}/>
           {/*   <TeacherCardContainer data={teacher?.} /> */}
