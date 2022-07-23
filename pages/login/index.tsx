@@ -11,7 +11,7 @@ import toast from 'react-hot-toast'
 import "react-toastify/ReactToastify.min.css";
 import { UserContext } from "../_app";
 import { getCookie } from "react-use-cookie";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { setCookies } from 'cookies-next';
 import ForgetPass from "../../container/forgetPass";
 
@@ -30,7 +30,7 @@ const Login: React.FC<LoginProps> = () => {
   const [Student, setStudent] = useState("Tələbə");
   const [loader, setLoading] = useState<null | boolean>(null);
   const [forgetpass, setforgetpass] = useState(false);
-  
+  const route = useRouter();
   const handleChangeStatus = (param: string) => {
     setStudent(param);
   };
@@ -63,6 +63,9 @@ const Login: React.FC<LoginProps> = () => {
    }
  
   };
+
+
+
   const onSubmit = async (data: any) => {
     setLoading(true);
     data.teacher = Student === "Müəllim";
@@ -76,24 +79,16 @@ const Login: React.FC<LoginProps> = () => {
       }
     } catch (error) {
       
-    }
-    
-
-      setLoading(false);
-    
-   
-
-    console.log('15:51');
-    
-
+    } setLoading(false);
   };
+
   return (
     <div className="wrapper">
       <div className={styles.login}>
         <MapUI />
           <div className={styles.formDiv}>
             {
-              forgetpass ? <ForgetPass/> :
+              forgetpass || route.query.forget ? <ForgetPass/> :
               <>  <div className={styles.links}>
               <Link href="/register">
                 <a>Qeydiyyat</a>

@@ -1,3 +1,4 @@
+import  Router  from "next/router";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import agent from "../../../../Api/agent";
@@ -29,7 +30,7 @@ toast.success('Şifrəniz yeniləndi')
       <form action="" onSubmit={handleSubmit(onSubmitHandle)} className={styles.user_private_form}>
         <InputUI width="100%" id={9075223} name="currentPassword" label="Əvvəlki şifrə" type="password"  register={register} required errors={errors}/>
         <InputUI width="100%" id={9075123} name="password" label="Yeni şifrə" type="password"  register={register} required errors={errors}/>
-        <div className={styles.forgetPass}><span>Şifrənizi unutmusunuz?</span></div>
+        <div className={styles.forgetPass}><span onClick={()=>Router.push('/login?forget=true')}>Şifrənizi unutmusunuz?</span></div>
         <div style={{ marginTop: "15px" }}>
           <ButtonUI text="Yadda saxla" width="148px" height="44px" />
         </div>
