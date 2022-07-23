@@ -13,7 +13,7 @@ import agent from "../../../../Api/agent";
 import { useForm } from "react-hook-form";
 import { CerticateUi } from "../../../../components/certificatesUi";
 import { ITeacher } from "../../../../Model/DTO";
-import { AddEduModal } from "../../../../components/modal/addEdu";
+import { AddEduModal, AddWorkModal } from "../../../../components/modal/addEdu";
 type AboutTeacherAuthProps = {
   data?: any;
 };
@@ -116,18 +116,31 @@ const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
                 }
               />
               <TeacherCardContainer
-                data={dto?.educations}
+               data={dto?.educations?.map(item=>({id:item.id, title:item.university, desc:item.speciality, uptitle:item.educationLevel }))}
                 isedit={true}
                 callback={fetchApi}
               />
             </div>
           </div>
-          {/*           
+                    
           <div>
-          <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
-            <ButtonDash onClick={()=>dispatch({type:'setModalActive', payload:<AddEduModal/>})}/>
-         
-          </div> */}
+            <h6 className={styles.thisTitle}>İş təcrübəsi</h6>
+            <div className={styles.flexarea}>
+              <ButtonDash
+                onClick={() =>
+                  dispatch({
+                    type: "setModalActive",
+                    payload: <AddWorkModal callback={fetchApi} />,
+                  })
+                }
+              />
+              <TeacherCardContainer
+                data={dto?.workExperiences?.map(item=>({id:item.id, title:item.workPlace, desc:item.workPlace}))}
+                isedit={true}
+                callback={fetchApi}
+              />
+            </div>
+          </div>
 
           <div>
             <h6 className={styles.thisTitle}>Sertifikatlarım</h6>

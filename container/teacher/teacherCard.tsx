@@ -2,7 +2,7 @@ import TeacherCartItem from '../../components/teacher/techerCartItem';
 import { IEducation } from '../../Model/DTO';
 import styles from './index.module.css'
 type TeacherCardContainerProps = {
-  data?:IEducation[],
+  data?:{id:number, title:string, desc:string, uptitle?:number}[],
   isedit?:boolean,
   callback?:any
 }

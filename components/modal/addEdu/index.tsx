@@ -100,3 +100,57 @@ export const AddEduModal = ({callback}:any) => {
     </section>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+export const AddWorkModal = ({callback}:any) => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+        getValues
+    } = useForm();
+    const [data, dispatch] = useContext(UserContext);
+    
+    async function onSubmitHandle(data:any){
+   
+        const res = await agent.teacher.workPost(data)
+        if (res.data ) {
+            
+         toast.success('Əlavə edildi')
+         callback()
+         return  dispatch({type:'setModalpassive'})
+        }
+    }
+   
+  return (
+    <section className={styles.addedu}>
+                 <header>
+                <div>
+                    <h4>İş yerini əlavə et</h4>
+       
+                </div>
+            </header>
+            <div>
+                <form action="" onSubmit={handleSubmit(onSubmitHandle)}>
+                    <InputUI name='workPlace' id={9093245} label={'Şirkətin adı'} register={register} errors={errors} maxlength="150"/>
+                    <InputUI name='profession' id={9090245} label={'İxtisas' } register={register} errors={errors} maxlength="200"/>
+
+                    <div className={styles.submitform}> <ButtonUI text="Yadda saxla" width="100%" height="56px" /></div>
+                </form>
+            </div>
+    </section>
+  );
+};

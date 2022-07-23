@@ -49,12 +49,12 @@
   margin: 0;
   padding: 0;
 }
-.subscripe {
+.subscripe >form{
   margin-top: 33px;
   position: relative;
   display: flex;
 }
-.subscripe > input {
+.subscripe form > input {
   width: 211px;
   height: 44px;
   background: #f6f6f6;
@@ -67,12 +67,12 @@
   color: #C2C2C2;
   
 }
-.subscripe>input::placeholder{
+.subscripe form>input::placeholder{
   font-weight: 400;
   font-size: 14px;
   color: #C2C2C2;
 }
-.subscripe >div{
+.subscripe form>div{
   transform: translateX(-10px);
 }
 @media screen and (min-width: 800px) and (max-width: 1000px) { 
@@ -88,7 +88,9 @@
      padding: 30px 22px;
    }
 }
-
+.subscripe form>input.errorinput{
+  border: 1px solid red;
+}
 
 @media only screen and (max-width: 800px) {
   .footer > div{

@@ -91,7 +91,7 @@ export interface IOldDoc{
 }
 export interface IEducation{
     id:number;
-    university:String;
+    university:string;
     speciality:string,
     educationLevel:number
 }
@@ -120,6 +120,7 @@ export interface ITeacher{
     teacher:boolean
     educations:IEducation[],
     certifications:ITeacherSertification[];
+    workExperiences:{id:number, profession:string, workPlace:string}[],
     languages:ILanguage[]
     teacherLanguages:{introduction:string, language:ILanguage ,isApproved:null|boolean}[]
     followerCount:number,
