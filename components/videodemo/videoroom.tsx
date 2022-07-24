@@ -142,9 +142,19 @@ console.log(context?.loggedAsTeacher,'context');
       })
     }
     else if (type === 'video') {
-      console.log(users,'users nnnn');
-      
-      users[0].videoTrack?.setEnabled(!users[0].video)
+      setUsers((prevUsers:any) => {
+        return prevUsers.map((user:any) => {
+          console.log(users,'usersss');
+          
+          if (user.uid === id) {
+            user.videoTrack?.setEnabled(!user.video)
+            
+            // 
+            return { ...user, video: !user.video }
+          }
+          return user
+        })
+      })
     }
   }
   console.log(users,'users');
