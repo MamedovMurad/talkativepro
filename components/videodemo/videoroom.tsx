@@ -34,7 +34,13 @@ console.log(context?.loggedAsTeacher,'context');
 
 
     if (mediaType === "video") {
-      user.audio=true
+      console.log(users,'users fff');
+      
+      
+      
+      if (users?.find((item:any)=> item.uid==user.uuid)) {
+        return 
+      }
       setUsers((previousUsers: any) => [...previousUsers, user ]?.map(item=>{
         item.audio = true
         item.video=true
@@ -71,6 +77,8 @@ console.log(context?.loggedAsTeacher,'context');
       .then(([tracks, uid]) => {
         const [audioTrack, videoTrack] = tracks;
         setLocalTracks(tracks);
+        console.log('users test test tset stest etsestetsetet');
+        
         setUsers((previousUsers: any) => [
           ...previousUsers,
           {
@@ -85,7 +93,7 @@ console.log(context?.loggedAsTeacher,'context');
       });
 
     return () => {
-      localStorage.setItem('test','fdsfsdfdsfds')
+    
       for (let localTrack of localTracks) {
         localTrack.stop();
         localTrack.close();
@@ -101,16 +109,19 @@ console.log(context?.loggedAsTeacher,'context');
       localTrack.stop();
       localTrack.close();
     }
-    client.off("user-published", handleUserJoined);
-    client.on("user-left", handleUserLeft);
-    client.unpublish().then(() => client.leave());
+    // client.off("user-published", handleUserJoined);
+    // client.on("user-left", handleUserLeft);
+    client.unpublish().then(() => {
+      client.leave()
+      client.removeAllListeners()
+    });
     setjoined(false);
     if (context?.loggedAsTeacher) {
       const res = await agent.talk.stopTalk({id:chanalId})
     }
  
-    await Router.push('/')
-    location.reload()
+    // await Router.push('/')
+    // location.reload()
   }
 
 
@@ -131,17 +142,9 @@ console.log(context?.loggedAsTeacher,'context');
       })
     }
     else if (type === 'video') {
-      setUsers((prevUsers:any) => {
-        return prevUsers.map((user:any) => {
-          if (user.uid === id) {
-            
-            
-            user.videoTrack?.setEnabled(!user.video)
-            return { ...user, video: !user.video }
-          }
-          return user
-        })
-      })
+      console.log(users,'users nnnn');
+      
+      users[0].videoTrack?.setEnabled(!users[0].video)
     }
   }
   console.log(users,'users');

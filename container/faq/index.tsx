@@ -23,7 +23,7 @@ const Faq:React.FC<FaqProps> = () => {
                 <h2>Ən çox verilən suallar</h2>
                 <div className={styles.faqWrapper}>
                 {questions?.map(item=>( <FaqItem key={item.id} data={item}/>))}
-                <div className={styles.button}><ButtonUI text="Sualın varsa bizə yaz" width="248px" height='56px' color='#e48402'/></div>
+                {/* <div className={styles.button}><ButtonUI text="Sualın varsa bizə yaz" width="248px" height='56px' color='#e48402'/></div> */}
                 </div>
                
                 
