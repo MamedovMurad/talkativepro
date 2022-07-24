@@ -20,9 +20,9 @@ const client = AgoraRTC.createClient({
   mode: "rtc",
   codec: "vp8",
 });
-
+const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
 const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
-  const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
+
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
@@ -69,6 +69,19 @@ console.log(context?.loggedAsTeacher,'context');
     client.on("user-left", handleUserLeft);
       // console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
       
+
+      client.on("user-unpublished", (user, type) => {
+        console.log("unpublished", user, type);
+        if (type === "audio") {
+          user.audioTrack?.stop();
+        }
+        if (type === "video") {
+          setUsers((prevUsers:any) => {
+            return prevUsers.filter((User:any) => User.uid !== user.uid);
+          });
+        }
+      });
+
     client
       .join(APP_ID, chanal, token || null, context?.agoraUid)
       .then((uid) =>
@@ -109,12 +122,19 @@ console.log(context?.loggedAsTeacher,'context');
       localTrack.stop();
       localTrack.close();
     }
+    tracks?.forEach((item:any)=>{
+      item.close()
+      item.stop()
+    })
+
     // client.off("user-published", handleUserJoined);
     // client.on("user-left", handleUserLeft);
     client.unpublish().then(() => {
       client.leave()
       client.removeAllListeners()
+      client.disableDualStream()
     });
+   
     setjoined(false);
     if (context?.loggedAsTeacher) {
       const res = await agent.talk.stopTalk({id:chanalId})
@@ -144,12 +164,10 @@ console.log(context?.loggedAsTeacher,'context');
     else if (type === 'video') {
       setUsers((prevUsers:any) => {
         return prevUsers.map((user:any) => {
-          console.log(users,'usersss');
-          
           if (user.uid === id) {
-            user.videoTrack?.setEnabled(!user.video)
             
-            // 
+            
+            user.videoTrack?.setEnabled(!user.video)
             return { ...user, video: !user.video }
           }
           return user
