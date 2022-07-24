@@ -74,6 +74,8 @@ console.log(context?.loggedAsTeacher,'context');
         setUsers((previousUsers: any) => [
           ...previousUsers,
           {
+            video:true,
+            audio:true,
             uid,
             videoTrack,
             audioTrack,
@@ -83,6 +85,7 @@ console.log(context?.loggedAsTeacher,'context');
       });
 
     return () => {
+      localStorage.setItem('test','fdsfsdfdsfds')
       for (let localTrack of localTracks) {
         localTrack.stop();
         localTrack.close();
@@ -110,6 +113,8 @@ console.log(context?.loggedAsTeacher,'context');
     location.reload()
   }
 
+
+  
   const mute = async(type:string, id:number|string) => {
     if (type === 'audio') {
       setUsers((prevUsers:any) => {
@@ -118,7 +123,7 @@ console.log(context?.loggedAsTeacher,'context');
           
           if (user.uid === id) {
            user.audioTrack?.setEnabled(!user.audio)
-            console.log('usersss', user);
+            
             return { ...user, audio: !user.audio }
           }
           return user
@@ -129,6 +134,8 @@ console.log(context?.loggedAsTeacher,'context');
       setUsers((prevUsers:any) => {
         return prevUsers.map((user:any) => {
           if (user.uid === id) {
+            
+            
             user.videoTrack?.setEnabled(!user.video)
             return { ...user, video: !user.video }
           }
@@ -137,6 +144,8 @@ console.log(context?.loggedAsTeacher,'context');
       })
     }
   }
+  console.log(users,'users');
+  
 
   return (
     <div className={styles.body}>
