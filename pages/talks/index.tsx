@@ -112,9 +112,7 @@ const Talks: React.FC<TalksProps> = () => {
   return (
     <div className={styles.talks}>
         <div className="wrapper">
-            <div className={styles.datePickerfortop}>
-          <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/>
-          </div>
+     
           {responsive&& <ButtonUI text="Filterləri göstər" width="100%"/>}
         </div>
       <div className="wrapper">
@@ -130,7 +128,12 @@ const Talks: React.FC<TalksProps> = () => {
             ]}
           />
 
-          <TalksContainer list={talks}/>
+       <div style={{width:'100%'}}>
+       <div className={styles.datePickerfortop}>
+          <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/>
+          </div>
+       <TalksContainer list={talks} width="95%"/>
+       </div>
         </div>
       </div>
     </div>
