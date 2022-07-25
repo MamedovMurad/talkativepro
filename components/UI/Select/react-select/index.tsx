@@ -41,6 +41,7 @@ const ReactSelect = ({options=[], setactiveEl,activeEl={}}:any) => {
             styles={customStyles}
             value={activeEl}
             onChange={setactiveEl}
+            isSearchable={false}
           />;
 };
 
