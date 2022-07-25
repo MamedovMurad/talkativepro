@@ -91,7 +91,7 @@ const Teacher: React.FC<TeacherProps> = () => {
             setList={filterTeacher}
             list={[
               { name: "Dillər", children: otherData.lang },
-              { name: "Milliyət", children: otherData.nation },
+            /*   { name: "Milliyət", children: otherData.nation }, */
             ]}
           />
           <TeacherCotainer list={teachers?.entities} />
