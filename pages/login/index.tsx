@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = () => {
       const data = await agent.Auth.teacherMe()
       
       if (data.data) {
-        Router.push('/dashboard')
+        Router.push('/dashboard/info-of-teacher')
       }
     return  dispatch({ type: "setUser", payload: data.data });
     }else{

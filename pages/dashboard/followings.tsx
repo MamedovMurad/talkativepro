@@ -10,6 +10,7 @@ import Login from "../login";
 
 const Followings: React.FC = ({ data }: any) => {
   const [followedTeachers, setfollowedTeachers] = useState<ITeacher[]|null>(null)
+  const [updatenfetch, setupdatenfetch] = useState(false)
   async function fetchApi(){
     if (data.loggedAsTeacher) {
       return 
@@ -17,13 +18,26 @@ const Followings: React.FC = ({ data }: any) => {
       const res = await agent.Student.followingTeacher()
       res.data&& setfollowedTeachers(res.data?.entities)
   }
-  useEffect(() => {fetchApi()}, [])
+
+  const folloToggle = async (uuid?: string) => {
+   console.log(uuid);
+   
+    const res =
+      uuid &&
+      (await agent.Student.followTeacherToggle({
+        url: uuid,
+        isFolledByCurrentUser: !followedTeachers?.find((item, i)=>item.uuid==uuid)?.isFollowedByCurrentUser,
+      }));
+      res&& setupdatenfetch(!updatenfetch)
+};
+
+  useEffect(() => {fetchApi()}, [updatenfetch])
   
   return (
     <>
       {!data.loggedAsTeacher ? (
         <AuthUser >
-        <FollowingContainer  list={followedTeachers?.map(item=>({fullname:item.firstName+item.lastName, shortname: item.firstName[0]+' ' +item.lastName[0], avatar:item.avatar, star:item.rating, langs:item.languages?.map(item=>item.name)}))}/>
+        <FollowingContainer callback={folloToggle}  list={followedTeachers?.map(item=>({fullname:item.firstName+item.lastName, uuid:item.uuid,  shortname: item.firstName[0]+' ' +item.lastName[0], avatar:item.avatar, star:item.rating, langs:item.languages?.map(item=>item.name)}))}/>
        </AuthUser>
       ) : (
         <Login />

@@ -18,6 +18,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
 }) => {
   const [data, dispatch] = useContext(UserContext);
   const [paragraph, setparagraph] = useState<string | null>(null);
+  
   const folloToggle = async (uuid?: string) => {
     if (item?.isFollowedByCurrentUser !== null) {
       const res =

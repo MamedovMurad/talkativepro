@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { baseImageUrl } from "../../../../Api/agent";
+import agent, { baseImageUrl } from "../../../../Api/agent";
 import GrammerItem from "../../../../components/grammer";
 import ButtonUI from "../../../../components/UI/Button";
 import { GenericListDto, IDocument } from "../../../../Model/DTO";
@@ -13,16 +13,22 @@ type FollowingContainer = {
     star: string | number;
     shortname: string;
     langs: null | string[];
+    uuid:string|number
+    
   }[];
+  callback?:any
   /*  data:GenericListDto<IDocument[]>|null */
 };
 
 const FollowingContainer: React.FC<FollowingContainer> = ({
+  callback=()=>'',
   width = "79%",
   list,
 }) => {
   console.log(list,'list');
   
+
+
   return (
     <div className={styles.following}>
       <ul>
@@ -57,7 +63,7 @@ const FollowingContainer: React.FC<FollowingContainer> = ({
               </div>
             </div>
             <div>
-              <ButtonUI text="İzlənir" width="95px" height="44px" />
+              <ButtonUI text="İzlənir" width="95px" height="44px" onclick={()=>callback(item.uuid)} />
             </div>
           </li>
         ))}
