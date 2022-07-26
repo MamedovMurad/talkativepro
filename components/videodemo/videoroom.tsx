@@ -10,6 +10,7 @@ import { UserContext } from "../../pages/_app";
 import { createMicrophoneAndCameraTracks } from "agora-rtc-react";
 import Router from "next/router";
 import agent from "../../Api/agent";
+import StarRating from "../../container/starRating";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = "fecd6f1f6e4a46df8d942e6a3a8291ba";
@@ -21,8 +22,7 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
-const VideoRoom = ({ setjoined , context, token, chanal,chanalId}: any) => {
-
+const VideoRoom = ({ setjoined , context, token, chanal,chanalId, dispatch}: any) => {
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
@@ -139,8 +139,10 @@ console.log(context?.loggedAsTeacher,'context');
     if (context?.loggedAsTeacher) {
       const res = await agent.talk.stopTalk({id:chanalId})
     }
- 
-    // await Router.push('/')
+
+     await Router.push('/')
+    !context?.loggedAsTeacher&& dispatch({type:'setModalActive', payload:<StarRating  id={chanalId}/>})
+
     // location.reload()
   }
 

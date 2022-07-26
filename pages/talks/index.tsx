@@ -123,7 +123,7 @@ const Talks: React.FC<TalksProps> = () => {
             setList={filterTeacher}
             list={[
               { name: "Dillər", children: otherData.lang },
-              { name: "Milliyət", children: otherData.nation },
+             /*  { name: "Milliyət", children: otherData.nation }, */
               { name: "Danışıq səviyyəsi", children: otherData.level },
             ]}
           />
