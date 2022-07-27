@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next build && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "npm run build && next export -o _static"
   },
   "dependencies": {
     "@fullcalendar/core": "^5.11.0",
