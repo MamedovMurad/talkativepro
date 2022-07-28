@@ -165,6 +165,11 @@ async function fetchTalks() {
       </div>
 
       <Faq />
+      <div className={styles.whatsapp}>
+        <a href="https://api.whatsapp.com/send?phone=+994775784074" target="_blank" rel="noreferrer">
+          <img src="uploads/whatsapp.svg" alt="" />
+        </a>
+      </div>
     </>
   );
 };
