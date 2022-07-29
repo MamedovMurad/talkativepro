@@ -122,7 +122,7 @@ async function fetchTalks() {
       <section className={styles.connection}>
         <div className="wrapper">
           <h4>Yaxın zamanda olacaq söhbətlər</h4>
-          <BodyCrousel talks={talks}/>
+          <BodyCrousel talks={talks} cb={fetchTalks()}/>
         </div>
       </section>
       <div className={styles.register}>

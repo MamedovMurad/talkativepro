@@ -8,10 +8,11 @@ import ButtonUI from '../UI/Button';
 import styles from './index.module.css'
 type BodySliderItemProps = {
     width:string;
-    item?:any
+    item?:any,
+    cb?:any
 }
  
-const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
+const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
     const [data, dispatch] = useContext(UserContext);
     const connecttoConversation= async (uuid:string) => {
         if (data.users.user_info&&!data.users.user_info?.loggedAsTeacher) {
@@ -24,8 +25,9 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item}) => {
                   
 
                 }else{
-                    Router.push('/')
+
                     toast.success('Söhbətə qoşuldunuz')
+                    cb&&cb()
                 }
                
             } catch (error) {
