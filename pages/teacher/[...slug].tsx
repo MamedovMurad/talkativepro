@@ -99,7 +99,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
 
   
  
- const data = await fetch(`http://194.147.58.56:8090/api/v1/public/teachers/${res1}/profile?detailed=true`, {
+ const data = await fetch(`https://api.talkative.az/api/v1/public/teachers/${res1}/profile?detailed=true`, {
   headers: token ?    { Authorization:token?.slice(6) }    : undefined
 }).then(res=>res.json())
 
