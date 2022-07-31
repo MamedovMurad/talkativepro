@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import BodySliderItem from "../../components/slider_item/bodySLiderItem";
 type BodyCrouselProps = {
     talks?:any
+    cb?:any
 }
  
-const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
+const BodyCrousel:React.FC<BodyCrouselProps> = ({talks,cb}) => {
     console.log({talks});
     
     var settings = {
@@ -49,7 +50,7 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks}) => {
             <Slider {...settings}>
                     {
                         talks?.map((item:any)=>(
-                         <BodySliderItem key={item?.id} width={"92%"} item={item}/>
+                         <BodySliderItem key={item?.id} width={"92%"} item={item} cb={cb}/>
                         ))
                     }
               </Slider> 
