@@ -135,7 +135,7 @@ const AboutTeacherAuth: React.FC<AboutTeacherAuthProps> = ({ data }) => {
                 }
               />
               <TeacherCardContainer
-                data={dto?.workExperiences?.map(item=>({id:item.id, title:item.workPlace, desc:item.workPlace}))}
+                data={dto?.workExperiences?.map(item=>({id:item.id, title:item.workPlace, desc:item.profession}))}
                 isedit={true}
                 callback={fetchApi}
               />
