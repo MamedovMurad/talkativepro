@@ -89,7 +89,9 @@ async function fetchTalks() {
         </div>
       </div>
       <div className={styles.sliderui}><SliderUI data={teachers}/></div>
-      <div className="wrapper"><div className={styles.sliderBootm}> <Link href='/teachers'><a ><p>Bütün müəllimlər</p> <span><ArrowSvg/></span></a></Link></div></div>
+      <div className="wrapper"><div className={styles.sliderBootm}> 
+      <Link href='/teachers'><a ><p>Bütün müəllimlər</p> 
+      <span><ArrowSvg/></span></a></Link></div></div>
       <section className={styles.teachersection}>
         <div className="wrapper">
           <div className={styles.chooseTeacher}>
@@ -122,7 +124,7 @@ async function fetchTalks() {
       <section className={styles.connection}>
         <div className="wrapper">
           <h4>Yaxın zamanda olacaq söhbətlər</h4>
-          <BodyCrousel talks={talks} cb={fetchTalks()}/>
+          <BodyCrousel talks={talks}/>
         </div>
       </section>
       <div className={styles.register}>
@@ -163,13 +165,9 @@ async function fetchTalks() {
           </ul>
         </div>
       </div>
-
+      <a href="https://wa.me/5211234567890?text=Me%20gustaría%20saber%20el%20precio%20del%20coche"></a>
+  
       <Faq />
-      <div className={styles.whatsapp}>
-        <a href="https://api.whatsapp.com/send?phone=+994775784074" target="_blank" rel="noreferrer">
-          <img src="uploads/whatsapp.svg" alt="" />
-        </a>
-      </div>
     </>
   );
 };
