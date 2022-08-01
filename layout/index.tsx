@@ -25,11 +25,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
         const data = await agent.Auth.teacherMe()
       return  dispatch({ type: "setUser", payload: data.data });
       }else{
+        const assestment= await agent.talk.notassestments()
         const  data = await agent.Auth.getMe();
         return  dispatch({ type: "setUser", payload: data.data });
       }
   
   };
+
+  
   useEffect(() => {
     if (getCookie("agent") && !data.users.user_info) {
       fetchApi();

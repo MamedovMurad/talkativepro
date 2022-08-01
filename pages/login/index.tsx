@@ -70,6 +70,8 @@ const Login: React.FC<LoginProps> = () => {
     setLoading(true);
     data.teacher = Student === "Müəllim";
     Student === "Müəllim" ? localStorage.setItem('teacher','true') : localStorage.removeItem('teacher')
+   
+    
     try {
       const token: any = await agent.Auth.login(data);
       if (token) {

@@ -221,7 +221,9 @@ const talk = {
     ),
   stopTalk: (body: { id: number }) =>
     requests.put(`/conversations/${body.id}/complete`, ""),
-    assessment:(body:{path:string|number, value:number})=>requests.post(`/conversations/${body.path}/assestments`, body)
+    assessment:(body:{path:string|number, value:number})=>requests.post(`/conversations/${body.path}/assestments`, body),
+    notassestments:()=>requests.get<GenericDTO<any>>('/students/notAssessedConversation')
+    
 };
 
 const Student = {

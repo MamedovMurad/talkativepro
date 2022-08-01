@@ -16,6 +16,7 @@ const Register: React.FC<RegisterProps> = () => {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm();
   const [Student, setStudent] = useState("Tələbə");
@@ -24,7 +25,11 @@ const Register: React.FC<RegisterProps> = () => {
     setStudent(param);
   };
   const onSubmitHandle = async (data: any) => {
-    
+    const regex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$') 
+    if (!regex.test(data.password)) {
+      setError('password',{ type: 'custom', message: 'custom message' })
+      return toast.error('Şifrə kiçik, böyük, simbol və rəqəmdən ibarət olmalıdır')
+    }
       data.surname = await data.name?.split(" ")[1];
       data.name = await data.name?.split(" ")[0];
       if (!data.surname) {
@@ -59,12 +64,14 @@ const Register: React.FC<RegisterProps> = () => {
                   id={1932432432}
                   name="name"
                   register={register}
+                  errors={errors}
                 />
                 <InputUI
                   label="Email"
                   id={323453453432432}
                   name="email"
                   register={register}
+                  errors={errors}
                 />
                 <InputUI
                   label="Şifrə"
@@ -72,6 +79,7 @@ const Register: React.FC<RegisterProps> = () => {
                   name="password"
                   register={register}
                   type="password"
+                  errors={errors}
                 />
 
                 <div className={styles.accesArea}>

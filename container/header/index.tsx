@@ -20,6 +20,7 @@ const Header:React.FC<HeaderProps> = () => {
     const [color, setcolor] = useState('');
     const [language, setlanguage] = useState<forsate[]| null>(null);
     const [activeLang, setactiveLang] = useState({label:'AZ', value:'az'})
+    const responsive =  useResponsivenenessAdjuster(920)
     const changeBackground = () => {
         if (window.scrollY >= 26) {
             setcolor('active')
@@ -41,7 +42,7 @@ const Header:React.FC<HeaderProps> = () => {
       }
       useEffect(() => {
         setactiveLang(localStorage?.getItem('lang')=='en'? {label:'EN', value:'en'}  :{label:'AZ', value:'az'})
-        fetchApiLang();
+        responsive&&fetchApiLang();
       }, []);
 
 

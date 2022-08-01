@@ -69,7 +69,7 @@ const RightNav: React.FC<RightNavProps> = () => {
 
   useEffect(() => {
     setactiveLang(localStorage?.getItem('lang')=='en'? {label:'EN', value:'en'}  :{label:'AZ', value:'az'})
-    fetchApiLang();
+   fetchApiLang();
   }, []);
 
   
