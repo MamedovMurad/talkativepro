@@ -43,7 +43,7 @@ const Header:React.FC<HeaderProps> = () => {
       useEffect(() => {
         setactiveLang(localStorage?.getItem('lang')=='en'? {label:'EN', value:'en'}  :{label:'AZ', value:'az'})
         responsive&&fetchApiLang();
-      }, []);
+      }, [responsive]);
 
 
 

@@ -28,7 +28,7 @@ const Register: React.FC<RegisterProps> = () => {
     const regex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$') 
     if (!regex.test(data.password)) {
       setError('password',{ type: 'custom', message: 'custom message' })
-      return toast.error('Şifrə kiçik, böyük, simbol və rəqəmdən ibarət olmalıdır')
+      return toast.error('Şifrə kiçik, böyük, simvol və rəqəmdən ibarət olmalıdır')
     }
       data.surname = await data.name?.split(" ")[1];
       data.name = await data.name?.split(" ")[0];
