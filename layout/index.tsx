@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import { useRouter } from "next/router";
 import TalkVIewModalBody from "../components/modal/talkView";
 import FaqItem from "../components/faq_item";
+import Head from "next/head";
 export default function Layout({ children }: { children: JSX.Element }) {
   const [data, dispatch] = useContext(UserContext);
   const route = useRouter();
@@ -25,9 +26,11 @@ export default function Layout({ children }: { children: JSX.Element }) {
         const data = await agent.Auth.teacherMe()
       return  dispatch({ type: "setUser", payload: data.data });
       }else{
-        const assestment= await agent.talk.notassestments()
+       
         const  data = await agent.Auth.getMe();
-        return  dispatch({ type: "setUser", payload: data.data });
+          dispatch({ type: "setUser", payload: data.data });
+        const assestment= await agent.talk.notassestments()
+        return
       }
   
   };
@@ -43,6 +46,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
   }
   return (
     <>
+    <Head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </Head>
       <CanditionHeader />
       <main>{children}</main>
       <Footer />
