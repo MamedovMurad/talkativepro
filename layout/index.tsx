@@ -47,7 +47,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <>
     <Head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   
     </Head>
       <CanditionHeader />
       <main>{children}</main>

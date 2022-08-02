@@ -333,8 +333,13 @@ section.teachersection {
   margin-left: 16px;
   display: inline-block;
 }
-
-
+@media screen and (min-device-width: 800px) and (max-device-width: 1080px) { 
+/* @media only screen and (min-width:800) and (max-width:1030){ */
+  .main{
+    height: unset;
+  
+  }
+}
 @media only screen    and (max-width: 800px) {
   .main>.mainBgSLider>.customFlexSvg>div>img{
     width: 90%;
