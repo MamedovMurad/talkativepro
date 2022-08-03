@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import TalkVIewModalBody from "../components/modal/talkView";
 import FaqItem from "../components/faq_item";
 import Head from "next/head";
+import useResponsivenenessAdjuster from "../hooks/useResponsivenenessAdjuster";
 export default function Layout({ children }: { children: JSX.Element }) {
   const [data, dispatch] = useContext(UserContext);
   const route = useRouter();
@@ -35,7 +36,8 @@ export default function Layout({ children }: { children: JSX.Element }) {
   
   };
 
-  
+  const responsive = useResponsivenenessAdjuster(1060)
+  const mobile = useResponsivenenessAdjuster(880)
   useEffect(() => {
     if (getCookie("agent") && !data.users.user_info) {
       fetchApi();
@@ -44,10 +46,23 @@ export default function Layout({ children }: { children: JSX.Element }) {
   if(route.pathname.search("video-call")!==-1){
     return children
   }
+
   return (
     <>
     <Head>
-   
+      {
+        <>
+        {
+          <meta name="viewport" content="width=device-width, initial-scale=0.6"/>
+       
+        }
+
+    
+         
+
+          </>
+      }
+
     </Head>
       <CanditionHeader />
       <main>{children}</main>
