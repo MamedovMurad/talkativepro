@@ -13,7 +13,7 @@ import agent from "../../Api/agent";
 import StarRating from "../../container/starRating";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
-const APP_ID = "fecd6f1f6e4a46df8d942e6a3a8291ba";
+const APP_ID = "735bcf7e80f54a07a135bf0d6b7e14b2";
 const TOKEN ="006fecd6f1f6e4a46df8d942e6a3a8291baIABuaZuaUQa9Cq/iV3XIV/9d4MRDOqCcOZ9BQFkzB1CkUIf9154AAAAAEACJVdSD03e7YgEAAQDRd7ti";
 const CHANNEL = "talk_channel_5";
 
