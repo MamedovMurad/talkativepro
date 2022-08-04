@@ -199,7 +199,7 @@ console.log(context?.loggedAsTeacher,'context');
           <TelSVG />
         </button>
         <button onClick={()=>mute('video',context?.agoraUid)} style={micVideo.vid?{background:'#FF6868'}:{}}><VideoSVG/></button>
-        <button><CHatSVG/></button>
+        {/* <button><CHatSVG/></button> */}
       </div>
     </div>
   );

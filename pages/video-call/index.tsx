@@ -33,9 +33,9 @@ const VideoPage:React.FC<VideoPageProps> = () => {
                joined&&(<VideoRoom setjoined={setjoined} context={data.users.user_info} 
                 token={sessionStorage.getItem('agora_token')} chanal={router.query?.chanal} chanalId={router.query?.conversation_id} dispatch={dispatch}/>)
            }
-            {
+    {/*         {
               joined&&   <ChatAgora chanalId={router.query?.chanal}  token={sessionStorage.getItem('agora_token')}/>
-            }
+            } */}
         
         </div>
     );
