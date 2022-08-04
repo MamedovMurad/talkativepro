@@ -18,7 +18,9 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
     res?.data&& setCount(res.data)
   }
   const responsive = useResponsivenenessAdjuster(850)
-  useEffect(() => {fetchCount() }, [])
+  useEffect(() => {
+    const id = setInterval(fetchCount, 30000);
+    return () => clearInterval(id);}, [])
   
   const [data, dispatch] = useContext(UserContext);
 

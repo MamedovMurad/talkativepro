@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import agent from "../Api/agent";
 import SweetAlertSuccess from "../components/UI/sweetAlert";
 import Footer from "../container/footer";
@@ -11,8 +11,10 @@ import TalkVIewModalBody from "../components/modal/talkView";
 import FaqItem from "../components/faq_item";
 import Head from "next/head";
 import useResponsivenenessAdjuster from "../hooks/useResponsivenenessAdjuster";
+import StarRating from "../container/starRating";
 export default function Layout({ children }: { children: JSX.Element }) {
   const [data, dispatch] = useContext(UserContext);
+  const [doPrice, setdoPrice] = useState(false)
   const route = useRouter();
   function CanditionHeader() {
     if (route.pathname.search("dashboard") !== -1) {
@@ -25,19 +27,20 @@ export default function Layout({ children }: { children: JSX.Element }) {
      
       if (localStorage.getItem('teacher')) {
         const data = await agent.Auth.teacherMe()
-      return  dispatch({ type: "setUser", payload: data.data });
+      return  
       }else{
        
         const  data = await agent.Auth.getMe();
           dispatch({ type: "setUser", payload: data.data });
         const assestment= await agent.talk.notassestments()
+        assestment.data?.id&&  dispatch({type:'setModalActive', payload:<StarRating id={assestment.data.id} text={assestment.data.title}/>})
         return
       }
   
   };
 
-  const responsive = useResponsivenenessAdjuster(1060)
-  const mobile = useResponsivenenessAdjuster(880)
+/*   const responsive = useResponsivenenessAdjuster(1060)
+  const mobile = useResponsivenenessAdjuster(880) */
   useEffect(() => {
     if (getCookie("agent") && !data.users.user_info) {
       fetchApi();
@@ -49,21 +52,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
 
   return (
     <>
-{/*     <Head>
-      {
-        <>
-        {
-          <meta name="viewport" content="width=device-width, initial-scale=0.6"/>
-       
-        }
 
-    
-         
-
-          </>
-      }
-
-    </Head> */}
       <CanditionHeader />
       <main>{children}</main>
       <Footer />

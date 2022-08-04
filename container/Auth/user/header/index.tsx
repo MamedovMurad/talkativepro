@@ -21,7 +21,10 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
     const res = await agent.notification.getCount()
     res?.data&& setCount(res.data)
   }
-  useEffect(() => {fetchCount() }, [])
+  useEffect(() => {
+    const id = setInterval(fetchCount, 30000);
+    return () => clearInterval(id);
+  }, [])
 
   const extDashboard = ()=>{
     setCookie('agent', '', { days: 0 })

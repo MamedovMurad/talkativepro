@@ -22,6 +22,8 @@ const Header:React.FC<HeaderProps> = () => {
     const [language, setlanguage] = useState<forsate[]| null>(null);
     const [activeLang, setactiveLang] = useState({label:'AZ', value:'az'})
     const responsive =  useResponsivenenessAdjuster(920)
+    console.log(color,'ttttt');
+    
     const changeBackground = () => {
         if (window.scrollY >= 26) {
             setcolor('active')
