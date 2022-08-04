@@ -49,7 +49,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
 
   return (
     <>
-    <Head>
+{/*     <Head>
       {
         <>
         {
@@ -63,7 +63,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
           </>
       }
 
-    </Head>
+    </Head> */}
       <CanditionHeader />
       <main>{children}</main>
       <Footer />

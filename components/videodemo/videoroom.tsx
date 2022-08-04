@@ -11,6 +11,7 @@ import { createMicrophoneAndCameraTracks } from "agora-rtc-react";
 import Router from "next/router";
 import agent from "../../Api/agent";
 import StarRating from "../../container/starRating";
+import { Microphone_SVG } from "../../svg/MicroPhone_";
 /* import { VideoPlayer } from './VideoPlayer'; */
 
 const APP_ID = "735bcf7e80f54a07a135bf0d6b7e14b2";
@@ -26,7 +27,7 @@ const VideoRoom = ({ setjoined , context, token, chanal,chanalId, dispatch}: any
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
-
+  const [micVideo, setmicVideo] = useState({mic:false, vid:false})
 console.log(context?.loggedAsTeacher,'context');
 
   const handleUserJoined = async (user: any, mediaType: any) => {
@@ -73,9 +74,11 @@ console.log(context?.loggedAsTeacher,'context');
       client.on("user-unpublished", (user, type) => {
         console.log("unpublished", user, type);
         if (type === "audio") {
+          
           user.audioTrack?.stop();
         }
         if (type === "video") {
+         
           setUsers((prevUsers:any) => {
             return prevUsers.filter((User:any) => User.uid !== user.uid);
           });
@@ -150,13 +153,14 @@ console.log(context?.loggedAsTeacher,'context');
   
   const mute = async(type:string, id:number|string) => {
     if (type === 'audio') {
+      setmicVideo((prev)=>({...prev, mic:!prev.mic}))
       setUsers((prevUsers:any) => {
         return (prevUsers.map((user:any) => {
          
           
           if (user.uid === id) {
            user.audioTrack?.setEnabled(!user.audio)
-            
+         
             return { ...user, audio: !user.audio }
           }
           return user
@@ -164,6 +168,7 @@ console.log(context?.loggedAsTeacher,'context');
       })
     }
     else if (type === 'video') {
+      setmicVideo((prev)=>({...prev, vid:!prev.vid}))
       setUsers((prevUsers:any) => {
         return prevUsers.map((user:any) => {
           if (user.uid === id) {
@@ -189,11 +194,11 @@ console.log(context?.loggedAsTeacher,'context');
       </div>
 
       <div className={styles.videbuttons}>
-        <button onClick={()=>mute('audio',context?.agoraUid)}><MicrophoneSVG/></button>
+        <button onClick={()=>mute('audio',context?.agoraUid)} style={micVideo.mic?{background:'#FF6868'}:{}}><Microphone_SVG/></button>
         <button onClick={ext} className={styles.extbutton}>
           <TelSVG />
         </button>
-        <button onClick={()=>mute('video',context?.agoraUid)}><VideoSVG/></button>
+        <button onClick={()=>mute('video',context?.agoraUid)} style={micVideo.vid?{background:'#FF6868'}:{}}><VideoSVG/></button>
         <button><CHatSVG/></button>
       </div>
     </div>

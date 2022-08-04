@@ -34,7 +34,7 @@ const VideoPage:React.FC<VideoPageProps> = () => {
                 token={sessionStorage.getItem('agora_token')} chanal={router.query?.chanal} chanalId={router.query?.conversation_id} dispatch={dispatch}/>)
            }
 
-           <ChatAgora chanalId={router.query?.conversation_id}/>
+           <ChatAgora chanalId={router.query?.chanal}  token={sessionStorage.getItem('agora_token')}/>
         </div>
     );
 }
