@@ -54,8 +54,8 @@ padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
-    padding-bottom: 0;
+    padding:  0 15px;
+ 
 }
 .responsiveDeActive{
     height: 0px;
