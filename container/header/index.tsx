@@ -7,6 +7,7 @@ import styles from './index.module.css'
 import { nav } from "../../Model/utils/nav";
 import ReactSelect from '../../components/UI/Select/react-select';
 import agent from '../../Api/agent';
+import ButtonUI from '../../components/UI/Button';
 type HeaderProps = {}
 type forsate = {
     id?: number;
@@ -82,6 +83,11 @@ const Header:React.FC<HeaderProps> = () => {
                    
            
                 </ul>
+                <div className={styles.navAuth}>
+                  <Link href="/login">
+                  <a ><ButtonUI text="Giriş" width="100%" height="35px"/></a>
+                  </Link>
+                </div>
             </div>
         </div>
     );
