@@ -27,6 +27,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
      
       if (localStorage.getItem('teacher')) {
         const data = await agent.Auth.teacherMe()
+        dispatch({ type: "setUser", payload: data.data });
       return  
       }else{
        

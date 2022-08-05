@@ -51,7 +51,7 @@ const TeacherAuthHeader:React.FC<TeacherAuthHeaderProps> = () => {
           <ZvanoqUI count={count+''} />
           <div className={styles.balance}>
               <span>Balans</span>
-              <p>156 azn</p>
+              <p>0 azn</p>
           </div>
           {
             !responsive&&<ButtonUI text="Söhbət yarat" width="169px" height="56px" onclick={handleModal}/>
