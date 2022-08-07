@@ -153,7 +153,7 @@ console.log(context?.loggedAsTeacher,'context');
   
   const mute = async(type:string, id:number|string) => {
     if (type === 'audio') {
-      setmicVideo((prev)=>({...prev, mic:!prev.mic}))
+   
       setUsers((prevUsers:any) => {
         return (prevUsers.map((user:any) => {
          
@@ -163,6 +163,7 @@ console.log(context?.loggedAsTeacher,'context');
          
             return { ...user, audio: !user.audio }
           }
+          setmicVideo((prev)=>({...prev, mic:!prev.mic}))
           return user
         }))
       })
