@@ -163,7 +163,7 @@ console.log(context?.loggedAsTeacher,'context');
          
             return { ...user, audio: !user.audio }
           }
-          setmicVideo((prev)=>({...prev, mic:!prev.mic}))
+          setmicVideo((prev)=>({...prev, mic:!user.audio}))
           return user
         }))
       })
