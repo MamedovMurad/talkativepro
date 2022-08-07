@@ -159,11 +159,12 @@ console.log(context?.loggedAsTeacher,'context');
          
           
           if (user.uid === id) {
+            setmicVideo((prev)=>({...prev, mic:user.audio}))
            user.audioTrack?.setEnabled(!user.audio)
-         
+          
             return { ...user, audio: !user.audio }
           }
-          setmicVideo((prev)=>({...prev, mic:!user.audio}))
+         
           return user
         }))
       })
