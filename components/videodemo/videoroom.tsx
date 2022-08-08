@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { VideoPlayer } from "./videoplayer";
 import styles from "./index.module.css";
@@ -13,77 +13,81 @@ import agent from "../../Api/agent";
 import StarRating from "../../container/starRating";
 import { Microphone_SVG } from "../../svg/MicroPhone_";
 /* import { VideoPlayer } from './VideoPlayer'; */
+import io from "socket.io-client";
+import ChatSocket from "../chatSocket";
 
 const APP_ID = "735bcf7e80f54a07a135bf0d6b7e14b2";
-const TOKEN ="006fecd6f1f6e4a46df8d942e6a3a8291baIABuaZuaUQa9Cq/iV3XIV/9d4MRDOqCcOZ9BQFkzB1CkUIf9154AAAAAEACJVdSD03e7YgEAAQDRd7ti";
+const TOKEN =
+  "006fecd6f1f6e4a46df8d942e6a3a8291baIABuaZuaUQa9Cq/iV3XIV/9d4MRDOqCcOZ9BQFkzB1CkUIf9154AAAAAEACJVdSD03e7YgEAAQDRd7ti";
 const CHANNEL = "talk_channel_5";
 
 const client = AgoraRTC.createClient({
   mode: "rtc",
   codec: "vp8",
 });
+
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
-const VideoRoom = ({ setjoined , context, token, chanal,chanalId, dispatch}: any) => {
+const VideoRoom = ({
+  setjoined,
+  context,
+  token,
+  chanal,
+  chanalId,
+  dispatch,
+}: any) => {
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
-  const [micVideo, setmicVideo] = useState({mic:false, vid:false})
-console.log(context?.loggedAsTeacher,'context');
+  const [micVideo, setmicVideo] = useState({ mic: false, vid: false });
+  const [chat, setchat] = useState(false);
+  const [messages, setmessages] = useState<{message:string, date:Date, agora_uid:string|number,sender:string}[]>([])
+  console.log(context?.loggedAsTeacher, "context");
 
   const handleUserJoined = async (user: any, mediaType: any) => {
     await client.subscribe(user, mediaType);
 
-
     if (mediaType === "video") {
-      console.log(users,'users fff');
-      
-      
-      
-      if (users?.find((item:any)=> item.uid==user.uuid)) {
-        return 
+      console.log(users, "users fff");
+
+      if (users?.find((item: any) => item.uid == user.uuid)) {
+        return;
       }
-      setUsers((previousUsers: any) => [...previousUsers, user ]?.map(item=>{
-        item.audio = true
-        item.video=true
-        return item
-      }));
+      setUsers((previousUsers: any) =>
+        [...previousUsers, user]?.map((item) => {
+          item.audio = true;
+          item.video = true;
+          return item;
+        })
+      );
     }
 
     if (mediaType === "audio") {
-       user.audioTrack.play()
+      user.audioTrack.play();
     }
   };
 
-
-
-
-
-  const handleUserLeft = async(user: any) => {
+  const handleUserLeft = async (user: any) => {
     setUsers((previousUsers: any) =>
       previousUsers.filter((u: any) => u.uid !== user.uid)
     );
- 
   };
 
   useEffect(() => {
     client.on("user-published", handleUserJoined);
     client.on("user-left", handleUserLeft);
-      // console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
-      
+    // console.log(APP_ID,'---', token,'----',chanal,'----', user.agoraUid );
 
-      client.on("user-unpublished", (user, type) => {
-        console.log("unpublished", user, type);
-        if (type === "audio") {
-          
-          user.audioTrack?.stop();
-        }
-        if (type === "video") {
-         
-          setUsers((prevUsers:any) => {
-            return prevUsers.filter((User:any) => User.uid !== user.uid);
-          });
-        }
-      });
+    client.on("user-unpublished", (user, type) => {
+      console.log("unpublished", user, type);
+      if (type === "audio") {
+        user.audioTrack?.stop();
+      }
+      if (type === "video") {
+        setUsers((prevUsers: any) => {
+          return prevUsers.filter((User: any) => User.uid !== user.uid);
+        });
+      }
+    });
 
     client
       .join(APP_ID, chanal, token || null, context?.agoraUid)
@@ -93,13 +97,13 @@ console.log(context?.loggedAsTeacher,'context');
       .then(([tracks, uid]) => {
         const [audioTrack, videoTrack] = tracks;
         setLocalTracks(tracks);
-        console.log('users test test tset stest etsestetsetet');
-        
+        console.log("users test test tset stest etsestetsetet");
+
         setUsers((previousUsers: any) => [
           ...previousUsers,
           {
-            video:true,
-            audio:true,
+            video: true,
+            audio: true,
             uid,
             videoTrack,
             audioTrack,
@@ -109,7 +113,6 @@ console.log(context?.loggedAsTeacher,'context');
       });
 
     return () => {
-    
       for (let localTrack of localTracks) {
         localTrack.stop();
         localTrack.close();
@@ -125,84 +128,120 @@ console.log(context?.loggedAsTeacher,'context');
       localTrack.stop();
       localTrack.close();
     }
-    tracks?.forEach((item:any)=>{
-      item.close()
-      item.stop()
-    })
+    tracks?.forEach((item: any) => {
+      item.close();
+      item.stop();
+    });
 
     // client.off("user-published", handleUserJoined);
     // client.on("user-left", handleUserLeft);
     client.unpublish().then(() => {
-      client.leave()
-      client.removeAllListeners()
-      client.disableDualStream()
+      client.leave();
+      client.removeAllListeners();
+      client.disableDualStream();
     });
-   
+
     setjoined(false);
     if (context?.loggedAsTeacher) {
-      const res = await agent.talk.stopTalk({id:chanalId})
+      const res = await agent.talk.stopTalk({ id: chanalId });
     }
 
-     await Router.push('/')
-    !context?.loggedAsTeacher&& dispatch({type:'setModalActive', payload:<StarRating  id={chanalId}/>})
+    await Router.push("/");
+    !context?.loggedAsTeacher &&
+      dispatch({
+        type: "setModalActive",
+        payload: <StarRating id={chanalId} />,
+      });
 
     // location.reload()
   }
 
+  const mute = async (type: string, id: number | string) => {
+    if (type === "audio") {
+      setUsers((prevUsers: any) => {
+        return prevUsers.map((user: any) => {
+          if (user.uid === id) {
+            setmicVideo((prev) => ({ ...prev, mic: user.audio }));
+            user.audioTrack?.setEnabled(!user.audio);
 
-  
-  const mute = async(type:string, id:number|string) => {
-    if (type === 'audio') {
-   
-      setUsers((prevUsers:any) => {
-        return (prevUsers.map((user:any) => {
-         
-          
-          if (user.uid === id) {
-            setmicVideo((prev)=>({...prev, mic:user.audio}))
-           user.audioTrack?.setEnabled(!user.audio)
-          
-            return { ...user, audio: !user.audio }
+            return { ...user, audio: !user.audio };
           }
-         
-          return user
-        }))
-      })
-    }
-    else if (type === 'video') {
-      setmicVideo((prev)=>({...prev, vid:!prev.vid}))
-      setUsers((prevUsers:any) => {
-        return prevUsers.map((user:any) => {
+
+          return user;
+        });
+      });
+    } else if (type === "video") {
+      setmicVideo((prev) => ({ ...prev, vid: !prev.vid }));
+      setUsers((prevUsers: any) => {
+        return prevUsers.map((user: any) => {
           if (user.uid === id) {
-            
-            
-            user.videoTrack?.setEnabled(!user.video)
-            return { ...user, video: !user.video }
+            user.videoTrack?.setEnabled(!user.video);
+            return { ...user, video: !user.video };
           }
-          return user
-        })
-      })
+          return user;
+        });
+      });
     }
+  };
+  var socket: any = io("http://165.227.245.139:3005/chat", {
+    extraHeaders: {
+      uid: context?.agoraUid,
+      channel_id: chanal,
+      full_name:context?.firstName+context?.lastName
+    },
+  });
+  useEffect(() => {
+    if (context?.agoraUid) {
+      console.log("asdfdsfasd", "fsadfdsfdsafdsa");
+
+      socket.on("new_message", (data: {message:string, date:Date, agora_uid:string|number,sender:string,me?:boolean}) =>{
+        console.log(data,'data');
+        
+        context.agoraUid? data.me=true :data.me=false
+return  setmessages([...messages,data])
+      }
+       
+      );
+    }
+  }, [context?.agoraUid]);
+
+  function setmessage(string:string) {
+    console.log(string,'llll');
+    
+    socket.emit("new_message", {message:string});
   }
-  console.log(users,'users');
-  
 
   return (
-    <div className={styles.body}>
-      <div className={styles.videparent}>
-        {users.map((item: any) => (
-          <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} />
-        ))}
+    <div className={styles.parent}>
+      <div className={styles.body}>
+        <div className={styles.videparent}>
+          {users.map((item: any) => (
+            <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} />
+          ))}
+        </div>
+      
+        <div className={styles.videbuttons}>
+          <button
+            onClick={() => mute("audio", context?.agoraUid)}
+            style={micVideo.mic ? { background: "#FF6868" } : {}}
+          >
+            <Microphone_SVG />
+          </button>
+          <button onClick={ext} className={styles.extbutton}>
+            <TelSVG />
+          </button>
+          <button
+            onClick={() => mute("video", context?.agoraUid)}
+            style={micVideo.vid ? { background: "#FF6868" } : {}}
+          >
+            <VideoSVG />
+          </button>
+          <button onClick={() => setchat(!chat)}>
+            <CHatSVG />
+          </button>
+        </div>
       </div>
-
-      <div className={styles.videbuttons}>
-        <button onClick={()=>mute('audio',context?.agoraUid)} style={micVideo.mic?{background:'#FF6868'}:{}}><Microphone_SVG/></button>
-        <button onClick={ext} className={styles.extbutton}>
-          <TelSVG />
-        </button>
-        <button onClick={()=>mute('video',context?.agoraUid)} style={micVideo.vid?{background:'#FF6868'}:{}}><VideoSVG/></button>
-        {/* <button><CHatSVG/></button> */}
-      </div>
+      {chat && <ChatSocket list={messages} setmessage={setmessage}/>}
     </div>
   );
 };

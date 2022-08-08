@@ -62,6 +62,15 @@
   outline: none;
   border: none;
 }
+.parent{
+  display: flex;
+}
+.parent>div{
+  width: 37%;
+}
+.parent>div:first-child{
+  width: 100%;
+}
 @media only screen    and (max-width: 800px) {
 .videparent{
   height: 66vh;

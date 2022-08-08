@@ -27,8 +27,6 @@ const VideoPage:React.FC<VideoPageProps> = () => {
     
     return (
         <div className={styles.body}>
-           {/*  <VideoCallComponent setInCall={setInCall}  channelName={channelName}/> */}
-
             {
                joined&&(<VideoRoom setjoined={setjoined} context={data.users.user_info} 
                 token={sessionStorage.getItem('agora_token')} chanal={router.query?.chanal} chanalId={router.query?.conversation_id} dispatch={dispatch}/>)
