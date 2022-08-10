@@ -13,7 +13,7 @@
 }
 .chat > main > ul {
   list-style: none;
-  padding: 0;
+  padding: 0 15px;
   margin: 0;
   overflow-y: scroll;
   height: 70vh;
@@ -31,7 +31,8 @@
   max-width: 80%;
   width: fit-content;
   position: relative;
-  margin-top: 15px;
+  margin-top: 21px;
+  min-width: 50%;
   
 }
 .chat > main > ul > li.chatother > p {
@@ -42,7 +43,9 @@
   font-size: 12px;
   line-height: 16px;
   top: -20px;
+  left: 0;
   color: #999999;
+  width: 100%;
 }
 .chat > main > ul > li.ChatMe {
   background: #e6f9fc;

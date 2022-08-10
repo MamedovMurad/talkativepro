@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './index.module.css'
 type ChatSocketProps = {
@@ -13,6 +14,12 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
         formState: { errors },
         reset,
       } = useForm();
+      const messageRef=   useRef<any>(null)
+      const scrollToBottom = async () => {
+          console.log('testttttt');
+          
+         messageRef.current.scrollTop=messageRef.current.scrollHeight
+      }
 
       async function onsubmitHandle(params:any) {
           console.log(params);
@@ -21,13 +28,17 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
             reset()
 
       }
+      useEffect(() => {
+        scrollToBottom()
+      }, [list])
+      
     return (
         <div className={styles.chat}>
           <header className={styles.header}>
               <span>X</span>
             </header>
             <main>
-                <ul>
+                <ul ref={messageRef} >
                     {
                         list.map((item, index)=>(
                             <li className={item.me?styles.ChatMe:styles.chatother} key={index}> 
@@ -38,7 +49,7 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
                    
                 </ul>
             </main>
-            <footer>
+            <footer >
                 <form action="" onSubmit={handleSubmit(onsubmitHandle)}>
                     <div>
                       <textarea  id="" {...register('message')}></textarea>
