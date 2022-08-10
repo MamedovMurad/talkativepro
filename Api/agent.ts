@@ -314,6 +314,9 @@ const password = {
     requests.put<GenericDTO<boolean>>("/users/password", body),
 };
 
+const socket={
+  list:(chanal:string)=>requests.get<GenericDTO<{_id:string,message:string, date:Date, agoraUid:string|number,sender:string,me?:boolean}[]>>(`http://165.227.245.139:3005/api/v1/messages?channelId=${chanal}&limit=200&offset=0`)
+}
 const agent = {
   Auth,
   tariff,
@@ -327,7 +330,8 @@ const agent = {
   contact,
   notification,
   password,
-  Subscription
+  Subscription,
+  socket
 };
 
 export default agent;

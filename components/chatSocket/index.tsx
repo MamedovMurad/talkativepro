@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import styles from './index.module.css'
 type ChatSocketProps = {
     setmessage:(string:string)=>void,
-    list:{message:string, date:Date, agora_uid:string|number,sender:string, me?:boolean}[]
+    list:{_id?:string,message:string, date:Date, agoraUid:string|number,sender:string, me?:boolean}[]
 }
  
 const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
@@ -18,7 +18,7 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
           console.log(params);
           
           setmessage(params.message)
-            reset({})
+            reset()
 
       }
     return (
@@ -30,7 +30,9 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
                 <ul>
                     {
                         list.map((item, index)=>(
-                            <li className={item.me?styles.ChatMe:styles.chatother} key={index}>  {!item.me&&<p>user name</p>} {item.message}</li>
+                            <li className={item.me?styles.ChatMe:styles.chatother} key={index}> 
+                             {!item.me&&<p>{item.sender}</p>} {item.message}
+                             </li>
                         ))
                     }
                    

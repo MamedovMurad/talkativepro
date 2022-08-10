@@ -40,7 +40,9 @@ const VideoRoom = ({
   const [localTracks, setLocalTracks] = useState<any>([]);
   const [micVideo, setmicVideo] = useState({ mic: false, vid: false });
   const [chat, setchat] = useState(false);
-  const [messages, setmessages] = useState<{message:string, date:Date, agora_uid:string|number,sender:string}[]>([])
+  const [messages, setmessages] = useState<
+    { message: string; date: Date; agoraUid: string | number; sender: string }[]
+  >([]);
   console.log(context?.loggedAsTeacher, "context");
 
   const handleUserJoined = async (user: any, mediaType: any) => {
@@ -187,28 +189,54 @@ const VideoRoom = ({
     extraHeaders: {
       uid: context?.agoraUid,
       channel_id: chanal,
-      full_name:context?.firstName+context?.lastName
+      full_name: context?.firstName + " " + context?.lastName,
     },
   });
+  async function FetchAllMessage(params:string) {
+    const res = await agent.socket.list(params)
+    console.log(res,'res');
+    const additionMe = res.data?.map((item,index)=>{
+      if (item.agoraUid==context.agoraUid) {
+        item.me=true
+        return item
+      }else{
+        item.me=false
+        return item
+      }
+    })
+    return res.data&&setmessages(res.data);
+    
+  }
   useEffect(() => {
     if (context?.agoraUid) {
-      console.log("asdfdsfasd", "fsadfdsfdsafdsa");
+      FetchAllMessage(chanal)
 
-      socket.on("new_message", (data: {message:string, date:Date, agora_uid:string|number,sender:string,me?:boolean}) =>{
-        console.log(data,'data');
-        
-        context.agoraUid? data.me=true :data.me=false
-return  setmessages([...messages,data])
-      }
-       
+      socket.on(
+        "new_message",
+        (data: {
+          message: string;
+          date: Date;
+          agoraUid: string | number;
+          sender: string;
+          me?: boolean;
+        }) => {
+          console.log(data, "data");
+
+          context.agoraUid == data.agoraUid
+            ? (data.me = true)
+            : (data.me = false);
+          console.log(data, "data");
+
+          return setmessages((prev) => [...prev, data]);
+        }
       );
     }
   }, [context?.agoraUid]);
 
-  function setmessage(string:string) {
-    console.log(string,'llll');
-    
-    socket.emit("new_message", {message:string});
+  function setmessage(string: string) {
+    console.log(string, "llll");
+
+    socket.emit("new_message", string);
   }
 
   return (
@@ -219,7 +247,7 @@ return  setmessages([...messages,data])
             <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} />
           ))}
         </div>
-      
+
         <div className={styles.videbuttons}>
           <button
             onClick={() => mute("audio", context?.agoraUid)}
@@ -241,7 +269,7 @@ return  setmessages([...messages,data])
           </button>
         </div>
       </div>
-      {chat && <ChatSocket list={messages} setmessage={setmessage}/>}
+      {chat && <ChatSocket list={messages} setmessage={setmessage} />}
     </div>
   );
 };
