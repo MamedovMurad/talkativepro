@@ -315,7 +315,7 @@ const password = {
 };
 
 const socket={
-  list:(chanal:string)=>requests.get<GenericDTO<{_id:string,message:string, date:Date, agoraUid:string|number,sender:string,me?:boolean}[]>>(`http://165.227.245.139:3005/api/v1/messages?channelId=${chanal}&limit=200&offset=0`)
+  list:(chanal:string)=>requests.get<GenericDTO<{_id:string,message:string, date:Date, agoraUid:string|number,sender:string,me?:boolean}[]>>(`https://ws.talkative.az/api/v1/messages?channelId=${chanal}&limit=200&offset=0`)
 }
 const agent = {
   Auth,
