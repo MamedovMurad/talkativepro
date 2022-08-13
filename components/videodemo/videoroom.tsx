@@ -207,6 +207,8 @@ const VideoRoom = ({
     return res.data&&setmessages(res.data);
     
   }
+  console.log(chanal,'id');
+  
   useEffect(() => {
     if (context?.agoraUid) {
       FetchAllMessage(chanal)
@@ -230,6 +232,13 @@ const VideoRoom = ({
           return setmessages((prev) => [...prev, data]);
         }
       );
+      socket.on('sound_off',(param:{
+        agoraUid:string|number,
+        channel_id:string|number
+      })=>{
+        return console.log(param,'pram');
+        
+      })
     }
   }, [context?.agoraUid]);
 
@@ -269,7 +278,7 @@ const VideoRoom = ({
           </button>
         </div>
       </div>
-      {chat && <ChatSocket list={messages} setmessage={setmessage} />}
+      {chat && <ChatSocket list={messages} setmessage={setmessage} visible={setchat}/>}
     </div>
   );
 };

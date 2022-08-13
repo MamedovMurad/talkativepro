@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { CloseSVG } from '../../svg/closeSVG';
 import styles from './index.module.css'
 type ChatSocketProps = {
     setmessage:(string:string)=>void,
     list:{_id?:string,message:string, date:Date, agoraUid:string|number,sender:string, me?:boolean}[]
+    visible:(a:any)=>void
 }
  
-const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
+const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage,visible}) => {
     const {
         register,
         handleSubmit,
@@ -15,9 +17,7 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
         reset,
       } = useForm();
       const messageRef=   useRef<any>(null)
-      const scrollToBottom = async () => {
-          console.log('testttttt');
-          
+      const scrollToBottom = async () => {  
          messageRef.current.scrollTop=messageRef.current.scrollHeight
       }
 
@@ -35,7 +35,7 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage}) => {
     return (
         <div className={styles.chat}>
           <header className={styles.header}>
-              <span>X</span>
+              <span onClick={()=>visible((a:any)=>(!a))}> <CloseSVG/></span>
             </header>
             <main>
                 <ul ref={messageRef} >

@@ -16,7 +16,7 @@
   padding: 0 15px;
   margin: 0;
   overflow-y: scroll;
-  height: 70vh;
+  height: 77vh;
   padding-top: 25px;
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@
 .chat > footer {
   width: 29%;
   position: fixed;
-  bottom: 20px;
+  bottom: 29px;
 }
 .chat > footer > form > div {
   position: relative;
@@ -83,4 +83,19 @@
   height: 45px;
   width: 45px;
   bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen    and (max-width: 800px) {
+  .chat > footer {
+position: unset;
+width: 100%;
+  }
+  .chat > footer > form{
+    width: 100%;
+  }
+  .chat > footer > form > div > button {
+    right:45px
+  }
 }

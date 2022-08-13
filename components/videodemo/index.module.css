@@ -63,6 +63,7 @@
   border: none;
 }
 .parent{
+  position: relative;
   display: flex;
 }
 .parent>div{
@@ -73,9 +74,21 @@
 }
 @media only screen    and (max-width: 800px) {
 .videparent{
-  height: 66vh;
+  height: 85vh;
 }
 .item{
   width: 100%;
+}
+.parent{
+  display: block;
+}
+.parent>div{
+  width: 100%;
+}
+.parent>div:last-child{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 }
