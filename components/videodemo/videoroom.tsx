@@ -185,7 +185,7 @@ const VideoRoom = ({
       });
     }
   };
-  var socket: any = io("http://165.227.245.139:3005/chat", {
+  var socket: any = io("https://ws.talkative.az/chat", {
     extraHeaders: {
       uid: context?.agoraUid,
       channel_id: chanal,
