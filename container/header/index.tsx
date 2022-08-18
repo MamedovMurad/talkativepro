@@ -8,7 +8,10 @@ import { nav } from "../../Model/utils/nav";
 import ReactSelect from '../../components/UI/Select/react-select';
 import agent from '../../Api/agent';
 import ButtonUI from '../../components/UI/Button';
-type HeaderProps = {}
+import { ImeModel, ITeacher } from '../../Model/DTO';
+type HeaderProps = {
+  user:ImeModel|ITeacher|null
+}
 type forsate = {
     id?: number;
     value?: string | number;
@@ -16,7 +19,7 @@ type forsate = {
     label?: string;
     code: string;
   };
-const Header:React.FC<HeaderProps> = () => {
+const Header:React.FC<HeaderProps> = ({user}) => {
     const [toggle, settoggle] = useState(false)
     const [color, setcolor] = useState('');
     const [language, setlanguage] = useState<forsate[]| null>(null);
@@ -86,8 +89,8 @@ const Header:React.FC<HeaderProps> = () => {
            
                 </ul>
                 <div className={styles.navAuth}>
-                  <Link href="/login">
-                  <a ><ButtonUI text="Giriş" width="100%" height="35px"/></a>
+                  <Link href={user?"/dashboard":"/login"}>
+                  <a ><ButtonUI text={user? user.firstName+' '+user.lastName:"Giriş"} width="100%" height="35px"/></a>
                   </Link>
                 </div>
             </div>

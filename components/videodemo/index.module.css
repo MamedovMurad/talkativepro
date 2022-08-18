@@ -67,7 +67,7 @@
   display: flex;
 }
 .parent>div{
-  width: 37%;
+  width: 28.8%;
 }
 .parent>div:first-child{
   width: 100%;

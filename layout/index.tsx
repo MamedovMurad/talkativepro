@@ -14,13 +14,13 @@ import useResponsivenenessAdjuster from "../hooks/useResponsivenenessAdjuster";
 import StarRating from "../container/starRating";
 export default function Layout({ children }: { children: JSX.Element }) {
   const [data, dispatch] = useContext(UserContext);
-  const [doPrice, setdoPrice] = useState(false)
+/*   const [doPrice, setdoPrice] = useState(false) */
   const route = useRouter();
   function CanditionHeader() {
     if (route.pathname.search("dashboard") !== -1) {
       return <></>;
     } else {
-      return <Header />;
+      return <Header  user={data?.users.user_info}/>;
     }
   }
   const fetchApi = async () => {

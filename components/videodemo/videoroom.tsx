@@ -34,6 +34,7 @@ const VideoRoom = ({
   chanal,
   chanalId,
   dispatch,
+  socket
 }: any) => {
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
@@ -44,7 +45,13 @@ const VideoRoom = ({
     { message: string; date: Date; agoraUid: string | number; sender: string }[]
   >([]);
   console.log(context?.loggedAsTeacher, "context");
-
+/*   var socket: any = io("https://ws.talkative.az/chat", {
+    extraHeaders: {
+      uid: context?.agoraUid,
+      channel_id: chanal,
+      full_name: context?.firstName + " " + context?.lastName,
+    },
+  }); */
   const handleUserJoined = async (user: any, mediaType: any) => {
     await client.subscribe(user, mediaType);
 
@@ -185,13 +192,7 @@ const VideoRoom = ({
       });
     }
   };
-  var socket: any = io("https://ws.talkative.az/chat", {
-    extraHeaders: {
-      uid: context?.agoraUid,
-      channel_id: chanal,
-      full_name: context?.firstName + " " + context?.lastName,
-    },
-  });
+
   async function FetchAllMessage(params:string) {
     const res = await agent.socket.list(params)
     console.log(res,'res');
