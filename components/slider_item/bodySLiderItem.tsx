@@ -17,7 +17,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
     const connecttoConversation= async (uuid:string) => {
         if (data.users.user_info&&!data.users.user_info?.loggedAsTeacher) {
             try {
-                const res = await agent.talk.connect(uuid)
+                const res = await agent.talk.connect({url:uuid,joinHidden:false})
                 if (res?.data?.continueWithCall) {
 
                     res?.data&& sessionStorage.setItem('agora_token',res?.data?.token)

@@ -31,7 +31,7 @@ function onClickHandle(id:number){
 
       {
         router.pathname=='/dashboard'&&<ul className={styles.dashTabs}>{
-          ['Ümumi söhbətlər','Rezerv söhbətlər','Söhbət tarixçəsi'].map((item,index)=>(
+          ['Ümumi söhbətlər','Rezerv söhbətlər','Söhbət tarixçəsi','Davamedən söhbətlər'].map((item,index)=>(
             <li key={index} className={index==tab?styles.itemActive:''} onClick={()=>onClickHandle(index)} >{item}</li>
           ))
         }

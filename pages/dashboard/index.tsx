@@ -23,9 +23,9 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
   async function fetchTalks() {
    /*  const res = await agent.talk.list() */
   /*   res.data&& settalks(res.data) */
+    const tabs = ['ALL','RESERVED','OLD','INPROGRESS']
 
-
-    const res = await agent.Student.listTalks(arr, [], arrLevel,date__?.split('-').reverse().join('-'), tab==1?'RESERVED':tab==2?'OLD':'ALL');
+    const res = await agent.Student.listTalks(arr, [], arrLevel,date__?.split('-').reverse().join('-'), tabs[tab]);
     res && res.data && settalks(res.data.entities);
     const lang = await agent.Common.langList();
     const nation = await agent.Common.notianal();

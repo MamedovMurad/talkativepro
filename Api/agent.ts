@@ -199,15 +199,15 @@ const talk = {
         .map((n, index) => `teacherNationalityIds=${n}`)
         .join("&")}&${levels.map((n, index) => `levels=${n}`).join("&")}`
     ),
-  connect: (body: string) =>
+  connect: (body: {url:string,joinHidden:boolean}={url:'',joinHidden:false}) =>
     requests.post<
       GenericDTO<{ token: string; channelId: string; continueWithCall: true }>
-    >(`conversations/${body}/join`, ""),
+    >(`conversations/${body.url}/join`, body),
 
-  startConversation: (body: number) =>
+  startConversation: (body: {url:number,joinHidden:boolean}={url:0,joinHidden:false}) =>
     requests.post<GenericDTO<{ token: string; channelId: string }>>(
-      `conversations/${body}/join`,
-      ""
+      `conversations/${body.url}/join`,
+      body
     ),
   checkuseronCoversation: ({
     id,

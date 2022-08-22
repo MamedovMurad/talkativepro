@@ -32,6 +32,8 @@ const ChatSocket:React.FC<ChatSocketProps> = ({list,setmessage,visible}) => {
         scrollToBottom()
       }, [list])
       
+      console.log(list,'item');
+      
     return (
         <div className={styles.chat}>
           <header className={styles.header}>

@@ -57,13 +57,13 @@
 .chat > footer {
   width: 29%;
   position: fixed;
-  bottom: 29px;
+  bottom: 5%;
 }
 .chat > footer > form > div {
   position: relative;
 }
 .chat > footer > form > div > textarea {
-  width: 90%;
+  width: 70%;
   height: 61px;
   resize: none;
   outline: none;
@@ -73,7 +73,7 @@
   padding-right: 54px;
 }
 .chat > footer > form > div > button {
-  right: 54px;
+  right: 31%;
   position: absolute;
   background: white;
   border: none;
@@ -91,6 +91,9 @@
   .chat > footer {
 position: unset;
 width: 100%;
+  }
+  .chat > footer > form > div > textarea {
+    width: 90%;
   }
   .chat > footer > form{
     width: 100%;
