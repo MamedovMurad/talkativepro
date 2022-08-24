@@ -233,19 +233,26 @@ const VideoRoom = ({
           return setmessages((prev) => [...prev, data]);
         }
       );
-      socket.on('sound_off',(param:{
-        agoraUid:string|number,
-        channel_id:string|number
-      })=>{
-        return console.log(param,'pram');
+      socket.on('sound_off',()=>{
+        return mute('audio',context?.agoraUid)
+      })
+
+      socket.on('force_out',()=>{
+        return console.log('force_out');
         
       })
+
+        socket.on('video_off',()=>{
+          return mute('video',context?.agoraUid)
+          
+        })
+      
     }
   }, [context?.agoraUid]);
 
+
   function setmessage(string: string) {
     console.log(string, "llll");
-
     socket.emit("new_message", string);
   }
 
@@ -280,6 +287,7 @@ const VideoRoom = ({
         </div>
       </div>
       {chat && <ChatSocket list={messages} setmessage={setmessage} visible={setchat}/>}
+     {/*  <button type="button" onClick={()=>socket.emit('sound_off',context?.agoraUid)} >goruntunu baqlamaq</button> */}
     </div>
   );
 };

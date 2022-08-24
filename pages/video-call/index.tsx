@@ -30,8 +30,8 @@ const VideoPage:React.FC<VideoPageProps> = () => {
     var socket: any = io("https://ws.talkative.az/chat", {
       extraHeaders: {
         uid: data.users.user_info?.agoraUid,
-        channel_id: router.query?.chanal+'',
-        full_name: data.users.user_info?.firstName + " " + data.users.user_info?.lastName,
+        channelid: router.query?.chanal+'',
+        fullname: data.users.user_info?.firstName + " " + data.users.user_info?.lastName,
       },
     });
 
