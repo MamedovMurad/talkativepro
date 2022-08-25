@@ -252,7 +252,7 @@ const VideoRoom = ({
 
 
   function setmessage(string: string) {
-    console.log(string, "llll");
+
     socket.emit("new_message", string);
   }
 
@@ -261,7 +261,7 @@ const VideoRoom = ({
       <div className={styles.body}>
         <div className={styles.videparent}>
           {users.map((item: any) => (
-            <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} />
+            <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context}/>
           ))}
         </div>
 

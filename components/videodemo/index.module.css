@@ -72,6 +72,20 @@
 .parent>div:first-child{
   width: 100%;
 }
+.item>span{
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  background: rgba(0, 0, 0, 0.349);
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40%;
+  cursor: pointer;
+}
 @media only screen    and (max-width: 800px) {
 .videparent{
   height: 85vh;

@@ -40,7 +40,7 @@
   background: #FFFFFF;
 
 }
-.DropDownItem > a {
+.DropDownItem > a, .DropDownItem > span{
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -50,7 +50,7 @@
   
   background: #E6F9FC;
 }
-.DropDownItem:hover a{
+.DropDownItem:hover a,.DropDownItem > span{
 
   color: #474747;
 }
@@ -66,6 +66,10 @@
   position: absolute;
   border-radius: 20px;
   z-index: 55;
+
+}
+.leftSide{
+  left: -158px;
 }
 .activeSumItems{
   border: 1px solid rgba(223, 223, 223, 0.664);
