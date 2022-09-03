@@ -26,7 +26,8 @@
     background-color: #fff;
     position: relative;
     z-index: 10;
-    padding-left: 10px;
+    max-width: 90%;
+    margin: 0 auto;
 }
 .mobileTop>img{
     width: 20px;
