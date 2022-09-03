@@ -1,9 +1,10 @@
 .videparent {
   padding: 24px;
   display: flex;
-  flex-wrap: wrap;
+  overflow: hidden;
   width: 100%;
-  justify-content: left;
+  justify-content: center;
+  gap: 0 10px;
 }
 .bigVideo{
   position: relative;
@@ -44,8 +45,10 @@
 }
 .item > div {
     height: 100%;
+    width: 259px;
   border-radius: 50px;
   overflow: hidden;
+  background: red !important;
 }
 .videbuttons {
   margin-top: -7px;

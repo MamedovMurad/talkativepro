@@ -57,44 +57,58 @@ const Header:React.FC<HeaderProps> = ({user}) => {
         window.addEventListener("scroll", changeBackground)
       })
     return (
-        <div className={`${styles.header} ${styles['header'+color]}`}>
-            <div className={`wrapper ${styles.wrapper}`}>
-               <Link href="/">
-                   <a ><LogoSvg/></a>
-               </Link>
-              <Nav settoggle={settoggle}/>
-               {
-                     useResponsivenenessAdjuster(920)&& <div className={styles.BGSearch}>
-                        <ReactSelect activeEl={activeLang} setactiveEl={setActiveLangf}  options={
-                            language?.map((item: any) => ({
-                                label: item.code.toUpperCase(),
-                                value: item.code,
-                            
-                              }))
-                        }/>
-                     </div>
-               }
-            </div>
-
-            <div className={`${styles.responsiveMenu}  ${toggle?styles.responsiceActive: styles.responsiveDeActive}`}>
-                <ul>
-                    {
-                        nav.map(item=>(
-                            <li key={item.id}><Link href={item.path}>
-                            <a> {item["title_AZ"]}</a>
-                          </Link></li>
-                        ))
-                    }
-                   
-           
-                </ul>
-                <div className={styles.navAuth}>
-                  <Link href={user?"/dashboard":"/login"}>
-                  <a ><ButtonUI text={user? user.firstName+' '+user.lastName:"Giriş"} width="100%" height="35px"/></a>
-                  </Link>
-                </div>
-            </div>
+      <>
+        <div className={styles.mobileTop}>
+          <img src="/uploads/globus.png" alt="" />
+        <ReactSelect activeEl={activeLang} setactiveEl={setActiveLangf}  options={
+                         language?.map((item: any) => ({
+                             label: item.code.toUpperCase(),
+                             value: item.code,
+                         
+                           }))
+                     }/>
         </div>
+        <div className={`${styles.header} ${styles['header'+color]}`}>
+         
+         <div className={`wrapper ${styles.wrapper}`}>
+            <Link href="/">
+                <a ><LogoSvg/></a>
+            </Link>
+           <Nav settoggle={settoggle}/>
+            {
+                  useResponsivenenessAdjuster(920)&&
+                  
+                 
+                   <div className={styles.BGSearch}>
+                
+                      <Link href={user?"/dashboard":"/login"}>
+               <a >  <img src="/uploads/userIcon.png" alt="" style={{width:'25px'}}/></a>
+               </Link>
+                   
+                  </div>
+                  
+            }
+         </div>
+
+         <div className={`${styles.responsiveMenu}  ${toggle?styles.responsiceActive: styles.responsiveDeActive}`}>
+             <ul>
+                 {
+                     nav.map(item=>(
+                         <li key={item.id}><Link href={item.path}>
+                         <a> {item["title_AZ"]}</a>
+                       </Link></li>
+                     ))
+                 }
+                
+        
+             </ul>
+          {/*    <div className={styles.navAuth}>
+         
+             </div> */}
+         </div>
+     </div>
+      </>
+      
     );
 }
  
