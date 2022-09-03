@@ -3,17 +3,30 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: left;
+}
+.bigVideo{
+  position: relative;
+  padding-top: 25px;
+  height: 58vh;
+  width: 100%;
+  display: flex;
+
   justify-content: center;
-  gap: 33px 3%;
-  height: 88vh;
+}
+.bigVideo>div{
+  width: 54%;
+  height: 100%;
+  border-radius: 28px;
   overflow: hidden;
 }
 .item {
   /* background: red; */
-  min-width: 45%;
+ width: 259px;
+ height: 198px;
   position: relative;
 }
-.item > .user_info {
+ .user_info {
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid #ffffff;

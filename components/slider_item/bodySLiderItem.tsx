@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import agent, { baseImageUrl } from '../../Api/agent';
 import { UserContext } from '../../pages/_app';
+import { ColorRateSvg } from '../../svg/ColorRateSVG';
 import TalkVIewModalBody from '../modal/talkView';
 import ButtonUI from '../UI/Button';
 import styles from './index.module.css'
@@ -52,7 +53,8 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
                </div>
                <div className={styles.content}>
                    <p>{item?.teacher?.firstName + ' '+ item?.teacher?.lastName}</p>
-                   <div className={styles.label}><span></span> <span>{item?.language?.name}</span></div>
+                   <div className={styles.label}><span style={{letterSpacing:'-1px', fontSize:'16px', fontWeight:'500', color:'#333', marginRight:'10px'}}>{item.rating} <ColorRateSvg/></span> 
+                   <span>{item?.language?.name}</span></div>
                </div>
            </header>
            <main className={styles.main}>
@@ -64,17 +66,21 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
              
            </main>
            <footer className={styles.footer}>
-               <div className={styles.imgs}>
+            <div>
+            <div className={styles.imgs}>
                 {
                     item?.participants?.map((item:any,index:number)=>(
                         <div key={index}>
                             {!item.avatar? <label htmlFor="" className='avatar-sm' >{item.firstName[0]+' '+item.lastName[0]}</label>
-                           : <img src="/uploads/portiret.png" alt="" />}
+                           : <img src={baseImageUrl+ item.avatar} alt="" />}
                         </div>
                     ))
                 }
-
+                  
                </div>
+            <p className={styles.card_bottom_length}>{5-item?.participants?.length} boş yer</p>
+            </div>
+         
                {
                 !data.users.user_info?.loggedAsTeacher&&  <div className={styles.buttonArea}>
                  <button onClick={(e:any)=>{connecttoConversation(item?.id); e.stopPropagation()}} className={item?.currentUserJoined?styles.activeButton:''}> {item?.currentUserJoined?'Qoşulmusunuz':'Sən də qoşul'}</button>

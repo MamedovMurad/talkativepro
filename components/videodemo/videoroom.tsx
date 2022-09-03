@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { VideoPlayer } from "./videoplayer";
 import styles from "./index.module.css";
@@ -44,7 +44,16 @@ const VideoRoom = ({
   const [messages, setmessages] = useState<
     { message: string; date: Date; agoraUid: string | number; sender: string }[]
   >([]);
-  console.log(context?.loggedAsTeacher, "context");
+  const [teacherInfo, setteacherInfo] = useState('')
+  const videoRef = useRef(null)
+ 
+ const setVideo = async (uid:any, id:number, techInfo:string) => {
+
+uid.play(videoRef.current)
+
+  setteacherInfo(techInfo)
+  return 
+ }
 /*   var socket: any = io("https://ws.talkative.az/chat", {
     extraHeaders: {
       uid: context?.agoraUid,
@@ -238,6 +247,7 @@ const VideoRoom = ({
       })
 
       socket.on('force_out',()=>{
+        ext()
         return console.log('force_out');
         
       })
@@ -258,11 +268,21 @@ const VideoRoom = ({
 
   return (
     <div className={styles.parent}>
+      
       <div className={styles.body}>
+      <div className={styles.bigVideo} >
+     <div ref={videoRef}></div>
+     <p className={styles.user_info}>{teacherInfo} </p>
+     </div>
         <div className={styles.videparent}>
           {users.map((item: any) => (
-            <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context}/>
+            <>
+              <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context} setVideo={setVideo}/>
+            
+            </>
+          
           ))}
+          
         </div>
 
         <div className={styles.videbuttons}>

@@ -123,7 +123,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
            setList={filterTeacher}
             list={[
               { name: "Dillər", children: otherData.lang },
-              { name: "Milliyət", children: otherData.nation },
+            /*   { name: "Milliyət", children: otherData.nation }, */
               { name: "Danışıq səviyyəsi", children: otherData.level },
             ]}
           />
