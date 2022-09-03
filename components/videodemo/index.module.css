@@ -109,6 +109,9 @@
 .item{
   width: 100%;
 }
+.item>div{
+  width: 100%;
+}
 .parent{
   display: block;
 }
@@ -120,5 +123,8 @@
   top: 0;
   left: 0;
   z-index: 10;
+}
+.bigVideo{
+  display: none;
 }
 }

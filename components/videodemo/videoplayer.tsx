@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import agent from '../../Api/agent';
+import useWindowDimensions from '../../hooks/windowDimensions';
 import { ImeModel } from '../../Model/DTO';
 import { SettingsSVG } from '../../svg/settings';
 import DropDownUI from '../UI/dropDown';
@@ -10,13 +11,17 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
 
    
   const ref = useRef(null);
+  const responsive =  useWindowDimensions()?.width
+  
 
+  
   async function fetchParticpant(){
    const res = await agent.talk.checkuseronCoversation({id:chanal_id,agoraUid:user.uid})
    res&& setparticipant(res.data)
-   if (res?.data?.loggedAsTeacher){
+   if (res?.data?.loggedAsTeacher&&responsive&&responsive>700){
 
-   setVideo(user.videoTrack, user.uid, res.data.firstName+' '+res.data.lastName)
+
+ setVideo(user.videoTrack, user.uid, res.data.firstName+' '+res.data.lastName)
    }
  }
  function socketEvents(id:number, event:string){
@@ -31,7 +36,7 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
   return (
     <>
     
-    <div className={styles.item} style={participant?.loggedAsTeacher?{display:'none'}:{}}>
+    <div className={styles.item} style={participant?.loggedAsTeacher&&responsive&&responsive>700?{display:'none'}:{}}>
     {
       (currentUser.loggedAsTeacher &&user.uid!== currentUser.agoraUid)&&<span>
       <DropDownUI
@@ -45,7 +50,7 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
             />
             </span>
     } 
-       <div ref={ref} style={participant?.loggedAsTeacher?{display:'none'}:{}}></div>
+       <div ref={ref} style={participant?.loggedAsTeacher&&responsive&&responsive>700?{display:'none'}:{}}></div>
        <p className={styles.user_info}>{participant?.firstName+' '+ participant?.lastName}</p>
     </div>
     </>
