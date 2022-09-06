@@ -1,10 +1,13 @@
 import Link from "next/link";
+import  Router  from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Select from "react-select";
-import { getCookie } from "react-use-cookie";
+import { getCookie, setCookie } from "react-use-cookie";
 import agent from "../../Api/agent";
 import { UserContext } from "../../pages/_app";
+import { SettingsSVG } from "../../svg/settings";
 import ButtonUI from "../UI/Button";
+import DropDownUI from "../UI/dropDown";
 import styles from "./index.module.css";
 
 type forsate = {
@@ -90,16 +93,27 @@ const RightNav: React.FC<RightNavProps> = () => {
             onChange={(val:any)=>{setactiveLang(val); localStorage.setItem('lang',val.value)}}
           />
           </div>
-          <Link href="/dashboard">
-            <a>
-              <ButtonUI
+          <DropDownUI
+          flex={'flex-start'}
+          left={false}
+              title={     <ButtonUI
                 width={"160px"}
                 text={
                   data.users.user_info.firstName +
                   " " +
                   data.users.user_info.lastName
                 }
-              />
+              />}
+              dropDownArr={[
+                { title: "Profilə keç",  link:"/dashboard"},
+                { title: "Çıxış",  cb: ()=>{setCookie("agent", "", { days: 0 }); Router.push("/");}},
+          
+              ]}
+            />
+
+          <Link href="/dashboard">
+            <a>
+         
             </a>
           </Link>
         </>

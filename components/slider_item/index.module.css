@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
 }
-.imgArea >img{
+.imgArea > img {
   width: 65px;
   height: 65px;
   border-radius: 50%;
@@ -95,11 +95,12 @@
 .bodySliderItem > footer.footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.bodySliderItem > footer.footer > div>.imgs {
+.bodySliderItem > footer.footer > div > .imgs {
   display: flex;
 }
-.bodySliderItem > footer.footer > div>.imgs > div {
+.bodySliderItem > footer.footer > div > .imgs > div {
   width: 40px;
   height: 40px;
   border: 1px solid #ffffff;
@@ -131,16 +132,28 @@
   display: inline-block;
   transform: translateY(-4px);
 }
-.bodySliderItem > footer.footer > div>.imgs > div:not(:first-child):nth-child(4) {
+.bodySliderItem
+  > footer.footer
+  > div
+  > .imgs
+  > div:not(:first-child):nth-child(4) {
   margin-left: -12px;
 }
-.bodySliderItem > footer.footer > div>.imgs > div:not(:first-child):nth-child(3) {
+.bodySliderItem
+  > footer.footer
+  > div
+  > .imgs
+  > div:not(:first-child):nth-child(3) {
   margin-left: -13px;
 }
-.bodySliderItem > footer.footer > div>.imgs > div:not(:first-child):nth-child(2) {
+.bodySliderItem
+  > footer.footer
+  > div
+  > .imgs
+  > div:not(:first-child):nth-child(2) {
   margin-left: -12px;
 }
-.bodySliderItem > footer.footer > div>.imgs > div > img {
+.bodySliderItem > footer.footer > div > .imgs > div > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -156,7 +169,7 @@
   border: 1px solid #00c1dd;
   transition: all 0.3s;
 }
-.bodySliderItem>footer.footer>.buttonArea>button.activeButton{
+.bodySliderItem > footer.footer > .buttonArea > button.activeButton {
   background-color: #00c1dd;
   color: white;
 }
@@ -165,15 +178,18 @@
   color: white;
 }
 
-.card_bottom_length{
-  font-family: 'Poppins';
-font-weight: 400;
-font-size: 15px;
-line-height: 24px;
-color: #707070;
+.card_bottom_length {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #707070;
+  margin: 0;
+  margin-top: 2px;
 }
 @media only screen and (max-width: 810px) {
-.bodySliderItem,.SliderItem{
-  width: 100%;
-}
+  .bodySliderItem,
+  .SliderItem {
+    width: 100%;
+  }
 }

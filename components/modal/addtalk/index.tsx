@@ -180,7 +180,7 @@ const TalkAddModal: React.FC<TalkAddModalProps> = ({max}) => {
                     }</div>
 
 
-                    <InputUI label="Mövzu" id={76767574654} name="title" width="100%" register={register} errors={errors} />
+                    <InputUI label="Mövzu" id={76767574654} name="title" width="100%" register={register} errors={errors} maxlength={77} />
                     <InputUI label="Müzakirə üçün material (link)" id={764654} name="infoVideoLink" width="100%" register={register} errors={errors}  required={false}/>
                     <div className={styles.submitform}> <ButtonUI text="Təsdiqlə" width="100%" height="56px" /></div>
                 </form>

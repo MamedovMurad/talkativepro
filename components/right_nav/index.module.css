@@ -1,5 +1,6 @@
 .rightNav{
     display: flex;
+    align-items: center;
 }
 .rightNav>a{
     display: block;
