@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import agent, { baseImageUrl } from '../../Api/agent';
 import { UserContext } from '../../pages/_app';
 import { ColorRateSvg } from '../../svg/ColorRateSVG';
+import { TimeSVG } from '../../svg/timeSVG';
 import TalkVIewModalBody from '../modal/talkView';
 import ButtonUI from '../UI/Button';
 import styles from './index.module.css'
@@ -60,8 +61,8 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
            <main className={styles.main}>
                <h5>{item?.title}</h5>
                <div>
-                   <div><img src="/uploads/shape.svg" alt="" /> <span>  {item?.startDate?.split(' ')[0]}</span></div>
-                   <div><img src="/uploads/shape.svg" alt="" />   <span>{item?.startDate?.split(' ')[1]}</span></div>
+                   <div><img src="uploads/Shape.svg" alt="" /> <span>  {item?.startDate?.split(' ')[0]}</span></div>
+                   <div><TimeSVG/>  <span>{item?.startDate?.split(' ')[1]}</span></div>
                </div>
              
            </main>
