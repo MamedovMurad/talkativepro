@@ -9,6 +9,9 @@ import ReactSelect from '../../components/UI/Select/react-select';
 import agent from '../../Api/agent';
 import ButtonUI from '../../components/UI/Button';
 import { ImeModel, ITeacher } from '../../Model/DTO';
+import { IconSVG } from '../../svg/userSvg';
+import { GlobosSvg } from '../../svg/globosSvg';
+
 type HeaderProps = {
   user:ImeModel|ITeacher|null
 }
@@ -59,7 +62,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
     return (
       <>
         <div className={styles.mobileTop}>
-          <img src="/uploads/globus.png" alt="" />
+       <GlobosSvg/>
         <ReactSelect activeEl={activeLang} setactiveEl={setActiveLangf}  options={
                          language?.map((item: any) => ({
                              label: item.code.toUpperCase(),
@@ -82,7 +85,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
                    <div className={styles.BGSearch}>
                 
                       <Link href={user?"/dashboard":"/login"}>
-               <a >  <img src="/uploads/userIcon.png" alt="" style={{width:'25px'}}/></a>
+               <a > <IconSVG/> </a>
                </Link>
                    
                   </div>

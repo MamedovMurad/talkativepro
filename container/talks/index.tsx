@@ -6,9 +6,10 @@ type TalksContainerProps = {
     width?:string
     list?:any
     itemWidth?:string
+    cb?:any
 }
  
-const TalksContainer:React.FC<TalksContainerProps> = ({width="74%", list, itemWidth}) => {
+const TalksContainer:React.FC<TalksContainerProps> = ({width="74%", list, itemWidth,cb}) => {
     
     const responsive = useResponsivenenessAdjuster(810)
     const tablet = useResponsivenenessAdjuster(860)
@@ -18,7 +19,7 @@ const TalksContainer:React.FC<TalksContainerProps> = ({width="74%", list, itemWi
                       !list?  <div style={{display:'flex', justifyContent:'center', width:'100%'}}><SpinnerLOader/> </div>:
                
                       list?.map((item:any)=>(
-                         <BodySliderItem key={item.id} width={(responsive&& !tablet)? '94%':(!responsive&&tablet)?  '310px':itemWidth||'360px'} item={item} />
+                         <BodySliderItem key={item.id} width={(responsive&& !tablet)? '94%':(!responsive&&tablet)?  '310px':itemWidth||'360px'} item={item} cb={cb}/>
                     ))
            }
         </main>

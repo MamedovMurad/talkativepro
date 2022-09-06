@@ -132,7 +132,7 @@ const Talks: React.FC<TalksProps> = () => {
        <div className={styles.datePickerfortop}>
           <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/>
           </div>
-       <TalksContainer list={talks} width="95%"/>
+       <TalksContainer list={talks} width="95%" cb={fetchTalks}/>
        </div>
         </div>
       </div>

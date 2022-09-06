@@ -28,11 +28,9 @@
     z-index: 10;
     max-width: 90%;
     margin: 0 auto;
+    align-items: center;
 }
-.mobileTop>img{
-    width: 20px;
-    object-fit: contain;
-}
+
 /* .header{
     display: none;
 } */
