@@ -73,8 +73,8 @@ export function FormvideoLink({callback}:any){
 
   async function addLink(data:any){
    
-
-      const res = await agent.teacher.updateVideoLink(data)
+      const url =`https://www.youtube.com/embed/`+ data.introductionVideoLink.slice(data?.introductionVideoLink.lastIndexOf('=')+1)
+      const res = await agent.teacher.updateVideoLink({introductionVideoLink:url})
       res && toast.success('Video əlavə edildi')
       callback()
   
