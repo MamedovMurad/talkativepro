@@ -104,12 +104,14 @@
 }
 @media only screen    and (max-width: 800px) {
 .videparent{
-  height: 85vh;
+  min-height: 85vh;
+  display: block;
 }
 .item{
   width: 100%;
 }
 .item>div{
+  margin-top: 10px;
   width: 100%;
 }
 .parent{

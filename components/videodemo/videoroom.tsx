@@ -26,6 +26,7 @@ const client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
+let custom__uid = 0
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
 const VideoRoom = ({
   setjoined,
@@ -44,13 +45,14 @@ const VideoRoom = ({
   const [messages, setmessages] = useState<
     { message: string; date: Date; agoraUid: string | number; sender: string }[]
   >([]);
-  const [teacherInfo, setteacherInfo] = useState({id:0, name:''})
+  const [teacherInfo, setteacherInfo] = useState({id:1, name:''})
   const videoRef = useRef(null)
  
  const setVideo = async (uid:any, id:number, techInfo:string) => {
 
-uid.play(videoRef.current)
 
+uid.play(videoRef.current)
+custom__uid=id
   setteacherInfo({id, name:techInfo})
   return 
  }
@@ -88,9 +90,12 @@ uid.play(videoRef.current)
     setUsers((previousUsers: any) =>
       previousUsers.filter((u: any) => u.uid !== user.uid)
     );
-    if (user.uid==teacherInfo.id) {
+  
+    if (user.uid==custom__uid) {
       setteacherInfo({id:0,name:''})
     }
+    
+
   };
 
   useEffect(() => {
