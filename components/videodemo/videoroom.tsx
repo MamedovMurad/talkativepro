@@ -44,14 +44,14 @@ const VideoRoom = ({
   const [messages, setmessages] = useState<
     { message: string; date: Date; agoraUid: string | number; sender: string }[]
   >([]);
-  const [teacherInfo, setteacherInfo] = useState('')
+  const [teacherInfo, setteacherInfo] = useState({id:0, name:''})
   const videoRef = useRef(null)
  
  const setVideo = async (uid:any, id:number, techInfo:string) => {
 
 uid.play(videoRef.current)
 
-  setteacherInfo(techInfo)
+  setteacherInfo({id, name:techInfo})
   return 
  }
 /*   var socket: any = io("https://ws.talkative.az/chat", {
@@ -88,6 +88,9 @@ uid.play(videoRef.current)
     setUsers((previousUsers: any) =>
       previousUsers.filter((u: any) => u.uid !== user.uid)
     );
+    if (user.uid==teacherInfo.id) {
+      setteacherInfo({id:0,name:''})
+    }
   };
 
   useEffect(() => {
@@ -157,6 +160,7 @@ uid.play(videoRef.current)
       client.leave();
       client.removeAllListeners();
       client.disableDualStream();
+
     });
 
     setjoined(false);
@@ -272,8 +276,9 @@ uid.play(videoRef.current)
       <div className={styles.body}>
       <div className={styles.bigVideo} >
      <div ref={videoRef}></div>
-     <p className={styles.user_info}>{teacherInfo} </p>
+     <p className={styles.user_info}>{teacherInfo.name} </p>
      </div>
+
         <div className={styles.videparent}>
           {users.map((item: any) => (
             <>
