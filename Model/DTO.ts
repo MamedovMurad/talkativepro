@@ -72,6 +72,8 @@ interface Iparticipants{
     user:ImeModel;
     dateJoined:string
     dateCreated:string
+    avatar?:string
+    
 }
 export interface IOldDoc{
     id:number,

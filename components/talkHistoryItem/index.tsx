@@ -1,3 +1,4 @@
+import { baseImageUrl } from "../../Api/agent";
 import { IOldDoc } from "../../Model/DTO";
 import { StarSVG } from "../../svg/starSVG";
 import styles from "./index.module.css";
@@ -10,6 +11,8 @@ const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
   width = "430px",
   item
 }) => {
+  console.log(item,'itemmmm');
+  
   return (
     <div className={styles.talkhistoryItem} style={{ width }}>
       <main className={styles.main}>
@@ -43,10 +46,13 @@ const TalkHistoryItem: React.FC<TalkHistoryItemProps> = ({
 
       <footer className={styles.footer}>
                <div className={styles.imgs}>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
-                   <div><img src="/uploads/portiret.png" alt="" /></div>
+                {
+                  item?.participants?.map((item_i,i)=>(
+                    <div key={i}><img src={baseImageUrl+ item_i.avatar} alt="" /></div>
+                  ))
+                }
+                  
+
                </div>
                <div className={styles.buttonArea}>
                
