@@ -33,7 +33,10 @@
   bottom: 10px;
   cursor: pointer;
 }
-
+.inputui>input:invalid {
+  border: none;
+  outline: 1px solid red;
+}
 @media only screen and (max-width: 800px) {
   .inputui > input{
     height: 43px;

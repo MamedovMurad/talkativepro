@@ -16,9 +16,10 @@ type InputUIProps = {
     min?:any,
     required?:boolean,
     maxlength?:string|number,
+    step?:number
 }
  
-const InputUI:React.FC<InputUIProps> = ({id, width='100%', label,height,type="text",register, name, value, errors, max, min, required=true,maxlength}) => {
+const InputUI:React.FC<InputUIProps> = ({step,id, width='100%', label,height,type="text",register, name, value, errors, max, min, required=true,maxlength}) => {
     console.log(maxlength,'ll');
     
    const [element, setelement] = useState(type)
@@ -32,7 +33,7 @@ const InputUI:React.FC<InputUIProps> = ({id, width='100%', label,height,type="te
            {
                type=='textarea'?   
                 <textarea  max={max} min={min} type={type} id={`inputUI${id}`} style={{width, height}} value={value} {...register&& register(handleName(name),{required:required})}  className={(errors&&errors[handleName(name)])?styles.error:''}></textarea> 
-               : <input  max={max} min={min} type={element} 
+               : <input  max={max} min={min} type={element} step={step}
                id={`inputUI${id}`}  style={{width, height}} value={value}
                 {...register&& register(handleName(name),{required:required})} 
                 maxLength={maxlength} className={(errors&&errors[handleName(name)])?styles.error:'tttt'} />
