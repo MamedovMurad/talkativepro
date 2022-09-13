@@ -35,7 +35,6 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
 
   return (
     <>
-    
     <div className={styles.item} style={participant?.loggedAsTeacher&&responsive&&responsive>700?{display:'none'}:{}}>
     {
       (currentUser.loggedAsTeacher &&user.uid!== currentUser.agoraUid)&&<span>

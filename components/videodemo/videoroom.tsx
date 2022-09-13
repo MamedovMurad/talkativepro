@@ -274,17 +274,15 @@ custom__uid=id
 
     socket.emit("new_message", string);
   }
-
   return (
+
     <div className={styles.parent}>
-      
       <div className={styles.body}>
       <div className={styles.bigVideo} >
      <div ref={videoRef}></div>
-     <p className={styles.user_info}>{teacherInfo.name} </p>
+     <p className={styles.user_info} style={{bottom:'75px'}}>{teacherInfo.name} </p>
      </div>
-
-        <div className={styles.videparent}>
+        <div className={`${styles.videparent} ${chat&&styles.chatactiveVideparent}`} >
           {users.map((item: any) => (
             <>
               <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context} setVideo={setVideo}/>
