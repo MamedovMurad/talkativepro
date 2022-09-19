@@ -47,7 +47,7 @@ const VideoRoom = ({
   >([]);
   const [teacherInfo, setteacherInfo] = useState({id:1, name:''})
   const videoRef = useRef(null)
- 
+ const [alertChat, setalertChat] = useState(false)
  const setVideo = async (uid:any, id:number, techInfo:string) => {
 
 
@@ -72,6 +72,10 @@ custom__uid=id
       if (users?.find((item: any) => item.uid == user.uuid)) {
         return;
       }
+      setUsers((prevUsers: any) => {
+        return prevUsers.filter((User: any) => User.uid !== user.uid);
+      });
+      
       setUsers((previousUsers: any) =>
         [...previousUsers, user]?.map((item) => {
           item.audio = true;
@@ -109,9 +113,7 @@ custom__uid=id
         user.audioTrack?.stop();
       }
       if (type === "video") {
-        setUsers((prevUsers: any) => {
-          return prevUsers.filter((User: any) => User.uid !== user.uid);
-        });
+    
       }
     });
 
@@ -226,7 +228,7 @@ custom__uid=id
     return res.data&&setmessages(res.data);
     
   }
-  console.log(chanal,'id');
+
   
   useEffect(() => {
     if (context?.agoraUid) {
@@ -247,7 +249,7 @@ custom__uid=id
             ? (data.me = true)
             : (data.me = false);
           console.log(data, "data");
-
+            setalertChat(true)
           return setmessages((prev) => [...prev, data]);
         }
       );
@@ -294,8 +296,7 @@ custom__uid=id
           ))}
           
         </div>
-
-        <div className={styles.videbuttons}>
+        <div className={`${styles.videbuttons} ${chat&&styles.chatactivevidebuttons}`}>
           <button
             onClick={() => mute("audio", context?.agoraUid)}
             style={micVideo.mic ? { background: "#FF6868" } : {}}
@@ -311,7 +312,7 @@ custom__uid=id
           >
             <VideoSVG />
           </button>
-          <button onClick={() => setchat(!chat)}>
+          <button onClick={() => (setchat(!chat), setalertChat(false))} className={alertChat&&styles.activeAlert||''}>
             <CHatSVG />
           </button>
         </div>

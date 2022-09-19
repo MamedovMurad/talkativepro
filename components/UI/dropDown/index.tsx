@@ -43,11 +43,12 @@ class DropDownUI extends React.Component<any> {
       <div
         className={styles.container}
         ref={this.wrapperRef}
+        style={flex?{width:'100%'}:{}}
       >
         <div className={styles.DropDownMenu} style={flex?{justifyContent:flex}:{}}
           onClick={() => this.toggleDropDown()}
         >
-          <div>{title}</div>
+          <div   style={flex?{width:'100%'}:{}}>{title}</div>
         </div>
         <div className={`${styles.SumofItems} ${this.state.dropDownOpen && styles.activeSumItems} ${left && styles.leftSide}`} style={flex?{bottom:'-118px'}:{}}>
           {this.state.dropDownOpen
