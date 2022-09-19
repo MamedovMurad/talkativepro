@@ -54,7 +54,7 @@
   width: 259px;
   border-radius: 15px;
   overflow: hidden;
-  background: red !important;
+  background: rgb(44, 43, 43) !important;
 }
 .videbuttons {
   width: 100%;
