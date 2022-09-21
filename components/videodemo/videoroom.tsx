@@ -69,13 +69,12 @@ custom__uid=id
     if (mediaType === "video") {
       console.log(users, "users fff");
       
-      setUsers(
-         users.filter((User: any) => User.uid !== user.uid));
+    
 
       if (users?.find((item: any) => item.uid == user.uuid)) {
         return;
       }
-        setTimeout(() => {
+      
           setUsers((previousUsers: any) =>
           [...previousUsers, user]?.map((item) => {
             item.audio = true;
@@ -83,7 +82,7 @@ custom__uid=id
             return item;
           })
         );
-        }, 100);
+      
     }
 
     if (mediaType === "audio") {
@@ -114,9 +113,9 @@ custom__uid=id
         user.audioTrack?.stop();
       }
       if (type === "video") {
-  /*       setUsers((prevUsers: any) => {
+        setUsers((prevUsers: any) => {
           return prevUsers.filter((User: any) => User.uid !== user.uid);
-        }); */
+        });
       }
     });
 
