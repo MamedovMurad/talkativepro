@@ -40,8 +40,6 @@ const VideoRoom = ({
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const [users, setUsers] = useState<any>([]);
   const [localTracks, setLocalTracks] = useState<any>([]);
-  console.log(localTracks,'localTracks');
-  
   const [micVideo, setmicVideo] = useState({ mic: false, vid: false });
   const [chat, setchat] = useState(false);
   const [messages, setmessages] = useState<
@@ -66,8 +64,6 @@ custom__uid=id
     },
   }); */
   const handleUserJoined = async (user: any, mediaType: any) => {
-    console.log('jjjjjjjjj');
-    
     await client.subscribe(user, mediaType);
 
     if (mediaType === "video") {
