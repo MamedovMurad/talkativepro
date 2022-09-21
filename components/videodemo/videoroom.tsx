@@ -117,9 +117,9 @@ custom__uid=id
         user.audioTrack?.stop();
       }
       if (type === "video") {
-     /*    setUsers((prevUsers: any) => {
+        setUsers((prevUsers: any) => {
           return prevUsers.filter((User: any) => User.uid !== user.uid);
-        }); */
+        });
       }
     });
 
