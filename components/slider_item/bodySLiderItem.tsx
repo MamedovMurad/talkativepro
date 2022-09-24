@@ -83,7 +83,7 @@ const BodySliderItem:React.FC<BodySliderItemProps> = ({width, item,cb}) => {
             </div>
          
                {
-                !data.users.user_info?.loggedAsTeacher&&  <div className={styles.buttonArea}>
+                !data.users.user_info?.loggedAsTeacher&& !item.buttonHIde&&  <div className={styles.buttonArea}>
                  <button onClick={(e:any)=>{connecttoConversation(item?.id); e.stopPropagation()}} className={item?.currentUserJoined?styles.activeButton:''}> {item?.currentUserJoined?'Qoşulmusunuz':'Sən də qoşul'}</button>
              </div>
                }

@@ -63,6 +63,7 @@ const FollowingContainer: React.FC<FollowingContainer> = ({
               </div>
             </div>
             <div>
+            {/*   {JSON.stringify(item)} */}
               <ButtonUI text="İzlənir" width="95px" height="44px" onclick={()=>callback(item.uuid)} />
             </div>
           </li>

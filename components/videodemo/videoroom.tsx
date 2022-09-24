@@ -176,9 +176,9 @@ custom__uid=id
     if (context?.loggedAsTeacher) {
       const res = await agent.talk.stopTalk({ id: chanalId });
     }
-
+      const notassestments = await agent.talk.notassestments()
     await Router.push("/");
-    !context?.loggedAsTeacher &&
+    (!context?.loggedAsTeacher &&notassestments.data)&&
       dispatch({
         type: "setModalActive",
         payload: <StarRating id={chanalId} />,
