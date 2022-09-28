@@ -19,7 +19,7 @@ const TeacherTalk:React.FC<TeacherTalkProps> = () => {
         const res = await agent.teacher.oldTalk(params)
         res&& setOld(res.data)
         const aktveData= await agent.talk.list([],[],[],'',10,0,params)
-        aktveData&& setactiveTalk(activeTalk?.entities)
+        aktveData&& setactiveTalk(aktveData.data)
        }
 
        
