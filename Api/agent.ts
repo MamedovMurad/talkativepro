@@ -141,8 +141,8 @@ const teacher = {
       `/public/teachers?limit=${limit}&keyword=${keyword}&offset=${offset}&${languageIds
         .map((n) => `languageIds=${n}`)
         .join("&")}&${nationalityIds
-        .map((n) => `nationalityIds=${n}`)
-        .join("&")}`
+          .map((n) => `nationalityIds=${n}`)
+          .join("&")}`
     ),
   calendarList: () =>
     requests.get<GenericDTO<ICalendar[]>>("/teachers/myCalendar"),
@@ -180,8 +180,9 @@ const teacher = {
     requests.put<GenericDTO<boolean>>("/teachers/introductionVideo", body),
   workPost: (body: { workPlace: string; profession: string }) =>
     requests.post<GenericDTO<true>>("/teachers/workExperiences", body),
-    workRemove: (id: number) =>
+  workRemove: (id: number) =>
     requests.del<GenericDTO<boolean>>("/teachers/workExperiences/" + id),
+  oldTalk:(uuid:string|number)=>requests.get<GenericDTO<GenericListDto<any>>>(`/public/teachers/${uuid}/oldConversations`)
 };
 const talk = {
   list: (
@@ -190,21 +191,22 @@ const talk = {
     levels: string[] = [],
     date: string = "",
     limit = 10,
-    offset = 0
+    offset = 0,
+    teacherUUID:string='',
   ) =>
     requests.get<GenericDTO<any>>(
-      `/public/conversations?limit=${limit}&offset=${offset}&date=${date}&${languageIds
+      `/public/conversations?limit=${limit}&offset=${offset}&teacherUUID=${teacherUUID}&date=${date}&${languageIds
         .map((n, index) => `languageIds=${n}`)
         .join("&")}&${teacherNationalityIds
-        .map((n, index) => `teacherNationalityIds=${n}`)
-        .join("&")}&${levels.map((n, index) => `levels=${n}`).join("&")}`
+          .map((n, index) => `teacherNationalityIds=${n}`)
+          .join("&")}&${levels.map((n, index) => `levels=${n}`).join("&")}`
     ),
-  connect: (body: {url:string,joinHidden:boolean}={url:'',joinHidden:false}) =>
+  connect: (body: { url: string, joinHidden: boolean } = { url: '', joinHidden: false }) =>
     requests.post<
       GenericDTO<{ token: string; channelId: string; continueWithCall: true }>
     >(`conversations/${body.url}/join`, body),
 
-  startConversation: (body: {url:number,joinHidden:boolean}={url:0,joinHidden:false}) =>
+  startConversation: (body: { url: number, joinHidden: boolean } = { url: 0, joinHidden: false }) =>
     requests.post<GenericDTO<{ token: string; channelId: string }>>(
       `conversations/${body.url}/join`,
       body
@@ -221,9 +223,9 @@ const talk = {
     ),
   stopTalk: (body: { id: number }) =>
     requests.put(`/conversations/${body.id}/complete`, ""),
-    assessment:(body:{path:string|number, value:number})=>requests.post(`/conversations/${body.path}/assestments`, body),
-    notassestments:()=>requests.get<GenericDTO<any>>('/students/notAssessedConversation')
-    
+  assessment: (body: { path: string | number, value: number }) => requests.post(`/conversations/${body.path}/assestments`, body),
+  notassestments: () => requests.get<GenericDTO<any>>('/students/notAssessedConversation')
+
 };
 
 const Student = {
@@ -261,8 +263,8 @@ const Student = {
       `/students/conversations?limit=${limit}&offset=${offset}&type=${type}&date=${date}&${languageIds
         .map((n, index) => `languageIds=${n}`)
         .join("&")}&${teacherNationalityIds
-        .map((n, index) => `teacherNationalityIds=${n}`)
-        .join("&")}&${levels.map((n, index) => `levels=${n}`).join("&")}`
+          .map((n, index) => `teacherNationalityIds=${n}`)
+          .join("&")}&${levels.map((n, index) => `levels=${n}`).join("&")}`
     ),
 };
 const tariff = {
@@ -282,7 +284,7 @@ const Common = {
     ),
 };
 const Subscription = {
-post:(body:{email:string})=>requests.post<GenericDTO<boolean>>('/public/subscriptions', body)
+  post: (body: { email: string }) => requests.post<GenericDTO<boolean>>('/public/subscriptions', body)
 };
 const fileUpload_v = (body: any) =>
   requests.post<GenericDTO<string>>("/files", body);
@@ -314,8 +316,8 @@ const password = {
     requests.put<GenericDTO<boolean>>("/users/password", body),
 };
 
-const socket={
-  list:(chanal:string)=>requests.get<GenericDTO<{_id:string,message:string, date:Date, agoraUid:string|number,sender:string,me?:boolean}[]>>(`https://ws.talkative.az/api/v1/messages?channelId=${chanal}&limit=200&offset=0`)
+const socket = {
+  list: (chanal: string) => requests.get<GenericDTO<{ _id: string, message: string, date: Date, agoraUid: string | number, sender: string, me?: boolean }[]>>(`https://ws.talkative.az/api/v1/messages?channelId=${chanal}&limit=200&offset=0`)
 }
 const agent = {
   Auth,

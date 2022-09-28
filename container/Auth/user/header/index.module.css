@@ -5,6 +5,9 @@
   align-items: center;
   gap: 0 24px;
 }
+.extMobile{
+  display: none;
+}
 .header_user {
 
   display: flex;
@@ -53,7 +56,10 @@
     align-items: center;
 }
 @media only screen and (max-width: 840px) {
-  .headerUser{
-      /* display: none */
-  };
+/*   .headerUser{
+      display: none
+  }; */
+  .extMobile{
+    display: block ;
+  }
   }

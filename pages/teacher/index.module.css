@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   color: #c2c2c2;
+  cursor: pointer;
 }
 .topLInk > .topLinkActive {
   color: #00c1dd;

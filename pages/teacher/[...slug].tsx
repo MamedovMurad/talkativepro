@@ -7,6 +7,7 @@ import { ITeacher } from "../../Model/DTO";
 import styles from "./index.module.css";
 import { serialize } from 'cookie'
 import { CerticateUi } from "../../components/certificatesUi";
+import Router  from 'next/router';
 type SingleTeacherProps = {
   teacher?:ITeacher
 };
@@ -39,14 +40,15 @@ const data = [
 ];
 
 const SingleTeacher: React.FC<SingleTeacherProps> = ({teacher}) => {
-console.log(teacher);
+  const router = useRouter()
+  const {slug} = router.query
 
   
   return (
     <div className={styles.SingleTeacherDetail}>
       <div className="wrapper">
         <ul className={styles.topLInk}>
-          <li>Söhbətlər</li>
+          <li onClick={()=>Router.push('talks/'+slug)}>Söhbətlər</li>
           <li className={styles.topLinkActive}>Haqqında</li>
         </ul>
         <main className={styles.SingleTeacherBody}>

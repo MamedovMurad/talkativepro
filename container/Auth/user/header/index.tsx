@@ -11,6 +11,9 @@ import useResponsivenenessAdjuster from "../../../../hooks/useResponsivenenessAd
 import { UserContext } from "../../../../pages/_app";
 import { ArrowSvg } from "../../../../svg/ArrowSVG";
 import { LogoSvg } from "../../../../svg/Logo";
+import { IconSVG } from "../../../../svg/userSvg";
+
+
 import styles from "./index.module.css";
 const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
   const [data, dispatch] = useContext(UserContext)
@@ -43,8 +46,9 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
           </Link>
         </div>
         <div className={styles.headerUser}>
+       
           <ZvanoqUI count={count+''} />
-
+         <span className={styles.extMobile} onClick={extDashboard} style={{transform: 'translateY(-3px)'}}> <IconSVG width='25px'/></span>
           {
             !responsive&& <>
             <ButtonUI text="Abunə ol" width="136px" height="56px" />
