@@ -10,6 +10,7 @@ import ZvanoqUI from "../../../../components/UI/Zvanoq/zvanoq";
 import useResponsivenenessAdjuster from "../../../../hooks/useResponsivenenessAdjuster";
 import { UserContext } from "../../../../pages/_app";
 import { ArrowSvg } from "../../../../svg/ArrowSVG";
+import { BackSVG } from "../../../../svg/BackSVG";
 import { LogoSvg } from "../../../../svg/Logo";
 import { IconSVG } from "../../../../svg/userSvg";
 
@@ -48,7 +49,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
         <div className={styles.headerUser}>
        
           <ZvanoqUI count={count+''} />
-         <span className={styles.extMobile} onClick={extDashboard} style={{transform: 'translateY(-3px)'}}> <IconSVG width='25px'/></span>
+         <span className={styles.extMobile} onClick={extDashboard} style={{transform: 'translateY(-9px)'}}> <BackSVG width='40px' height={"40px"}/></span>
           {
             !responsive&& <>
             <ButtonUI text="Abunə ol" width="136px" height="56px" />
