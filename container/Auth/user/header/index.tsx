@@ -49,7 +49,7 @@ const HeaderAuthUser: React.FC<HeaderAuthProps> = () => {
         <div className={styles.headerUser}>
        
           <ZvanoqUI count={count+''} />
-         <span className={styles.extMobile} onClick={extDashboard} style={{transform: 'translateY(-9px)'}}> <BackSVG width='40px' height={"40px"}/></span>
+         <span className={styles.extMobile} onClick={extDashboard} style={{transform: 'translateY(-4px)'}}> <BackSVG width='40px' height={"40px"}/></span>
           {
             !responsive&& <>
             <ButtonUI text="Abunə ol" width="136px" height="56px" />
