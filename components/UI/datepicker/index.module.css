@@ -7,9 +7,21 @@
     line-height: 24px;
     width: 91%;
     color: #c2c2c2;
+
 }
-input[type=date].datePicker + .arrow{
+.parent{
+    position: relative;
+}
+input[type=date].datePicker ~ .arrow{
 display: none;
+}
+.line{
+    display: inline-block;
+    position: absolute;
+    background: #c2c2c2;
+    width: 2px;
+    height: 20px;
+    right: 60px;
 }
 .parent{
     display: flex;
@@ -19,4 +31,16 @@ display: none;
 .arrow{
     display: inline-flex;
     align-items: center;
+}
+
+@media only screen and (max-width: 860px) {
+
+    .line{
+        width: 1.5px;
+        right: 34px;
+    }
+    .arrow{
+        transform: translateX(8px);
+    }
+
 }
