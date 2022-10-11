@@ -128,7 +128,7 @@ const Dashborad: React.FC<DashboradProps> = ({ data }: any) => {
             ]}
           />
         }  
-           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth={responsive?'90%':'45%'} list={talks}/>
+           <TalksContainer width={tab==0?'79%':'100%'}  itemWidth={responsive?'90%':'45%'} list={talks} cb={fetchTalks}/>
            </>
           </AuthUser>
       )}

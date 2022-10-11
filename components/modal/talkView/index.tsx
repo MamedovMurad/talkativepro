@@ -64,7 +64,7 @@ const TalkVIewModalBody: React.FC<TalkVIewModalBodyProps> = ({ item }) => {
           <footer>
           <p>Müzakirə üçün material </p>
         <div>
-            <a href={item.infoVideoLink||'#'}>{item?.infoVideoLink}</a></div>
+            <a href={item.infoVideoLink||'#'}>video link</a></div>
           </footer>
     </section>
   );
