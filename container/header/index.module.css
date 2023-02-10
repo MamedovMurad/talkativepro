@@ -20,17 +20,24 @@
 }
 @media only screen and (max-width: 920px) {
 .mobileTop{
+    padding: 0 10px;
     display: flex;
     gap: 0 5px;
     height: 37px;
-    background-color: #fff;
+    background: #474747;
     position: relative;
     z-index: 10;
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     align-items: center;
+    justify-content: space-between;
 }
-
+.linkCustom{
+    display: flex;
+    border: 1px solid white;
+    background: #fff;
+    border-radius: 50%;
+}
 /* .header{
     display: none;
 } */

@@ -7,6 +7,7 @@ import ButtonUI from "../../components/UI/Button";
 import DatePicker from "../../components/UI/datepicker";
 import SelectUI from "../../components/UI/Select";
 import SliderItemUI from "../../components/UI/Slider";
+import MainSlider from "../../components/UI/Slider/main_slider";
 import SweetAlertSuccess from "../../components/UI/sweetAlert";
 import Faq from "../../container/faq";
 import SearchTop from "../../container/searchTop";
@@ -83,6 +84,7 @@ async function fetchTalks() {
                   <img src="/uploads/mobile2.png" alt="" />
                 </div>
               </div>
+          <MainSlider/>
             </div>
           </div>
           <SearchTop margin="66px 0 0 0 " />

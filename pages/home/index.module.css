@@ -2,6 +2,7 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%),
     linear-gradient(106.93deg, #edf1ff 4.88%, #e4ffff 91.51%);
 }
+
 .homepage > div {
   padding-top: 90px;
 }
@@ -55,6 +56,7 @@ section.connection > div > h4 {
   margin-bottom: 35px;
 }
 .customFlexSvg {
+ 
   position: relative;
   height: 416px;
   width: 100%;
@@ -341,6 +343,12 @@ section.teachersection {
   }
 }
 @media only screen    and (max-width: 800px) {
+  .homepage > div{
+    padding-top: 50px;
+  }
+  .main>.mainBgSLider>.customFlexSvg{
+    display: none;
+  }
   .main>.mainBgSLider>.customFlexSvg>div>img{
     width: 90%;
     }
@@ -451,6 +459,7 @@ line-height: 30px;
         margin-bottom: 10px;
       }
       .customFlexSvg{
+        display: none;
         height: 49.6vh;
       }
   }

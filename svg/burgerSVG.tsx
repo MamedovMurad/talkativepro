@@ -3,10 +3,10 @@ width = "48",
 color = "#333333",
 ...props
 }: React.SVGProps<SVGSVGElement>) => (
-<svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9.75 5.5H13.75C14.1642 5.5 14.5 5.16421 14.5 4.75C14.5 4.33579 14.1642 4 13.75 4H9.75C9.33579 4 9 4.33579 9 4.75C9 5.16421 9.33579 5.5 9.75 5.5Z" fill="#333333"/>
-<path d="M13.75 11H9.75C9.33579 11 9 11.3358 9 11.75C9 12.1642 9.33579 12.5 9.75 12.5H13.75C14.1642 12.5 14.5 12.1642 14.5 11.75C14.5 11.3358 14.1642 11 13.75 11V11Z" fill="#333333"/>
-<path d="M13.75 18H9.75C9.33579 18 9 18.3358 9 18.75C9 19.1642 9.33579 19.5 9.75 19.5H13.75C14.1642 19.5 14.5 19.1642 14.5 18.75C14.5 18.3358 14.1642 18 13.75 18V18Z" fill="#333333"/>
+<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1H15" stroke="#5C5B5B" strokeWidth="1.5" strokeLinecap="round"/>
+<path d="M1 5H15" stroke="#5C5B5B" strokeWidth="1.5" strokeLinecap="round"/>
+<path d="M1 9H15" stroke="#5C5B5B" strokeWidth="1.5" strokeLinecap="round"/>
 </svg>
 
   

@@ -87,8 +87,8 @@ const Footer: React.FC<FooterProps> = () => {
             <ul>
               <li>Yardım mərkəzi</li>
               <li onClick={() => route.push("/contact")}>Bizimlə əlaqə</li>
-              <li>İstifadə qaydaları</li>
-              <li>məxfilik razılaşması</li>
+              <li onClick={() => route.push("/rules")}>İstifadə qaydaları</li>
+              <li onClick={() => route.push("/privacy")}>məxfilik razılaşması</li>
             </ul>
           </li>
           <li className={styles.footer_content}>

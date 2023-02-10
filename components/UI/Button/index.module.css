@@ -1,31 +1,32 @@
-.buttonUI{
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background: #00C1DD;
-    border-radius: 10px;
-    flex: none;
- /*    order: 1; */
-    flex-grow: 0;
-    font-weight: 400;
-    font-size: 15px;
-    color: white;
-    cursor: pointer;
+.buttonUI {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #00c1dd;
+  border-radius: 10px;
+  flex: none;
+  align-items: center;
+  flex-grow: 0;
+  font-weight: 400;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  gap: 9px;
 }
-.buttonDash{
+.buttonDash {
   cursor: pointer;
   width: 25%;
   height: 80px;
-background: #FFFFFF;
-border: 1px dashed #C2C2C2;
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
+  background: #ffffff;
+  border: 1px dashed #c2c2c2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.buttonDash>button{
+.buttonDash > button {
   cursor: pointer;
   outline: none;
   border: none;
@@ -35,28 +36,28 @@ justify-content: center;
   justify-content: center;
   gap: 0 8px;
   font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-color: #C2C2C2;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c2c2c2;
 }
-.buttonDash>button>span{
+.buttonDash > button > span {
   display: inline-block;
   width: 33px;
   height: 33px;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 1px solid #00C1DD;
+  border: 1px solid #00c1dd;
   font-size: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 @media only screen and (max-width: 800px) {
-    .buttonUI{
-      height: 43px;
-    }
-    .buttonDash{
-      width:48%;
-      margin-bottom: 10px;
-    }
-    }
+  .buttonUI {
+    height: 43px;
+  }
+  .buttonDash {
+    width: 48%;
+    margin-bottom: 10px;
+  }
+}

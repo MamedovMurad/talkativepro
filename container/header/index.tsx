@@ -11,6 +11,7 @@ import ButtonUI from '../../components/UI/Button';
 import { ImeModel, ITeacher } from '../../Model/DTO';
 import { IconSVG } from '../../svg/userSvg';
 import { GlobosSvg } from '../../svg/globosSvg';
+import MobileDropDOwn from '../../components/UI/dropDown/mobileDropDown';
 
 type HeaderProps = {
   user:ImeModel|ITeacher|null
@@ -62,14 +63,19 @@ const Header:React.FC<HeaderProps> = ({user}) => {
     return (
       <>
         <div className={styles.mobileTop}>
-       <GlobosSvg/>
+          <div>call</div>
+          <MobileDropDOwn data={[{title:'string', link:'string'}]}/>
+       {/*  <Link href={user?"/dashboard":"/login"}>
+               <a className={styles.linkCustom}> <IconSVG/> </a>
+               </Link> */}
+   {/*     <GlobosSvg/>
         <ReactSelect activeEl={activeLang} setactiveEl={setActiveLangf}  options={
                          language?.map((item: any) => ({
                              label: item.code.toUpperCase(),
                              value: item.code,
                          
                            }))
-                     }/>
+                     }/> */}
         </div>
         <div className={`${styles.header} ${styles['header'+color]}`}>
          
@@ -84,9 +90,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
                  
                    <div className={styles.BGSearch}>
                 
-                      <Link href={user?"/dashboard":"/login"}>
-               <a > <IconSVG/> </a>
-               </Link>
+           
                    
                   </div>
                   
