@@ -35,6 +35,14 @@
     align-items: center;
     justify-content: space-between;
   }
+  .mobileTop>div:first-child{
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+  }
+  .mobileTop>div:first-child>span{
+    color: white;
+  }
   .linkCustom {
     display: flex;
     border: 1px solid white;
@@ -100,7 +108,7 @@
     font-weight: 500;
     padding: 10px;
     margin-top: 10px;
-    font-size: 22px;
+    font-size: 18px;
   }
   .responsiveMenu >div> ul>li:hover{
     background: rgba(255, 255, 255, 0.2);
@@ -116,5 +124,27 @@ border-radius: 8px;
     justify-content: space-between;
     height: 100px;
     margin-bottom: 30px;
+  }
+  .menuHeader{
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mobileLang{
+    width: 85px;
+  
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    border: 1px solid white;
+    box-sizing: border-box;
+  /*   background: #000; */
+  }
+  .mobileLetter{
+    color: white;
+    font-size: 16px;
   }
 }

@@ -13,6 +13,9 @@ import { IconSVG } from '../../svg/userSvg';
 import { GlobosSvg } from '../../svg/globosSvg';
 import MobileDropDOwn from '../../components/UI/dropDown/mobileDropDown';
 import { ArrowSvg } from '../../svg/ArrowSVG';
+import { CloseSVG } from '../../svg/closeSVG';
+import { UnionSvg } from '../../svg/unionSVG';
+import { HeadphoneSVG } from '../../svg/headphoneSVG';
 
 type HeaderProps = {
   user:ImeModel|ITeacher|null
@@ -25,6 +28,7 @@ type forsate = {
     code: string;
   };
 const Header:React.FC<HeaderProps> = ({user}) => {
+  const [dropActive, setdropActive] = useState(false)
     const [toggle, settoggle] = useState(false)
     const [color, setcolor] = useState('');
     const [language, setlanguage] = useState<forsate[]| null>(null);
@@ -56,7 +60,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
         responsive&&fetchApiLang();
       }, [responsive]);
 
-
+let entity= [{title:'profile kec', link:'#'},{title:'Redaktə et',link:'/#'},{title:'Çıxış',link:'/#'}]
 
       useEffect(() => {
         window.addEventListener("scroll", changeBackground)
@@ -64,8 +68,8 @@ const Header:React.FC<HeaderProps> = ({user}) => {
     return (
       <>
         <div className={styles.mobileTop}>
-          <div>call</div>
-          <MobileDropDOwn element={<><span ><IconSVG/></span> <i style={{transform:'translateY(5px)'}}><ArrowSvg width={'19px'} height="14px" color="white"/></i></>}/>
+          <div ><HeadphoneSVG/> <span>call</span></div>
+          <MobileDropDOwn CB={setdropActive} entity={entity} element={<><span ><IconSVG/></span> <i style={{transform:'translateY(5px)'}}><ArrowSvg width={'19px'} height="14px" color="white"/></i></>}/>
        {/*  <Link href={user?"/dashboard":"/login"}>
                <a className={styles.linkCustom}> <IconSVG/> </a>
                </Link> */}
@@ -78,7 +82,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
                            }))
                      }/> */}
         </div>
-        <div className={`${styles.header} ${styles['header'+color]}`}>
+        <div className={`${styles.header} ${styles['header'+color]}`} style={dropActive?{zIndex:'0'}:{}}>
          
          <div className={`wrapper ${styles.wrapper}`}>
             <Link href="/">
@@ -100,6 +104,19 @@ const Header:React.FC<HeaderProps> = ({user}) => {
 
          <div className={`${styles.responsiveMenu}  ${toggle?styles.responsiceActive: styles.responsiveDeActive}`}>
             <div>
+              <div className={styles.menuHeader}>
+          
+              <MobileDropDOwn
+              style={{top:'49px',width:'100px',left:'-1px'}}
+               entity={[{title:'Az',link:'#'},{title:'Ru',link:'#'}]} 
+               element={<div className={styles.mobileLang}  >
+             <UnionSvg/>
+                <span className={styles.mobileLetter}>AZ</span>
+                <span><ArrowSvg color='white'/></span>
+              </div>}/>
+             
+               <span onClick={()=>settoggle(false)}> <CloseSVG color='white'/></span>
+              </div>
             <ul>
                  {
                      nav.map(item=>(
