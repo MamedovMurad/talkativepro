@@ -12,6 +12,7 @@ import { ImeModel, ITeacher } from '../../Model/DTO';
 import { IconSVG } from '../../svg/userSvg';
 import { GlobosSvg } from '../../svg/globosSvg';
 import MobileDropDOwn from '../../components/UI/dropDown/mobileDropDown';
+import { ArrowSvg } from '../../svg/ArrowSVG';
 
 type HeaderProps = {
   user:ImeModel|ITeacher|null
@@ -64,7 +65,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
       <>
         <div className={styles.mobileTop}>
           <div>call</div>
-          <MobileDropDOwn data={[{title:'string', link:'string'}]}/>
+          <MobileDropDOwn element={<><span ><IconSVG/></span> <i style={{transform:'translateY(5px)'}}><ArrowSvg width={'19px'} height="14px" color="white"/></i></>}/>
        {/*  <Link href={user?"/dashboard":"/login"}>
                <a className={styles.linkCustom}> <IconSVG/> </a>
                </Link> */}
@@ -98,7 +99,8 @@ const Header:React.FC<HeaderProps> = ({user}) => {
          </div>
 
          <div className={`${styles.responsiveMenu}  ${toggle?styles.responsiceActive: styles.responsiveDeActive}`}>
-             <ul>
+            <div>
+            <ul>
                  {
                      nav.map(item=>(
                          <li key={item.id}><Link href={item.path}>
@@ -109,6 +111,12 @@ const Header:React.FC<HeaderProps> = ({user}) => {
                 
         
              </ul>
+            </div>
+
+             <div className={styles.buttons}>
+             <ButtonUI text='Giriş'  width='100%' border='1px solid rgba(255, 255, 255, 0.2'/>
+             <ButtonUI text='Qeydiyyat' color='rgba(255, 255, 255, 0.2)' width='100%'/>
+             </div>
           {/*    <div className={styles.navAuth}>
          
              </div> */}

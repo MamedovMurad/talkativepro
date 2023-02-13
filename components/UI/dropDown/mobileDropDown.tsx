@@ -4,10 +4,10 @@ import { IconSVG } from "../../../svg/userSvg";
 import styles from './index.module.css'
 
 type MobileDropDOwnProps = {
-    data:{title:string, link:string}[]
+    element:any
 }
 
-const MobileDropDOwn:React.FC<MobileDropDOwnProps> = ({data}) => {
+const MobileDropDOwn:React.FC<MobileDropDOwnProps> = ({element}) => {
     const wrapperRef = React.useRef<any>();
     const [active, setactive] = useState(false)
 
@@ -32,7 +32,7 @@ const MobileDropDOwn:React.FC<MobileDropDOwnProps> = ({data}) => {
 
     return (
         <div ref={wrapperRef} className={styles.staticDrop}>
-           <div onClick={()=>setactive(true)} style={{display:'flex',gap:'0 10px'}}> <span ><IconSVG/></span> <i style={{transform:'translateY(5px)'}}><ArrowSvg width={'19px'} height="14px" color="white"/></i> </div>
+           <div onClick={()=>setactive(true)} style={{display:'flex',gap:'0 10px'}}> {element} </div>
           {
             active&&<ul>
             <li>Profilə keçid</li>
