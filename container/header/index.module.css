@@ -85,7 +85,7 @@
     display: block;
     background-color: #00C1DD;
     width: 97%;
-    height: 85vh;
+    height: 100vh;
     overflow: hidden;
     transition: height 0s;
     display: flex;
