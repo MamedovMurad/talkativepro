@@ -107,4 +107,6 @@ display: flex;
 }
 .staticDrop>ul>li:hover{
   background-color: #E6F9FC;
+  color: #474747;
+  font-size: 16px;
 }
