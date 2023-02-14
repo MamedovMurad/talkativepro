@@ -6,11 +6,13 @@ import { useState,useEffect, useRef } from "react";
 import agent from "../../Api/agent";
 import Router from 'next/router'
 import { WithRef } from "../../hooks/findPosition";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 type SearchTopProps = {
   margin: string;
 };
 
 const SearchTop: React.FC<SearchTopProps> = ({ margin }) => {
+ const responsive = useResponsivenenessAdjuster(800)
   const [defData, setdefData] = useState<{lang:any, level:any}>({lang:null,level:null})
 const [forFilter, setforFilter] = useState({
   level:null,
@@ -84,7 +86,7 @@ const [forFilter, setforFilter] = useState({
       id="34567890-"
           options={defData?.lang?.map((item:any)=>({label:item.name, value:item.id}))}
           styles={customStyles}
-          placeholder="Söhbət səviyyəsi"
+          placeholder="Söhbətin dili"
           onChange={(val:any)=>setforFilter({...forFilter, lang:val.value})}
         />
       </div>
@@ -99,6 +101,7 @@ const [forFilter, setforFilter] = useState({
         />
       </div>
       <div className={styles.buttonParent} onClick={routeWithParam}>
+       
         <button></button>
       </div>
     </div>

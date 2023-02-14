@@ -36,10 +36,12 @@ display: none;
 @media only screen and (max-width: 860px) {
 
     .line{
+        display: none;
         width: 1.5px;
         right: 34px;
     }
     .arrow{
+        display: none;
         transform: translateX(8px);
     }
 

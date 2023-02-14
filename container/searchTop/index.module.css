@@ -41,6 +41,10 @@ transform: translateX(27px);
 } */
 
 @media only screen and (max-width: 800px) {
+  .SearchTop>.buttonParent {
+    background-position: center;
+    background-size: 7% !important
+  }
 .SearchTop{
 display: flex;
 height: min-content;
@@ -48,15 +52,27 @@ padding: 20px;
 justify-content: space-between;
 flex-direction: column;
 height: 301px;
+border: 1px solid #DDDDDD;
 }
 .SearchTop>div{
   width: 100%;
+  border-bottom:1px solid #F6F6F6 ;
 }
 .SearchTop>div input:first-child{
-  width: 91%;
+  width: 100%;
   padding:0 8px;
 }
+.SearchTop>.buttonParent button::after{
+  content: "Axtar";
+  color: white;
+  position: absolute;
+  font-size: 16px;
+  left: 105px;
+  top: 10px;
+}
+
 .SearchTop>.buttonParent {
+  position: relative;
 width: 100%;
 background-size: 30px;
 height: 47px;
