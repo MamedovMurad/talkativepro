@@ -14,7 +14,6 @@
   height: 64vh;
 }
 .mainBgSLider {
- 
   background: url("../../public/uploads/background.svg");
   width: 40%;
   background-repeat: no-repeat;
@@ -56,7 +55,6 @@ section.connection > div > h4 {
   margin-bottom: 35px;
 }
 .customFlexSvg {
- 
   position: relative;
   height: 416px;
   width: 100%;
@@ -67,32 +65,31 @@ section.connection > div > h4 {
 .customFlexSvg > div {
   position: absolute;
 }
-.customFlexSvg > div:first-child{
+.customFlexSvg > div:first-child {
   top: -10px;
   left: 0;
 }
-.customFlexSvg > div:last-child{
+.customFlexSvg > div:last-child {
   bottom: -10px;
   right: 0;
 }
-.customFlexSvg > div:nth-child(2){
+.customFlexSvg > div:nth-child(2) {
   top: -10px;
   right: 0;
 }
-.customFlexSvg > div:nth-child(3){
- position: static;
- transform: translate(-10px 0);
-
+.customFlexSvg > div:nth-child(3) {
+  position: static;
+  transform: translate(-10px 0);
 }
-.customFlexSvg > div:nth-child(4){
-left: 0 ;
-bottom: -10px;
+.customFlexSvg > div:nth-child(4) {
+  left: 0;
+  bottom: -10px;
 }
 .customFlexSvg > div > img {
   border-radius: 10px;
 }
 .laptop {
-  transform: translate(-15px,-5px);
+  transform: translate(-15px, -5px);
   display: flex;
   justify-content: center;
   width: 100%;
@@ -317,12 +314,12 @@ section.teachersection {
   font-size: 26px;
   font-weight: 400;
 }
-.sliderBootm>a {
+.sliderBootm > a {
   display: flex;
   justify-content: flex-end;
   transform: translateY(-25px);
 }
-.sliderBootm > a> p {
+.sliderBootm > a > p {
   padding: 0;
   font-style: normal;
   font-weight: 400;
@@ -330,108 +327,137 @@ section.teachersection {
   line-height: 24px;
   color: #999999;
 }
-.sliderBootm >a> span {
+.sliderBootm > a > span {
   transform: rotate(-90deg);
   margin-left: 16px;
   display: inline-block;
 }
-@media screen and (min-device-width: 800px) and (max-device-width: 1080px) { 
-/* @media only screen and (min-width:800) and (max-width:1030){ */
-  .main{
+@media screen and (min-device-width: 800px) and (max-device-width: 1080px) {
+  /* @media only screen and (min-width:800) and (max-width:1030){ */
+  .main {
     height: unset;
-  
   }
 }
-@media only screen    and (max-width: 800px) {
-  .sliderBootm>a {
+@media only screen and (max-width: 800px) {
+  .sliderBootm > a {
     display: flex;
     justify-content: flex-start;
     transform: unset;
-  
   }
-  .sliderBootm>a>p{
+
+  .sliderBootm > a > p {
     color: #474747;
     font-size: 16px;
   }
-  .homepage > div{
+  .homepage > div {
     padding-top: 50px;
   }
-  .main>.mainBgSLider>.customFlexSvg{
+  .main > .mainBgSLider > .customFlexSvg {
     display: none;
   }
-  .main>.mainBgSLider>.customFlexSvg>div>img{
+  .main > .mainBgSLider > .customFlexSvg > div > img {
     width: 90%;
-    }
-    .main>.mainBgSLider .laptop>div{
-      width: 264px;
-      height: 161px;
-      padding: 6px 17px 2px 21px;
-     
-  
-    }
+  }
+  .main > .mainBgSLider .laptop > div {
+    width: 264px;
+    height: 161px;
+    padding: 6px 17px 2px 21px;
+  }
 
-
-  .main{
+  .main {
     height: unset;
     flex-direction: column;
   }
-  .main>.slogan{
+  .main > .slogan {
     order: 2;
   }
-  .main>.mainBgSLider{
+  .main > .mainBgSLider {
     width: 100%;
     order: 1;
     background-size: contain;
   }
 
-  .customFlexSvg > div:nth-child(2){
+  .customFlexSvg > div:nth-child(2) {
     top: 10px;
-   display: flex;
-   justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
   }
-  .customFlexSvg > div:first-child{
+  .customFlexSvg > div:first-child {
     top: 10px;
   }
-  .customFlexSvg > div:nth-child(4){
+  .customFlexSvg > div:nth-child(4) {
     bottom: 10px;
-
-
   }
-  .customFlexSvg > div:last-child{
+  .customFlexSvg > div:last-child {
     bottom: 10px;
     display: flex;
     justify-content: flex-end;
   }
-.slogan{
-  margin-top: 24px;
-}
-.slogan > h1 {
-line-height: 30px;
-}
-  .slogan>h1, .slogan>h1>span{
+  .slogan {
+    margin-top: 24px;
+  }
+  .slogan > h1 {
+    line-height: 30px;
+  }
+  .slogan > h1,
+  .slogan > h1 > span {
     font-size: 46px;
   }
-  .slogan>p{
+  .slogan > p {
     font-size: 16px;
   }
- .teachersection{
-  display: none;
- }
- .tarif{
-  display: none;
- }
-
-
-
-
- .teachersection{
-  display: none;
- }
- .register{
-  display: none;
- }
+  .teachersection {
+    display: block;
   }
-.whatsapp{
+  .teachersection .chooseTeacher {
+    box-shadow: 0px 8px 32px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+    height: unset;
+  }
+  .teachersection .chooseTeacher .top {
+    transform: unset;
+    display: flex;
+    flex-direction: column;
+    box-shadow: unset;
+    height: unset;
+  }
+  .chooseTeacher > .top > .teachersBg {
+    padding-left: 0px;
+  }
+  .chooseTeacher > .top > .teachersBg > img {
+    transform: translateY(0px);
+    width: 100%;
+  }
+  section.teachersection {
+    margin-top: 0;
+  }
+  .chooseTeacher > .top > .teacherContent > div {
+    width: 95%;
+  }
+  .chooseTeacher > .top > .teacherContent {
+    padding-top: unset;
+  }
+  .chooseTeacher > .footer {
+    margin-top: 18px;
+    width: 100%;
+    max-width: unset;
+    height: unset;
+    display: block;
+    border-radius: 20px;
+  }
+  .chooseTeacher > .footer > div {
+    width: 100%;
+    padding-bottom: 19px;
+  }
+  .tarif {
+    display: none;
+  }
+
+  .register {
+    display: none;
+  }
+}
+.whatsapp {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -439,37 +465,35 @@ line-height: 30px;
   width: 60px;
   height: 60px;
 }
-.whatsapp>a{
+.whatsapp > a {
   width: 60px;
   height: 60px;
   display: inline-block;
 }
-.whatsapp img{
+.whatsapp img {
   object-fit: cover;
   width: 100%;
 }
-  @media only screen and (max-width: 500px) {
-    .homepage > div {
-      padding-top: 84px;
-    }
-    .main{
-      padding-top: 0;
-    }
-    .main>.mainBgSLider>.customFlexSvg>div>img{
-      width: 74%;
-      }
-      .main>.mainBgSLider .laptop>div{
-        width: 224px;
-        height: 130px;
-        padding: 6px 17px 2px 21px;
-       
-    
-      }
-      .slogan > p {
-        margin-bottom: 10px;
-      }
-      .customFlexSvg{
-        display: none;
-        height: 49.6vh;
-      }
+@media only screen and (max-width: 500px) {
+  .homepage > div {
+    padding-top: 84px;
   }
+  .main {
+    padding-top: 0;
+  }
+  .main > .mainBgSLider > .customFlexSvg > div > img {
+    width: 74%;
+  }
+  .main > .mainBgSLider .laptop > div {
+    width: 224px;
+    height: 130px;
+    padding: 6px 17px 2px 21px;
+  }
+  .slogan > p {
+    margin-bottom: 10px;
+  }
+  .customFlexSvg {
+    display: none;
+    height: 49.6vh;
+  }
+}
