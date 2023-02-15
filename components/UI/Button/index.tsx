@@ -7,12 +7,13 @@ type ButtonUIProps = {
     color?:string,
     form?:string,
     icon?:any,
-    border?:string
+    border?:string,
+    font?:string
 }
  
-const ButtonUI:React.FC<ButtonUIProps> = ({icon=<></>,width="116px",height="40px",text, onclick, color='#00C1DD', form, border="none"}) => {
+const ButtonUI:React.FC<ButtonUIProps> = ({font,icon=<></>,width="116px",height="40px",text, onclick, color='#00C1DD', form, border="none"}) => {
     return (
-        <button className={styles.buttonUI} style={{width, height, backgroundColor:color,border}} onClick={onclick} form={form}>
+        <button className={styles.buttonUI} style={{width, height, backgroundColor:color,border, color:font}} onClick={onclick} form={form}>
             {text} <span>{icon}</span>
         </button>
     );

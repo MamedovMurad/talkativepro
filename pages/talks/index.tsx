@@ -6,6 +6,7 @@ import TalksContainer from "../../container/talks";
 import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import Aside from "../../layout/aside";
 import { GenericListDto } from "../../Model/DTO";
+import { FilterSVG } from "../../svg/filterSVG";
 import styles from "./index.module.css";
 type TalksProps = {
 
@@ -19,6 +20,7 @@ const Talks: React.FC<TalksProps> = () => {
 
     const router = useRouter()
   const [talks, settalks] = useState<GenericListDto<any> | null>(null);
+  const [filterActive, setfilterActive] = useState<any>(false)
   const [otherData, setotherData] = useState<{
     lang: { id: number; name: string; code?: string | null, selected?:any }[] | any;
     nation: { id: number; name: string; code?: string , selected?:any}[] | null;
@@ -54,7 +56,12 @@ const Talks: React.FC<TalksProps> = () => {
 
   }
 
-  console.log(otherData.level,'level');
+ 
+  function handlefilterActive(){
+    
+    
+    setfilterActive(false)
+  }
   
 
  async function filterforDate(param:any){
@@ -104,23 +111,33 @@ const Talks: React.FC<TalksProps> = () => {
 
 
 }
+function reset(){
+   arr = [];
+ arrNation = [];
+ arrLevel = [];
+ date__ = null
+  setotherData({ lang: null, nation: null, level: null })
+  fetchTalks();
+}
   useEffect(() => {
     fetchTalks();
    
   }, [router.query]);
 
   return (
-    <div className={styles.talks}>
-        <div className="wrapper">
-     
-          {responsive&& <ButtonUI text="Filterləri göstər" width="100%"/>}
+    <div className={styles.talks} >
+          <div className={styles.fixedFilterBUtton} onClick={()=>setfilterActive(true)}>
+          <span><FilterSVG/></span>
+          <p>Filterləri göstər</p>
         </div>
       <div className="wrapper">
     
         <div>
           <Aside
-         
+            filter={filterActive}
+            setfilter={handlefilterActive}
             setList={filterTeacher}
+            reset={reset}
             list={[
               { name: "Dillər", children: otherData.lang },
              /*  { name: "Milliyət", children: otherData.nation }, */

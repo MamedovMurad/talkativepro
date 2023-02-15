@@ -1,21 +1,79 @@
-.aside{
-    background: #FFFFFF;
-   height: min-content;
-     border: 1px solid #DDDDDD;
-    box-sizing: border-box;
-    border-radius: 10px; 
-    padding: 16px;
+.aside {
+  background: #ffffff;
+  height: min-content;
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 16px;
 }
-
-
-@media screen and (min-width: 680px) and (max-width: 932px) { 
-    .aside{
+.buttonsBottom {
+  display: none;
+}
+@media screen and (min-width: 680px) and (max-width: 932px) {
+  /*     .aside{
         display: none
-    };
+    }; */
+}
+.aside header {
+  display: none;
+}
+@media only screen and (max-width: 680px) {
+  .aside {
+    padding-top: 60px;
+    position: fixed;
+    z-index: 99;
+    width: 97% !important;
+    left: 0;
+    top: 0;
+    border: 1px solid #dddddd;
+    border-radius: 0px 10px 10px 0px;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  
-  @media only screen and (max-width: 680px) {
-    .aside{
-        display: none
-    };
-    }
+  .aside header {
+    width: 92%;
+    top: 10px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .aside header > p {
+    padding: 0;
+    margin: 0;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+    /* natural/2 */
+
+    color: #474747;
+  }
+  .aside header span{
+    cursor: pointer;
+  }
+  /*   .aside section::before {
+    content: "Filter";
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    display: inline-block;
+
+
+    color: #474747;
+    padding-bottom: 20px;
+  } */
+  .activeAside {
+  }
+  .PassiveAside {
+    display: none;
+  }
+  .buttonsBottom {
+    display: block;
+    margin-bottom: 30px;
+  }
+}
