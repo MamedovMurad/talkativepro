@@ -60,7 +60,7 @@ const Header:React.FC<HeaderProps> = ({user}) => {
         responsive&&fetchApiLang();
       }, [responsive]);
 
-let entity= [{title:'Profile kec', link:'#'},{title:'Redaktə et',link:'/#'},{title:'Çıxış',link:'/#'}]
+let entity= [{title:'Profilə keç', link:'#'},{title:'Redaktə et',link:'/#'},{title:'Çıxış',link:'/#'}]
 
       useEffect(() => {
         window.addEventListener("scroll", changeBackground)

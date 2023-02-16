@@ -59,6 +59,7 @@ border: 1px solid #DDDDDD;
   border-bottom:1px solid #F6F6F6 ;
 }
 .SearchTop>div input:first-child{
+  background-color: #fff;
   width: 100%;
   padding:0 8px;
 }
