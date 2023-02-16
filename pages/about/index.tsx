@@ -63,7 +63,7 @@ const About: React.FC<AboutProps> = ({data}) => {
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const data = await (fetch('https://api.talkative.az/api/v1/public/common/about')
+  const data = await (fetch('http://194.147.58.56:8090/api/v1/common/about')//https://api.talkative.az/api/v1/public/common/about
   .then(response => response.json()))
   
 console.log(data,'data');
