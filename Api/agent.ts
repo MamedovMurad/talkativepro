@@ -337,4 +337,4 @@ const agent = {
 };
 
 export default agent;
-export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload`; //https://api.talkative.az/api/v1/filesDownload/
+export const baseImageUrl = `http://194.147.58.56:8090/api/v1/filesDownload/`; //https://api.talkative.az/api/v1/filesDownload/
