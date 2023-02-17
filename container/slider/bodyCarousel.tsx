@@ -3,13 +3,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BodySliderItem from "../../components/slider_item/bodySLiderItem";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 type BodyCrouselProps = {
     talks?:any
     cb?:any
 }
  
 const BodyCrousel:React.FC<BodyCrouselProps> = ({talks,cb}) => {
-    console.log({talks});
+   const responsive = useResponsivenenessAdjuster(800)
     
     var settings = {
         dots: false,
@@ -47,13 +48,19 @@ const BodyCrousel:React.FC<BodyCrouselProps> = ({talks,cb}) => {
     return (
         <div className={styles.bodyCarousel}>
        
-            <Slider {...settings}>
+                {!responsive?    <Slider {...settings}>
                     {
                         talks?.map((item:any)=>(
                          <BodySliderItem key={item?.id} width={"92%"} item={item} cb={cb}/>
                         ))
                     }
-              </Slider> 
+              </Slider> : <div className={styles.mobileBodySLider}>
+              {
+                        talks?.map((item:any)=>(
+                         <BodySliderItem key={item?.id} width={"100%"} item={item} cb={cb}/>
+                        ))
+                    }
+                 </div>}
             </div>
       
     );

@@ -6,6 +6,15 @@ margin-top: 39px;
   
    
 }
+
+
 .bodyCarousel{
     height: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .bodyCarousel{
+        height: unset;
+    }
 }

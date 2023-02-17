@@ -454,7 +454,39 @@ section.teachersection {
   }
 
   .register {
-    display: none;
+    display: block;
+  }
+  .register > div {
+    overflow: hidden;
+    flex-direction: column-reverse;
+    height: 600px;
+  }
+  .register > div > .content > h3 {
+    font-size: 32px;
+  }
+  .register > div > .content > p {
+    font-size: 20px;
+  }
+  .register > div > .content {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .register > div .registerImage {
+    width: 100%;
+    background-size: cover;
+  }
+  .register > div > .content > .buttonArea {
+    margin-bottom: 30px;
+  }
+  .register > div > .content > .buttonArea a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .register > div > .content > .buttonArea button {
+    width: 90% !important;
   }
 }
 .whatsapp {

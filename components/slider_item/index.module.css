@@ -49,6 +49,7 @@
   color: #999999;
 }
 .bodySliderItem {
+  border: 1px solid #00C1DD;
   cursor: pointer;
   padding: 17px;
   width: 365px;
