@@ -75,7 +75,7 @@ const [forFilter, setforFilter] = useState({
   useEffect(() => {fetchDefData()}, [])
   
   return (
-    <div className={styles.SearchTop} style={{ margin }} id="SearchTop">
+    <div className={styles.SearchTop} style={{ margin }}>
       <div className={styles.datePicker}>
         <DatePicker onchange={(e:any)=>setforFilter({...forFilter, date:e.target.value})}/>
       </div>

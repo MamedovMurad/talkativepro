@@ -10,7 +10,7 @@ type BodyCrouselProps = {
 }
  
 const BodyCrousel:React.FC<BodyCrouselProps> = ({talks,cb}) => {
-   const responsive = useResponsivenenessAdjuster(900)
+   const responsive = useResponsivenenessAdjuster(800)
     
     var settings = {
         dots: false,
