@@ -21,6 +21,8 @@ import { UserIcon2 } from "../../svg/usericon2";
 import { UserContext } from "../../pages/_app";
 import { LogoutSVG } from "../../svg/logout";
 import { getCookie, setCookie } from "react-use-cookie";
+import { FilterSVG } from "../../svg/filterSVG";
+import { LupaSVG } from "../../svg/lupaSVG";
 
 type HeaderProps = {
   user: ImeModel | ITeacher | null;
@@ -131,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           </Link>
           <Nav settoggle={settoggle} />
           {useResponsivenenessAdjuster(920) && (
-            <div className={styles.BGSearch}></div>
+            <div className={styles.BGSearch} onClick={()=>Router.push('/#SearchTop')}><LupaSVG/></div>
           )}
         </div>
 
@@ -160,7 +162,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               />
 
               <span onClick={() => settoggle(false)}>
-                {" "}
                 <CloseSVG color="white" />
               </span>
             </div>
