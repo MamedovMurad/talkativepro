@@ -42,8 +42,8 @@ transform: translateX(27px);
 
 @media only screen and (max-width: 800px) {
   .SearchTop>.buttonParent {
-    background-position: center;
-    background-size: 7% !important
+    background-position: 58%;
+    background-size: 6% !important
   }
 .SearchTop{
 display: flex;
@@ -68,7 +68,7 @@ border: 1px solid #DDDDDD;
   color: white;
   position: absolute;
   font-size: 16px;
-  left: 95px;
+  left: 39%;
   top: 10px;
 }
 

@@ -3,6 +3,7 @@ import agent from "../../Api/agent";
 import TeacherCotainer from "../../container/teacher";
 import Aside from "../../layout/aside";
 import { GenericDTO, GenericListDto, ITeacher } from "../../Model/DTO";
+import { FilterSVG } from "../../svg/filterSVG";
 import styles from "./index.module.css";
 type TeacherProps = {};
 
@@ -69,9 +70,25 @@ const Teacher: React.FC<TeacherProps> = () => {
   useEffect(() => {
     fetchTeacher();
   }, []);
-
+  function handlefilterActive(){
+    
+    
+    setfilterActive(false)
+  }
+  const [filterActive, setfilterActive] = useState<any>(false)
+  function reset(){
+    arr = [];
+  arrNation = [];
+setotherData({ lang: null, nation: null })
+ 
+   fetchTeacher()
+ }
   return (
     <div className={styles.teacher}>
+                <div className={styles.fixedFilterBUtton} onClick={()=>setfilterActive(true)}>
+          <span><FilterSVG/></span>
+          <p>Filterləri göstər</p>
+        </div>
       <div className="wrapper">
         <div className={styles.searchForm}>
           <form action="" onSubmit={handleSubmit}>
@@ -88,7 +105,10 @@ const Teacher: React.FC<TeacherProps> = () => {
         <h3>Bütün müəllimlər</h3>
         <div>
           <Aside
+          reset={reset}
+           filter={filterActive}
             setList={filterTeacher}
+            setfilter={handlefilterActive}
             list={[
               { name: "Dillər", children: otherData.lang },
             /*   { name: "Milliyət", children: otherData.nation }, */

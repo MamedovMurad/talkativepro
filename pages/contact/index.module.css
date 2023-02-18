@@ -59,47 +59,47 @@
   font-size: 16px;
   line-height: 24px;
 }
-.linksarea{
+.linksarea {
   margin-top: 60px;
 }
-.content > .form{
+.content > .form {
   padding-bottom: 10px;
 }
-.content > .form >form{
+.content > .form > form {
   padding-top: 10px;
   max-width: 60%;
   margin: 0 auto;
 }
-.content > .form >form>.buttonArea{
+.content > .form > form > .buttonArea {
   margin-top: 16px;
   justify-content: flex-end;
   display: flex;
 }
 
-
-@media screen and (min-width: 800px) and (max-width: 1000px) { 
-
+@media screen and (min-width: 800px) and (max-width: 1000px) {
 }
 @media only screen and (max-width: 800px) {
-.content{
-  display: block;
-}
-.content>div{
-  width: 90%;
-  margin:0 auto;
-  margin-bottom: 20px;
-  height: min-content;
-  padding-bottom: 16px;
-}
-.content > .form >form>.buttonArea{
-  justify-content: center;
-}
+  .content {
+    display: block;
+  }
+  .content > div {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    height: min-content;
+    padding-bottom: 16px;
+  }
+  .content > .form > form > .buttonArea {
+    justify-content: center;
+  }
 
-.content > .form >form{
-  max-width: 80%;
-
-}
-.content > .info > div {
-  max-width: 59%;
-}
+  .content > .form > form {
+    max-width: 80%;
+  }
+  .content > .info > div {
+    max-width: 90%;
+  }
+  .content > .info {
+    padding-top: 1px;
+  }
 }

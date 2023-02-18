@@ -9,7 +9,7 @@
   padding-left: 40px;
   border: 1px solid white;
   transition: border 0.3s;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .faqItem > input {
   opacity: 0;
@@ -54,5 +54,5 @@
 }
 
 .faqItem > input:checked ~ article {
-  height: 50px;
+  height: auto;
 }

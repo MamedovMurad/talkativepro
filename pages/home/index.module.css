@@ -450,7 +450,7 @@ section.teachersection {
     padding-bottom: 19px;
   }
   .tarif {
-    display: none;
+    /*  display: none; */
   }
 
   .register {
@@ -507,6 +507,27 @@ section.teachersection {
   width: 100%;
 }
 @media only screen and (max-width: 500px) {
+  .tarif > div > h3 {
+    text-align: left;
+  }
+  .tarif > div > ul > li > h4 {
+    font-size: 32px;
+    margin-top: 10px;
+  }
+  .tarif > div > ul > li > button {
+    margin-top: 12px;
+  }
+  .tarif > div > ul {
+    gap: 0 10px;
+    height: unset;
+    flex-wrap: wrap;
+  }
+  .tarif > div > ul > li {
+    width: 48%;
+    padding: 15px 7px;
+    margin: 10px 0;
+    height: 188px;
+  }
   .homepage > div {
     padding-top: 84px;
   }
@@ -527,5 +548,17 @@ section.teachersection {
   .customFlexSvg {
     display: none;
     height: 49.6vh;
+  }
+  .tarif > div > ul > li > div > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #e48402;
+    background: #ff9a03;
+    width: 85px;
+    height: 24px;
+    margin-right: 0;
   }
 }

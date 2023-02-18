@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import agent from "../../Api/agent";
 import ButtonUI from "../../components/UI/Button";
+import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
 import { GenericDTO, ITariff } from "../../Model/DTO";
 import styles from "./index.module.css";
 type PricesProps = {};
@@ -53,7 +54,7 @@ const Prices: React.FC<PricesProps> = () => {
                 <li>Sizin tələblərinizəs ən uyğun olan tarifi seçin</li>
                 <li>Sizin tələblərinizəs ən uyğun olan tarifi seçin</li>
               </ul>
-              <ButtonUI text="Ödəniş et" />
+              <ButtonUI text="Ödəniş et" width={useResponsivenenessAdjuster(800)?'100%':undefined}  />
             </div>
           </div>
         </div>

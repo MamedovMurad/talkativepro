@@ -149,12 +149,17 @@
     flex-direction: column;
 
   }
+/*   .body > div:first-child {
+    width: 45%;
+    height: 378px;
+  } */
   .body > div:first-child {
     width: 96%;
+    height: 450px;
   }
   .body > div:last-child{
     margin-top: 20px;
-    width:90%;
+    width:98%;
     height: min-content;
   }
 

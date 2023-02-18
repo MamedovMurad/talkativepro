@@ -42,11 +42,11 @@ const Contact:React.FC<ContactProps> = ({data}) => {
                    <h3>Sual və ya təkliflərinizibizə yaza bilərsiniz</h3>
                    <div className={styles.mail}>
                        <span><MailSvg/></span>
-                       <span>{data.email}</span>
+                       <span>{data?.email}</span>
                    </div>
                    <div className={styles.tel}>
                        <span><TelSvg/></span>
-                       <span>{data.phoneNumber}</span>
+                       <span>{data?.phoneNumber}</span>
                    </div >
                     <div className={styles.linksarea}><Links fb={data.fbLink} insta={data.instagramLink} youtube={data.youtubeLink}/></div>
                    </div>
@@ -67,8 +67,8 @@ const Contact:React.FC<ContactProps> = ({data}) => {
 }
  
 export async function getServerSideProps(context:any){
-    /* const data = await agent.contact.single(); */
-    const data = await (fetch('https://api.talkative.az/api/v1/public/setting')
+    /* const data = await agent.contact.single(); https://api.talkative.az/api/v1/public/setting */
+    const data = await (fetch('  http://194.147.58.56:8090/api/v1/public/setting')
     .then(response => response.json()))
     
   console.log(data,'data');
@@ -76,7 +76,7 @@ export async function getServerSideProps(context:any){
   
     return {
         props: {
-            data:data
+            data:data.data
         },
     };
   
