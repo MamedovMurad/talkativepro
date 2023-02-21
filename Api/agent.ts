@@ -17,7 +17,9 @@ import toast from "react-hot-toast";
 import { removeCookies } from "cookies-next";
 /* import toast from 'react-hot-toast' */
 
-axios.defaults.baseURL =  /* 'http://194.147.58.56:8090/api/v1'  */ "https://api.talkative.az/api/v1";
+
+axios.defaults.baseURL =  'https://api.talkative.az/api/v1 '  /* "http://194.147.58.56:8090/api/v1" */;
+
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
   const token = getCookie("agent");
   const lang = localStorage.getItem("lang") || "az";
@@ -337,4 +339,6 @@ const agent = {
 };
 
 export default agent;
-export const baseImageUrl = `  https://api.talkative.az/api/v1/filesDownload/`; //http://194.147.58.56:8090/api/v1/filesDownload/
+
+export const baseImageUrl = `https://api.talkative.az/api/v1/filesDownload/ `; //http://194.147.58.56:8090/api/v1/filesDownload/
+

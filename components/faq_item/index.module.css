@@ -55,5 +55,4 @@
 
 .faqItem > input:checked ~ article {
   height: auto;
-  padding: 13px 10px;
 }

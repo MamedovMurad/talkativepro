@@ -21,8 +21,6 @@ import { UserIcon2 } from "../../svg/usericon2";
 import { UserContext } from "../../pages/_app";
 import { LogoutSVG } from "../../svg/logout";
 import { getCookie, setCookie } from "react-use-cookie";
-import { FilterSVG } from "../../svg/filterSVG";
-import { LupaSVG } from "../../svg/lupaSVG";
 
 type HeaderProps = {
   user: ImeModel | ITeacher | null;
@@ -43,7 +41,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
   const responsive = useResponsivenenessAdjuster(920);
   const [data, dispatch] = useContext(UserContext);
   const [activeuserDrop, setactiveuserDrop] = useState(false);
-
   const check = () => !!getCookie("agent");
   const changeBackground = () => {
     if (window.scrollY >= 26) {
@@ -88,27 +85,20 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         <a href="tel:+994775784074">
           <HeadphoneSVG /> <span>call</span>
         </a>
-        {check() ? (
-          <MobileDropDOwn
-            CB={setdropActive}
-            entity={entity}
-            element={
-              <>
-                <span>
-                  <IconSVG />
-                </span>
-                <i style={{ transform: "translateY(5px)" }}>
-                  <ArrowSvg width={"19px"} height="14px" color="white" />
-                </i>
-              </>
-            }
-          />
-        ) : (
-          <span className={styles.userRedirect} onClick={()=>Router.push('/login')}>
-            <IconSVG />
-          </span>
-        )}
-
+        <MobileDropDOwn
+          CB={setdropActive}
+          entity={entity}
+          element={
+            <>
+              <span>
+                <IconSVG />
+              </span>{" "}
+              <i style={{ transform: "translateY(5px)" }}>
+                <ArrowSvg width={"19px"} height="14px" color="white" />
+              </i>
+            </>
+          }
+        />
         {/*  <Link href={user?"/dashboard":"/login"}>
                <a className={styles.linkCustom}> <IconSVG/> </a>
                </Link> */}
@@ -133,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           </Link>
           <Nav settoggle={settoggle} />
           {useResponsivenenessAdjuster(920) && (
-            <div className={styles.BGSearch} onClick={()=>Router.push('/#SearchTop')}><LupaSVG/></div>
+            <div className={styles.BGSearch}></div>
           )}
         </div>
 
@@ -162,6 +152,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               />
 
               <span onClick={() => settoggle(false)}>
+                {" "}
                 <CloseSVG color="white" />
               </span>
             </div>
@@ -178,56 +169,60 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
 
           <div className={styles.buttons}>
             {check() && data.users.user_info ? (
-              <section>
-                <ul className={styles.userName}>
-                  <li onClick={() => setactiveuserDrop(!activeuserDrop)}>
-                    <UserIcon2 />
-                    <p>
-                      {data?.users?.user_info?.firstName +
-                        " " +
-                        data?.users?.user_info?.lastName}
-                    </p>
-                    <span
-                      style={
-                        activeuserDrop
-                          ? {
-                              transform: "rotate(180deg)",
-                              justifyContent: "flex-start",
-                            }
-                          : {}
-                      }
-                    >
-                      <ArrowSvg color="white" height={"8px"} width={"15px"} />
-                    </span>
-                  </li>
-                  {activeuserDrop && (
-                    <li
-                      onClick={() => {
-                        setCookie("agent", "", { days: 0 });
-                        Router.push("/");
-                      }}
-                    >
-                      <LogoutSVG />
-                      <p>Çıxış</p>
-                    </li>
-                  )}
-                </ul>
-              </section>
+            <section>
+            
+            <ul className={styles.userName}>
+              <li onClick={() => setactiveuserDrop(!activeuserDrop)}>
+                <UserIcon2 />
+                <p>
+                  {data?.users?.user_info?.firstName +
+                    " " +
+                    data?.users?.user_info?.lastName}
+                </p>
+                <span
+                  style={
+                    activeuserDrop
+                      ? {
+                          transform: "rotate(180deg)",
+                          justifyContent: "flex-start",
+                        }
+                      : {}
+                  }
+                >
+    
+                  <ArrowSvg color="white" height={"8px"} width={"15px"} />
+                </span>
+              </li>
+              {activeuserDrop && (
+                <li
+                  onClick={() => {
+                    setCookie("agent", "", { days: 0 });
+                    Router.push("/");
+                  }}
+                >
+                  <LogoutSVG />
+                  <p>Çıxış</p>
+                </li>
+              )}
+            </ul>
+          </section>
             ) : (
-              <>
-                <ButtonUI
-                  text="Giriş"
-                  width="100%"
-                  border="1px solid rgba(255, 255, 255, 0.2"
-                  onclick={() => Router.push("/login")}
-                />
-                <ButtonUI
-                  text="Qeydiyyat"
-                  color="rgba(255, 255, 255, 0.2)"
-                  width="100%"
-                  onclick={() => Router.push("/register")}
-                />
-              </>
+  
+
+<>
+<ButtonUI
+  text="Giriş"
+  width="100%"
+  border="1px solid rgba(255, 255, 255, 0.2"
+  onclick={() => Router.push("/login")}
+/>
+<ButtonUI
+  text="Qeydiyyat"
+  color="rgba(255, 255, 255, 0.2)"
+  width="100%"
+  onclick={() => Router.push("/register")}
+/>
+</>
             )}
           </div>
           {/*    <div className={styles.navAuth}>
