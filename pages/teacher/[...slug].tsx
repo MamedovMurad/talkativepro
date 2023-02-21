@@ -100,6 +100,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
  let  token = req.headers.cookie
 
   //http://194.147.58.56:8090/api/v1/public/teachers/${res1}/profile?detailed=true
+
  //https://api.talkative.az/api/v1/public/teachers/${res1}/profile?detailed=true
  //
  const data = await fetch(` https://api.talkative.az/api/v1/public/teachers/${res1}/profile?detailed=true `, {
@@ -108,6 +109,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
     'Authorization':'Bearer '+token,
     'Accept-Language':'en'
   }
+
 }).then(res=>res.json())
 
 
