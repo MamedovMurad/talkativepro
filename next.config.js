@@ -4,7 +4,7 @@ const nextConfig = {
 
   reactStrictMode: false,
   images: {
-    domains: ['194.147.58.56'],
+    domains: ['api.talkative.az'],
   },
 }
 
