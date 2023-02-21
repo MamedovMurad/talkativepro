@@ -10,7 +10,7 @@ type SliderProps = {
 };
 
 const SliderUI: React.FC<SliderProps> = ({ data }) => {
-  const responsive = useResponsivenenessAdjuster(800);
+  const responsive = useResponsivenenessAdjuster(400);
 
   var settings = {
     dots: true,
