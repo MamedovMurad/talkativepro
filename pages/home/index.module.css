@@ -338,28 +338,7 @@ section.teachersection {
     height: unset;
   }
 }
-@media only screen and (max-width: 826px) {
-  .tarif > div > h3 {
-    text-align: left;
-  }
-  .tarif > div > ul > li > h4 {
-    font-size: 32px;
-    margin-top: 10px;
-  }
-  .tarif > div > ul > li > button {
-    margin-top: 12px;
-  }
-  .tarif > div > ul {
-    gap: 0 10px;
-    height: unset;
-    flex-wrap: wrap;
-  }
-  .tarif > div > ul > li {
-    width: 48%;
-    padding: 15px 7px;
-    margin: 10px 0;
-    height: 188px;
-  }
+@media only screen and (max-width: 800px) {
   .sliderBootm > a {
     display: flex;
     justify-content: flex-start;
