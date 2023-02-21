@@ -99,7 +99,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
 /*  console.log(res,'res'); */
  let  token = req.headers.cookie
 
-  
+  //
  //https://api.talkative.az/api/v1/public/teachers/${res1}/profile?detailed=true
  //https://api.talkative.az/api/v1/public/teachers/${res1}/profile?detailed=true 
  const data = await fetch(` 
