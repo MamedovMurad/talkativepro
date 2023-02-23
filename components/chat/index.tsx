@@ -55,10 +55,10 @@ const ChatAgora = ({chanalId, token}:any) => {
           <button disabled={!uid} style={btnStyle} onClick={isLoggedIn ? logout : login}>{isLoggedIn ? 'Logout' : 'Login'}</button>
       </div>
       <div style={{ display: 'flex', flex: 10, flexDirection: 'column', margin: 20, marginLeft: '10%', marginRight: '10%', backgroundColor: '#efefef', paddingRight: 10, paddingLeft: 10, overflowY: 'scroll'}}>
-        {texts.map((text: messageStore, i) =>
-          <div key={i} style={{ backgroundColor: text.uid === uid ? '#007bff50' : '#ccc', margin: 10, width: '50%', marginLeft: text.uid === uid ? 'auto' : '', padding: 12, borderRadius: 10 }}>
-            <div style={{fontSize: 12, opacity: 0.5}}>{text.uid}</div>
-            <div>{text.msg['text']}</div>
+        {texts.map((message: messageStore, i) =>
+          <div key={i} style={{ backgroundColor: message.uid === uid ? '#007bff50' : '#ccc', margin: 10, width: '50%', marginLeft: message.uid === uid ? 'auto' : '', padding: 12, borderRadius: 10 }}>
+            <div style={{fontSize: 12, opacity: 0.5}}>{message.uid}</div>
+            <div>{message.msg['text']}</div>
           </div>
         )}
       </div>
@@ -75,7 +75,7 @@ const ChatAgora = ({chanalId, token}:any) => {
 const btnStyle = { backgroundColor: '#007bff', borderWidth: 0, borderRadius: 10, color: '#fff', width: 200, fontWeight: 'bold', fontSize: 16 } as CSSProperties
 
 export type messageStore = {
-  msg: RtmMessage;
+  msg: RtmMessage|any;
   uid: string;
 }
 
