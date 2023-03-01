@@ -8,9 +8,11 @@
   height: 96%;
   top: 10px;
 }
+
 .chatactiveVideparent {
   right: 350px;
 }
+
 .bigVideo {
   position: relative;
 
@@ -21,18 +23,20 @@
   justify-content: center;
 }
 
-.bigVideo > div {
+.bigVideo>div {
   width: 100%;
   height: 100%;
   border-radius: 0px;
   overflow: hidden;
 }
+
 .item {
   /* background: red; */
   width: 259px;
   height: 198px;
   position: relative;
 }
+
 .user_info {
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
@@ -49,13 +53,15 @@
   transform: translate(-50%, -50%);
   font-size: 15px;
 }
-.item > div {
+
+.item>div {
   height: 100%;
   width: 259px;
   border-radius: 15px;
   overflow: hidden;
   background: rgb(44, 43, 43) !important;
 }
+
 .videbuttons {
   width: 100%;
   margin-top: -7px;
@@ -66,7 +72,8 @@
   position: absolute;
   bottom: 20px;
 }
-.videbuttons > button {
+
+.videbuttons>button {
   cursor: pointer;
   outline: none;
   border: none;
@@ -78,7 +85,8 @@
   align-items: center;
   justify-content: center;
 }
-.videbuttons > button.extbutton {
+
+.videbuttons>button.extbutton {
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -87,20 +95,25 @@
   outline: none;
   border: none;
 }
+
 .chatactivevidebuttons {
   width: 75%;
 }
+
 .parent {
   position: relative;
   display: flex;
 }
-.parent > div {
+
+.parent>div {
   width: 28.8%;
 }
-.parent > div:first-child {
+
+.parent>div:first-child {
   width: 100%;
 }
-.item > span {
+
+.item>span {
   position: absolute;
   right: 30px;
   top: 4px;
@@ -114,11 +127,13 @@
   border-radius: 40%;
   cursor: pointer;
 }
-.activeAlert{
+
+.activeAlert {
   position: relative;
-  
+
 }
-.activeAlert::after{
+
+.activeAlert::after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -129,38 +144,66 @@
   right: 4px;
   top: 7px;
 }
+
 @media only screen and (max-width: 800px) {
   .videparent {
-    min-height: 85vh;
-    display: block;
-    width: 100%;
-    position: relative;
-    height: 100%;
-    overflow-y: scroll;
+    display: flex;
+    width: 99%;
+    bottom: 100px;
+    overflow-x: scroll;
+    height: min-content;
+    top: unset;
   }
-  .chatactiveVideparent {
-    right: 0;
-  }
+
   .item {
+    /* background: red; */
+    width: 80px;
+    height: 80px;
+    position: relative;
+  }
+
+  .item>div {
+    width: 80px;
+  }
+
+  .item>.user_info {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 60px;
+    height: 1.2em;
+    white-space: nowrap;
+    border: none;
+    padding: 0;
+    transform: translate(-50%, -62%);
+    height: 28px;
+    background: #707070;
+    border-radius: 6px;
+    backdrop-filter: unset;
+    justify-content: unset;
+    color: white;
+  }
+
+  .bigVideo>.user_info {
+    top: 10px !important;
+    background: #707070;
+    border-radius: 6px;
+    backdrop-filter: unset;
+    transform: translate(-119%, -50%);
+    font-size: 18px;
+    color: white;
+  }
+
+  .item>span {
+    right: 2px;
+    top: 4px;
+    background: rgba(0, 0, 0, 0.349);
+    width: 23px;
+    height: 23px;
+
+  }
+
+  .chatactivevidebuttons {
     width: 100%;
-  }
-  .item > div {
-    margin-top: 10px;
-    width: 100%;
-  }
-  .parent {
-    display: block;
-  }
-  .parent > div {
-    width: 100%;
-  }
-  .parent > div:last-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-  .bigVideo {
-    display: none;
   }
 }

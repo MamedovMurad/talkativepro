@@ -18,7 +18,7 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
   async function fetchParticpant(){
    const res = await agent.talk.checkuseronCoversation({id:chanal_id,agoraUid:user.uid})
    res&& setparticipant(res.data)
-   if (res?.data?.loggedAsTeacher&&responsive&&responsive>700){
+   if (res?.data?.loggedAsTeacher){
 
 
  setVideo(user.videoTrack, user.uid, res.data.firstName+' '+res.data.lastName)
@@ -35,7 +35,7 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
 
   return (
     <>
-    <div className={styles.item} style={participant?.loggedAsTeacher&&responsive&&responsive>700?{display:'none'}:{}}>
+    <div className={styles.item} style={participant?.loggedAsTeacher?{display:'none'}:{}}>
     {
       (currentUser.loggedAsTeacher &&user.uid!== currentUser.agoraUid)&&<span>
       <DropDownUI

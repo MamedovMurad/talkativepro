@@ -101,4 +101,10 @@ width: 100%;
   .chat > footer > form > div > button {
     right:45px
   }
+
+  .chat{
+    position: absolute;
+    width: 100% !important;
+    height: 95%;
+  }
 }
