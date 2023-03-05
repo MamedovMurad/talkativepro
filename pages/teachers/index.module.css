@@ -48,7 +48,9 @@
   cursor: pointer;
 }
 
-
+.fixedFilterBUtton {
+  display: none;
+}
 @media only screen and (max-width: 810px) {
  .teacher>div>h3{
 display: none;
