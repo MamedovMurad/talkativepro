@@ -1,6 +1,7 @@
 import {  useState } from 'react';
 import useForInputLabel from '../../../hooks/useInput';
 import { EyeSVG } from '../../../svg/ArrowSVG copy';
+import { EyeSvg2 } from '../../../svg/eye2';
 import styles from './index.module.css'
 type InputUIProps = {
     id:number;
@@ -28,7 +29,9 @@ const InputUI:React.FC<InputUIProps> = ({step,id, width='100%', label,height,typ
         <div className={styles.inputui}>
             <label htmlFor={`inputUI${id}`}>{label}</label>
             {
-                type=='password'&& <span className={styles.eye} onClick={()=>setelement(element=='password'?'text':'password')}><EyeSVG/></span>
+                type=='password'&& <span className={styles.eye} onClick={()=>setelement(element=='password'?'text':'password')}>
+                    {element==='text'?<EyeSVG/>:<EyeSvg2/>}
+                    </span>
             }
            {
                type=='textarea'?   
