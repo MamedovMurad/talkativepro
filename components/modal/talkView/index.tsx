@@ -12,8 +12,8 @@ const TalkVIewModalBody: React.FC<TalkVIewModalBodyProps> = ({ item }) => {
   return (
     <section className={styles.modalSection}>
       <header>
-      <div><img src="/uploads/shape.svg" alt="" /> <span>  {item?.startDate?.split(' ')[0]}</span></div>
-       <div><img src="/uploads/shape.svg" alt="" />   <span>{item?.startDate?.split(' ')[1]}</span></div>
+      <div><img src="/uploads/Shape.svg" alt="" /> <span>  {item?.startDate?.split(' ')[0]}</span></div>
+       <div><img src="/uploads/Shape.svg" alt="" />   <span>{item?.startDate?.split(' ')[1]}</span></div>
       </header>
 
       <h5>{item?.title}</h5>
