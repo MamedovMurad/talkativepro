@@ -72,9 +72,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
   }, [responsive]);
 
   let entity = [
-    { title: "Profilə keç", link: "#" },
-    { title: "Redaktə et", link: "/#" },
-    { title: "Çıxış", link: "/#" },
+    { title: "Profilə keç", link: "/dashboard" },
+    { title: "Redaktə et", link: "/dashboard/edit-private-info" },
+    { title: "Çıxış", cb: ()=>{setCookie("agent", "", { days: 0 }); Router.push("/") }},
   ];
 
   useEffect(() => {
@@ -86,20 +86,26 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         <a href="tel:+994775784074">
           <HeadphoneSVG /> <span>call</span>
         </a>
-        <MobileDropDOwn
-          CB={setdropActive}
-          entity={entity}
-          element={
-            <>
-              <span>
-                <IconSVG />
-              </span>{" "}
-              <i style={{ transform: "translateY(5px)" }}>
-                <ArrowSvg width={"19px"} height="14px" color="white" />
-              </i>
-            </>
-          }
-        />
+        {check() ? (
+          <MobileDropDOwn
+            CB={setdropActive}
+            entity={entity}
+            element={
+              <>
+                <span>
+                  <IconSVG />
+                </span>
+                <i style={{ transform: "translateY(5px)" }}>
+                  <ArrowSvg width={"19px"} height="14px" color="white" />
+                </i>
+              </>
+            }
+          />
+        ) : (
+          <span className={styles.userRedirect} onClick={()=>Router.push('/login')}>
+            <IconSVG />
+          </span>
+        )}
         {/*  <Link href={user?"/dashboard":"/login"}>
                <a className={styles.linkCustom}> <IconSVG/> </a>
                </Link> */}

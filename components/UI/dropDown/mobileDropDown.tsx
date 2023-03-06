@@ -1,3 +1,4 @@
+import Router from "next/router";
 import React, { useEffect, useState } from "react";
 import { ArrowSvg } from "../../../svg/ArrowSVG";
 import { IconSVG } from "../../../svg/userSvg";
@@ -5,7 +6,7 @@ import styles from './index.module.css'
 
 type MobileDropDOwnProps = {
     element:any,
-    entity:{link:string,title:string}[],
+    entity:{link?:string,title:string,cb?:any}[],
    style?:any,
    CB?:any,
 
@@ -44,7 +45,7 @@ const MobileDropDOwn:React.FC<MobileDropDOwnProps> = ({element,entity,style,CB})
           {
             active&&<ul style={style}>
           {entity.map(item=>(
-            <li key={item.link}>{item.title}</li>
+            <li key={item.link} onClick={ item.link?()=>Router.push(item.link||'#'):()=>item.cb()}>{item.title}</li>
           ))}
            </ul>
           } 

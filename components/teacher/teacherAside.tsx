@@ -20,6 +20,8 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
   const [paragraph, setparagraph] = useState<string | null>(null);
   
   const folloToggle = async (uuid?: string) => {
+    console.log(item,'item');
+    
     if (item?.isFollowedByCurrentUser !== null) {
       const res =
         uuid &&
@@ -30,7 +32,7 @@ const TeacherAsideComponent: React.FC<TeacherAsideComponentProps> = ({
 
       Router.push("/teacher/" + uuid);
     }else{
-      Router.push('/login')
+  /*     Router.push('/login') */
     }
   };
 
