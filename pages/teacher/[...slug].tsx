@@ -97,7 +97,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
  const res1  = slug?.length>0?slug[0]:''
  
 /*  console.log(res,'res'); */
- let  token = req.headers.cookie
+ let  token = req.headers.cookie.split('=')[1]||''
 
   //http://194.147.58.56:8090/api/v1/public/teachers/${res1}/profile?detailed=true
 
@@ -113,7 +113,7 @@ export async function getServerSideProps({req, params:{slug}}:any){
 }).then(res=>res.json())
 
 
-console.log(data,'data');
+console.log(token,'data');
 
  
 /*   const data = await agent.teacher.list(); */
