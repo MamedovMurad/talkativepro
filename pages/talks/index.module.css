@@ -14,7 +14,7 @@
   padding-right: 12%;
   margin: 10px 0;
 }
-.datePickerfortop > input {
+.datePickerfortop  .custompicker {
   width: 276px;
   height: 48px;
   background: #ffffff;
@@ -23,7 +23,7 @@
   outline: none;
   padding: 0 10px;
 }
-.datePickerfortop > input:focus {
+.datePickerfortop  .custompicker:focus {
   border: 1px solid #00c1dd;
 }
 
@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
   }
-  .datePickerfortop > input {
+  .datePickerfortop .custompicker {
     width: 100%;
   }
 

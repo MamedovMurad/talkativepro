@@ -8,6 +8,9 @@ import Aside from "../../layout/aside";
 import { GenericListDto } from "../../Model/DTO";
 import { FilterSVG } from "../../svg/filterSVG";
 import styles from "./index.module.css";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 type TalksProps = {
 
 };
@@ -17,7 +20,7 @@ let arrNation: any = [];
 let arrLevel: any = [];
 let date__:any = null
 const Talks: React.FC<TalksProps> = () => {
-
+  const [dateLocale, setdateLocale] = useState<any>(null)
     const router = useRouter()
   const [talks, settalks] = useState<GenericListDto<any> | null>(null);
   const [filterActive, setfilterActive] = useState<any>(false)
@@ -66,8 +69,8 @@ const Talks: React.FC<TalksProps> = () => {
 
  async function filterforDate(param:any){
    settalks(null)
-   console.log(param);
-   const changeddate = param?.split('-').reverse().join('-') 
+   console.log(param.toLocaleDateString());
+   const changeddate = param.toLocaleDateString()?.split('-').reverse().join('-') 
   const res = await agent.talk.list(arr, arrNation, arrLevel, changeddate);
   res && res.data && settalks(res.data.entities);
  }
@@ -147,7 +150,9 @@ function reset(){
 
        <div style={{width:'100%'}}>
        <div className={styles.datePickerfortop}>
-          <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/>
+        
+    {/*       <input type="date" name="" id="" value={router.query?.date} onChange={(e)=>filterforDate(e.target.value) }/> */}
+          <DatePicker  dateFormat="Pp"   selected={router.query?.date||dateLocale} onChange={(date)=>{filterforDate(date);setdateLocale(date)}}   placeholderText="Tarix" className={styles.custompicker}/>
           </div>
        <TalksContainer list={talks} width="100%" cb={fetchTalks}/>
        </div>
