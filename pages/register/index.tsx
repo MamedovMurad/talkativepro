@@ -30,6 +30,10 @@ const Register: React.FC<RegisterProps> = () => {
       setError('password',{ type: 'custom', message: 'custom message' })
       return toast.error('Şifrə kiçik, böyük, simvol və rəqəmdən ibarət olmalıdır')
     }
+    if (data.passwordRepeat!==data.password) {
+        setError('passwordRepeat',{ type: 'custom', message: 'custom message' })
+        return toast.error('Şifrələr eyni deyil!')
+    }
       data.surname = await data.name?.split(" ")[1];
       data.name = await data.name?.split(" ")[0];
       if (!data.surname) {
@@ -81,7 +85,14 @@ const Register: React.FC<RegisterProps> = () => {
                   type="password"
                   errors={errors}
                 />
-
+       <InputUI
+                  label="Şifrə (təkrar)"
+                  id={134342452432432}
+                  name="passwordRepeat"
+                  register={register}
+                  type="password"
+                  errors={errors}
+                />
                 <div className={styles.accesArea}>
                   <input type="checkbox" id="chekcboxeslogin" {...register('access',{required:true})}/>
                   <label
