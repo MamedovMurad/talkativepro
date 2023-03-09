@@ -1,4 +1,4 @@
-import DatePicker from "../../components/UI/datepicker";
+
 import SelectUI from "../../components/UI/Select";
 import styles from "./index.module.css";
 import Select from "react-select";
@@ -7,6 +7,9 @@ import agent from "../../Api/agent";
 import Router from 'next/router'
 import { WithRef } from "../../hooks/findPosition";
 import useResponsivenenessAdjuster from "../../hooks/useResponsivenenessAdjuster";
+import DatePick from "../../components/UI/datepicker";
+
+
 type SearchTopProps = {
   margin: string;
 };
@@ -14,9 +17,9 @@ type SearchTopProps = {
 const SearchTop: React.FC<SearchTopProps> = ({ margin }) => {
  const responsive = useResponsivenenessAdjuster(800)
   const [defData, setdefData] = useState<{lang:any, level:any}>({lang:null,level:null})
-const [forFilter, setforFilter] = useState({
+const [forFilter, setforFilter] = useState<any>({
   level:null,
-  date:null,
+  date:new Date(),
   lang:null
 })
   const customStyles = {
@@ -77,7 +80,9 @@ const [forFilter, setforFilter] = useState({
   return (
     <div className={styles.SearchTop} style={{ margin }} id="SearchTop">
       <div className={styles.datePicker}>
-        <DatePicker onchange={(e:any)=>setforFilter({...forFilter, date:e.target.value})}/>
+        <DatePick onchange={(e:any)=>setforFilter({...forFilter, date:e})} item={forFilter.date}/>
+      <span></span>
+ 
       </div>
       <div className={styles.selectLang} ref={positionDrop}>
       <Select

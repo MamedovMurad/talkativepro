@@ -34,7 +34,10 @@ display: none;
     display: inline-flex;
     align-items: center;
 }
-
+.customDatepicker{
+    border: none;
+    outline: none;
+  }
 @media only screen and (max-width: 860px) {
 
     .line{

@@ -1,15 +1,21 @@
 import useResponsivenenessAdjuster from "../../../hooks/useResponsivenenessAdjuster";
 import { ArrowSvg } from "../../../svg/ArrowSVG";
 import styles from "./index.module.css";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 type DatePickerProps = {
-    onchange :any
+    onchange :any,
+    item:any
 }
  
-const DatePicker:React.FC<DatePickerProps> = ({onchange}) => {
+const DatePick:React.FC<DatePickerProps> = ({onchange,item}) => {
   /*   const responsive =  useResponsivenenessAdjuster(800) */
     return (
         <label className={styles.parent} htmlFor="date">
-              <input type={'text'} onChange={onchange} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e:any) => {(e.target.type = "date");e.target.showPicker()}}/>
+              <DatePicker selected={item} onChange={onchange}  className={styles.customDatepicker}/>
+       
              <span className={styles.line}>
             
             </span>
@@ -24,4 +30,4 @@ const DatePicker:React.FC<DatePickerProps> = ({onchange}) => {
 }
  
  
-export default DatePicker;
+export default DatePick;
