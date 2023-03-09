@@ -49,6 +49,7 @@ display: none;
     }
     .arrow{
    /*      display: none; */
+   display: inline-flex;
         transform: translateX(-4px);
     }
 
