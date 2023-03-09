@@ -1,4 +1,4 @@
-/* .datePicker{
+.datePicker{
     border: none;
     height: 56px;
     outline: none;
@@ -12,6 +12,8 @@
 .parent{
     position: relative;
 }
+
+
 input[type=date].datePicker ~ .arrow{
 display: none;
 }
@@ -45,4 +47,5 @@ display: none;
         transform: translateX(8px);
     }
 
-} */
+}
+
