@@ -78,12 +78,12 @@
     .arrow {
         /*      display: none; */
         display: inline-flex;
-        transform: translateX(-4px);
+        transform: translateX(-7px);
     }
 
     .datePicker {
 
-        width: 96.6%;
+        width: 96.9%;
     }
 
 }
