@@ -14,7 +14,7 @@ const DatePick:React.FC<DatePickerProps> = ({onchange,item}) => {
   /*   const responsive =  useResponsivenenessAdjuster(800) */
     return (
         <label className={styles.parent} htmlFor="date">
-              <DatePicker selected={item} onChange={onchange}  className={styles.customDatepicker}/>
+              <DatePicker selected={item} onChange={onchange}  className={styles.datePicker}/>
        
              <span className={styles.line}>
             
