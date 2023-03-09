@@ -1,4 +1,4 @@
-.datePicker{
+.datePicker {
     border: none;
     height: 56px;
     outline: none;
@@ -9,15 +9,17 @@
     color: #808080;
 
 }
-.parent{
+
+.parent {
     position: relative;
 }
 
 
-.datePicker ~ .arrow{
-display: none;
+.datePicker~.arrow {
+    display: none;
 }
-.line{
+
+.line {
     display: inline-block;
     position: absolute;
     background: #c2c2c2;
@@ -25,48 +27,63 @@ display: none;
     height: 20px;
     right: 60px;
 }
-.parent{
+
+.parent {
     display: flex;
     align-items: center;
 
 }
-.arrow{
- 
+
+.arrow {
+
     display: inline-flex;
     align-items: center;
     display: none;
 }
-.customDatepicker{
+
+.datePicker {
     border: none;
     outline: none;
 
     font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-/* identical to box height, or 150% */
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
 
 
-/* natural/3 */
+    /* natural/3 */
 
-color: #707070;
+    color: #7f7d7d;
+}
+.datePicker::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+
+    /* natural/3 */
+
+    color: #7f7d7d;
+    opacity: 1; /* Firefox */
   }
 @media only screen and (max-width: 860px) {
 
-    .line{
+    .line {
         display: none;
         width: 1.5px;
         right: 34px;
     }
-    .arrow{
-   /*      display: none; */
-   display: inline-flex;
+
+    .arrow {
+        /*      display: none; */
+        display: inline-flex;
         transform: translateX(-4px);
     }
 
-    .datePicker{
+    .datePicker {
 
-    width: 96%;
+        width: 96.6%;
     }
 
 }
-
