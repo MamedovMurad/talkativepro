@@ -39,6 +39,16 @@ display: none;
 .customDatepicker{
     border: none;
     outline: none;
+
+    font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+
+/* natural/3 */
+
+color: #707070;
   }
 @media only screen and (max-width: 860px) {
 
@@ -51,6 +61,11 @@ display: none;
    /*      display: none; */
    display: inline-flex;
         transform: translateX(-4px);
+    }
+
+    .datePicker{
+
+    width: 96%;
     }
 
 }
