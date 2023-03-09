@@ -19,7 +19,7 @@ const SearchTop: React.FC<SearchTopProps> = ({ margin }) => {
   const [defData, setdefData] = useState<{lang:any, level:any}>({lang:null,level:null})
 const [forFilter, setforFilter] = useState<any>({
   level:null,
-  date:new Date(),
+  date:null,
   lang:null
 })
   const customStyles = {

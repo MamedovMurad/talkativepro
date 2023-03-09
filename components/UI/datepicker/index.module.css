@@ -31,8 +31,10 @@ display: none;
 
 }
 .arrow{
+ 
     display: inline-flex;
     align-items: center;
+    display: none;
 }
 .customDatepicker{
     border: none;
@@ -46,8 +48,8 @@ display: none;
         right: 34px;
     }
     .arrow{
-        display: none;
-        transform: translateX(8px);
+   /*      display: none; */
+        transform: translateX(-4px);
     }
 
 }
