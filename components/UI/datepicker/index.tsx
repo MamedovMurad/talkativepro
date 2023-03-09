@@ -9,7 +9,7 @@ const DatePicker:React.FC<DatePickerProps> = ({onchange}) => {
   /*   const responsive =  useResponsivenenessAdjuster(800) */
     return (
         <label className={styles.parent} htmlFor="date">
-              <input type={'text'} onChange={onchange} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e:any) => {(e.target.type = "date");e.target.showPicker()}}/>
+              <input type={'text'} onChange={(e:any)=>{e.target.showPicker();onchange}} placeholder="Tarix"  id="date" className={styles.datePicker} onFocus={(e:any) => {(e.target.type = "date")}}/>
              <span className={styles.line}>
             
             </span>
