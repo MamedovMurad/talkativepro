@@ -77,7 +77,7 @@ const [forFilter, setforFilter] = useState({
   return (
     <div className={styles.SearchTop} style={{ margin }} id="SearchTop">
       <div className={styles.datePicker}>
-        <DatePicker onchange={(e:any)=>{setforFilter({...forFilter, date:e.target.value}); e.target.showPicker()}}/>
+        <DatePicker onchange={(e:any)=>setforFilter({...forFilter, date:e.target.value})}/>
       </div>
       <div className={styles.selectLang} ref={positionDrop}>
       <Select
