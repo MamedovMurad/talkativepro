@@ -290,7 +290,7 @@ custom__uid=id
           {users.map((item: any) => (
             <>
               <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context} setVideo={setVideo}/>
-              <VideoPlayer key={item.uid} user={item} chanal_id={chanalId} socket={socket} currentUser={context} setVideo={setVideo}/>
+            
             
             
             </>

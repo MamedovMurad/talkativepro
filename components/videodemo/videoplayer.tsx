@@ -49,7 +49,7 @@ export const VideoPlayer = ({ user ,chanal_id, socket, currentUser,setVideo}:any
             />
             </span>
     } 
-       <div ref={ref} style={participant?.loggedAsTeacher&&responsive&&responsive>700?{display:'none'}:{}}></div>
+       <div ref={ref} style={participant?.loggedAsTeacher?{display:'none'}:{}}></div>
        <p className={styles.user_info}>{participant?.firstName+' '+ participant?.lastName}</p>
     </div>
     </>
