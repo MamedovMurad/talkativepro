@@ -105,7 +105,7 @@ const Register: React.FC<RegisterProps> = () => {
                 </div>
                 <ButtonUI
                   text={Student === "Tələbə" ? "Qeydiyyatdan keç" : "Növbəti"}
-                  width="360px"
+                  width="100%"
                   height="56px"
                 />
               </form>
