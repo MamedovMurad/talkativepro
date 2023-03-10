@@ -11,8 +11,12 @@
 .datePickerfortop {
   display: flex;
   justify-content: flex-end;
-  padding-right: 12%;
+  padding-right: 7%;
   margin: 10px 0;
+}
+.datePickerfortop>div:first-child{
+  width: 276px;
+ 
 }
 .datePickerfortop  .custompicker {
   width: 276px;
