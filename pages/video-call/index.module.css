@@ -1,4 +1,10 @@
 .body{
-    height: 93vh;
+    height: 100vh;
     background:#333;
+}
+
+@media only screen and (max-width: 800px) {
+.body{
+    height: 93vh;
+}
 }
