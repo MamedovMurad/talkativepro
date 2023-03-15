@@ -206,4 +206,7 @@
   .chatactivevidebuttons {
     width: 100%;
   }
+  .bigVideo {
+    height: 93vh;
+  }
 }
