@@ -16,7 +16,7 @@
   padding: 0 15px;
   margin: 0;
   overflow-y: scroll;
-  height: 70vh;
+  height: 77vh;
   padding-top: 25px;
   display: flex;
   flex-direction: column;
@@ -106,5 +106,9 @@ width: 100%;
     position: absolute;
     width: 100% !important;
     height: 95%;
+  }
+  .chat > main > ul {
+
+    height: 69vh;
   }
 }
