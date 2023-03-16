@@ -110,3 +110,18 @@ display: flex;
   color: #474747;
   font-size: 16px;
 }
+
+@media only screen and (max-width: 800px) {
+  .leftSide{
+    left: -19px;
+  }
+  .SumofItems{
+    width: 158px;
+    bottom: -44px;
+   
+  
+  }
+  .DropDownItem {
+    min-height: 27px;
+  }
+}
